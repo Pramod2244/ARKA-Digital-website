@@ -9,7 +9,6 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
 
 const heroSlides = [
   {
@@ -48,12 +47,6 @@ export function HeroSection() {
       <div className="relative z-20 container mx-auto h-full flex flex-col items-center justify-center text-center text-white p-4">
         <Carousel
           className="w-full max-w-2xl"
-          plugins={[
-            Autoplay({
-              delay: 5000,
-              stopOnInteraction: true,
-            }),
-          ]}
           opts={{
             loop: true,
           }}

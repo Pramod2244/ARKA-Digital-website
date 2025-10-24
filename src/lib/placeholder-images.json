@@ -2,15 +2,15 @@
   "placeholderImages": [
     {
       "id": "hero-bg-main",
-      "description": "Abstract orange and blue technology background",
-      "imageUrl": "https://images.unsplash.com/photo-1526374965328-5f61d4dc18c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHx0ZWNoJTIwYWJzdHJhY3QlMjBvcmFuZ2V8ZW58MHx8fHwxNzYxNDYxNzM4fDA&ixlib=rb-4.0.3&q=80&w=1080",
-      "imageHint": "orange tech"
+      "description": "Abstract futuristic technology background with glowing blue and orange lights",
+      "imageUrl": "https://images.unsplash.com/photo-1535223289827-42f1e9919769?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhYnN0cmFjdCUyMHRlY2hub2xvZ3l8ZW58MHx8fHwxNzE2NDkxOTE4fDA&ixlib=rb-4.0.3&q=80&w=1920",
+      "imageHint": "abstract technology"
     },
     {
       "id": "why-choose-us",
-      "description": "Team of developers collaborating",
-      "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NjEzMDQ5Mjh8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "team collaboration"
+      "description": "Team of developers collaborating on a project with laptops",
+      "imageUrl": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NjEzMDQ5Mjh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "teamwork office"
     }
   ]
 }
