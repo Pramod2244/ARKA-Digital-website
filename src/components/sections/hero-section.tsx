@@ -1,16 +1,14 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { Button } from "@/components/ui/button";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { useEffect, useState } from "react";
 
 const heroSlides = [
   {
@@ -43,44 +41,20 @@ export function HeroSection() {
 
   return (
     <section className="relative w-full h-[90vh] min-h-[700px] overflow-hidden">
-      <Carousel
-        className="w-full h-full"
-        plugins={[
-          Autoplay({
-            delay: 5000,
-            stopOnInteraction: false,
-          }),
-        ]}
-        opts={{
-          loop: true,
-        }}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute z-0 w-full h-full object-cover"
+        style={{ transform: `translateY(${scrollY * 0.3}px) scale(1.1)` }}
+        poster="https://images.unsplash.com/photo-1528823336495-235848225239?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxvcmFuZ2UlMjB0ZWNobm9sb2d5fGVufDB8fHx8MTc2MTM1NDYxOXww&ixlib=rb-4.1.0&q=80&w=1080"
       >
-        <CarouselContent className="w-full h-full">
-          {heroSlides.map((slide) => {
-            const image = PlaceHolderImages.find(p => p.id === slide.id)!;
-            return (
-              <CarouselItem key={slide.id} className="w-full h-full relative">
-                <div
-                  className="absolute w-full h-full transition-transform duration-200 ease-out"
-                  style={{ transform: `translateY(${scrollY * 0.3}px) scale(1.1)` }}
-                >
-                  <Image
-                    src={image.imageUrl}
-                    alt={image.description}
-                    fill
-                    className="object-cover"
-                    data-ai-hint={image.imageHint}
-                    priority={slide.id === 'hero-bg-1'}
-                  />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40" />
-              </CarouselItem>
-            )
-          })}
-        </CarouselContent>
-      </Carousel>
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-woman-in-a-vr-headset-44012-large.mp4" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-black/60 z-10" />
 
-      <div className="absolute inset-0 z-10 container mx-auto h-full flex flex-col items-center justify-center text-center text-white p-4">
+      <div className="relative z-20 container mx-auto h-full flex flex-col items-center justify-center text-center text-white p-4">
         <Carousel
           className="w-full max-w-2xl"
           plugins={[
