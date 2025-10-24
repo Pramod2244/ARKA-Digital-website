@@ -2,21 +2,21 @@
   "placeholderImages": [
     {
       "id": "hero-bg-1",
-      "description": "Abstract tech gradient background for hero section slide 1",
-      "imageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhYnN0cmFjdCUyMGdyYWRpZW50fGVufDB8fHx8MTc2MTI1NDY3NXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "abstract gradient"
+      "description": "Abstract orange gradient background for hero section slide 1",
+      "imageUrl": "https://images.unsplash.com/photo-1580133318324-f2f76d987dd8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxvcmFuZ2UlMjBhYnN0cmFjdHxlbnwwfHx8fDE3NjEzNTQ1ODV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "orange abstract"
     },
     {
       "id": "hero-bg-2",
-      "description": "Abstract tech background for hero section slide 2",
-      "imageUrl": "https://images.unsplash.com/photo-1640552421447-1808735878e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx0ZWNobm9sb2d5JTIwY2lyY3VpdHxlbnwwfHx8fDE3NjEyMzU2MTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "technology circuit"
+      "description": "Abstract technology background for hero section slide 2",
+      "imageUrl": "https://images.unsplash.com/photo-1528823336495-235848225239?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxvcmFuZ2UlMjB0ZWNobm9sb2d5fGVufDB8fHx8MTc2MTM1NDYxOXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "orange technology"
     },
     {
       "id": "hero-bg-3",
       "description": "Abstract growth background for hero section slide 3",
-      "imageUrl": "https://images.unsplash.com/photo-1684139517679-032b7213ad2e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMHNoYXBlc3xlbnwwfHx8fDE3NjEyODYzNTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "abstract shapes"
+      "imageUrl": "https://images.unsplash.com/photo-1617042375876-a13e36732a04?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhYnN0cmFjdCUyMG9yYW5nZSUyMHdhdmVzfGVufDB8fHx8MTc2MTM1NDY1NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract orange"
     },
     {
       "id": "why-choose-us",
