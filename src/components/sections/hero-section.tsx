@@ -51,10 +51,10 @@ export function HeroSection() {
 
                 <div className="mt-10 flex flex-wrap justify-center gap-4">
                     <Button size="lg" asChild>
-                        <Link href="#contact">Get Started</Link>
+                        <Link href="/contact">Get Started</Link>
                     </Button>
                     <Button size="lg" variant="secondary" asChild>
-                        <Link href="#services">Explore Our Services</Link>
+                        <Link href="/services">Explore Our Services</Link>
                     </Button>
                 </div>
             </div>
