@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { Button } from './ui/button';
-import { Layers } from 'lucide-react';
-import { MobileNav } from './mobile-nav';
+import { Layers, Menu } from 'lucide-react';
 
 export function Header() {
   return (
@@ -12,17 +11,14 @@ export function Header() {
           <span className="font-headline text-xl font-bold">ARKA Digital</span>
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm">
-          <Link href="/about" className="text-foreground/60 transition-colors hover:text-foreground/80">About</Link>
-          <Link href="/services" className="text-foreground/60 transition-colors hover:text-foreground/80">Services</Link>
-          <Link href="/testimonials" className="text-foreground/60 transition-colors hover:text-foreground/80">Testimonials</Link>
-          <Link href="/contact" className="text-foreground/60 transition-colors hover:text-foreground/80">Contact</Link>
+          <a href="#about" className="text-foreground/60 transition-colors hover:text-foreground/80">About</a>
+          <a href="#services" className="text-foreground/60 transition-colors hover:text-foreground/80">Services</a>
+          <a href="#testimonials" className="text-foreground/60 transition-colors hover:text-foreground/80">Testimonials</a>
+          <a href="#contact" className="text-foreground/60 transition-colors hover:text-foreground/80">Contact</a>
         </nav>
-        <div className='flex items-center gap-4'>
-            <Button asChild className="hidden md:flex">
-              <Link href="/contact">Get Started</Link>
-            </Button>
-            <MobileNav />
-        </div>
+        <Button asChild>
+          <a href="#contact">Get Started</a>
+        </Button>
       </div>
     </header>
   );

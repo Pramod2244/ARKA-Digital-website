@@ -19,17 +19,17 @@ export function Footer() {
             <div className="text-sm">
               <p className="font-bold font-headline">Quick Links</p>
               <nav className="mt-4 flex flex-col space-y-2">
-                <Link href="/about" className="hover:text-primary">About Us</Link>
-                <Link href="/services" className="hover:text-primary">Services</Link>
-                <Link href="/contact" className="hover:text-primary">Contact</Link>
+                <a href="#about" className="hover:text-primary">About Us</a>
+                <a href="#services" className="hover:text-primary">Services</a>
+                <a href="#contact" className="hover:text-primary">Contact</a>
               </nav>
             </div>
             <div className="text-sm">
               <p className="font-bold font-headline">Services</p>
               <nav className="mt-4 flex flex-col space-y-2">
-                <Link href="/services" className="hover:text-primary">Software Development</Link>
-                <Link href="/services" className="hover:text-primary">Cloud & DevOps</Link>
-                <Link href="/services" className="hover:text-primary">AI & Automation</Link>
+                <a href="#services" className="hover:text-primary">Software Development</a>
+                <a href="#services" className="hover:text-primary">Cloud & DevOps</a>
+                <a href="#services" className="hover:text-primary">AI & Automation</a>
               </nav>
             </div>
             <div className="text-sm">
