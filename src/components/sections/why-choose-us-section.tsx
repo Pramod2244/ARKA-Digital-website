@@ -24,8 +24,18 @@ export function WhyChooseUsSection() {
   const isInView = useInView(ref, { once: true, threshold: 0.2 });
 
   return (
-    <section id="why-us" className="py-16 md:py-24 bg-card" ref={ref}>
-      <div className={cn("container mx-auto px-4 transition-opacity duration-1000 ease-out", isInView ? "opacity-100" : "opacity-0")}>
+    <section id="why-us" className="py-16 md:py-24 bg-card relative" ref={ref}>
+       {image && (
+        <Image
+          src={image.imageUrl}
+          alt={image.description}
+          fill
+          className="object-cover"
+          data-ai-hint={image.imageHint}
+        />
+      )}
+      <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+      <div className={cn("container mx-auto px-4 transition-opacity duration-1000 ease-out relative", isInView ? "opacity-100" : "opacity-0")}>
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div
             className={cn(
@@ -48,7 +58,7 @@ export function WhyChooseUsSection() {
                   style={{ transitionDelay: `${index * 150}ms` }}
                 >
                   <CheckCircle2 className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
-                  <span>{benefit}</span>
+                  <span className="font-medium">{benefit}</span>
                 </li>
               ))}
             </ul>
@@ -59,15 +69,12 @@ export function WhyChooseUsSection() {
               isInView ? "opacity-100 scale-100" : "opacity-0 scale-90"
             )}
           >
-             <Card className="overflow-hidden rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-500">
-                <Image
-                  src={image.imageUrl}
-                  alt={image.description}
-                  width={600}
-                  height={400}
-                  className="object-cover"
-                  data-ai-hint={image.imageHint}
-                />
+             <Card className="overflow-hidden rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-500 bg-background/50">
+                <div className="p-8">
+                  <h3 className="font-headline text-2xl font-bold mb-4">Our Commitment</h3>
+                  <p className="text-muted-foreground">We are dedicated to turning your vision into reality with solutions that are not just effective but also elegant and future-proof. Our agile approach ensures we adapt to your needs, delivering value at every stage of the development lifecycle.
+                  </p>
+                </div>
             </Card>
           </div>
         </div>
