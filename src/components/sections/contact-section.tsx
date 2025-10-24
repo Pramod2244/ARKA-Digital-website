@@ -16,6 +16,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
+import { useInView } from "@/hooks/use-in-view";
+import { useRef } from "react";
+import { cn } from "@/lib/utils";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -52,10 +55,18 @@ export function ContactSection() {
         });
         form.reset();
     }
+    
+    const ref = useRef<HTMLDivElement>(null);
+    const isInView = useInView(ref, { once: true, threshold: 0.1 });
 
     return (
-        <section id="contact" className="py-16 md:py-24 bg-card">
-            <div className="container mx-auto px-4">
+        <section id="contact" className="py-16 md:py-24 bg-card" ref={ref}>
+            <div
+              className={cn(
+                "container mx-auto px-4 transition-opacity duration-1000 ease-out",
+                isInView ? "opacity-100" : "opacity-0"
+              )}
+            >
                 <div className="text-center space-y-4 mb-12">
                     <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">Let’s Build Something Great Together</h2>
                     <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -64,7 +75,12 @@ export function ContactSection() {
                 </div>
 
                 <div className="grid md:grid-cols-5 gap-12">
-                    <div className="md:col-span-2 space-y-6">
+                    <div
+                      className={cn(
+                        "md:col-span-2 space-y-6 transition-all duration-1000 ease-out",
+                        isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                      )}
+                    >
                         <h3 className="font-headline text-2xl font-semibold">Contact Information</h3>
                          <div className="space-y-4 text-muted-foreground">
                             <p className="flex items-center gap-3"><Mail className="h-5 w-5 text-accent" /> contact@arkatechnologies.com</p>
@@ -74,7 +90,12 @@ export function ContactSection() {
                         <p className="text-sm text-muted-foreground">We're available to discuss your project needs. Reach out via email or phone, or fill out the contact form, and we'll respond promptly.</p>
                     </div>
 
-                    <div className="md:col-span-3">
+                    <div
+                      className={cn(
+                        "md:col-span-3 transition-all duration-1000 ease-out delay-200",
+                        isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                      )}
+                    >
                         <Form {...form}>
                             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                                 <FormField

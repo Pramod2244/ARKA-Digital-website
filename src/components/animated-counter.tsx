@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import { useInView } from "@/hooks/use-in-view";
 
 type AnimatedCounterProps = {
   target: number;
@@ -8,37 +9,10 @@ type AnimatedCounterProps = {
   className?: string;
 };
 
-// A simple useInView hook implementation.
-function useInView(ref: React.RefObject<Element>, options: IntersectionObserverInit) {
-    const [isInView, setIsInView] = useState(false);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(([entry]) => {
-            if (entry.isIntersecting) {
-                setIsInView(true);
-                observer.disconnect();
-            }
-        }, options);
-
-        const currentRef = ref.current;
-        if (currentRef) {
-            observer.observe(currentRef);
-        }
-
-        return () => {
-            if(currentRef) {
-                observer.unobserve(currentRef);
-            }
-        };
-    }, [ref, options]);
-
-    return isInView;
-}
-
 export function AnimatedCounter({ target, duration = 2000, className }: AnimatedCounterProps) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
+  const isInView = useInView(ref, { once: true, threshold: 0.5 });
 
   useEffect(() => {
     if (isInView) {
