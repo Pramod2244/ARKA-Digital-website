@@ -16,53 +16,33 @@ const heroSlides = [
     id: 'hero-bg-1',
     mainTitle: "Empowering Businesses with Smart Digital Solutions",
     mainSubtitle: "Transforming ideas into intelligent, scalable, and secure technology.",
-    image: PlaceHolderImages.find(p => p.id === 'hero-bg-1')!
   },
   {
     id: 'hero-bg-2',
     mainTitle: "Innovation at the Core of Everything We Do",
     mainSubtitle: "Harnessing the power of AI and cloud to drive your business forward.",
-    image: PlaceHolderImages.find(p => p.id === 'hero-bg-2')!
   },
   {
     id: 'hero-bg-3',
     mainTitle: "Your Vision, Engineered for Excellence",
     mainSubtitle: "From concept to launch, we are your dedicated partners in digital transformation.",
-    image: PlaceHolderImages.find(p => p.id === 'hero-bg-3')!
   }
 ];
+
+const heroImage = PlaceHolderImages.find(p => p.id === 'hero-bg-main')!;
 
 export function HeroSection() {
 
   return (
     <section className="relative w-full h-[90vh] min-h-[700px] overflow-hidden">
-      <Carousel
-        className="absolute z-0 w-full h-full"
-        plugins={[
-          Autoplay({
-            delay: 5000,
-            stopOnInteraction: false,
-          }),
-        ]}
-        opts={{
-          loop: true,
-        }}
-      >
-        <CarouselContent>
-          {heroSlides.map((slide) => (
-            <CarouselItem key={slide.id}>
-              <Image
-                src={slide.image.imageUrl}
-                alt={slide.image.description}
-                fill
-                className="object-cover"
-                priority
-                data-ai-hint={slide.image.imageHint}
-              />
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-      </Carousel>
+      <Image
+        src={heroImage.imageUrl}
+        alt={heroImage.description}
+        fill
+        className="object-cover"
+        priority
+        data-ai-hint={heroImage.imageHint}
+      />
       <div className="absolute inset-0 bg-black/60 z-10" />
 
       <div className="relative z-20 container mx-auto h-full flex flex-col items-center justify-center text-center text-white p-4">
