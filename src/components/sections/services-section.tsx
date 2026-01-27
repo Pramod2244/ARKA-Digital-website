@@ -33,12 +33,6 @@ const services = [
     details: "Our digital marketing services include SEO, content marketing, and social media management to help you reach your target audience and grow your business. We use data-driven strategies to optimize your online presence."
   },
   {
-    icon: BrainCircuit,
-    title: "Automation & AI",
-    description: "Integrate artificial intelligence to boost productivity.",
-    details: "We leverage AI and machine learning to automate business processes, providing solutions like chatbots, predictive analytics, and personalized recommendations to improve efficiency and customer engagement."
-  },
-  {
     icon: Cloud,
     title: "Cloud & DevOps",
     description: "Secure, scalable cloud solutions to streamline deployment and operations.",
