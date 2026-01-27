@@ -3,24 +3,13 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
-import { MotionDiv, MotionProvider } from '@/components/motion-provider';
+import { MotionProvider } from '@/components/motion-provider';
+import { ScrollProgress } from '@/components/scroll-progress';
 
 export const metadata: Metadata = {
   title: 'Arkaa Digital - Future-Ready Digital Experiences',
   description: 'Arkaa Digital is a premium digital agency specializing in web apps, UI/UX, branding, and automation. We build future-ready digital experiences.',
 };
-
-function ScrollProgress() {
-  const { scrollYProgress } = require('framer-motion');
-  const scaleX = scrollYProgress;
-
-  return (
-    <MotionDiv
-      className="fixed top-0 left-0 right-0 h-1 bg-primary origin-left z-[100]"
-      style={{ scaleX }}
-    />
-  );
-}
 
 
 export default function RootLayout({
