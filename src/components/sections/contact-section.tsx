@@ -14,11 +14,12 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { Mail, MapPin, Phone, MessageSquare, PhoneCall } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import { useInView } from "@/hooks/use-in-view";
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
+import { Card } from "../ui/card";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -60,7 +61,7 @@ export function ContactSection() {
     const isInView = useInView(ref, { once: true, threshold: 0.1 });
 
     return (
-        <section id="contact" className="py-16 md:py-24 bg-card" ref={ref}>
+        <section id="contact" className="py-16 md:py-24" ref={ref}>
             <div
               className={cn(
                 "container mx-auto px-4 transition-opacity duration-1000 ease-out",
@@ -88,11 +89,17 @@ export function ContactSection() {
                             <p className="flex items-center gap-3"><MapPin className="h-5 w-5 text-accent" /> Bengaluru, India</p>
                         </div>
                         <p className="text-sm text-muted-foreground">We're available to discuss your project needs. Reach out via email or phone, or fill out the contact form, and we'll respond promptly.</p>
+                        
+                        <div className="flex gap-4 pt-4">
+                           <Button variant="outline" size="icon"><MessageSquare/></Button>
+                           <Button variant="outline" size="icon"><Mail/></Button>
+                           <Button variant="outline" size="icon"><PhoneCall/></Button>
+                        </div>
                     </div>
 
-                    <div
+                    <Card
                       className={cn(
-                        "md:col-span-3 transition-all duration-1000 ease-out delay-200",
+                        "md:col-span-3 transition-all duration-1000 ease-out delay-200 glass-card p-8",
                         isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                       )}
                     >
@@ -153,7 +160,7 @@ export function ContactSection() {
                                 <Button type="submit" size="lg" className="w-full">Send Message</Button>
                             </form>
                         </Form>
-                    </div>
+                    </Card>
                 </div>
             </div>
         </section>

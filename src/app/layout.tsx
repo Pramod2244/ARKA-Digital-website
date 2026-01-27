@@ -3,11 +3,25 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
+import { MotionDiv, MotionProvider } from '@/components/motion-provider';
 
 export const metadata: Metadata = {
-  title: 'Arkaa Digital - Empowering Businesses with Smart Digital Solutions',
-  description: 'Arkaa Digital is a forward-thinking IT services company dedicated to delivering cutting-edge digital solutions that empower businesses to grow in the modern world.',
+  title: 'Arkaa Digital - Future-Ready Digital Experiences',
+  description: 'Arkaa Digital is a premium digital agency specializing in web apps, UI/UX, branding, and automation. We build future-ready digital experiences.',
 };
+
+function ScrollProgress() {
+  const { scrollYProgress } = require('framer-motion');
+  const scaleX = scrollYProgress;
+
+  return (
+    <MotionDiv
+      className="fixed top-0 left-0 right-0 h-1 bg-primary origin-left z-[100]"
+      style={{ scaleX }}
+    />
+  );
+}
+
 
 export default function RootLayout({
   children,
@@ -15,19 +29,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="!scroll-smooth">
+    <html lang="en" className="!scroll-smooth dark">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased flex flex-col min-h-screen bg-background">
-        <Header />
-        <main className="flex-grow">
-          {children}
-        </main>
-        <Footer />
-        <Toaster />
+        <MotionProvider>
+          <ScrollProgress />
+          <Header />
+          <main className="flex-grow">
+            {children}
+          </main>
+          <Footer />
+          <Toaster />
+        </MotionProvider>
       </body>
     </html>
   );
