@@ -20,6 +20,7 @@ import { useInView } from "@/hooks/use-in-view";
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
 import { Card } from "../ui/card";
+import Link from "next/link";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -91,9 +92,21 @@ export function ContactSection() {
                         <p className="text-sm text-muted-foreground">We're available to discuss your project needs. Reach out via email or phone, or fill out the contact form, and we'll respond promptly.</p>
                         
                         <div className="flex gap-4 pt-4">
-                           <Button variant="outline" size="icon"><MessageSquare/></Button>
-                           <Button variant="outline" size="icon"><Mail/></Button>
-                           <Button variant="outline" size="icon"><PhoneCall/></Button>
+                           <Button variant="outline" size="icon" asChild>
+                                <Link href="https://wa.me/918050332452" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+                                    <MessageSquare/>
+                                </Link>
+                           </Button>
+                           <Button variant="outline" size="icon" asChild>
+                                <Link href="mailto:hey@arkaadigital.com" aria-label="Send an Email">
+                                    <Mail/>
+                                </Link>
+                           </Button>
+                           <Button variant="outline" size="icon" asChild>
+                                <Link href="tel:+918050332452" aria-label="Call us">
+                                    <PhoneCall/>
+                                </Link>
+                           </Button>
                         </div>
                     </div>
 
