@@ -78,10 +78,7 @@ export function HeroSection() {
 
             <MotionDiv variants={itemVariants} className="flex flex-wrap justify-start gap-4">
               <Button size="lg" asChild>
-                <Link href="#contact">Get a Free Quote</Link>
-              </Button>
-              <Button size="lg" variant="secondary" asChild>
-                <Link href="#work">View Work</Link>
+                <Link href="#contact">Get In Touch</Link>
               </Button>
             </MotionDiv>
           </div>
