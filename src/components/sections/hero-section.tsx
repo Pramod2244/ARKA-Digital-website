@@ -88,10 +88,6 @@ export function HeroSection() {
               <CardContent className="p-8 space-y-4">
                 <li className="flex items-center gap-3">
                   <CheckCircle className="h-6 w-6 text-primary" />
-                  <span className="font-medium">10+ Projects Delivered</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle className="h-6 w-6 text-primary" />
                   <span className="font-medium">Fast & Scalable</span>
                 </li>
                  <li className="flex items-center gap-3">
