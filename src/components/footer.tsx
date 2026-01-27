@@ -36,9 +36,9 @@ export function Footer() {
             <div className="text-sm">
               <p className="font-bold font-headline text-foreground">Contact Us</p>
               <div className="mt-4 space-y-2 text-muted-foreground">
-                <p className="flex items-center gap-2"><Mail className="h-4 w-4" /> contact@arkaadigital.com</p>
-                <p className="flex items-center gap-2"><Phone className="h-4 w-4" /> +91-XXXXXXXXXX</p>
-                <p className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Bengaluru, India</p>
+                <p className="flex items-center gap-2"><Mail className="h-4 w-4" /> hey@arkaadigital.com</p>
+                <p className="flex items-center gap-2"><Phone className="h-4 w-4" /> +91 8050332452</p>
+                <p className="flex items-start gap-2"><MapPin className="h-4 w-4 mt-1" /> 29th ward behind Mayuga Bakery, vapasandra, Chikkaballapura, Karnataka - 562101</p>
               </div>
             </div>
           </div>

@@ -84,9 +84,9 @@ export function ContactSection() {
                     >
                         <h3 className="font-headline text-2xl font-semibold">Contact Information</h3>
                          <div className="space-y-4 text-muted-foreground">
-                            <p className="flex items-center gap-3"><Mail className="h-5 w-5 text-accent" /> contact@arkaadigital.com</p>
-                            <p className="flex items-center gap-3"><Phone className="h-5 w-5 text-accent" /> +91-XXXXXXXXXX</p>
-                            <p className="flex items-center gap-3"><MapPin className="h-5 w-5 text-accent" /> Bengaluru, India</p>
+                            <p className="flex items-start gap-3"><Mail className="h-5 w-5 text-accent mt-1" /> hey@arkaadigital.com</p>
+                            <p className="flex items-start gap-3"><Phone className="h-5 w-5 text-accent mt-1" /> +91 8050332452</p>
+                            <p className="flex items-start gap-3"><MapPin className="h-5 w-5 text-accent mt-1" /> 29th ward behind Mayuga Bakery, vapasandra, Chikkaballapura, Karnataka - 562101</p>
                         </div>
                         <p className="text-sm text-muted-foreground">We're available to discuss your project needs. Reach out via email or phone, or fill out the contact form, and we'll respond promptly.</p>
                         
