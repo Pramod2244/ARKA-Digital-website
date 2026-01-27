@@ -43,7 +43,7 @@ export function WhyChooseUsSection() {
               isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             )}
           >
-            <h2 className="font-headline text-3xl md:text-4xl font-bold">Why Choose ARKA?</h2>
+            <h2 className="font-headline text-3xl md:text-4xl font-bold">Why Choose Arkaa?</h2>
             <p className="text-lg text-muted-foreground">
               We are more than just a technology provider; we are your partner in innovation and growth.
             </p>

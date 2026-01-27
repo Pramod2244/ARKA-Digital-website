@@ -9,7 +9,7 @@ export function Footer() {
           <div>
             <Link href="/" className="flex items-center gap-2">
               <Layers className="h-8 w-8 text-primary" />
-              <span className="font-headline text-2xl font-bold">ARKA Digital</span>
+              <span className="font-headline text-2xl font-bold">Arkaa Digita</span>
             </Link>
             <p className="mt-4 text-sm text-secondary-foreground/80">
               Empowering Businesses with Smart Digital Solutions.
@@ -35,7 +35,7 @@ export function Footer() {
             <div className="text-sm">
               <p className="font-bold font-headline">Contact Us</p>
               <div className="mt-4 space-y-2">
-                <p className="flex items-center gap-2"><Mail className="h-4 w-4" /> contact@arkatechnologies.com</p>
+                <p className="flex items-center gap-2"><Mail className="h-4 w-4" /> contact@arkaadigita.com</p>
                 <p className="flex items-center gap-2"><Phone className="h-4 w-4" /> +91-XXXXXXXXXX</p>
                 <p className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Bengaluru, India</p>
               </div>
@@ -43,7 +43,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 border-t border-secondary-foreground/20 pt-4 text-center text-sm text-secondary-foreground/60">
-          <p>&copy; {new Date().getFullYear()} ARKA Technologies. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Arkaa Digita. All rights reserved.</p>
         </div>
       </div>
     </footer>

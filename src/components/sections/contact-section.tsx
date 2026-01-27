@@ -83,7 +83,7 @@ export function ContactSection() {
                     >
                         <h3 className="font-headline text-2xl font-semibold">Contact Information</h3>
                          <div className="space-y-4 text-muted-foreground">
-                            <p className="flex items-center gap-3"><Mail className="h-5 w-5 text-accent" /> contact@arkatechnologies.com</p>
+                            <p className="flex items-center gap-3"><Mail className="h-5 w-5 text-accent" /> contact@arkaadigita.com</p>
                             <p className="flex items-center gap-3"><Phone className="h-5 w-5 text-accent" /> +91-XXXXXXXXXX</p>
                             <p className="flex items-center gap-3"><MapPin className="h-5 w-5 text-accent" /> Bengaluru, India</p>
                         </div>

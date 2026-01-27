@@ -44,9 +44,9 @@ export function AboutSection() {
               isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             )}
           >
-            <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">About ARKA Technologies</h2>
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">About Arkaa Digita</h2>
             <p className="text-lg text-muted-foreground">
-              ARKA Technologies is a forward-thinking IT services company dedicated to delivering cutting-edge digital solutions that empower businesses to grow in the modern world.
+              Arkaa Digita is a forward-thinking IT services company dedicated to delivering cutting-edge digital solutions that empower businesses to grow in the modern world.
             </p>
             <p className="text-muted-foreground">
               Our name “Arka” symbolizes the Sun — a source of light, energy, and knowledge — reflecting our mission to illuminate digital paths for our clients through innovation and technology.

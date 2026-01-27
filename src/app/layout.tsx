@@ -5,8 +5,8 @@ import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 
 export const metadata: Metadata = {
-  title: 'ARKA Digital - Empowering Businesses with Smart Digital Solutions',
-  description: 'ARKA Technologies is a forward-thinking IT services company dedicated to delivering cutting-edge digital solutions that empower businesses to grow in the modern world.',
+  title: 'Arkaa Digita - Empowering Businesses with Smart Digital Solutions',
+  description: 'Arkaa Digita is a forward-thinking IT services company dedicated to delivering cutting-edge digital solutions that empower businesses to grow in the modern world.',
 };
 
 export default function RootLayout({

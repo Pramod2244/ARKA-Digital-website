@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 const testimonials = [
     {
-        quote: "ARKA Technologies transformed our outdated system into a modern, cloud-based platform. Their team’s technical skill and commitment to delivery were outstanding.",
+        quote: "Arkaa Digita transformed our outdated system into a modern, cloud-based platform. Their team’s technical skill and commitment to delivery were outstanding.",
         name: "Jane Doe",
         title: "CEO, Retail Client",
         avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704d"
