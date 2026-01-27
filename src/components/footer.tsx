@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Mail, MapPin, Phone, Layers } from 'lucide-react';
+import { Mail, MapPin, Phone, Sun } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -8,7 +8,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
             <Link href="/" className="flex items-center gap-2">
-              <Layers className="h-8 w-8 text-primary" />
+              <Sun className="h-8 w-8 text-primary" />
               <span className="font-headline text-2xl font-bold">Arkaa Digital</span>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground">

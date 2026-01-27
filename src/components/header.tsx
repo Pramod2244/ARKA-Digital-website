@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { Button } from './ui/button';
-import { Layers, Menu } from 'lucide-react';
+import { Sun, Menu } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { MotionDiv } from './motion-provider';
@@ -34,7 +34,7 @@ export function Header() {
     )}>
       <div className="container flex h-full max-w-screen-2xl items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <Layers className="h-7 w-7 text-primary" />
+          <Sun className="h-7 w-7 text-primary" />
           <span className="font-headline text-2xl font-bold">Arkaa Digital</span>
         </Link>
         <nav className="hidden md:flex items-center gap-1">
