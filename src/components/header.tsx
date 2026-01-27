@@ -8,7 +8,7 @@ export function Header() {
       <div className="container flex h-14 max-w-screen-2xl items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Layers className="h-6 w-6 text-primary" />
-          <span className="font-headline text-xl font-bold">Arkaa Digita</span>
+          <span className="font-headline text-xl font-bold">Arkaa Digital</span>
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm">
           <a href="#about" className="text-foreground/60 transition-colors hover:text-foreground/80">About</a>
