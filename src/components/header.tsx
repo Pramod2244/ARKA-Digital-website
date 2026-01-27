@@ -5,7 +5,7 @@ import { Button } from './ui/button';
 import { Sun, Menu } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
-import { MotionDiv } from './motion-provider';
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -45,9 +45,31 @@ export function Header() {
           ))}
         </nav>
         <div className="md:hidden">
-            <Button variant="ghost" size="icon">
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon">
                 <Menu />
-            </Button>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <div className="flex items-center gap-2 mt-4">
+                    <Sun className="h-7 w-7 text-primary" />
+                    <span className="font-headline text-2xl font-bold">Arkaa Digital</span>
+                </div>
+              <nav className="flex flex-col gap-6 mt-12">
+                {navLinks.map((link) => (
+                  <SheetClose asChild key={link.href}>
+                    <a
+                      href={link.href}
+                      className="text-xl font-medium text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      {link.label}
+                    </a>
+                  </SheetClose>
+                ))}
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>
