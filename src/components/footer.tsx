@@ -21,8 +21,7 @@ export function Footer() {
               <nav className="mt-4 flex flex-col space-y-2">
                 <a href="#home" className="text-muted-foreground hover:text-primary">Home</a>
                 <a href="#services" className="text-muted-foreground hover:text-primary">Services</a>
-                <a href="#work" className="text-muted-foreground hover:text-primary">Work</a>
-                <a href="#about" className="text-muted-foreground hover:text-primary">About</a>
+                <a href="#why-choose-us" className="text-muted-foreground hover:text-primary">Why Us</a>
                 <a href="#testimonials" className="text-muted-foreground hover:text-primary">Testimonials</a>
               </nav>
             </div>
