@@ -73,8 +73,8 @@ export function TestimonialsSection() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="hidden md:inline-flex" />
-          <CarouselNext className="hidden md:inline-flex" />
+          <CarouselPrevious className="hidden lg:inline-flex" />
+          <CarouselNext className="hidden lg:inline-flex" />
         </Carousel>
       </div>
     </section>
