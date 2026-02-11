@@ -62,7 +62,7 @@ export function WhyChooseUsSection() {
         >
           <div className="space-y-6">
             <MotionDiv variants={itemVariants}>
-              <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">Why Choose Arkaa?</h2>
+              <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">Why Choose ARKA?</h2>
             </MotionDiv>
             <MotionDiv variants={itemVariants}>
               <p className="text-lg text-muted-foreground">

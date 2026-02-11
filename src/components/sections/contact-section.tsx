@@ -20,6 +20,10 @@ import { useInView } from "@/hooks/use-in-view";
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
 import { Card } from "../ui/card";
+import { useFirestore } from "@/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { errorEmitter } from "@/firebase/error-emitter";
+import { FirestorePermissionError, type SecurityRuleContext } from "@/firebase/errors";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -38,6 +42,7 @@ const formSchema = z.object({
 
 export function ContactSection() {
     const { toast } = useToast();
+    const { firestore } = useFirestore();
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -49,7 +54,21 @@ export function ContactSection() {
     });
 
     function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log(values);
+        if (firestore) {
+            const contactsCollection = collection(firestore, 'contacts');
+            addDoc(contactsCollection, {
+                ...values,
+                createdAt: serverTimestamp(),
+            }).catch(async () => {
+                const permissionError = new FirestorePermissionError({
+                    path: 'contacts',
+                    operation: 'create',
+                    requestResourceData: values,
+                } satisfies SecurityRuleContext);
+                errorEmitter.emit('permission-error', permissionError);
+            });
+        }
+
         toast({
           title: "Message Sent!",
           description: "Thank you for contacting us. We'll get back to you shortly.",
