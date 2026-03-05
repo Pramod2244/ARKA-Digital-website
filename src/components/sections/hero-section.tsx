@@ -143,15 +143,15 @@ export function HeroSection() {
               </h1>
               
               <div className="space-y-6">
-                <div className="flex items-center gap-3 text-xs md:text-sm font-bold tracking-[0.2em] text-primary/80 uppercase">
+                <div className="flex items-center gap-3 text-xs md:text-sm font-bold tracking-[0.2em] text-muted-foreground/60 uppercase">
                   <span>Web Apps</span>
-                  <span className="text-muted-foreground/30">•</span>
+                  <span className="text-muted-foreground/20">•</span>
                   <span>UI/UX</span>
-                  <span className="text-muted-foreground/30">•</span>
+                  <span className="text-muted-foreground/20">•</span>
                   <span>Branding</span>
-                  <span className="text-muted-foreground/30">•</span>
+                  <span className="text-muted-foreground/20">•</span>
                   <span>Automation</span>
-                  <span className="text-muted-foreground/30">•</span>
+                  <span className="text-muted-foreground/20">•</span>
                   <span>Growth</span>
                 </div>
               </div>
