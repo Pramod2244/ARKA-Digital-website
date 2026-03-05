@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Code2, Cloud, Search, Palette, ShieldCheck } from "lucide-react";
+import { Code2, Cloud, Search, Palette, ShieldCheck, Bot } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
@@ -17,6 +17,11 @@ const services = [
     icon: Palette,
     title: "UI/UX Design",
     description: "Beautiful, user-centric design that strengthens your brand identity.",
+  },
+  {
+    icon: Bot,
+    title: "AI & Automation",
+    description: "Custom AI models and workflow automation to scale your business efficiency.",
   },
   {
     icon: ShieldCheck,
