@@ -8,8 +8,11 @@ import { ScrollProgress } from '@/components/scroll-progress';
 import { FirebaseClientProvider } from '@/firebase';
 
 export const metadata: Metadata = {
-  title: 'Arkaa Digital - Future-Ready Digital Experiences',
-  description: 'Arkaa Digital is a premium digital agency specializing in web apps, UI/UX, branding, and automation. We build future-ready digital experiences.',
+  title: 'Arkaa Digital | High-Performance Web & AI Engineering',
+  description: 'Arkaa Digital is a premium digital agency specializing in scalable web apps, AI automation, and future-ready UI/UX. Powering innovation with the Arkaa digital core.',
+  keywords: ['Web Development', 'AI Automation', 'UI/UX Design', 'Cloud Solutions', 'Digital Agency'],
+  authors: [{ name: 'Arkaa Digital' }],
+  viewport: 'width=device-width, initial-scale=1',
 };
 
 export default function RootLayout({
@@ -24,7 +27,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
       </head>
-      <body className="font-body antialiased flex flex-col min-h-screen bg-background">
+      <body className="font-body antialiased flex flex-col min-h-screen bg-background selection:bg-primary selection:text-primary-foreground">
         <FirebaseClientProvider>
           <MotionProvider>
             <ScrollProgress />

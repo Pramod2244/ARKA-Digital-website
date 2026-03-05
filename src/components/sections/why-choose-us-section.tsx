@@ -1,12 +1,9 @@
 "use client";
 
-import Image from 'next/image';
 import { CheckCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { MotionDiv } from '../motion-provider';
 import { motion } from 'framer-motion';
-import { cn } from '@/lib/utils';
 
 const leftVariants = {
   hidden: { x: -40, opacity: 0 },
@@ -44,8 +41,6 @@ const itemVariants = {
 };
 
 export function WhyChooseUsSection() {
-  const whyChooseUsImage = PlaceHolderImages.find(img => img.id === 'why-choose-us');
-
   const features = [
     'Experienced Full-Stack Developers & Cloud Experts',
     'Global Delivery Model',
@@ -55,35 +50,10 @@ export function WhyChooseUsSection() {
   ];
 
   return (
-    <section id="why-choose-us" className="relative py-20 md:py-28 overflow-hidden">
-      {/* Seamless Transition Mask - Top */}
-      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-background to-transparent z-10" />
-
-      {/* Enhanced Background Architecture */}
+    <section id="why-choose-us" className="relative py-20 md:py-28 overflow-hidden bg-background">
       <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
-        {/* Background Image Overlay */}
-        {whyChooseUsImage && (
-          <Image
-            src={whyChooseUsImage.imageUrl}
-            alt={whyChooseUsImage.description}
-            fill
-            className="object-cover opacity-[0.05] grayscale"
-            data-ai-hint={whyChooseUsImage.imageHint}
-          />
-        )}
-        
-        {/* Faint Futuristic Grid Pattern */}
-        <div 
-          className="absolute inset-0 bg-grid-white opacity-[0.03]" 
-          style={{ backgroundSize: '50px 50px' }}
-        />
-        
-        {/* Soft Radial Gradient Glows */}
-        <div className="absolute top-1/4 -left-20 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[140px] opacity-50" />
-        <div className="absolute bottom-1/4 -right-20 w-[700px] h-[700px] bg-accent/10 rounded-full blur-[160px] opacity-40" />
-        
-        {/* Dark Overlays for Readability & Depth */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+        <div className="absolute top-1/4 -left-20 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[140px] opacity-40" />
+        <div className="absolute inset-0 bg-grid-white opacity-[0.02]" style={{ backgroundSize: '50px 50px' }} />
       </div>
       
       <motion.div 
@@ -94,7 +64,7 @@ export function WhyChooseUsSection() {
         className="container relative z-10 mx-auto px-4"
       >
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl mx-auto">
-          {/* Left Content: Text & Bullet Points */}
+          {/* Left Content */}
           <MotionDiv 
             className="space-y-8"
             variants={leftVariants}
@@ -102,64 +72,59 @@ export function WhyChooseUsSection() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
           >
-            <MotionDiv variants={itemVariants} className="space-y-4">
+            <div className="space-y-4">
               <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white">
                 Why Choose <span className="text-primary text-glow-primary">ARKA</span>?
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed max-w-xl font-medium">
                 We are more than just a technology provider; we are your partner in innovation and sustainable growth.
               </p>
-            </MotionDiv>
+            </div>
 
-            <MotionDiv variants={itemVariants} className="space-y-5">
+            <div className="space-y-5">
               {features.map((feature, index) => (
-                <div key={index} className="flex items-start gap-4 group">
-                  <div className="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20 shadow-[0_0_10px_rgba(249,115,22,0.15)] group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                <motion.div key={index} variants={itemVariants} className="flex items-start gap-4 group">
+                  <div className="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20 transition-all duration-300">
                     <CheckCircle className="h-3.5 w-3.5 text-primary" />
                   </div>
                   <span className="text-base md:text-lg text-white/90 group-hover:text-white transition-colors duration-300">{feature}</span>
-                </div>
+                </motion.div>
               ))}
-            </MotionDiv>
+            </div>
           </MotionDiv>
 
-          {/* Right Content: Commitment Card */}
+          {/* Right Content */}
           <MotionDiv 
             variants={rightVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
-            className="relative"
           >
-            <div className="absolute -inset-4 bg-primary/5 blur-[100px] rounded-full -z-10" />
-            
-            <Card className="glass-card rounded-[2rem] border-white/5 bg-white/[0.02] backdrop-blur-2xl shadow-2xl relative overflow-hidden group">
+            <Card className="glass-card rounded-[2.5rem] border-white/5 bg-white/[0.01] backdrop-blur-3xl shadow-2xl relative overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-              
-              <CardHeader className="p-8 pb-3">
+              <CardHeader className="p-10 pb-4">
                 <CardTitle className="font-headline text-2xl md:text-3xl font-bold text-white flex items-center gap-2">
                   Our <span className="text-primary">Commitment</span>
                 </CardTitle>
               </CardHeader>
-              <CardContent className="p-8 pt-0 relative z-10">
+              <CardContent className="p-10 pt-0 relative z-10">
                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
                   We are dedicated to turning your vision into reality with solutions that are not just effective but also elegant and future-proof. 
                   <br /><br />
-                  Our agile approach ensures we adapt to your evolving needs, delivering measurable value at every stage of development.
+                  Our agile approach ensures we adapt to your evolving needs, delivering measurable value at every stage.
                 </p>
-                
-                <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
-                  <div className="space-y-0.5">
-                    <p className="text-white font-bold text-xl">100%</p>
-                    <p className="text-[10px] uppercase tracking-widest text-muted-foreground">Transparency</p>
+                <div className="mt-10 pt-8 border-t border-white/5 flex items-center justify-between">
+                  <div className="text-center">
+                    <p className="text-white font-bold text-2xl">100%</p>
+                    <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">Transparency</p>
                   </div>
-                  <div className="space-y-0.5">
-                    <p className="text-white font-bold text-xl">24/7</p>
-                    <p className="text-[10px] uppercase tracking-widest text-muted-foreground">Expert Support</p>
+                  <div className="text-center">
+                    <p className="text-white font-bold text-2xl">24/7</p>
+                    <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">Expert Support</p>
                   </div>
-                  <div className="space-y-0.5">
-                    <p className="text-white font-bold text-xl">Agile</p>
-                    <p className="text-[10px] uppercase tracking-widest text-muted-foreground">Methodology</p>
+                  <div className="text-center">
+                    <p className="text-white font-bold text-2xl">Agile</p>
+                    <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">Methodology</p>
                   </div>
                 </div>
               </CardContent>
@@ -167,9 +132,6 @@ export function WhyChooseUsSection() {
           </MotionDiv>
         </div>
       </motion.div>
-
-      {/* Seamless Transition Mask - Bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent z-10" />
     </section>
   );
 }
