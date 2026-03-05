@@ -10,9 +10,10 @@ import { FirebaseClientProvider } from '@/firebase';
 export const metadata: Metadata = {
   title: 'Arkaa Digital | High-Performance Web & AI Engineering',
   description: 'Arkaa Digital is a premium digital agency specializing in scalable web apps, AI automation, and future-ready UI/UX. Powering innovation with the Arkaa digital core.',
-  keywords: ['Web Development', 'AI Automation', 'UI/UX Design', 'Cloud Solutions', 'Digital Agency'],
+  keywords: ['Web Development', 'AI Automation', 'UI/UX Design', 'Cloud Solutions', 'Digital Agency', 'Full Stack Development', 'Arkaa Digital'],
   authors: [{ name: 'Arkaa Digital' }],
   viewport: 'width=device-width, initial-scale=1',
+  robots: 'index, follow',
 };
 
 export default function RootLayout({
