@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, MapPin, Phone, MessageSquare, PhoneCall } from 'lucide-react';
+import { Mail, MapPin, Phone, MessageSquare, PhoneCall, User, Tag, Clock, ShieldCheck } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import { useInView } from "@/hooks/use-in-view";
 import { useRef } from "react";
@@ -80,7 +80,13 @@ export function ContactSection() {
     const isInView = useInView(ref, { once: true, threshold: 0.1 });
 
     return (
-        <section id="contact" className="py-16 md:py-24" ref={ref}>
+        <section id="contact" className="relative py-16 md:py-24 overflow-hidden" ref={ref}>
+            {/* Background Radial Glows */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full -z-10 pointer-events-none">
+                <div className="absolute top-0 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px]" />
+                <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-[120px]" />
+            </div>
+
             <div
               className={cn(
                 "container mx-auto px-4 transition-opacity duration-1000 ease-out",
@@ -88,88 +94,144 @@ export function ContactSection() {
               )}
             >
                 <div className="text-center space-y-4 mb-12">
-                    <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">Let’s Build Something Great Together</h2>
-                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                    <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary text-glow-primary">Let’s Build Something Great Together</h2>
+                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-medium">
                         Have a project in mind? Connect with us today and take your business to the next level.
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-5 gap-12">
+                <div className="grid lg:grid-cols-5 gap-12 items-start">
                     <div
                       className={cn(
-                        "md:col-span-2 space-y-6 transition-all duration-1000 ease-out",
+                        "lg:col-span-2 space-y-8 transition-all duration-1000 ease-out",
                         isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                       )}
                     >
-                        <h3 className="font-headline text-2xl font-semibold">Contact Information</h3>
-                         <div className="space-y-4 text-muted-foreground">
-                            <p className="flex items-start gap-3"><Mail className="h-5 w-5 text-accent mt-1" /> hey@arkaadigital.com</p>
-                            <p className="flex items-start gap-3"><Phone className="h-5 w-5 text-accent mt-1" /> +91 8050332452</p>
-                            <p className="flex items-start gap-3"><MapPin className="h-5 w-5 text-accent mt-1" /> 29th ward behind Mayuga Bakery, vapasandra, Chikkaballapura, Karnataka - 562101</p>
+                        <div className="space-y-6">
+                            <h3 className="font-headline text-2xl font-bold text-white">Contact Information</h3>
+                            <div className="space-y-6">
+                                <div className="flex items-start gap-4 group">
+                                    <div className="p-3 rounded-xl bg-accent/10 group-hover:bg-accent/20 transition-all duration-300">
+                                        <Mail className="h-6 w-6 text-accent" />
+                                    </div>
+                                    <div>
+                                        <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Email Us</p>
+                                        <p className="text-lg font-medium text-white">hey@arkaadigital.com</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start gap-4 group">
+                                    <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-all duration-300">
+                                        <Phone className="h-6 w-6 text-primary" />
+                                    </div>
+                                    <div>
+                                        <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Call Us</p>
+                                        <p className="text-lg font-medium text-white">+91 8050332452</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start gap-4 group">
+                                    <div className="p-3 rounded-xl bg-accent/10 group-hover:bg-accent/20 transition-all duration-300">
+                                        <MapPin className="h-6 w-6 text-accent" />
+                                    </div>
+                                    <div>
+                                        <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Our Location</p>
+                                        <p className="text-lg font-medium text-white leading-tight">
+                                            Chikkaballapura, Karnataka <br />
+                                            562101, India
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <p className="text-sm text-muted-foreground">We're available to discuss your project needs. Reach out via email or phone, or fill out the contact form, and we'll respond promptly.</p>
-                        
-                        <div className="flex gap-4 pt-4">
-                           <Button variant="outline" size="icon" asChild>
-                                <a href="https://wa.me/918050332452" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-                                    <MessageSquare/>
-                                </a>
-                           </Button>
-                           <Button variant="outline" size="icon" asChild>
-                                <a href="mailto:hey@arkaadigital.com" aria-label="Send an Email">
-                                    <Mail/>
-                                </a>
-                           </Button>
-                           <Button variant="outline" size="icon" asChild>
-                                <a href="tel:+918050332452" aria-label="Call us">
-                                    <PhoneCall/>
-                                </a>
-                           </Button>
+
+                        <div className="space-y-4">
+                            <p className="text-muted-foreground font-medium">Available to discuss your vision. Reach out via email, phone, or the form, and we'll respond promptly.</p>
+                            <div className="flex gap-4 pt-4">
+                               <Button variant="outline" size="icon" className="h-12 w-12 rounded-xl border-white/10 bg-white/5 hover:bg-primary/20 hover:border-primary/50 transition-all duration-300 group" asChild>
+                                    <a href="https://wa.me/918050332452" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+                                        <MessageSquare className="h-5 w-5 group-hover:text-primary" />
+                                    </a>
+                               </Button>
+                               <Button variant="outline" size="icon" className="h-12 w-12 rounded-xl border-white/10 bg-white/5 hover:bg-accent/20 hover:border-accent/50 transition-all duration-300 group" asChild>
+                                    <a href="mailto:hey@arkaadigital.com" aria-label="Send an Email">
+                                        <Mail className="h-5 w-5 group-hover:text-accent" />
+                                    </a>
+                               </Button>
+                               <Button variant="outline" size="icon" className="h-12 w-12 rounded-xl border-white/10 bg-white/5 hover:bg-primary/20 hover:border-primary/50 transition-all duration-300 group" asChild>
+                                    <a href="tel:+918050332452" aria-label="Call us">
+                                        <PhoneCall className="h-5 w-5 group-hover:text-primary" />
+                                    </a>
+                               </Button>
+                            </div>
                         </div>
                     </div>
 
                     <Card
                       className={cn(
-                        "md:col-span-3 transition-all duration-1000 ease-out delay-200 glass-card p-8",
+                        "lg:col-span-3 transition-all duration-1000 ease-out delay-200 glass-card p-8 md:p-10 border-white/10 shadow-2xl relative overflow-hidden",
                         isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                       )}
                     >
+                        <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/5 rounded-full blur-[80px]" />
+                        
                         <Form {...form}>
-                            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                                <FormField
-                                    control={form.control}
-                                    name="name"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>Full Name</FormLabel>
-                                            <FormControl>
-                                                <Input placeholder="Your Name" {...field} />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                                <FormField
-                                    control={form.control}
-                                    name="email"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>Email Address</FormLabel>
-                                            <FormControl>
-                                                <Input placeholder="your.email@example.com" {...field} />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
+                            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 relative z-10">
+                                <div className="grid md:grid-cols-2 gap-6">
+                                    <FormField
+                                        control={form.control}
+                                        name="name"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel className="text-white font-bold tracking-wide">Full Name</FormLabel>
+                                                <FormControl>
+                                                    <div className="relative group">
+                                                        <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
+                                                        <Input 
+                                                            placeholder="John Doe" 
+                                                            className="pl-10 h-12 bg-white/5 border-white/10 focus:ring-primary/50 focus:border-primary/50 focus:bg-white/[0.08] transition-all duration-300 rounded-xl"
+                                                            {...field} 
+                                                        />
+                                                    </div>
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                    <FormField
+                                        control={form.control}
+                                        name="email"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel className="text-white font-bold tracking-wide">Email Address</FormLabel>
+                                                <FormControl>
+                                                    <div className="relative group">
+                                                        <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
+                                                        <Input 
+                                                            placeholder="john@example.com" 
+                                                            className="pl-10 h-12 bg-white/5 border-white/10 focus:ring-primary/50 focus:border-primary/50 focus:bg-white/[0.08] transition-all duration-300 rounded-xl"
+                                                            {...field} 
+                                                        />
+                                                    </div>
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                </div>
                                 <FormField
                                     control={form.control}
                                     name="subject"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Subject</FormLabel>
+                                            <FormLabel className="text-white font-bold tracking-wide">Subject</FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Project Idea" {...field} />
+                                                <div className="relative group">
+                                                    <Tag className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
+                                                    <Input 
+                                                        placeholder="Project Collaboration" 
+                                                        className="pl-10 h-12 bg-white/5 border-white/10 focus:ring-primary/50 focus:border-primary/50 focus:bg-white/[0.08] transition-all duration-300 rounded-xl"
+                                                        {...field} 
+                                                    />
+                                                </div>
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -180,15 +242,39 @@ export function ContactSection() {
                                     name="message"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Message</FormLabel>
+                                            <FormLabel className="text-white font-bold tracking-wide">Message</FormLabel>
                                             <FormControl>
-                                                <Textarea placeholder="Tell us about your project..." className="min-h-[120px]" {...field} />
+                                                <div className="relative group">
+                                                    <MessageSquare className="absolute left-3 top-4 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
+                                                    <Textarea 
+                                                        placeholder="Tell us about your project goals..." 
+                                                        className="pl-10 min-h-[150px] bg-white/5 border-white/10 focus:ring-primary/50 focus:border-primary/50 focus:bg-white/[0.08] transition-all duration-300 rounded-xl resize-none"
+                                                        {...field} 
+                                                    />
+                                                </div>
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )}
                                 />
-                                <Button type="submit" size="lg" className="w-full">Send Message</Button>
+                                <Button 
+                                    type="submit" 
+                                    size="lg" 
+                                    className="w-full h-14 text-lg font-bold rounded-xl bg-gradient-to-r from-primary to-primary/80 hover:shadow-[0_0_25px_rgba(249,115,22,0.4)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                                >
+                                    Send Message
+                                </Button>
+                                
+                                <div className="flex flex-wrap items-center justify-center gap-6 pt-4 border-t border-white/5 mt-4">
+                                    <div className="flex items-center gap-2 text-sm text-muted-foreground font-medium">
+                                        <Clock className="h-4 w-4 text-primary" />
+                                        Fast response within 24h
+                                    </div>
+                                    <div className="flex items-center gap-2 text-sm text-muted-foreground font-medium">
+                                        <ShieldCheck className="h-4 w-4 text-accent" />
+                                        Free consultation
+                                    </div>
+                                </div>
                             </form>
                         </Form>
                     </Card>
