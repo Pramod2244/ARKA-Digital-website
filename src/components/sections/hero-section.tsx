@@ -44,7 +44,7 @@ const cardVariants = {
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative w-full h-screen min-h-[750px] overflow-hidden flex items-center">
+    <section id="home" className="relative w-full min-h-[85vh] md:min-h-[750px] overflow-hidden flex items-center pt-24 pb-12">
       <FuturisticBackground />
 
       <div className="relative z-10 container mx-auto px-4 md:px-6">
@@ -98,7 +98,6 @@ export function HeroSection() {
           </div>
 
           <MotionDiv variants={cardVariants} className="hidden lg:flex justify-end relative">
-            {/* The orb in the background component will align visually behind this card */}
             <Card className="glass-card rounded-[2.5rem] w-full max-w-md glow-border overflow-hidden border-white/10 bg-white/[0.03] backdrop-blur-3xl relative z-10">
               <CardContent className="p-10 space-y-8">
                 <div className="space-y-6">

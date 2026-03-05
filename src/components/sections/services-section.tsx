@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -41,7 +40,7 @@ export function ServicesSection() {
   const isInView = useInView(ref, { once: true, threshold: 0.1 });
 
   return (
-    <section id="services" className="relative py-24 md:py-32 overflow-hidden" ref={ref}>
+    <section id="services" className="relative pt-12 pb-24 md:pt-16 md:pb-32 overflow-hidden" ref={ref}>
       {/* Background Decorative Elements */}
       <div className="absolute inset-0 pointer-events-none -z-10">
         <div className="absolute top-0 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-[100px]" />
