@@ -81,7 +81,6 @@ export function ContactSection() {
 
     return (
         <section id="contact" className="relative py-16 md:py-24 overflow-hidden" ref={ref}>
-            {/* Background Radial Glows */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full -z-10 pointer-events-none">
                 <div className="absolute top-0 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px]" />
                 <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-[120px]" />
@@ -93,48 +92,48 @@ export function ContactSection() {
                 isInView ? "opacity-100" : "opacity-0"
               )}
             >
-                <div className="text-center space-y-4 mb-12">
-                    <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary text-glow-primary">Let’s Build Something Great Together</h2>
-                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-medium">
+                <div className="text-center space-y-3 mb-10">
+                    <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary text-glow-primary">Let’s Build Something Great</h2>
+                    <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto font-medium">
                         Have a project in mind? Connect with us today and take your business to the next level.
                     </p>
                 </div>
 
-                <div className="grid lg:grid-cols-5 gap-12 items-start">
+                <div className="grid lg:grid-cols-5 gap-10 items-start max-w-6xl mx-auto">
                     <div
                       className={cn(
-                        "lg:col-span-2 space-y-8 transition-all duration-1000 ease-out",
-                        isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                        "lg:col-span-2 space-y-6 transition-all duration-1000 ease-out",
+                        isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                       )}
                     >
-                        <div className="space-y-6">
-                            <h3 className="font-headline text-2xl font-bold text-white">Contact Information</h3>
-                            <div className="space-y-6">
-                                <div className="flex items-start gap-4 group">
-                                    <div className="p-3 rounded-xl bg-accent/10 group-hover:bg-accent/20 transition-all duration-300">
-                                        <Mail className="h-6 w-6 text-accent" />
+                        <div className="space-y-4">
+                            <h3 className="font-headline text-xl font-bold text-white">Contact Information</h3>
+                            <div className="space-y-5">
+                                <div className="flex items-start gap-3 group">
+                                    <div className="p-2.5 rounded-xl bg-accent/10 group-hover:bg-accent/20 transition-all duration-300">
+                                        <Mail className="h-5 w-5 text-accent" />
                                     </div>
                                     <div>
-                                        <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Email Us</p>
-                                        <p className="text-lg font-medium text-white">hey@arkaadigital.com</p>
+                                        <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Email Us</p>
+                                        <p className="text-base font-medium text-white">hey@arkaadigital.com</p>
                                     </div>
                                 </div>
-                                <div className="flex items-start gap-4 group">
-                                    <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-all duration-300">
-                                        <Phone className="h-6 w-6 text-primary" />
+                                <div className="flex items-start gap-3 group">
+                                    <div className="p-2.5 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-all duration-300">
+                                        <Phone className="h-5 w-5 text-primary" />
                                     </div>
                                     <div>
-                                        <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Call Us</p>
-                                        <p className="text-lg font-medium text-white">+91 8050332452</p>
+                                        <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Call Us</p>
+                                        <p className="text-base font-medium text-white">+91 8050332452</p>
                                     </div>
                                 </div>
-                                <div className="flex items-start gap-4 group">
-                                    <div className="p-3 rounded-xl bg-accent/10 group-hover:bg-accent/20 transition-all duration-300">
-                                        <MapPin className="h-6 w-6 text-accent" />
+                                <div className="flex items-start gap-3 group">
+                                    <div className="p-2.5 rounded-xl bg-accent/10 group-hover:bg-accent/20 transition-all duration-300">
+                                        <MapPin className="h-5 w-5 text-accent" />
                                     </div>
                                     <div>
-                                        <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Our Location</p>
-                                        <p className="text-lg font-medium text-white leading-tight">
+                                        <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Our Location</p>
+                                        <p className="text-base font-medium text-white leading-tight">
                                             Chikkaballapura, Karnataka <br />
                                             562101, India
                                         </p>
@@ -143,22 +142,21 @@ export function ContactSection() {
                             </div>
                         </div>
 
-                        <div className="space-y-4">
-                            <p className="text-muted-foreground font-medium">Available to discuss your vision. Reach out via email, phone, or the form, and we'll respond promptly.</p>
-                            <div className="flex gap-4 pt-4">
-                               <Button variant="outline" size="icon" className="h-12 w-12 rounded-xl border-white/10 bg-white/5 hover:bg-primary/20 hover:border-primary/50 transition-all duration-300 group" asChild>
+                        <div className="space-y-4 pt-4">
+                            <div className="flex gap-3">
+                               <Button variant="outline" size="icon" className="h-10 w-10 rounded-xl border-white/10 bg-white/5 hover:bg-primary/20 hover:border-primary/50 transition-all duration-300 group" asChild>
                                     <a href="https://wa.me/918050332452" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-                                        <MessageSquare className="h-5 w-5 group-hover:text-primary" />
+                                        <MessageSquare className="h-4 w-4 group-hover:text-primary" />
                                     </a>
                                </Button>
-                               <Button variant="outline" size="icon" className="h-12 w-12 rounded-xl border-white/10 bg-white/5 hover:bg-accent/20 hover:border-accent/50 transition-all duration-300 group" asChild>
+                               <Button variant="outline" size="icon" className="h-10 w-10 rounded-xl border-white/10 bg-white/5 hover:bg-accent/20 hover:border-accent/50 transition-all duration-300 group" asChild>
                                     <a href="mailto:hey@arkaadigital.com" aria-label="Send an Email">
-                                        <Mail className="h-5 w-5 group-hover:text-accent" />
+                                        <Mail className="h-4 w-4 group-hover:text-accent" />
                                     </a>
                                </Button>
-                               <Button variant="outline" size="icon" className="h-12 w-12 rounded-xl border-white/10 bg-white/5 hover:bg-primary/20 hover:border-primary/50 transition-all duration-300 group" asChild>
+                               <Button variant="outline" size="icon" className="h-10 w-10 rounded-xl border-white/10 bg-white/5 hover:bg-primary/20 hover:border-primary/50 transition-all duration-300 group" asChild>
                                     <a href="tel:+918050332452" aria-label="Call us">
-                                        <PhoneCall className="h-5 w-5 group-hover:text-primary" />
+                                        <PhoneCall className="h-4 w-4 group-hover:text-primary" />
                                     </a>
                                </Button>
                             </div>
@@ -167,32 +165,32 @@ export function ContactSection() {
 
                     <Card
                       className={cn(
-                        "lg:col-span-3 transition-all duration-1000 ease-out delay-200 glass-card p-8 md:p-10 border-white/10 shadow-2xl relative overflow-hidden",
-                        isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                        "lg:col-span-3 transition-all duration-1000 ease-out delay-200 glass-card p-6 md:p-8 border-white/10 shadow-2xl relative overflow-hidden",
+                        isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                       )}
                     >
-                        <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/5 rounded-full blur-[80px]" />
+                        <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/5 rounded-full blur-[70px]" />
                         
                         <Form {...form}>
-                            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 relative z-10">
-                                <div className="grid md:grid-cols-2 gap-6">
+                            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5 relative z-10">
+                                <div className="grid md:grid-cols-2 gap-5">
                                     <FormField
                                         control={form.control}
                                         name="name"
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel className="text-white font-bold tracking-wide">Full Name</FormLabel>
+                                                <FormLabel className="text-white font-bold tracking-wide text-xs">Full Name</FormLabel>
                                                 <FormControl>
                                                     <div className="relative group">
-                                                        <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
+                                                        <User className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground group-focus-within:text-primary transition-colors" />
                                                         <Input 
                                                             placeholder="John Doe" 
-                                                            className="pl-10 h-12 bg-white/5 border-white/10 focus:ring-primary/50 focus:border-primary/50 focus:bg-white/[0.08] transition-all duration-300 rounded-xl"
+                                                            className="pl-9 h-10 bg-white/5 border-white/10 focus:ring-primary/50 focus:border-primary/50 focus:bg-white/[0.08] transition-all duration-300 rounded-lg text-sm"
                                                             {...field} 
                                                         />
                                                     </div>
                                                 </FormControl>
-                                                <FormMessage />
+                                                <FormMessage className="text-[10px]" />
                                             </FormItem>
                                         )}
                                     />
@@ -201,18 +199,18 @@ export function ContactSection() {
                                         name="email"
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel className="text-white font-bold tracking-wide">Email Address</FormLabel>
+                                                <FormLabel className="text-white font-bold tracking-wide text-xs">Email Address</FormLabel>
                                                 <FormControl>
                                                     <div className="relative group">
-                                                        <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
+                                                        <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground group-focus-within:text-primary transition-colors" />
                                                         <Input 
                                                             placeholder="john@example.com" 
-                                                            className="pl-10 h-12 bg-white/5 border-white/10 focus:ring-primary/50 focus:border-primary/50 focus:bg-white/[0.08] transition-all duration-300 rounded-xl"
+                                                            className="pl-9 h-10 bg-white/5 border-white/10 focus:ring-primary/50 focus:border-primary/50 focus:bg-white/[0.08] transition-all duration-300 rounded-lg text-sm"
                                                             {...field} 
                                                         />
                                                     </div>
                                                 </FormControl>
-                                                <FormMessage />
+                                                <FormMessage className="text-[10px]" />
                                             </FormItem>
                                         )}
                                     />
@@ -222,18 +220,18 @@ export function ContactSection() {
                                     name="subject"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel className="text-white font-bold tracking-wide">Subject</FormLabel>
+                                            <FormLabel className="text-white font-bold tracking-wide text-xs">Subject</FormLabel>
                                             <FormControl>
                                                 <div className="relative group">
-                                                    <Tag className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
+                                                    <Tag className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground group-focus-within:text-primary transition-colors" />
                                                     <Input 
                                                         placeholder="Project Collaboration" 
-                                                        className="pl-10 h-12 bg-white/5 border-white/10 focus:ring-primary/50 focus:border-primary/50 focus:bg-white/[0.08] transition-all duration-300 rounded-xl"
+                                                        className="pl-9 h-10 bg-white/5 border-white/10 focus:ring-primary/50 focus:border-primary/50 focus:bg-white/[0.08] transition-all duration-300 rounded-lg text-sm"
                                                         {...field} 
                                                     />
                                                 </div>
                                             </FormControl>
-                                            <FormMessage />
+                                            <FormMessage className="text-[10px]" />
                                         </FormItem>
                                     )}
                                 />
@@ -242,36 +240,36 @@ export function ContactSection() {
                                     name="message"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel className="text-white font-bold tracking-wide">Message</FormLabel>
+                                            <FormLabel className="text-white font-bold tracking-wide text-xs">Message</FormLabel>
                                             <FormControl>
                                                 <div className="relative group">
-                                                    <MessageSquare className="absolute left-3 top-4 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
+                                                    <MessageSquare className="absolute left-3 top-3 h-3.5 w-3.5 text-muted-foreground group-focus-within:text-primary transition-colors" />
                                                     <Textarea 
-                                                        placeholder="Tell us about your project goals..." 
-                                                        className="pl-10 min-h-[150px] bg-white/5 border-white/10 focus:ring-primary/50 focus:border-primary/50 focus:bg-white/[0.08] transition-all duration-300 rounded-xl resize-none"
+                                                        placeholder="Tell us about your project..." 
+                                                        className="pl-9 min-h-[100px] bg-white/5 border-white/10 focus:ring-primary/50 focus:border-primary/50 focus:bg-white/[0.08] transition-all duration-300 rounded-lg resize-none text-sm"
                                                         {...field} 
                                                     />
                                                 </div>
                                             </FormControl>
-                                            <FormMessage />
+                                            <FormMessage className="text-[10px]" />
                                         </FormItem>
                                     )}
                                 />
                                 <Button 
                                     type="submit" 
                                     size="lg" 
-                                    className="w-full h-14 text-lg font-bold rounded-xl bg-gradient-to-r from-primary to-primary/80 hover:shadow-[0_0_25px_rgba(249,115,22,0.4)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                                    className="w-full h-12 text-base font-bold rounded-lg bg-gradient-to-r from-primary to-primary/80 hover:shadow-[0_0_20px_rgba(249,115,22,0.3)] transition-all duration-300 hover:scale-[1.01] active:scale-[0.99]"
                                 >
                                     Send Message
                                 </Button>
                                 
-                                <div className="flex flex-wrap items-center justify-center gap-6 pt-4 border-t border-white/5 mt-4">
-                                    <div className="flex items-center gap-2 text-sm text-muted-foreground font-medium">
-                                        <Clock className="h-4 w-4 text-primary" />
+                                <div className="flex flex-wrap items-center justify-center gap-4 pt-3 border-t border-white/5 mt-3">
+                                    <div className="flex items-center gap-2 text-[10px] text-muted-foreground font-medium">
+                                        <Clock className="h-3 w-3 text-primary" />
                                         Fast response within 24h
                                     </div>
-                                    <div className="flex items-center gap-2 text-sm text-muted-foreground font-medium">
-                                        <ShieldCheck className="h-4 w-4 text-accent" />
+                                    <div className="flex items-center gap-2 text-[10px] text-muted-foreground font-medium">
+                                        <ShieldCheck className="h-3 w-3 text-accent" />
                                         Free consultation
                                     </div>
                                 </div>

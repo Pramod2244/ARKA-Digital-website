@@ -17,30 +17,30 @@ import {
 
 const testimonials = [
   {
-    quote: "Arkaa Digital transformed our outdated system into a modern, cloud-based platform. Their team’s technical skill and commitment to delivery were outstanding.",
+    quote: "Arkaa Digital transformed our outdated system into a modern, cloud-based platform. Their team’s technical skill was outstanding.",
     name: "Jane Doe",
     title: "CEO, Retail Client",
     avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704d",
     rating: 5
   },
   {
-    quote: "The UI/UX design they delivered was not only beautiful but also incredibly intuitive. Our user engagement has skyrocketed since the redesign.",
+    quote: "The UI/UX design they delivered was not only beautiful but also incredibly intuitive. Our engagement has skyrocketed.",
     name: "John Smith",
-    title: "Product Manager, Tech Startup",
+    title: "Product Manager, Startup",
     avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704e",
     rating: 5
   },
   {
     quote: "Working with Arkaa Digital felt like a true partnership. They were responsive, proactive, and genuinely invested in our success.",
     name: "Emily White",
-    title: "Marketing Director, eCommerce Brand",
+    title: "Director, eCommerce",
     avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704f",
     rating: 5
   },
   {
-    quote: "Their AI automation solutions saved us hundreds of hours of manual work. A truly future-ready team that understands modern business needs.",
+    quote: "Their AI automation solutions saved us hundreds of hours of manual work. A truly future-ready team for modern business.",
     name: "Michael Chen",
-    title: "CTO, Fintech Solutions",
+    title: "CTO, Fintech",
     avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704g",
     rating: 5
   }
@@ -57,7 +57,7 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { y: 30, opacity: 0 },
+  hidden: { y: 20, opacity: 0 },
   visible: {
     y: 0,
     opacity: 1,
@@ -74,7 +74,7 @@ export function TestimonialsSection() {
   );
 
   return (
-    <section id="testimonials" className="relative py-24 md:py-32 overflow-hidden">
+    <section id="testimonials" className="relative py-16 md:py-24 overflow-hidden">
       {/* Background Glows */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full -z-10 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px]" />
@@ -82,22 +82,22 @@ export function TestimonialsSection() {
       </div>
 
       <div className="container mx-auto px-4">
-        <div className="text-center space-y-4 mb-16">
+        <div className="text-center space-y-3 mb-12">
           <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="font-headline text-4xl md:text-5xl font-bold tracking-tight text-white"
+            className="font-headline text-3xl md:text-4xl font-bold tracking-tight text-white"
           >
             What Our <span className="text-primary text-glow-primary">Clients</span> Say
           </motion.h2>
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="text-lg text-muted-foreground max-w-2xl mx-auto"
+            className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto"
           >
             Don't just take our word for it. Hear from the businesses we've helped transform.
           </motion.p>
@@ -124,40 +124,39 @@ export function TestimonialsSection() {
                 <CarouselItem key={index} className="pl-4 md:pl-6 md:basis-1/2 lg:basis-1/3">
                   <motion.div variants={itemVariants} className="h-full">
                     <Card className="h-full glass-card border-white/5 bg-white/[0.02] backdrop-blur-xl group hover:border-primary/30 transition-all duration-500 overflow-hidden relative">
-                      {/* Hover Glow */}
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       
-                      <CardContent className="p-8 flex flex-col h-full relative z-10">
+                      <CardContent className="p-6 md:p-8 flex flex-col h-full relative z-10">
                         {/* Quote & Stars */}
-                        <div className="flex justify-between items-start mb-6">
-                          <div className="p-3 rounded-xl bg-primary/10">
-                            <Quote className="h-6 w-6 text-primary" />
+                        <div className="flex justify-between items-start mb-5">
+                          <div className="p-2.5 rounded-xl bg-primary/10">
+                            <Quote className="h-5 w-5 text-primary" />
                           </div>
                           <div className="flex gap-1">
                             {[...Array(testimonial.rating)].map((_, i) => (
-                              <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                              <Star key={i} className="h-3 w-3 fill-primary text-primary" />
                             ))}
                           </div>
                         </div>
 
                         {/* Quote Text */}
-                        <div className="flex-grow mb-8">
-                          <p className="text-lg text-white/90 leading-relaxed font-medium italic">
+                        <div className="flex-grow mb-6">
+                          <p className="text-base md:text-lg text-white/90 leading-relaxed font-medium italic">
                             "{testimonial.quote}"
                           </p>
                         </div>
 
                         {/* Author Info */}
-                        <div className="flex items-center gap-4 pt-6 border-t border-white/5">
-                          <Avatar className="h-12 w-12 border-2 border-primary/20">
+                        <div className="flex items-center gap-3 pt-5 border-t border-white/5">
+                          <Avatar className="h-10 w-10 border-2 border-primary/20">
                             <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
                             <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
                           </Avatar>
                           <div className="space-y-0.5">
-                            <p className="font-bold text-white group-hover:text-primary transition-colors">
+                            <p className="font-bold text-sm md:text-base text-white group-hover:text-primary transition-colors">
                               {testimonial.name}
                             </p>
-                            <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">
+                            <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">
                               {testimonial.title}
                             </p>
                           </div>
@@ -168,9 +167,9 @@ export function TestimonialsSection() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="hidden lg:flex justify-center gap-4 mt-12">
-              <CarouselPrevious className="static translate-y-0 h-12 w-12 border-white/10 bg-white/5 hover:bg-white/10 hover:text-primary" />
-              <CarouselNext className="static translate-y-0 h-12 w-12 border-white/10 bg-white/5 hover:bg-white/10 hover:text-primary" />
+            <div className="hidden lg:flex justify-center gap-4 mt-10">
+              <CarouselPrevious className="static translate-y-0 h-10 w-10 border-white/10 bg-white/5 hover:bg-white/10 hover:text-primary" />
+              <CarouselNext className="static translate-y-0 h-10 w-10 border-white/10 bg-white/5 hover:bg-white/10 hover:text-primary" />
             </div>
           </Carousel>
         </motion.div>

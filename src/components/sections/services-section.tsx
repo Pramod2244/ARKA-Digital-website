@@ -40,7 +40,7 @@ export function ServicesSection() {
   const isInView = useInView(ref, { once: true, threshold: 0.1 });
 
   return (
-    <section id="services" className="relative pt-12 pb-24 md:pt-16 md:pb-32 overflow-hidden" ref={ref}>
+    <section id="services" className="relative py-16 md:py-24 overflow-hidden" ref={ref}>
       {/* Background Decorative Elements */}
       <div className="absolute inset-0 pointer-events-none -z-10">
         <div className="absolute top-0 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-[100px]" />
@@ -49,61 +49,61 @@ export function ServicesSection() {
 
       <div className={cn(
         "container mx-auto px-4 transition-all duration-1000 ease-out",
-        isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+        isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       )}>
-        <div className="text-center space-y-4 mb-20">
+        <div className="text-center space-y-3 mb-16">
           <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="font-headline text-4xl md:text-5xl font-bold tracking-tight text-white"
+            className="font-headline text-3xl md:text-4xl font-bold tracking-tight text-white"
           >
             Our <span className="text-primary text-glow-primary">Services</span>
           </motion.h2>
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-lg text-muted-foreground max-w-2xl mx-auto"
+            className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto"
           >
             We offer a comprehensive suite of high-performance technology services designed to scale your business into the future.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1, duration: 0.7 }}
               viewport={{ once: true }}
               className={cn(index >= 3 ? "lg:col-span-1" : "")}
             >
               <motion.div
-                whileHover={{ y: -10 }}
+                whileHover={{ y: -8 }}
                 className="h-full"
               >
-                <Card className="h-full glass-card border-white/5 bg-white/[0.02] backdrop-blur-xl relative group overflow-hidden transition-all duration-500 hover:border-primary/50 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] flex flex-col p-8">
+                <Card className="h-full glass-card border-white/5 bg-white/[0.02] backdrop-blur-xl relative group overflow-hidden transition-all duration-500 hover:border-primary/50 hover:shadow-[0_0_25px_rgba(249,115,22,0.1)] flex flex-col p-6 md:p-8">
                   {/* Hover Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
                   {/* Icon Container */}
-                  <div className="relative mb-8">
-                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center relative transition-transform duration-500 group-hover:scale-110">
-                      <div className="absolute inset-0 rounded-2xl bg-primary/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <service.icon className="h-7 w-7 text-primary relative z-10 shadow-[0_0_15px_rgba(249,115,22,0.4)]" />
+                  <div className="relative mb-6">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center relative transition-transform duration-500 group-hover:scale-110">
+                      <div className="absolute inset-0 rounded-xl bg-primary/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <service.icon className="h-6 w-6 text-primary relative z-10 shadow-[0_0_12px_rgba(249,115,22,0.4)]" />
                     </div>
                   </div>
 
-                  <CardHeader className="p-0 mb-3 relative z-10">
-                    <CardTitle className="font-headline text-2xl font-bold text-white group-hover:text-primary transition-colors">
+                  <CardHeader className="p-0 mb-2 relative z-10">
+                    <CardTitle className="font-headline text-xl font-bold text-white group-hover:text-primary transition-colors">
                       {service.title}
                     </CardTitle>
                   </CardHeader>
                   
                   <CardContent className="p-0 relative z-10">
-                    <p className="text-muted-foreground leading-relaxed line-clamp-2">
+                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed line-clamp-2">
                       {service.description}
                     </p>
                   </CardContent>

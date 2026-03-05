@@ -12,7 +12,7 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -29,39 +29,39 @@ export function Header() {
   return (
     <header className={cn(
       "sticky top-0 z-50 w-full transition-all duration-300",
-      isScrolled ? "bg-background/80 backdrop-blur-lg border-b border-white/10 h-16" : "h-20"
+      isScrolled ? "bg-background/80 backdrop-blur-lg border-b border-white/10 h-14" : "h-16 md:h-20"
     )}>
       <div className="container flex h-full max-w-screen-2xl items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <Sun className="h-7 w-7 text-primary" />
-          <span className="font-headline text-2xl font-bold">Arkaa Digital</span>
+          <Sun className="h-6 w-6 text-primary" />
+          <span className="font-headline text-xl md:text-2xl font-bold">Arkaa Digital</span>
         </Link>
         <nav className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className="relative text-muted-foreground transition-colors hover:text-foreground px-4 py-2 group">
+            <a key={link.href} href={link.href} className="relative text-sm font-medium text-muted-foreground transition-colors hover:text-foreground px-3 py-2 group">
               {link.label}
-              <span className="absolute bottom-0 left-0 h-0.5 w-full bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              <span className="absolute bottom-1 left-3 h-0.5 w-[calc(100%-1.5rem)] bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </a>
           ))}
         </nav>
         <div className="md:hidden">
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Menu />
+              <Button variant="ghost" size="icon" className="h-9 w-9">
+                <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-                <div className="flex items-center gap-2 mt-4">
-                    <Sun className="h-7 w-7 text-primary" />
-                    <span className="font-headline text-2xl font-bold">Arkaa Digital</span>
+            <SheetContent side="right" className="w-[280px]">
+                <div className="flex items-center gap-2 mt-2">
+                    <Sun className="h-6 w-6 text-primary" />
+                    <span className="font-headline text-xl font-bold">Arkaa Digital</span>
                 </div>
-              <nav className="flex flex-col gap-6 mt-12">
+              <nav className="flex flex-col gap-5 mt-10">
                 {navLinks.map((link) => (
                   <SheetClose asChild key={link.href}>
                     <a
                       href={link.href}
-                      className="text-xl font-medium text-muted-foreground transition-colors hover:text-foreground"
+                      className="text-lg font-medium text-muted-foreground transition-colors hover:text-foreground"
                     >
                       {link.label}
                     </a>
