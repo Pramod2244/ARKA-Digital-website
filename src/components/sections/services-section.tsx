@@ -73,10 +73,17 @@ export function ServicesSection() {
           </p>
         </div>
 
-        {/* 2-over-3 Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-6 gap-6 max-w-6xl mx-auto">
+        {/* Custom Tiered Grid Layout for Symmetry */}
+        <div className="flex flex-wrap justify-center gap-6 max-w-6xl mx-auto">
           {services.map((service, index) => {
+            // Layout Logic: 
+            // 0,1: Row 1 (2 cards)
+            // 2,3,4: Row 2 (3 cards)
+            // 5: Row 3 (1 card centered)
+            
             const isRowOne = index < 2;
+            const isRowTwo = index >= 2 && index < 5;
+            const isLast = index === 5;
             
             return (
               <motion.div
@@ -86,8 +93,10 @@ export function ServicesSection() {
                 transition={{ delay: index * 0.1, duration: 0.7 }}
                 viewport={{ once: true }}
                 className={cn(
-                  "h-full",
-                  isRowOne ? "md:col-span-3" : "md:col-span-2"
+                  "flex-grow-0 flex-shrink-0 w-full",
+                  isRowOne ? "md:w-[calc(50%-12px)]" : 
+                  isRowTwo ? "md:w-[calc(33.33%-16px)]" : 
+                  "md:w-[calc(33.33%-16px)]" // Centered by parent flex justify-center
                 )}
               >
                 <motion.div
