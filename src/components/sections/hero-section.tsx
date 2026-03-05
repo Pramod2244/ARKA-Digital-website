@@ -6,6 +6,7 @@ import { MotionDiv } from "@/components/motion-provider";
 import { Card, CardContent } from "../ui/card";
 import { CheckCircle, Rocket, ArrowRight } from "lucide-react";
 import { FuturisticBackground } from "../futuristic-background";
+import { motion } from "framer-motion";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -98,6 +99,102 @@ export function HeroSection() {
           </div>
 
           <MotionDiv variants={cardVariants} className="hidden lg:flex justify-end relative">
+            {/* Anchored Digital Sun Orb */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] pointer-events-none -z-10">
+              {/* Core Glows */}
+              <motion.div 
+                className="absolute inset-[15%] bg-primary/20 rounded-full blur-[60px]"
+                animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.7, 0.4] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.div 
+                className="absolute inset-[25%] bg-accent/15 rounded-full blur-[40px]"
+                animate={{ scale: [1.2, 1, 1.2], opacity: [0.3, 0.5, 0.3] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              />
+
+              <svg viewBox="0 0 200 200" className="w-full h-full">
+                <defs>
+                  <radialGradient id="sun-core" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.8" />
+                    <stop offset="60%" stopColor="hsl(var(--primary))" stopOpacity="0.2" />
+                    <stop offset="100%" stopColor="hsl(var(--accent))" stopOpacity="0" />
+                  </radialGradient>
+                  <filter id="glow">
+                    <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+                    <feMerge>
+                      <feMergeNode in="coloredBlur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
+
+                {/* Central Core */}
+                <circle cx="100" cy="100" r="35" fill="url(#sun-core)" filter="url(#glow)" />
+
+                {/* Rotating Rings */}
+                <motion.g
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                  style={{ originX: "100px", originY: "100px" }}
+                >
+                  <circle 
+                    cx="100" cy="100" r="75" 
+                    fill="none" 
+                    stroke="hsl(var(--primary))" 
+                    strokeWidth="0.5" 
+                    strokeDasharray="10 20 5 15"
+                    opacity="0.3"
+                  />
+                </motion.g>
+
+                <motion.g
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                  style={{ originX: "100px", originY: "100px" }}
+                >
+                  <circle 
+                    cx="100" cy="100" r="60" 
+                    fill="none" 
+                    stroke="hsl(var(--accent))" 
+                    strokeWidth="0.3" 
+                    strokeDasharray="2 4"
+                    opacity="0.4"
+                  />
+                  {/* Rays */}
+                  {[...Array(8)].map((_, i) => (
+                    <line
+                      key={`ray-${i}`}
+                      x1="100" y1="30" x2="100" y2="45"
+                      stroke="hsl(var(--primary))"
+                      strokeWidth="0.8"
+                      transform={`rotate(${i * 45} 100 100)`}
+                      opacity="0.5"
+                    />
+                  ))}
+                </motion.g>
+
+                {/* Orbiting Particles */}
+                {[...Array(6)].map((_, i) => (
+                  <motion.circle
+                    key={`orbit-${i}`}
+                    r="0.8"
+                    fill={i % 2 === 0 ? "hsl(var(--primary))" : "hsl(var(--accent))"}
+                    animate={{
+                      cx: [100 + Math.cos(i) * 85, 100 + Math.cos(i + Math.PI * 2) * 85],
+                      cy: [100 + Math.sin(i) * 85, 100 + Math.sin(i + Math.PI * 2) * 85],
+                      opacity: [0.2, 0.8, 0.2]
+                    }}
+                    transition={{
+                      duration: 15 + i * 2,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                  />
+                ))}
+              </svg>
+            </div>
+
             <Card className="glass-card rounded-[2rem] w-full max-w-sm glow-border overflow-hidden border-white/10 bg-white/[0.03] backdrop-blur-3xl relative z-10 shadow-2xl">
               <CardContent className="p-8 space-y-6">
                 <div className="space-y-6">
