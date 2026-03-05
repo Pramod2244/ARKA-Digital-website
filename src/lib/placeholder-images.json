@@ -1,10 +1,10 @@
 {
   "placeholderImages": [
     {
-      "id": "hero-bg-main",
-      "description": "Abstract futuristic technology background with glowing blue and orange lights",
-      "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx0ZWNobm9sb2d5fGVufDB8fHx8MTcxNjQ5MjQwNnww&ixlib=rb-4.0.3&q=80&w=1920",
-      "imageHint": "abstract technology"
+      "id": "hero-circuit-bg",
+      "description": "Macro shot of a sleek black circuit board with glowing orange copper traces",
+      "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1920",
+      "imageHint": "circuit board"
     },
     {
       "id": "why-choose-us",

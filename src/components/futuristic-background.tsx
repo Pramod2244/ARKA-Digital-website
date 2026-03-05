@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -13,45 +14,43 @@ export function FuturisticBackground() {
   if (!mounted) return null;
 
   return (
-    <div className="absolute inset-0 overflow-hidden bg-[#0a0a0b] -z-20">
-      {/* 1. Deep Liquid Metal Base Layers */}
-      <div className="absolute top-[-10%] right-[-10%] w-[70%] h-[70%] bg-primary/5 blur-[160px] rounded-full opacity-30" />
-      <div className="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] bg-accent/5 blur-[140px] rounded-full opacity-20" />
+    <div className="absolute inset-0 overflow-hidden bg-[#050506] -z-20">
+      {/* 1. Deep Base Layers */}
+      <div className="absolute top-[-10%] right-[-10%] w-[70%] h-[70%] bg-primary/5 blur-[160px] rounded-full opacity-20" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] bg-accent/5 blur-[140px] rounded-full opacity-10" />
 
-      {/* 2. Abstract Liquid Blobs - Simulated 3D Depth */}
-      <div className="absolute inset-0 pointer-events-none opacity-40">
-        {[...Array(3)].map((_, i) => (
+      {/* 2. Neural Grid & Traces */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+        <div className="absolute inset-0 bg-grid-white/[0.2]" style={{ backgroundSize: '60px 60px' }} />
+      </div>
+
+      {/* 3. Floating Particles (Mixed Neutral and Orange) */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(15)].map((_, i) => (
           <motion.div
-            key={`blob-${i}`}
-            className="absolute rounded-full mix-blend-screen filter blur-[80px]"
+            key={`particle-${i}`}
+            className="absolute rounded-full"
             style={{
-              width: 400 + i * 100,
-              height: 400 + i * 100,
-              background: i === 0 ? 'radial-gradient(circle, rgba(249,115,22,0.1) 0%, transparent 70%)' : 'radial-gradient(circle, rgba(30,41,59,0.2) 0%, transparent 70%)',
-              left: `${10 + i * 20}%`,
-              top: `${20 + i * 15}%`,
+              width: Math.random() * 3 + 1,
+              height: Math.random() * 3 + 1,
+              background: i % 3 === 0 ? 'hsl(var(--primary))' : 'rgba(255,255,255,0.4)',
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              opacity: Math.random() * 0.5 + 0.1,
             }}
             animate={{
-              x: [0, 50, -30, 0],
-              y: [0, -40, 60, 0],
-              scale: [1, 1.1, 0.9, 1],
+              y: [0, -40, 0],
+              opacity: [0.2, 0.6, 0.2],
             }}
             transition={{
-              duration: 25 + i * 5,
+              duration: 5 + Math.random() * 5,
               repeat: Infinity,
               ease: "easeInOut",
+              delay: Math.random() * 5,
             }}
           />
         ))}
       </div>
-
-      {/* 3. Subtle Liquid Filter Texture - feTurbulence for organic feel */}
-      <svg className="absolute inset-0 w-full h-full opacity-[0.03] pointer-events-none">
-        <filter id="liquidNoise">
-          <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="3" stitchTiles="stitch" />
-        </filter>
-        <rect width="100%" height="100%" filter="url(#liquidNoise)" />
-      </svg>
       
       {/* 4. Fine Grain Overlay */}
       <div 
@@ -61,7 +60,7 @@ export function FuturisticBackground() {
         }}
       />
 
-      {/* 5. Depth and Readability Overlays */}
+      {/* 5. Depth Overlays */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background opacity-90" />
     </div>
   );
