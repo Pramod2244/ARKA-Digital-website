@@ -32,22 +32,22 @@ const textVariants = {
 
 const services = [
   { 
+    icon: Code2, 
+    label: "Scalable Dev", 
+    color: "from-primary/20 to-primary/5",
+    description: "High-performance apps"
+  },
+  { 
     icon: Cpu, 
     label: "AI Automation", 
-    color: "from-primary/20 to-primary/5",
-    description: "Intelligent core"
+    color: "from-accent/20 to-accent/5",
+    description: "Intelligent workflows"
   },
   { 
     icon: Cloud, 
     label: "Secure Cloud", 
-    color: "from-accent/20 to-accent/5",
-    description: "Resilient infra"
-  },
-  { 
-    icon: Code2, 
-    label: "Scalable Dev", 
     color: "from-primary/20 to-primary/5",
-    description: "High-load apps"
+    description: "Resilient infra"
   },
 ];
 
@@ -73,36 +73,36 @@ export function HeroSection() {
         </div>
       )}
 
-      {/* Digital Sun Energy Core (Background Layer - Focal Point) */}
+      {/* Digital Sun Energy Core (Background Layer) */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/2 right-[10%] -translate-y-1/2 w-[60vw] h-[60vw] max-w-[800px] max-h-[800px]">
+        <div className="absolute top-1/2 right-[15%] -translate-y-1/2 w-[65vw] h-[65vw] max-w-[900px] max-h-[900px]">
             
             {/* Powerful Radial Glow Halo */}
             <motion.div 
               animate={{ 
-                scale: [1, 1.1, 1],
-                opacity: [0.4, 0.6, 0.4] 
+                scale: [1, 1.05, 1],
+                opacity: [0.3, 0.5, 0.3] 
               }}
-              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute inset-0 bg-primary/20 rounded-full blur-[120px]" 
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute inset-0 bg-primary/20 rounded-full blur-[140px]" 
             />
             
             {/* Core Energy Pulse */}
             <motion.div 
-              animate={{ scale: [1, 1.2, 1], opacity: [0.6, 0.9, 0.6] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[20%] h-[20%] bg-primary/40 rounded-full blur-[60px]" 
+              animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[25%] h-[25%] bg-primary/40 rounded-full blur-[80px]" 
             />
 
             {/* Slow Rotating Futuristic Tech Rings */}
             <motion.div 
               animate={{ rotate: 360 }}
               transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-0 p-10"
+              className="absolute inset-0 p-4"
             >
-              <svg viewBox="0 0 100 100" className="w-full h-full opacity-30 stroke-primary">
-                <circle cx="50" cy="50" r="48" fill="none" strokeWidth="0.1" strokeDasharray="1 4" />
-                <circle cx="50" cy="50" r="40" fill="none" strokeWidth="0.2" strokeDasharray="10 15" />
+              <svg viewBox="0 0 100 100" className="w-full h-full opacity-40 stroke-primary/60 fill-none">
+                <circle cx="50" cy="50" r="48" strokeWidth="0.1" strokeDasharray="1 4" />
+                <circle cx="50" cy="50" r="42" strokeWidth="0.2" strokeDasharray="8 12" />
               </svg>
             </motion.div>
 
@@ -110,11 +110,11 @@ export function HeroSection() {
             <motion.div 
               animate={{ rotate: -360 }}
               transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-0 p-20"
+              className="absolute inset-0 p-12"
             >
-              <svg viewBox="0 0 100 100" className="w-full h-full opacity-20 stroke-primary">
-                <circle cx="50" cy="50" r="45" fill="none" strokeWidth="0.15" strokeDasharray="2 10" />
-                <circle cx="50" cy="5" r="0.8" fill="currentColor" className="filter drop-shadow-[0_0_5px_hsl(var(--primary))]" />
+              <svg viewBox="0 0 100 100" className="w-full h-full opacity-30 stroke-primary/40 fill-none">
+                <circle cx="50" cy="50" r="45" strokeWidth="0.15" strokeDasharray="2 10" />
+                <circle cx="50" cy="5" r="0.8" fill="currentColor" className="text-primary filter drop-shadow-[0_0_8px_hsl(var(--primary))]" />
               </svg>
             </motion.div>
         </div>
@@ -142,9 +142,22 @@ export function HeroSection() {
                 Experiences
               </h1>
               
-              <p className="text-lg md:text-xl text-muted-foreground/90 max-w-xl font-medium leading-relaxed">
-                Experience the radiance of high-performance engineering. We build web apps, AI agents, and cloud systems powered by the Arkaa digital core.
-              </p>
+              <div className="space-y-6">
+                <p className="text-lg md:text-xl text-muted-foreground/90 max-w-xl font-medium leading-relaxed">
+                  Experience the radiance of high-performance engineering. We build powerful digital solutions powered by the Arkaa digital core.
+                </p>
+                <div className="flex items-center gap-3 text-xs md:text-sm font-bold tracking-[0.2em] text-primary/80 uppercase">
+                  <span>Web Apps</span>
+                  <span className="text-muted-foreground/30">•</span>
+                  <span>UI/UX</span>
+                  <span className="text-muted-foreground/30">•</span>
+                  <span>Branding</span>
+                  <span className="text-muted-foreground/30">•</span>
+                  <span>Automation</span>
+                  <span className="text-muted-foreground/30">•</span>
+                  <span>Growth</span>
+                </div>
+              </div>
             </MotionDiv>
 
             <MotionDiv variants={textVariants} className="flex flex-wrap items-center gap-6 pt-4">
@@ -170,14 +183,14 @@ export function HeroSection() {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ 
                   opacity: 1, 
-                  y: [0, -10, 0],
+                  y: [0, -12, 0],
                 }}
                 transition={{
                   y: {
-                    duration: 5,
+                    duration: 6,
                     repeat: Infinity,
                     ease: "easeInOut",
-                    delay: i * 0.7
+                    delay: i * 0.8
                   },
                   opacity: { delay: 0.5 + i * 0.1, duration: 0.8 }
                 }}
