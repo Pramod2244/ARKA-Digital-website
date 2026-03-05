@@ -41,10 +41,20 @@ export function ServicesSection() {
 
   return (
     <section id="services" className="relative py-16 md:py-24 overflow-hidden" ref={ref}>
-      {/* Background Decorative Elements */}
-      <div className="absolute inset-0 pointer-events-none -z-10">
-        <div className="absolute top-0 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-[100px]" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-[120px]" />
+      {/* Enhanced Background Decorative Elements */}
+      <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
+        {/* Faint Futuristic Grid */}
+        <div 
+          className="absolute inset-0 bg-grid-white opacity-[0.03]" 
+          style={{ backgroundSize: '40px 40px' }}
+        />
+        
+        {/* Radial Gradient Lighting */}
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 opacity-60" />
+        <div className="absolute bottom-0 right-1/4 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[150px] translate-x-1/2 translate-y-1/2 opacity-40" />
+        
+        {/* Subtle Ambient Vignette */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(2,6,23,0.3)_100%)]" />
       </div>
 
       <div className={cn(
@@ -64,7 +74,7 @@ export function ServicesSection() {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto"
+            className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto font-medium"
           >
             We offer a comprehensive suite of high-performance technology services designed to scale your business into the future.
           </motion.p>
