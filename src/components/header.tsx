@@ -6,6 +6,7 @@ import { Sun, Menu } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
+import { motion } from 'framer-motion';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,9 +33,15 @@ export function Header() {
       isScrolled ? "bg-background/80 backdrop-blur-lg border-b border-white/10 h-14" : "h-16 md:h-20"
     )}>
       <div className="container flex h-full max-w-screen-2xl items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <Sun className="h-6 w-6 text-primary" />
-          <span className="font-headline text-xl md:text-2xl font-bold">Arkaa Digital</span>
+        <Link href="/" className="flex items-center gap-2 group">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="flex items-center justify-center"
+          >
+            <Sun className="h-6 w-6 text-primary filter drop-shadow-[0_0_8px_hsl(var(--primary)/0.6)] transition-all duration-300 group-hover:drop-shadow-[0_0_12px_hsl(var(--primary)/0.8)]" />
+          </motion.div>
+          <span className="font-headline text-xl md:text-2xl font-bold tracking-tight">Arkaa Digital</span>
         </Link>
         <nav className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
@@ -51,9 +58,14 @@ export function Header() {
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[280px]">
+            <SheetContent side="right" className="w-[280px] bg-background border-l border-white/10">
                 <div className="flex items-center gap-2 mt-2">
-                    <Sun className="h-6 w-6 text-primary" />
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    >
+                        <Sun className="h-6 w-6 text-primary filter drop-shadow-[0_0_8px_hsl(var(--primary)/0.6)]" />
+                    </motion.div>
                     <span className="font-headline text-xl font-bold">Arkaa Digital</span>
                 </div>
               <nav className="flex flex-col gap-5 mt-10">
