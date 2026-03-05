@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MotionDiv } from "@/components/motion-provider";
 import { Card, CardContent } from "../ui/card";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, Rocket, ArrowRight } from "lucide-react";
 import { FuturisticBackground } from "../futuristic-background";
 
 const containerVariants = {
@@ -12,31 +12,32 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.15,
     },
   },
 };
 
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-    },
-  },
-};
-
-const cardVariants = {
-  hidden: { x: 100, opacity: 0 },
+const textVariants = {
+  hidden: { x: -50, opacity: 0 },
   visible: {
     x: 0,
     opacity: 1,
     transition: {
       duration: 0.8,
       ease: "easeOut",
-      delay: 0.5,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { x: 50, opacity: 0 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+      delay: 0.3,
     },
   },
 };
@@ -48,52 +49,70 @@ export function HeroSection() {
 
       <div className="relative z-10 container mx-auto p-4">
         <MotionDiv
-          className="grid md:grid-cols-2 gap-12 items-center"
+          className="grid lg:grid-cols-2 gap-16 items-center"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          <div className="space-y-8">
-            <MotionDiv variants={itemVariants}>
-              <h1 className="font-headline text-5xl md:text-7xl font-black tracking-tight leading-[1.1] text-white">
-                We Build <span className="text-primary text-glow-primary">Future-Ready</span> <span className="text-accent text-glow-accent">Digital</span> Experiences
+          <div className="space-y-10">
+            <MotionDiv variants={textVariants} className="space-y-6">
+              <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[1.05] text-white">
+                We Build <br />
+                <span className="text-primary text-glow-primary">Future-Ready</span> <br />
+                <span className="text-accent text-glow-accent">Digital</span> Experiences
               </h1>
-            </MotionDiv>
-            <MotionDiv variants={itemVariants}>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
-                Premium Web Apps • UI/UX Strategy • Branding • Smart Automation • Exponential Growth
+              <p className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed font-medium">
+                Arkaa Digital is a premium agency specializing in high-performance web apps, AI automation, and future-proof digital strategy.
               </p>
             </MotionDiv>
 
-            <MotionDiv variants={itemVariants} className="flex flex-wrap justify-start gap-4 pt-2">
-              <Button size="lg" className="h-14 px-8 text-lg font-bold rounded-full transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/20" asChild>
-                <Link href="#contact">Get In Touch</Link>
+            <MotionDiv variants={textVariants} className="flex flex-wrap items-center gap-5 pt-4">
+              <Button size="lg" className="h-14 px-8 text-lg font-bold rounded-full transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(249,115,22,0.4)] active:scale-95 flex items-center gap-2 group" asChild>
+                <Link href="#contact">
+                  Start Your Project
+                  <Rocket className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" className="h-14 px-8 text-lg font-bold rounded-full border-white/20 hover:bg-white/5 hover:border-white/40 transition-all flex items-center gap-2 group" asChild>
+                <Link href="#services">
+                  View Our Services
+                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </Button>
             </MotionDiv>
           </div>
 
-          <MotionDiv variants={cardVariants} className="hidden md:flex justify-end">
-            <Card className="glass-card rounded-3xl w-full max-w-sm glow-border overflow-hidden border-white/5 bg-white/[0.03] backdrop-blur-xl">
-              <CardContent className="p-10 space-y-6">
-                <div className="space-y-4">
-                    <li className="flex items-center gap-4 group">
-                      <div className="p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                          <CheckCircle className="h-5 w-5 text-primary" />
+          <MotionDiv variants={cardVariants} className="hidden lg:flex justify-end">
+            <Card className="glass-card rounded-[2.5rem] w-full max-w-md glow-border overflow-hidden border-white/10 bg-white/[0.02] backdrop-blur-2xl">
+              <CardContent className="p-12 space-y-8">
+                <div className="space-y-6">
+                    <div className="flex items-center gap-5 group">
+                      <div className="p-3 rounded-2xl bg-primary/10 group-hover:bg-primary/20 transition-all duration-300">
+                          <CheckCircle className="h-6 w-6 text-primary shadow-sm" />
                       </div>
-                      <span className="font-medium text-lg">Fast & Scalable</span>
-                    </li>
-                    <li className="flex items-center gap-4 group">
-                      <div className="p-2 rounded-full bg-accent/10 group-hover:bg-accent/20 transition-colors">
-                          <CheckCircle className="h-5 w-5 text-accent" />
+                      <div className="space-y-1">
+                        <span className="font-headline font-bold text-xl block">Fast & Scalable</span>
+                        <p className="text-sm text-muted-foreground">Built for exponential growth.</p>
                       </div>
-                      <span className="font-medium text-lg">Premium Animations</span>
-                    </li>
-                    <li className="flex items-center gap-4 group">
-                      <div className="p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                          <CheckCircle className="h-5 w-5 text-primary" />
+                    </div>
+                    <div className="flex items-center gap-5 group">
+                      <div className="p-3 rounded-2xl bg-accent/10 group-hover:bg-accent/20 transition-all duration-300">
+                          <CheckCircle className="h-6 w-6 text-accent" />
                       </div>
-                      <span className="font-medium text-lg">AI-Driven UI/UX</span>
-                    </li>
+                      <div className="space-y-1">
+                        <span className="font-headline font-bold text-xl block">AI-Powered UI</span>
+                        <p className="text-sm text-muted-foreground">Intelligent, user-centric design.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-5 group">
+                      <div className="p-3 rounded-2xl bg-primary/10 group-hover:bg-primary/20 transition-all duration-300">
+                          <CheckCircle className="h-6 w-6 text-primary" />
+                      </div>
+                      <div className="space-y-1">
+                        <span className="font-headline font-bold text-xl block">Secure & Robust</span>
+                        <p className="text-sm text-muted-foreground">Enterprise-grade infrastructure.</p>
+                      </div>
+                    </div>
                 </div>
               </CardContent>
             </Card>
