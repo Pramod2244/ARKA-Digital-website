@@ -40,9 +40,9 @@ const services = [
 
 export function ServicesSection() {
   return (
-    <section id="services" className="relative py-16 md:py-24 overflow-hidden">
+    <section id="services" className="relative py-20 md:py-28 overflow-hidden">
       {/* Seamless Transition Mask - Top */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background to-transparent z-10" />
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-background to-transparent z-10" />
 
       {/* Enhanced Background Decorative Elements */}
       <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
@@ -64,12 +64,12 @@ export function ServicesSection() {
         viewport={{ once: true, amount: 0.2 }}
         className="container mx-auto px-4"
       >
-        <div className="text-center space-y-3 mb-16">
-          <h2 className="font-headline text-2xl md:text-3xl font-bold tracking-tight text-white">
+        <div className="text-center space-y-4 mb-16">
+          <h2 className="font-headline text-3xl md:text-4xl font-bold tracking-tight text-white">
             Our <span className="text-primary text-glow-primary">Services</span>
           </h2>
-          <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto font-medium">
-            We offer a comprehensive suite of high-performance technology services designed to scale your business into the future.
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto font-medium">
+            A comprehensive suite of high-performance technology services designed to scale your business into the future.
           </p>
         </div>
 
@@ -84,10 +84,10 @@ export function ServicesSection() {
               className="h-full"
             >
               <motion.div
-                whileHover={{ y: -8 }}
+                whileHover={{ y: -10 }}
                 className="h-full"
               >
-                <Card className="h-full glass-card border-white/5 bg-white/[0.02] backdrop-blur-xl relative group overflow-hidden transition-all duration-500 hover:border-primary/50 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] flex flex-col p-6 md:p-8">
+                <Card className="h-full glass-card border-white/5 bg-white/[0.02] backdrop-blur-xl relative group overflow-hidden transition-all duration-500 hover:border-primary/50 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] flex flex-col p-8">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
                   {/* Professional Solar Icon Container */}
@@ -98,14 +98,14 @@ export function ServicesSection() {
                     </div>
                   </div>
 
-                  <CardHeader className="p-0 mb-2 relative z-10">
-                    <CardTitle className="font-headline text-lg font-bold text-white group-hover:text-primary transition-colors">
+                  <CardHeader className="p-0 mb-3 relative z-10">
+                    <CardTitle className="font-headline text-xl font-bold text-white group-hover:text-primary transition-colors">
                       {service.title}
                     </CardTitle>
                   </CardHeader>
                   
                   <CardContent className="p-0 relative z-10 flex-grow">
-                    <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
+                    <p className="text-sm text-muted-foreground leading-relaxed">
                       {service.description}
                     </p>
                   </CardContent>
@@ -117,7 +117,7 @@ export function ServicesSection() {
       </motion.div>
 
       {/* Seamless Transition Mask - Bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent z-10" />
     </section>
   );
 }

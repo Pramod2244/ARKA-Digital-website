@@ -55,19 +55,19 @@ export function WhyChooseUsSection() {
   ];
 
   return (
-    <section id="why-choose-us" className="relative py-16 md:py-24 overflow-hidden">
+    <section id="why-choose-us" className="relative py-20 md:py-28 overflow-hidden">
       {/* Seamless Transition Mask - Top */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background to-transparent z-10" />
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-background to-transparent z-10" />
 
       {/* Enhanced Background Architecture */}
       <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
-        {/* Background Image */}
+        {/* Background Image Overlay */}
         {whyChooseUsImage && (
           <Image
             src={whyChooseUsImage.imageUrl}
             alt={whyChooseUsImage.description}
             fill
-            className="object-cover opacity-[0.06] grayscale"
+            className="object-cover opacity-[0.05] grayscale"
             data-ai-hint={whyChooseUsImage.imageHint}
           />
         )}
@@ -93,17 +93,17 @@ export function WhyChooseUsSection() {
         viewport={{ once: true, amount: 0.2 }}
         className="container relative z-10 mx-auto px-4"
       >
-        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl mx-auto">
           {/* Left Content: Text & Bullet Points */}
           <MotionDiv 
-            className="space-y-6"
+            className="space-y-8"
             variants={leftVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
           >
-            <MotionDiv variants={itemVariants} className="space-y-3">
-              <h2 className="font-headline text-3xl md:text-4xl font-bold tracking-tight text-white">
+            <MotionDiv variants={itemVariants} className="space-y-4">
+              <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white">
                 Why Choose <span className="text-primary text-glow-primary">ARKA</span>?
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed max-w-xl font-medium">
@@ -111,11 +111,11 @@ export function WhyChooseUsSection() {
               </p>
             </MotionDiv>
 
-            <MotionDiv variants={itemVariants} className="space-y-4">
+            <MotionDiv variants={itemVariants} className="space-y-5">
               {features.map((feature, index) => (
-                <div key={index} className="flex items-start gap-3 group">
-                  <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20 shadow-[0_0_10px_rgba(249,115,22,0.15)] group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-                    <CheckCircle className="h-3 w-3 text-primary" />
+                <div key={index} className="flex items-start gap-4 group">
+                  <div className="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20 shadow-[0_0_10px_rgba(249,115,22,0.15)] group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                    <CheckCircle className="h-3.5 w-3.5 text-primary" />
                   </div>
                   <span className="text-base md:text-lg text-white/90 group-hover:text-white transition-colors duration-300">{feature}</span>
                 </div>
@@ -133,11 +133,11 @@ export function WhyChooseUsSection() {
           >
             <div className="absolute -inset-4 bg-primary/5 blur-[100px] rounded-full -z-10" />
             
-            <Card className="glass-card rounded-[1.5rem] border-white/5 bg-white/[0.02] backdrop-blur-2xl shadow-2xl relative overflow-hidden group">
+            <Card className="glass-card rounded-[2rem] border-white/5 bg-white/[0.02] backdrop-blur-2xl shadow-2xl relative overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               
               <CardHeader className="p-8 pb-3">
-                <CardTitle className="font-headline text-2xl font-bold text-white flex items-center gap-2">
+                <CardTitle className="font-headline text-2xl md:text-3xl font-bold text-white flex items-center gap-2">
                   Our <span className="text-primary">Commitment</span>
                 </CardTitle>
               </CardHeader>
@@ -145,7 +145,7 @@ export function WhyChooseUsSection() {
                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
                   We are dedicated to turning your vision into reality with solutions that are not just effective but also elegant and future-proof. 
                   <br /><br />
-                  Our agile approach ensures we adapt to your evolving needs, delivering measurable value at every stage.
+                  Our agile approach ensures we adapt to your evolving needs, delivering measurable value at every stage of development.
                 </p>
                 
                 <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
@@ -169,7 +169,7 @@ export function WhyChooseUsSection() {
       </motion.div>
 
       {/* Seamless Transition Mask - Bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent z-10" />
     </section>
   );
 }

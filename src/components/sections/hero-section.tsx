@@ -50,7 +50,7 @@ export function HeroSection() {
 
       <div className="relative z-10 container mx-auto px-4 md:px-6">
         <MotionDiv
-          className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl mx-auto"
+          className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-6xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -60,13 +60,13 @@ export function HeroSection() {
             <MotionDiv variants={textVariants} className="space-y-6">
               <div className="space-y-3 relative">
                 {/* Subtle Back Glow for Headline */}
-                <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-[60px] -z-10" />
-                <div className="absolute top-1/2 -right-10 w-32 h-32 bg-accent/5 rounded-full blur-[50px] -z-10" />
+                <div className="absolute -top-10 -left-10 w-48 h-48 bg-primary/10 rounded-full blur-[70px] -z-10" />
+                <div className="absolute top-1/2 -right-10 w-40 h-40 bg-accent/5 rounded-full blur-[60px] -z-10" />
 
                 <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] text-primary/80 block mb-1">
                   Established Excellence
                 </span>
-                <h1 className="font-headline tracking-tight leading-[1.1] text-white text-3xl md:text-4xl lg:text-6xl font-black">
+                <h1 className="font-headline tracking-tight leading-[1.1] text-white text-4xl md:text-5xl lg:text-6xl font-black">
                   <span className="relative inline-block text-white">
                     Future-Ready
                     <span className="absolute -bottom-2 left-0 w-full h-1 bg-primary/30 rounded-full" />
@@ -79,7 +79,7 @@ export function HeroSection() {
               </div>
               
               <p className="text-sm md:text-base text-muted-foreground max-w-[520px] leading-relaxed font-medium">
-                We design high-performance digital ecosystems and AI-driven solutions that accelerate growth and secure your business's future in the technology era.
+                We design high-performance digital ecosystems and AI-driven solutions that accelerate growth and secure your business's future.
               </p>
             </MotionDiv>
 
@@ -102,10 +102,10 @@ export function HeroSection() {
           {/* Right Content: Feature Card with Background Sun */}
           <div className="relative flex justify-center lg:justify-end">
             {/* The Digital Sun: Positioned BEHIND the card */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[160%] h-[160%] pointer-events-none z-0">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] pointer-events-none z-0">
               {/* Core Radial Glows */}
               <motion.div 
-                className="absolute inset-[20%] bg-primary/25 rounded-full blur-[80px]"
+                className="absolute inset-[20%] bg-primary/20 rounded-full blur-[80px]"
                 animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
               />
@@ -115,11 +115,11 @@ export function HeroSection() {
                 transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
               />
 
-              <svg viewBox="0 0 200 200" className="w-full h-full opacity-60">
+              <svg viewBox="0 0 200 200" className="w-full h-full opacity-50">
                 {/* Rotating Tech Rings */}
                 <motion.g
                   animate={{ rotate: 360 }}
-                  transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                  transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
                   style={{ originX: "100px", originY: "100px" }}
                 >
                   <circle 
@@ -134,7 +134,7 @@ export function HeroSection() {
 
                 <motion.g
                   animate={{ rotate: -360 }}
-                  transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                   style={{ originX: "100px", originY: "100px" }}
                 >
                   <circle 
@@ -159,7 +159,7 @@ export function HeroSection() {
                       opacity: [0, 0.8, 0]
                     }}
                     transition={{
-                      duration: 20 + i * 4,
+                      duration: 15 + i * 3,
                       repeat: Infinity,
                       ease: "linear"
                     }}
@@ -171,15 +171,15 @@ export function HeroSection() {
             {/* Floating Feature Card */}
             <MotionDiv 
               variants={cardVariants}
-              animate={{ y: [0, -12, 0] }}
+              animate={{ y: [0, -15, 0] }}
               transition={{ 
-                y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
-                duration: 0.8 // for the initial variants
+                y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+                duration: 0.8 
               }}
               className="relative z-10 w-full max-w-sm"
             >
               <Card className="glass-card rounded-[2.5rem] glow-border overflow-hidden border-white/10 bg-white/[0.04] backdrop-blur-3xl shadow-2xl">
-                <CardContent className="p-10 space-y-8">
+                <CardContent className="p-8 md:p-10 space-y-8">
                   <div className="space-y-8">
                       <div className="flex items-center gap-5 group">
                         <div className="p-3 rounded-2xl bg-primary/10 group-hover:bg-primary/20 transition-all duration-300">

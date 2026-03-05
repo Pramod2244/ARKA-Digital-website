@@ -74,35 +74,14 @@ export function TestimonialsSection() {
   );
 
   return (
-    <section id="testimonials" className="relative py-16 md:py-24 overflow-hidden">
+    <section id="testimonials" className="relative py-20 md:py-28 overflow-hidden">
       {/* Seamless Transition Mask - Top */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background to-transparent z-10" />
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-background to-transparent z-10" />
 
-      {/* Background Radial Glows - Orange and Blue */}
+      {/* Background Radial Glows */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full -z-10 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] opacity-40" />
         <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px] opacity-30" />
-        
-        {/* Subtle Decorative Particles */}
-        {[...Array(12)].map((_, i) => (
-          <motion.div
-            key={`t-particle-${i}`}
-            className="absolute w-1 h-1 rounded-full bg-white/20"
-            style={{
-              left: Math.random() * 100 + "%",
-              top: Math.random() * 100 + "%",
-            }}
-            animate={{
-              opacity: [0.2, 0.5, 0.2],
-              scale: [1, 1.5, 1],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 4,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
       </div>
 
       <motion.div 
@@ -112,12 +91,12 @@ export function TestimonialsSection() {
         viewport={{ once: true, amount: 0.2 }}
         className="container mx-auto px-4 relative z-10"
       >
-        <div className="text-center space-y-3 mb-12">
-          <h2 className="font-headline text-2xl md:text-3xl font-bold tracking-tight text-white">
+        <div className="text-center space-y-4 mb-16">
+          <h2 className="font-headline text-3xl md:text-4xl font-bold tracking-tight text-white">
             What Our <span className="text-primary text-glow-primary">Clients</span> Say
           </h2>
-          <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
-            Don't just take our word for it. Hear from the businesses we've helped transform.
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto font-medium">
+            Don't just take our word for it. Hear from the businesses we've helped transform into digital leaders.
           </p>
         </div>
 
@@ -141,40 +120,37 @@ export function TestimonialsSection() {
               {testimonials.map((testimonial, index) => (
                 <CarouselItem key={index} className="pl-4 md:pl-6 md:basis-1/2 lg:basis-1/3">
                   <motion.div variants={itemVariants} className="h-full">
-                    <Card className="h-full glass-card border-white/5 bg-white/[0.02] backdrop-blur-xl group hover:border-primary/30 transition-all duration-500 overflow-hidden relative">
+                    <Card className="h-full glass-card border-white/5 bg-white/[0.02] backdrop-blur-xl group hover:border-primary/30 transition-all duration-500 overflow-hidden relative rounded-[2rem]">
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       
-                      <CardContent className="p-6 md:p-8 flex flex-col h-full relative z-10">
-                        {/* Quote & Stars */}
-                        <div className="flex justify-between items-start mb-5">
-                          <div className="p-2.5 rounded-xl bg-primary/10">
-                            <Quote className="h-5 w-5 text-primary" />
+                      <CardContent className="p-8 flex flex-col h-full relative z-10">
+                        <div className="flex justify-between items-start mb-6">
+                          <div className="p-3 rounded-2xl bg-primary/10">
+                            <Quote className="h-6 w-6 text-primary" />
                           </div>
                           <div className="flex gap-1">
                             {[...Array(testimonial.rating)].map((_, i) => (
-                              <Star key={i} className="h-3 w-3 fill-primary text-primary" />
+                              <Star key={i} className="h-3.5 w-3.5 fill-primary text-primary" />
                             ))}
                           </div>
                         </div>
 
-                        {/* Quote Text */}
-                        <div className="flex-grow mb-6">
-                          <p className="text-base md:text-lg text-white/90 leading-relaxed font-medium italic">
+                        <div className="flex-grow mb-8">
+                          <p className="text-lg text-white/90 leading-relaxed font-medium italic">
                             "{testimonial.quote}"
                           </p>
                         </div>
 
-                        {/* Author Info */}
-                        <div className="flex items-center gap-3 pt-5 border-t border-white/5">
-                          <Avatar className="h-10 w-10 border-2 border-primary/20">
+                        <div className="flex items-center gap-4 pt-6 border-t border-white/5">
+                          <Avatar className="h-12 w-12 border-2 border-primary/20">
                             <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
                             <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
                           </Avatar>
                           <div className="space-y-0.5">
-                            <p className="font-bold text-sm md:text-base text-white group-hover:text-primary transition-colors">
+                            <p className="font-bold text-base text-white group-hover:text-primary transition-colors">
                               {testimonial.name}
                             </p>
-                            <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">
+                            <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">
                               {testimonial.title}
                             </p>
                           </div>
@@ -185,16 +161,16 @@ export function TestimonialsSection() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="hidden lg:flex justify-center gap-4 mt-10">
-              <CarouselPrevious className="static translate-y-0 h-10 w-10 border-white/10 bg-white/5 hover:bg-white/10 hover:text-primary" />
-              <CarouselNext className="static translate-y-0 h-10 w-10 border-white/10 bg-white/5 hover:bg-white/10 hover:text-primary" />
+            <div className="hidden lg:flex justify-center gap-4 mt-12">
+              <CarouselPrevious className="static translate-y-0 h-12 w-12 border-white/10 bg-white/5 hover:bg-white/10 hover:text-primary rounded-full" />
+              <CarouselNext className="static translate-y-0 h-12 w-12 border-white/10 bg-white/5 hover:bg-white/10 hover:text-primary rounded-full" />
             </div>
           </Carousel>
         </motion.div>
       </motion.div>
 
       {/* Seamless Transition Mask - Bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent z-10" />
     </section>
   );
 }

@@ -13,7 +13,7 @@ export function FuturisticBackground() {
   if (!mounted) return null;
 
   return (
-    <div className="absolute inset-0 overflow-hidden bg-[#020617] -z-10">
+    <div className="absolute inset-0 overflow-hidden bg-[#020617] -z-20">
       {/* 1. Subtle Tech Grid Layer */}
       <div 
         className="absolute inset-0 opacity-[0.05]"
