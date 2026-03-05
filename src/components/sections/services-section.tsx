@@ -11,27 +11,27 @@ const services = [
   {
     icon: Code2,
     title: "Web Development",
-    description: "End-to-end web and mobile app development using modern frameworks and agile methods.",
+    description: "Build fast, secure, and scalable web applications using modern technologies to support business growth.",
   },
   {
     icon: Palette,
     title: "UI/UX Design",
-    description: "Beautiful, user-centric design that strengthens your brand identity and user engagement.",
+    description: "Create intuitive and visually engaging user interfaces that deliver seamless digital experiences.",
   },
   {
     icon: Layers,
     title: "Branding",
-    description: "Creating powerful, cohesive brand identities that resonate with your target audience.",
+    description: "Develop strong brand identities that communicate your vision and make your business stand out.",
   },
   {
     icon: TrendingUp,
     title: "Digital Marketing & SEO",
-    description: "Strategic growth through data-driven marketing and expert search engine optimization.",
+    description: "Increase online visibility with data-driven marketing strategies and search engine optimization.",
   },
   {
     icon: Cloud,
     title: "Cloud & DevOps",
-    description: "Secure, scalable cloud solutions to streamline your deployment and business operations.",
+    description: "Implement secure cloud infrastructure and DevOps automation for reliable and scalable systems.",
   },
 ];
 
@@ -56,7 +56,7 @@ export function ServicesSection() {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="font-headline text-3xl md:text-4xl font-bold tracking-tight text-white"
+            className="font-headline text-2xl md:text-3xl font-bold tracking-tight text-white"
           >
             Our <span className="text-primary text-glow-primary">Services</span>
           </motion.h2>
@@ -64,7 +64,7 @@ export function ServicesSection() {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto"
+            className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto"
           >
             We offer a comprehensive suite of high-performance technology services designed to scale your business into the future.
           </motion.p>
@@ -97,13 +97,13 @@ export function ServicesSection() {
                   </div>
 
                   <CardHeader className="p-0 mb-2 relative z-10">
-                    <CardTitle className="font-headline text-xl font-bold text-white group-hover:text-primary transition-colors">
+                    <CardTitle className="font-headline text-lg font-bold text-white group-hover:text-primary transition-colors">
                       {service.title}
                     </CardTitle>
                   </CardHeader>
                   
                   <CardContent className="p-0 relative z-10">
-                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed line-clamp-2">
+                    <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
                       {service.description}
                     </p>
                   </CardContent>
