@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Code2, Cloud, TrendingUp, Palette, Layers } from "lucide-react";
+import { Code2, Cloud, TrendingUp, Palette, Layers, Cpu } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
@@ -43,18 +43,17 @@ export function ServicesSection() {
     <section id="services" className="relative py-16 md:py-24 overflow-hidden" ref={ref}>
       {/* Enhanced Background Decorative Elements */}
       <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
-        {/* Faint Futuristic Grid */}
+        {/* Faint Futuristic Grid Pattern - Minimal and Premium */}
         <div 
           className="absolute inset-0 bg-grid-white opacity-[0.03]" 
-          style={{ backgroundSize: '40px 40px' }}
+          style={{ backgroundSize: '50px 50px' }}
         />
         
-        {/* Radial Gradient Lighting */}
-        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 opacity-60" />
-        <div className="absolute bottom-0 right-1/4 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[150px] translate-x-1/2 translate-y-1/2 opacity-40" />
+        {/* Subtle Ambient Lighting */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(25,95,53,0.03)_0%,transparent_70%)]" />
         
-        {/* Subtle Ambient Vignette */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(2,6,23,0.3)_100%)]" />
+        {/* Transition Mask */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
       </div>
 
       <div className={cn(
@@ -83,8 +82,6 @@ export function ServicesSection() {
         {/* 2-over-3 Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-6 gap-6 max-w-6xl mx-auto">
           {services.map((service, index) => {
-            // Row 1: 2 cards (index 0, 1) -> span 3 each
-            // Row 2: 3 cards (index 2, 3, 4) -> span 2 each
             const isRowOne = index < 2;
             
             return (
@@ -104,10 +101,8 @@ export function ServicesSection() {
                   className="h-full"
                 >
                   <Card className="h-full glass-card border-white/5 bg-white/[0.02] backdrop-blur-xl relative group overflow-hidden transition-all duration-500 hover:border-primary/50 hover:shadow-[0_0_25px_rgba(249,115,22,0.1)] flex flex-col p-6 md:p-8">
-                    {/* Hover Gradient Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     
-                    {/* Icon Container */}
                     <div className="relative mb-6">
                       <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center relative transition-transform duration-500 group-hover:scale-110">
                         <div className="absolute inset-0 rounded-xl bg-primary/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
