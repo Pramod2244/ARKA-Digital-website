@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Code2, Cloud, TrendingUp, Palette, Layers } from "lucide-react";
+import { Code2, Cloud, TrendingUp, Palette, Layers, Bot } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
@@ -17,6 +17,11 @@ const services = [
     icon: Palette,
     title: "UI/UX Design",
     description: "Create intuitive and visually engaging user interfaces that deliver seamless digital experiences.",
+  },
+  {
+    icon: Bot,
+    title: "AI & Automation",
+    description: "Leverage cutting-edge artificial intelligence and automation to streamline workflows and drive efficiency.",
   },
   {
     icon: Layers,
@@ -78,7 +83,7 @@ export function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1, duration: 0.7 }}
               viewport={{ once: true }}
-              className={cn(index >= 3 ? "lg:col-span-1" : "")}
+              className="h-full"
             >
               <motion.div
                 whileHover={{ y: -8 }}
@@ -102,7 +107,7 @@ export function ServicesSection() {
                     </CardTitle>
                   </CardHeader>
                   
-                  <CardContent className="p-0 relative z-10">
+                  <CardContent className="p-0 relative z-10 flex-grow">
                     <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
                       {service.description}
                     </p>
