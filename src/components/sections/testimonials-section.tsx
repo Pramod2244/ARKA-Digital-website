@@ -2,7 +2,10 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import Autoplay from "embla-carousel-autoplay"
+import Autoplay from "embla-carousel-autoplay";
+import { Quote, Star } from "lucide-react";
+import { motion } from "framer-motion";
+import { useRef } from "react";
 
 import {
   Carousel,
@@ -10,72 +13,167 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel"
-import { useRef } from "react";
-
+} from "@/components/ui/carousel";
 
 const testimonials = [
-    {
-        quote: "Arkaa Digital transformed our outdated system into a modern, cloud-based platform. Their team’s technical skill and commitment to delivery were outstanding.",
-        name: "Jane Doe",
-        title: "CEO, Retail Client",
-        avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704d"
-    },
-    {
-        quote: "The UI/UX design they delivered was not only beautiful but also incredibly intuitive. Our user engagement has skyrocketed since the redesign.",
-        name: "John Smith",
-        title: "Product Manager, Tech Startup",
-        avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704e"
-    },
-    {
-        quote: "Working with Arkaa Digital felt like a true partnership. They were responsive, proactive, and genuinely invested in our success.",
-        name: "Emily White",
-        title: "Marketing Director, eCommerce Brand",
-        avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704f"
-    },
+  {
+    quote: "Arkaa Digital transformed our outdated system into a modern, cloud-based platform. Their team’s technical skill and commitment to delivery were outstanding.",
+    name: "Jane Doe",
+    title: "CEO, Retail Client",
+    avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704d",
+    rating: 5
+  },
+  {
+    quote: "The UI/UX design they delivered was not only beautiful but also incredibly intuitive. Our user engagement has skyrocketed since the redesign.",
+    name: "John Smith",
+    title: "Product Manager, Tech Startup",
+    avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704e",
+    rating: 5
+  },
+  {
+    quote: "Working with Arkaa Digital felt like a true partnership. They were responsive, proactive, and genuinely invested in our success.",
+    name: "Emily White",
+    title: "Marketing Director, eCommerce Brand",
+    avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704f",
+    rating: 5
+  },
+  {
+    quote: "Their AI automation solutions saved us hundreds of hours of manual work. A truly future-ready team that understands modern business needs.",
+    name: "Michael Chen",
+    title: "CTO, Fintech Solutions",
+    avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704g",
+    rating: 5
+  }
 ];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { y: 30, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  }
+};
 
 export function TestimonialsSection() {
   const plugin = useRef(
-    Autoplay({ delay: 4000, stopOnInteraction: true })
-  )
+    Autoplay({ delay: 5000, stopOnInteraction: true })
+  );
 
   return (
-    <section id="testimonials" className="py-16 md:py-24">
+    <section id="testimonials" className="relative py-24 md:py-32 overflow-hidden">
+      {/* Background Glows */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full -z-10 pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-[120px]" />
+      </div>
+
       <div className="container mx-auto px-4">
-        <div className="text-center space-y-4 mb-12">
-            <h2 className="font-headline text-3xl md:text-4xl font-bold">What Our Clients Say</h2>
+        <div className="text-center space-y-4 mb-16">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="font-headline text-4xl md:text-5xl font-bold tracking-tight text-white"
+          >
+            What Our <span className="text-primary text-glow-primary">Clients</span> Say
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="text-lg text-muted-foreground max-w-2xl mx-auto"
+          >
+            Don't just take our word for it. Hear from the businesses we've helped transform.
+          </motion.p>
         </div>
-        <Carousel
-          plugins={[plugin.current]}
-          className="w-full"
-          onMouseEnter={plugin.current.stop}
-          onMouseLeave={plugin.current.reset}
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
         >
-          <CarouselContent>
-            {testimonials.map((testimonial, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <Card className="h-full glass-card">
-                      <CardContent className="p-8 text-center flex flex-col items-center justify-center h-full">
-                          <p className="text-lg italic text-muted-foreground">"{testimonial.quote}"</p>
-                          <div className="flex items-center justify-center mt-6">
-                              <Avatar>
-                                  <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-                                  <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
-                              </Avatar>
-                              <div className="ml-4 text-left">
-                                  <p className="font-bold text-foreground">{testimonial.name}</p>
-                                  <p className="text-sm text-muted-foreground">{testimonial.title}</p>
-                              </div>
+          <Carousel
+            plugins={[plugin.current]}
+            className="w-full max-w-6xl mx-auto"
+            onMouseEnter={plugin.current.stop}
+            onMouseLeave={plugin.current.reset}
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+          >
+            <CarouselContent className="-ml-4 md:-ml-6">
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem key={index} className="pl-4 md:pl-6 md:basis-1/2 lg:basis-1/3">
+                  <motion.div variants={itemVariants} className="h-full">
+                    <Card className="h-full glass-card border-white/5 bg-white/[0.02] backdrop-blur-xl group hover:border-primary/30 transition-all duration-500 overflow-hidden relative">
+                      {/* Hover Glow */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      
+                      <CardContent className="p-8 flex flex-col h-full relative z-10">
+                        {/* Quote & Stars */}
+                        <div className="flex justify-between items-start mb-6">
+                          <div className="p-3 rounded-xl bg-primary/10">
+                            <Quote className="h-6 w-6 text-primary" />
                           </div>
+                          <div className="flex gap-1">
+                            {[...Array(testimonial.rating)].map((_, i) => (
+                              <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Quote Text */}
+                        <div className="flex-grow mb-8">
+                          <p className="text-lg text-white/90 leading-relaxed font-medium italic">
+                            "{testimonial.quote}"
+                          </p>
+                        </div>
+
+                        {/* Author Info */}
+                        <div className="flex items-center gap-4 pt-6 border-t border-white/5">
+                          <Avatar className="h-12 w-12 border-2 border-primary/20">
+                            <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
+                            <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
+                          </Avatar>
+                          <div className="space-y-0.5">
+                            <p className="font-bold text-white group-hover:text-primary transition-colors">
+                              {testimonial.name}
+                            </p>
+                            <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">
+                              {testimonial.title}
+                            </p>
+                          </div>
+                        </div>
                       </CardContent>
-                  </Card>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="hidden lg:inline-flex" />
-          <CarouselNext className="hidden lg:inline-flex" />
-        </Carousel>
+                    </Card>
+                  </motion.div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="hidden lg:flex justify-center gap-4 mt-12">
+              <CarouselPrevious className="static translate-y-0 h-12 w-12 border-white/10 bg-white/5 hover:bg-white/10 hover:text-primary" />
+              <CarouselNext className="static translate-y-0 h-12 w-12 border-white/10 bg-white/5 hover:bg-white/10 hover:text-primary" />
+            </div>
+          </Carousel>
+        </motion.div>
       </div>
     </section>
   );
