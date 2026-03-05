@@ -55,7 +55,9 @@ export function HeroSection() {
 
   return (
     <section id="home" className="relative w-full min-h-screen flex items-center pt-24 pb-16 overflow-hidden bg-[#050506]">
-      {/* 1. Tech Background Texture */}
+      {/* 1. LAYERED BACKGROUND SYSTEM */}
+      
+      {/* Texture Layer */}
       {heroBg && (
         <div className="absolute inset-0 z-0">
           <Image
@@ -63,15 +65,80 @@ export function HeroSection() {
             alt={heroBg.description}
             fill
             priority
-            className="object-cover opacity-40 mix-blend-overlay grayscale"
+            className="object-cover opacity-30 mix-blend-overlay grayscale"
             data-ai-hint={heroBg.imageHint}
           />
-          {/* Deep Cinematic Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#050506] via-[#050506]/95 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050506] via-transparent to-[#050506]/90" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050506] via-[#050506]/90 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050506] via-transparent to-[#050506]/80" />
         </div>
       )}
 
+      {/* Global Digital Sun Energy Core (Background Layer) */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full flex items-center justify-center">
+            
+            {/* Massive Radial Glow */}
+            <motion.div 
+              animate={{ 
+                scale: [1, 1.15, 1],
+                opacity: [0.3, 0.45, 0.3] 
+              }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute w-[80vw] h-[80vw] bg-primary/10 rounded-full blur-[160px]" 
+            />
+            
+            {/* Primary Energy Core */}
+            <motion.div 
+              animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.7, 0.5] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute w-[40vw] h-[40vw] bg-primary/20 rounded-full blur-[100px]" 
+            />
+
+            {/* Rotating Tech Rings */}
+            <motion.div 
+              animate={{ rotate: 360 }}
+              transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+              className="absolute w-[60vw] h-[60vw] max-w-[1000px] max-h-[1000px]"
+            >
+              <svg viewBox="0 0 100 100" className="w-full h-full opacity-20">
+                <circle cx="50" cy="50" r="48" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.1" strokeDasharray="1 3" />
+                <circle cx="50" cy="50" r="42" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.05" strokeDasharray="5 15" />
+              </svg>
+            </motion.div>
+
+            <motion.div 
+              animate={{ rotate: -360 }}
+              transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+              className="absolute w-[50vw] h-[50vw] max-w-[800px] max-h-[800px]"
+            >
+              <svg viewBox="0 0 100 100" className="w-full h-full opacity-15">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.2" strokeDasharray="10 20" />
+                <circle cx="50" cy="5" r="1" fill="hsl(var(--primary))" className="drop-shadow-[0_0_8px_hsl(var(--primary))]" />
+              </svg>
+            </motion.div>
+
+            {/* Floating Energy Particles */}
+            {[...Array(12)].map((_, i) => (
+              <motion.div
+                key={`solar-particle-${i}`}
+                className="absolute w-1.5 h-1.5 bg-primary/40 rounded-full blur-[1px]"
+                animate={{
+                  x: [Math.cos(i) * 300, Math.cos(i + 6.28) * 300],
+                  y: [Math.sin(i) * 300, Math.sin(i + 6.28) * 300],
+                  opacity: [0.1, 0.4, 0.1],
+                  scale: [0.5, 1.5, 0.5],
+                }}
+                transition={{
+                  duration: 15 + i * 2,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              />
+            ))}
+        </div>
+      </div>
+
+      {/* 2. CONTENT LAYER (Interactive) */}
       <div className="relative z-10 container mx-auto px-6 lg:px-12">
         <MotionDiv
           className="grid lg:grid-cols-5 gap-12 lg:gap-20 items-center max-w-7xl mx-auto"
@@ -99,7 +166,7 @@ export function HeroSection() {
             </MotionDiv>
 
             <MotionDiv variants={textVariants} className="flex flex-wrap items-center gap-6 pt-4">
-              <Button size="lg" className="h-14 px-10 text-sm font-bold rounded-xl transition-all bg-gradient-to-r from-primary to-primary/80 text-primary-foreground hover:bg-primary/90 shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:shadow-[0_0_40px_rgba(249,115,22,0.5)] active:scale-95 uppercase tracking-widest" asChild>
+              <Button size="lg" className="h-14 px-10 text-sm font-bold rounded-xl transition-all bg-gradient-to-r from-primary to-primary/80 text-primary-foreground hover:bg-primary/90 shadow-[0_0_30px_rgba(249,115,22,0.4)] hover:shadow-[0_0_50px_rgba(249,115,22,0.6)] active:scale-95 uppercase tracking-widest" asChild>
                 <Link href="#contact">
                   Start Project
                 </Link>
@@ -113,81 +180,22 @@ export function HeroSection() {
             </MotionDiv>
           </div>
 
-          {/* Right Content: The Digital Sun Core + Powered Cards */}
+          {/* Right Content: Powered Glass Cards */}
           <div className="lg:col-span-2 relative flex flex-col gap-6 items-center lg:items-end">
-            
-            {/* THE DIGITAL SUN (Background of the stack) */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[160%] h-[160%] -z-10 pointer-events-none">
-              
-              {/* Energy Core */}
-              <motion.div 
-                animate={{ scale: [1, 1.1, 1], opacity: [0.4, 0.6, 0.4] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] h-[50%] bg-primary/30 rounded-full blur-[100px]" 
-              />
-              
-              {/* Rotating Ring 1 - Outer Dashed */}
-              <motion.div 
-                animate={{ rotate: 360 }}
-                transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 flex items-center justify-center"
-              >
-                <svg viewBox="0 0 100 100" className="w-full h-full opacity-20">
-                  <circle cx="50" cy="50" r="48" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.2" strokeDasharray="2 4" />
-                </svg>
-              </motion.div>
-
-              {/* Rotating Ring 2 - Inner Solid/Dot */}
-              <motion.div 
-                animate={{ rotate: -360 }}
-                transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-[15%] flex items-center justify-center"
-              >
-                <svg viewBox="0 0 100 100" className="w-full h-full opacity-30">
-                  <circle cx="50" cy="50" r="48" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.5" strokeDasharray="10 20" />
-                  <circle cx="50" cy="2" r="1.5" fill="hsl(var(--primary))" />
-                </svg>
-              </motion.div>
-
-              {/* Orbiting Solar Particles */}
-              {[...Array(8)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="absolute w-1.5 h-1.5 bg-primary/40 rounded-full blur-[1px]"
-                  style={{
-                    left: "50%",
-                    top: "50%",
-                  }}
-                  animate={{
-                    x: [Math.cos(i) * 120, Math.cos(i + 6.28) * 120],
-                    y: [Math.sin(i) * 120, Math.sin(i + 6.28) * 120],
-                    opacity: [0.2, 0.6, 0.2],
-                    scale: [0.8, 1.2, 0.8],
-                  }}
-                  transition={{
-                    duration: 15 + i * 2,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                />
-              ))}
-            </div>
-
-            {/* Powered Service Cards */}
             {services.map((service, i) => (
               <motion.div
                 key={service.label}
                 custom={i}
                 variants={glassCardVariants}
                 animate={{ 
-                  y: [0, -8, 0],
+                  y: [0, -10, 0],
                 }}
                 transition={{
                   y: {
-                    duration: 4,
+                    duration: 5,
                     repeat: Infinity,
                     ease: "easeInOut",
-                    delay: i * 0.5
+                    delay: i * 0.7
                   }
                 }}
                 whileHover={{ 
@@ -197,12 +205,12 @@ export function HeroSection() {
                 }}
                 className="w-full max-w-sm group cursor-default"
               >
-                <div className="relative p-7 rounded-[2.5rem] border border-white/10 bg-white/[0.03] backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.4)] overflow-hidden transition-all duration-500 group-hover:border-primary/40 group-hover:shadow-[0_0_30px_rgba(249,115,22,0.15)]">
+                <div className="relative p-7 rounded-[2.5rem] border border-white/10 bg-white/[0.04] backdrop-blur-3xl shadow-[0_25px_60px_rgba(0,0,0,0.5)] overflow-hidden transition-all duration-500 group-hover:border-primary/40 group-hover:shadow-[0_0_40px_rgba(249,115,22,0.2)]">
                   {/* Internal Glow Effect */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                   
                   <div className="relative flex items-center gap-6">
-                    <div className="p-4 rounded-2xl bg-primary/10 border border-primary/20 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-500 shadow-[0_0_15px_rgba(249,115,22,0.1)]">
+                    <div className="p-4 rounded-2xl bg-primary/10 border border-primary/20 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-500 shadow-[0_0_20px_rgba(249,115,22,0.1)]">
                       <service.icon className="h-7 w-7 text-primary filter drop-shadow-[0_0_8px_hsl(var(--primary)/0.5)]" />
                     </div>
                     <div>
@@ -218,7 +226,7 @@ export function HeroSection() {
       </div>
       
       {/* Decorative vertical energy line */}
-      <div className="absolute right-10 top-1/2 -translate-y-1/2 h-80 w-px bg-gradient-to-b from-transparent via-primary/40 to-transparent hidden xl:block" />
+      <div className="absolute right-10 top-1/2 -translate-y-1/2 h-96 w-px bg-gradient-to-b from-transparent via-primary/40 to-transparent hidden xl:block" />
     </section>
   );
 }
