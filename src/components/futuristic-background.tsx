@@ -24,11 +24,11 @@ export function FuturisticBackground() {
         }}
       />
       
-      {/* 2. Soft Gradient Glow behind Headline */}
+      {/* 2. Soft Gradient Glow behind Headline (Requirement 1) */}
       <div className="absolute top-[20%] left-[10%] w-[50%] h-[40%] bg-accent/10 blur-[120px] rounded-full" />
       <div className="absolute top-[15%] left-[5%] w-[40%] h-[30%] bg-primary/5 blur-[100px] rounded-full" />
 
-      {/* 3. Futuristic Rotating Glowing Orb (Digital Sun) */}
+      {/* 3. Futuristic Rotating Glowing Orb (Digital Sun) - Subtle Version */}
       <div className="absolute top-1/2 right-[5%] md:right-[10%] -translate-y-1/2 w-[350px] h-[350px] md:w-[500px] md:h-[500px] pointer-events-none">
         {/* Core Glows */}
         <motion.div 
@@ -139,7 +139,7 @@ export function FuturisticBackground() {
         </svg>
       </div>
 
-      {/* 4. AI Network Connections & Floating Data Lines */}
+      {/* 4. AI Network Connections & Floating Data Lines (Requirement 3) */}
       <svg className="absolute inset-0 w-full h-full opacity-20">
         <defs>
           <linearGradient id="flow-orange" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -178,7 +178,7 @@ export function FuturisticBackground() {
         ))}
       </svg>
 
-      {/* 5. Floating Glowing Particles */}
+      {/* 5. Floating Glowing Particles (Requirement 2) */}
       <div className="absolute inset-0">
         {[...Array(20)].map((_, i) => (
           <motion.div
@@ -187,12 +187,18 @@ export function FuturisticBackground() {
             style={{
               width: Math.random() * 2 + 1 + "px",
               height: Math.random() * 2 + 1 + "px",
-              backgroundColor: i % 2 === 0 ? "hsl(var(--accent))" : "hsl(var(--primary))",
+              backgroundColor: i % 3 === 0 
+                ? "hsl(var(--accent))" 
+                : i % 3 === 1 
+                  ? "hsl(var(--primary))" 
+                  : "#ffffff",
               left: Math.random() * 100 + "%",
               top: Math.random() * 100 + "%",
-              boxShadow: i % 2 === 0 
+              boxShadow: i % 3 === 0 
                 ? "0 0 8px hsl(var(--accent) / 0.8)" 
-                : "0 0 8px hsl(var(--primary) / 0.8)",
+                : i % 3 === 1 
+                  ? "0 0 8px hsl(var(--primary) / 0.8)" 
+                  : "0 0 8px rgba(255,255,255,0.4)",
             }}
             animate={{
               y: [0, -80, 0],
