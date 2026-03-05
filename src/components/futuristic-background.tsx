@@ -16,121 +16,109 @@ export function FuturisticBackground() {
     <div className="absolute inset-0 overflow-hidden bg-[#020617] -z-10">
       {/* The Tech Grid Layer */}
       <div 
-        className="absolute inset-0 opacity-[0.2]"
+        className="absolute inset-0 opacity-[0.15]"
         style={{
           backgroundImage: `linear-gradient(to right, #1e293b 1px, transparent 1px), linear-gradient(to bottom, #1e293b 1px, transparent 1px)`,
-          backgroundSize: '50px 50px',
-          maskImage: 'radial-gradient(ellipse at center, black, transparent 90%)'
+          backgroundSize: '60px 60px',
+          maskImage: 'radial-gradient(ellipse at center, black, transparent 80%)'
         }}
       />
 
-      {/* Glowing Ambient Orbs - Dynamic Depth */}
-      <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-primary/20 blur-[150px] animate-pulse" />
-      <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-accent/20 blur-[150px] animate-pulse" style={{ animationDelay: '1s' }} />
-      <div className="absolute top-[30%] right-[10%] w-[30%] h-[30%] rounded-full bg-primary/5 blur-[100px]" />
-
-      {/* Moving Light Lines (Data Streams) */}
-      <svg className="absolute inset-0 w-full h-full">
+      {/* The Digital Sun - Arka */}
+      <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80%] h-[60%] rounded-full bg-primary/20 blur-[120px] pointer-events-none" />
+      <div className="absolute top-[-5%] left-1/2 -translate-x-1/2 w-[40%] h-[30%] rounded-full bg-primary/30 blur-[80px] pointer-events-none animate-pulse" />
+      
+      {/* Radiant Tech Rays (Data Network Lines) */}
+      <svg className="absolute inset-0 w-full h-full opacity-40">
         <defs>
-          <linearGradient id="line-gradient-primary" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="transparent" />
-            <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.6" />
-            <stop offset="100%" stopColor="transparent" />
+          <linearGradient id="ray-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.8" />
+            <stop offset="100%" stopColor="transparent" stopOpacity="0" />
           </linearGradient>
-          <linearGradient id="line-gradient-accent" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="transparent" />
-            <stop offset="50%" stopColor="hsl(var(--accent))" stopOpacity="0.4" />
-            <stop offset="100%" stopColor="transparent" />
+          <linearGradient id="blue-ray-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="hsl(var(--accent))" stopOpacity="0.4" />
+            <stop offset="100%" stopColor="transparent" stopOpacity="0" />
           </linearGradient>
         </defs>
         
-        {[...Array(8)].map((_, i) => (
-          <motion.path
-            key={`stream-${i}`}
-            d={`M ${-500} ${100 + i * 180} L ${2500} ${100 + i * 180 + 150}`}
-            stroke={i % 2 === 0 ? "url(#line-gradient-primary)" : "url(#line-gradient-accent)"}
-            strokeWidth="1.5"
-            fill="none"
-            initial={{ pathLength: 0, opacity: 0, x: -200 }}
-            animate={{ 
-              pathLength: [0, 1, 0],
-              opacity: [0, 0.4, 0],
-              x: [0, 300, 600]
-            }}
-            transition={{
-              duration: 12 + i * 3,
-              repeat: Infinity,
-              ease: "linear",
-              delay: i * 2
-            }}
-          />
-        ))}
+        {[...Array(12)].map((_, i) => {
+          const angle = (i * 30) * (Math.PI / 180);
+          const x2 = 50 + Math.cos(angle) * 100 + "%";
+          const y2 = 0 + Math.sin(angle) * 100 + "%";
+          
+          return (
+            <motion.line
+              key={`ray-${i}`}
+              x1="50%"
+              y1="0%"
+              x2={x2}
+              y2={y2}
+              stroke={i % 3 === 0 ? "url(#blue-ray-gradient)" : "url(#ray-gradient)"}
+              strokeWidth="1"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ 
+                pathLength: [0, 0.8, 0],
+                opacity: [0, 0.5, 0]
+              }}
+              transition={{
+                duration: 8 + i,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 0.5
+              }}
+            />
+          );
+        })}
       </svg>
 
-      {/* High-Tech Particles */}
+      {/* Floating Golden Particles */}
       <div className="absolute inset-0">
-        {[...Array(40)].map((_, i) => (
+        {[...Array(30)].map((_, i) => (
           <motion.div
-            key={`p-${i}`}
+            key={`gold-p-${i}`}
             className="absolute rounded-full"
             style={{
-              width: Math.random() * 4 + 1 + "px",
-              height: Math.random() * 4 + 1 + "px",
-              backgroundColor: i % 2 === 0 ? "hsl(var(--primary))" : "hsl(var(--accent))",
+              width: Math.random() * 3 + 1 + "px",
+              height: Math.random() * 3 + 1 + "px",
+              backgroundColor: i % 4 === 0 ? "hsl(var(--accent))" : "#fbbf24", // Gold/Blue mix
               left: Math.random() * 100 + "%",
               top: Math.random() * 100 + "%",
-              boxShadow: i % 2 === 0 
-                ? "0 0 12px hsl(var(--primary) / 0.8)" 
-                : "0 0 12px hsl(var(--accent) / 0.8)"
+              boxShadow: i % 4 === 0 
+                ? "0 0 10px hsl(var(--accent) / 0.6)" 
+                : "0 0 10px #fbbf24",
             }}
             animate={{
-              y: [0, -100, 0],
-              x: [0, (Math.random() - 0.5) * 50, 0],
-              opacity: [0.2, 0.8, 0.2],
-              scale: [1, 1.5, 1]
+              y: [0, -80, 0],
+              opacity: [0.1, 0.7, 0.1],
+              scale: [1, 1.2, 1]
             }}
             transition={{
-              duration: 7 + Math.random() * 8,
+              duration: 10 + Math.random() * 10,
               repeat: Infinity,
-              ease: "easeInOut",
-              delay: Math.random() * 10
+              ease: "linear",
+              delay: Math.random() * 5
             }}
           />
         ))}
       </div>
 
-      {/* Subtle AI Connection Nodes */}
-      <svg className="absolute inset-0 w-full h-full opacity-30">
-        {[...Array(5)].map((_, i) => {
-          const cx = 15 + i * 20 + "%";
-          const cy = 20 + (i % 3) * 25 + "%";
-          return (
-            <React.Fragment key={`node-group-${i}`}>
-              <motion.circle
-                cx={cx}
-                cy={cy}
-                r="3"
-                fill="white"
-                animate={{ opacity: [0.1, 0.5, 0.1], scale: [1, 1.3, 1] }}
-                transition={{ duration: 4, repeat: Infinity, delay: i }}
-              />
-              <motion.circle
-                cx={cx}
-                cy={cy}
-                r="8"
-                stroke="white"
-                strokeWidth="0.5"
-                fill="none"
-                animate={{ scale: [1, 2], opacity: [0.5, 0] }}
-                transition={{ duration: 3, repeat: Infinity, delay: i }}
-              />
-            </React.Fragment>
-          );
-        })}
+      {/* Subtle Digital Connections */}
+      <svg className="absolute inset-0 w-full h-full opacity-20">
+        {[...Array(6)].map((_, i) => (
+          <motion.circle
+            key={`node-${i}`}
+            cx={20 + i * 15 + "%"}
+            cy={30 + (i % 2) * 40 + "%"}
+            r="1.5"
+            fill="white"
+            animate={{ opacity: [0.2, 0.5, 0.2] }}
+            transition={{ duration: 3, repeat: Infinity, delay: i }}
+          />
+        ))}
       </svg>
       
       {/* Dark Readability Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/60 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-background/70 to-background" />
     </div>
   );
 }
