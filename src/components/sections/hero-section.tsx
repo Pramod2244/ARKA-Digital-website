@@ -99,7 +99,7 @@ export function HeroSection() {
             </MotionDiv>
 
             <MotionDiv variants={textVariants} className="flex flex-wrap items-center gap-6 pt-4">
-              <Button size="lg" className="h-14 px-10 text-sm font-bold rounded-xl transition-all bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:shadow-[0_0_40px_rgba(249,115,22,0.5)] active:scale-95 uppercase tracking-widest" asChild>
+              <Button size="lg" className="h-14 px-10 text-sm font-bold rounded-xl transition-all bg-gradient-to-r from-primary to-primary/80 text-primary-foreground hover:bg-primary/90 shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:shadow-[0_0_40px_rgba(249,115,22,0.5)] active:scale-95 uppercase tracking-widest" asChild>
                 <Link href="#contact">
                   Start Project
                 </Link>

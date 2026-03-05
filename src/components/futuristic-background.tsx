@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -24,26 +23,32 @@ export function FuturisticBackground() {
         <div className="absolute inset-0 bg-grid-white/[0.2]" style={{ backgroundSize: '60px 60px' }} />
       </div>
 
-      {/* 3. Floating Particles (Mixed Neutral and Orange) */}
+      {/* 3. Floating Particles (Mixed Neutral, Blue, and Orange) */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(15)].map((_, i) => (
+        {[...Array(25)].map((_, i) => (
           <motion.div
             key={`particle-${i}`}
             className="absolute rounded-full"
             style={{
               width: Math.random() * 3 + 1,
               height: Math.random() * 3 + 1,
-              background: i % 3 === 0 ? 'hsl(var(--primary))' : 'rgba(255,255,255,0.4)',
+              background: i % 4 === 0 
+                ? 'hsl(var(--primary))' 
+                : i % 4 === 1 
+                ? 'hsl(var(--accent))' 
+                : 'rgba(255,255,255,0.4)',
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               opacity: Math.random() * 0.5 + 0.1,
+              filter: 'blur(1px)',
             }}
             animate={{
               y: [0, -40, 0],
               opacity: [0.2, 0.6, 0.2],
+              scale: [1, 1.2, 1],
             }}
             transition={{
-              duration: 5 + Math.random() * 5,
+              duration: 5 + Math.random() * 7,
               repeat: Infinity,
               ease: "easeInOut",
               delay: Math.random() * 5,
