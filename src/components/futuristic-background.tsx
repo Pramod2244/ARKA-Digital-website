@@ -13,84 +13,56 @@ export function FuturisticBackground() {
   if (!mounted) return null;
 
   return (
-    <div className="absolute inset-0 overflow-hidden bg-[#020617] -z-20">
-      {/* 1. Cinematic Lighting Layer - Extremely Subtle for Minimalism */}
-      <div className="absolute top-[10%] left-[5%] w-[60%] h-[50%] bg-primary/2 blur-[140px] rounded-full opacity-40" />
-      <div className="absolute bottom-[10%] right-[5%] w-[50%] h-[40%] bg-accent/2 blur-[120px] rounded-full opacity-30" />
+    <div className="absolute inset-0 overflow-hidden bg-[#0a0a0b] -z-20">
+      {/* 1. Deep Liquid Metal Base Layers */}
+      <div className="absolute top-[-10%] right-[-10%] w-[70%] h-[70%] bg-primary/5 blur-[160px] rounded-full opacity-30" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] bg-accent/5 blur-[140px] rounded-full opacity-20" />
 
-      {/* 2. Precise Tech Grid - Very Faint Texture */}
-      <div 
-        className="absolute inset-0 opacity-[0.02]"
-        style={{
-          backgroundImage: `linear-gradient(to right, #1e293b 1px, transparent 1px), linear-gradient(to bottom, #1e293b 1px, transparent 1px)`,
-          backgroundSize: '80px 80px',
-          maskImage: 'radial-gradient(circle at center, black, transparent 90%)'
-        }}
-      />
-      
-      {/* 3. Floating Data Streams (Cinematic Motion) - Reduced count for minimalism */}
-      <svg className="absolute inset-0 w-full h-full opacity-10">
-        <defs>
-          <linearGradient id="stream-primary" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="transparent" stopOpacity="0" />
-            <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.2" />
-            <stop offset="100%" stopColor="transparent" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-        
-        {[...Array(5)].map((_, i) => (
-          <motion.line
-            key={`stream-${i}`}
-            x1={`${20 + i * 15}%`}
-            y1="-20%"
-            x2={`${20 + i * 15}%`}
-            y2="120%"
-            stroke="url(#stream-primary)"
-            strokeWidth="0.5"
-            animate={{ 
-              opacity: [0, 0.3, 0],
-              y: ["-100%", "100%"]
-            }}
-            transition={{
-              duration: 25 + Math.random() * 15,
-              repeat: Infinity,
-              ease: "linear",
-              delay: i * 4
-            }}
-          />
-        ))}
-      </svg>
-
-      {/* 4. Neural Particles - Minimalist density */}
-      <div className="absolute inset-0">
-        {[...Array(15)].map((_, i) => (
+      {/* 2. Abstract Liquid Blobs - Simulated 3D Depth */}
+      <div className="absolute inset-0 pointer-events-none opacity-40">
+        {[...Array(3)].map((_, i) => (
           <motion.div
-            key={`particle-${i}`}
-            className="absolute rounded-full"
+            key={`blob-${i}`}
+            className="absolute rounded-full mix-blend-screen filter blur-[80px]"
             style={{
-              width: "1px",
-              height: "1px",
-              backgroundColor: i % 2 === 0 ? "hsl(var(--primary))" : "rgba(255,255,255,0.2)",
-              left: Math.random() * 100 + "%",
-              top: Math.random() * 100 + "%",
-              boxShadow: i % 2 === 0 ? "0 0 8px hsl(var(--primary) / 0.4)" : "none",
+              width: 400 + i * 100,
+              height: 400 + i * 100,
+              background: i === 0 ? 'radial-gradient(circle, rgba(249,115,22,0.1) 0%, transparent 70%)' : 'radial-gradient(circle, rgba(30,41,59,0.2) 0%, transparent 70%)',
+              left: `${10 + i * 20}%`,
+              top: `${20 + i * 15}%`,
             }}
             animate={{
-              y: [0, -80, 0],
-              opacity: [0, 0.4, 0],
+              x: [0, 50, -30, 0],
+              y: [0, -40, 60, 0],
+              scale: [1, 1.1, 0.9, 1],
             }}
             transition={{
-              duration: 20 + Math.random() * 10,
+              duration: 25 + i * 5,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: Math.random() * 5
             }}
           />
         ))}
       </div>
+
+      {/* 3. Subtle Liquid Filter Texture - feTurbulence for organic feel */}
+      <svg className="absolute inset-0 w-full h-full opacity-[0.03] pointer-events-none">
+        <filter id="liquidNoise">
+          <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="3" stitchTiles="stitch" />
+        </filter>
+        <rect width="100%" height="100%" filter="url(#liquidNoise)" />
+      </svg>
       
+      {/* 4. Fine Grain Overlay */}
+      <div 
+        className="absolute inset-0 opacity-[0.02] mix-blend-overlay pointer-events-none"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        }}
+      />
+
       {/* 5. Depth and Readability Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background opacity-95" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background opacity-90" />
     </div>
   );
 }

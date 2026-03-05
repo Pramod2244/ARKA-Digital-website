@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MotionDiv } from "@/components/motion-provider";
-import { Rocket, Cpu, ShieldCheck, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { FuturisticBackground } from "../futuristic-background";
 import { motion } from "framer-motion";
 
@@ -18,144 +18,114 @@ const containerVariants = {
 };
 
 const textVariants = {
-  hidden: { x: -30, opacity: 0 },
+  hidden: { x: -40, opacity: 0 },
   visible: {
     x: 0,
     opacity: 1,
     transition: {
-      duration: 0.8,
+      duration: 1,
       ease: [0.22, 1, 0.36, 1],
     },
   },
 };
 
-const cardVariants = {
-  hidden: { x: 50, opacity: 0 },
-  visible: (i: number) => ({
-    x: 0,
-    opacity: 1,
+const liquidShapeVariants = {
+  animate: {
+    scale: [1, 1.1, 0.9, 1],
+    rotate: [0, 90, 180, 360],
+    borderRadius: ["40% 60% 70% 30% / 40% 50% 60% 50%", "60% 40% 30% 70% / 60% 30% 70% 40%", "40% 60% 70% 30% / 40% 50% 60% 50%"],
     transition: {
-      delay: 0.4 + i * 0.1,
-      duration: 0.8,
-      ease: "easeOut",
-    },
-  }),
+      duration: 20,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  }
 };
-
-const stackItems = [
-  {
-    icon: Rocket,
-    label: "Scalable Dev",
-    description: "High-performance web ecosystems",
-    color: "hsl(var(--primary))",
-  },
-  {
-    icon: Cpu,
-    label: "AI Automation",
-    description: "Intelligent agentic workflows",
-    color: "hsl(var(--accent))",
-  },
-  {
-    icon: ShieldCheck,
-    label: "Secure Cloud",
-    description: "Fortified digital infrastructure",
-    color: "hsl(var(--primary))",
-  },
-];
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative w-full min-h-screen flex items-center pt-20 pb-16 overflow-hidden bg-[#0a0a0b]">
+    <section id="home" className="relative w-full min-h-screen flex items-center pt-24 pb-20 overflow-hidden bg-[#0a0a0b]">
       <FuturisticBackground />
 
       <div className="relative z-10 container mx-auto px-6 lg:px-12">
         <MotionDiv
-          className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center max-w-7xl mx-auto"
+          className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          {/* Left Content: Minimalist Typography */}
-          <div className="space-y-12">
-            <MotionDiv variants={textVariants} className="relative pl-8 md:pl-12 border-l border-primary/30">
-              {/* Subtle Orange Accent Line */}
-              <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-full shadow-[0_0_15px_hsl(var(--primary)/0.5)]" />
-              
-              <div className="space-y-6">
-                <h1 className="font-headline tracking-tight leading-[1.1] text-white text-5xl md:text-6xl lg:text-8xl font-black">
-                  Next-Gen <br />
-                  <span className="text-outline-primary block mt-2">Digital</span>
-                  <span className="text-primary text-glow-neon block -mt-4 lg:-mt-8 opacity-90">Experiences</span>
-                </h1>
-                
-                <p className="text-lg md:text-xl text-muted-foreground/80 max-w-[500px] leading-relaxed font-medium">
-                  We engineer minimalist, high-performance web applications and intelligent AI solutions for forward-thinking enterprises.
-                </p>
+          {/* Left Content: Bold Typography & Subtext */}
+          <div className="space-y-10">
+            <MotionDiv variants={textVariants} className="space-y-6">
+              <div className="inline-block px-4 py-1.5 border border-primary/30 rounded-full bg-primary/5 mb-4">
+                <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-primary">Digital Agency</span>
               </div>
+              
+              <h1 className="font-headline tracking-tighter leading-[0.95] text-white text-6xl md:text-7xl lg:text-9xl font-black">
+                ARKA <br />
+                <span className="text-primary text-glow-neon">DIGITAL</span>
+              </h1>
+              
+              <p className="text-xs md:text-sm uppercase tracking-[0.5em] text-muted-foreground/60 font-bold">
+                Web Apps <span className="text-primary/40 mx-2">•</span> UI/UX <span className="text-primary/40 mx-2">•</span> Branding
+              </p>
             </MotionDiv>
 
-            <MotionDiv variants={textVariants} className="flex flex-wrap items-center gap-6 pl-8 md:pl-12">
-              <Button size="lg" className="h-14 px-10 text-sm font-bold rounded-none transition-all hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(249,115,22,0.3)] active:scale-95 bg-primary text-primary-foreground border-none uppercase tracking-widest" asChild>
+            <MotionDiv variants={textVariants} className="flex flex-wrap items-center gap-8">
+              <Button size="lg" className="h-16 px-10 text-xs font-bold rounded-none transition-all bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_30px_rgba(249,115,22,0.4)] hover:shadow-[0_0_50px_rgba(249,115,22,0.6)] active:scale-95 uppercase tracking-[0.2em]" asChild>
                 <Link href="#contact">
-                  Start Project
+                  Get in Touch
                 </Link>
               </Button>
-              <Button size="lg" variant="ghost" className="h-14 px-6 text-sm font-bold rounded-none hover:bg-white/5 transition-all flex items-center gap-2 text-white group uppercase tracking-widest" asChild>
+              <Button size="lg" variant="ghost" className="h-16 px-6 text-xs font-bold rounded-none hover:bg-white/5 transition-all flex items-center gap-3 text-white group uppercase tracking-[0.2em]" asChild>
                 <Link href="#services">
-                  Our Work
+                  Portfolio
                   <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
             </MotionDiv>
           </div>
 
-          {/* Right Content: Glass-morphism Card Stack */}
-          <div className="relative flex flex-col gap-6 items-center lg:items-end pr-0 lg:pr-12">
-            {stackItems.map((item, i) => (
-              <motion.div
-                key={item.label}
-                custom={i}
-                variants={cardVariants}
-                initial="hidden"
-                animate="visible"
-                whileHover={{ x: -10, scale: 1.02 }}
-                className="group relative w-full max-w-[360px] glass-card p-6 flex items-center gap-6 transition-all duration-500 hover:border-primary/50 hover:bg-white/[0.06]"
-              >
-                {/* Glow behind card */}
-                <div className="absolute -inset-1 bg-primary/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                
-                <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center border border-white/10 bg-white/[0.05] rounded-xl transition-colors group-hover:border-primary/50">
-                  <item.icon className="w-7 h-7 text-white/70 group-hover:text-primary transition-colors" strokeWidth={1.5} />
-                </div>
-                <div className="space-y-1 relative z-10">
-                  <h3 className="font-headline text-sm font-bold text-white uppercase tracking-widest">{item.label}</h3>
-                  <p className="text-xs text-muted-foreground font-medium">{item.description}</p>
-                </div>
-                
-                {/* Subtle Floating Animation */}
-                <motion.div
-                  className="absolute inset-0 pointer-events-none"
-                  animate={{ y: [0, -5, 0] }}
-                  transition={{ duration: 4 + i, repeat: Infinity, ease: "easeInOut" }}
+          {/* Right Content: 3D Abstract Liquid Metal Shape */}
+          <div className="relative flex items-center justify-center lg:justify-end">
+            <motion.div
+              variants={liquidShapeVariants}
+              animate="animate"
+              className="relative w-[300px] h-[300px] md:w-[450px] md:h-[450px] bg-gradient-to-br from-[#1a1a1c] to-[#0a0a0b] shadow-[inset_0_0_100px_rgba(0,0,0,0.8),0_0_120px_rgba(249,115,22,0.15)] overflow-hidden"
+              style={{
+                borderRadius: "40% 60% 70% 30% / 40% 50% 60% 50%",
+                border: "1px solid rgba(255,255,255,0.05)"
+              }}
+            >
+              {/* Internal Glowing Core */}
+              <motion.div 
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 bg-primary/20 rounded-full blur-[80px]"
+                animate={{
+                  opacity: [0.3, 0.6, 0.3],
+                  scale: [1, 1.2, 1]
+                }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              />
+              
+              {/* Highlight Lines simulating liquid surface */}
+              <svg viewBox="0 0 450 450" className="absolute inset-0 w-full h-full opacity-30 stroke-primary/40 fill-none">
+                <motion.path
+                  d="M100,100 Q225,50 350,100 T450,300"
+                  strokeWidth="1"
+                  animate={{ d: ["M100,100 Q225,50 350,100 T450,300", "M100,150 Q225,250 350,150 T450,100", "M100,100 Q225,50 350,100 T450,300"] }}
+                  transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
                 />
-              </motion.div>
-            ))}
+              </svg>
+            </motion.div>
             
-            {/* Minimalist Background Texture Overlay */}
-            <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-10 pointer-events-none">
-                <svg viewBox="0 0 200 200" className="w-full h-full stroke-white/20" fill="none">
-                    <circle cx="100" cy="100" r="80" strokeWidth="0.5" strokeDasharray="1 4" />
-                    <circle cx="100" cy="100" r="60" strokeWidth="0.5" strokeDasharray="1 8" />
-                </svg>
-            </div>
+            {/* Ambient Background Glow for the shape */}
+            <div className="absolute -z-10 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px] opacity-40" />
           </div>
         </MotionDiv>
       </div>
       
-      {/* Decorative Corner Element */}
-      <div className="absolute bottom-12 right-12 hidden lg:block opacity-20">
-        <div className="w-24 h-24 border-r border-b border-primary/40" />
-      </div>
+      {/* Visual Accent - Sidebar vertical line */}
+      <div className="absolute left-12 top-1/2 -translate-y-1/2 h-64 w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent hidden xl:block" />
     </section>
   );
 }
