@@ -42,7 +42,7 @@ const cardVariants = {
   }),
 };
 
-const iconStack = [
+const stackItems = [
   {
     icon: Rocket,
     label: "Scalable Dev",
@@ -65,7 +65,7 @@ const iconStack = [
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative w-full min-h-screen flex items-center pt-20 pb-16 overflow-hidden">
+    <section id="home" className="relative w-full min-h-screen flex items-center pt-20 pb-16 overflow-hidden bg-[#0a0a0b]">
       <FuturisticBackground />
 
       <div className="relative z-10 container mx-auto px-6 lg:px-12">
@@ -82,10 +82,10 @@ export function HeroSection() {
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-full shadow-[0_0_15px_hsl(var(--primary)/0.5)]" />
               
               <div className="space-y-6">
-                <h1 className="font-headline tracking-tight leading-[1.1] text-white text-5xl md:text-6xl lg:text-7xl font-black">
+                <h1 className="font-headline tracking-tight leading-[1.1] text-white text-5xl md:text-6xl lg:text-8xl font-black">
                   Next-Gen <br />
-                  <span className="text-primary/90 text-glow-neon">Digital</span> <br />
-                  Experiences
+                  <span className="text-outline-primary block mt-2">Digital</span>
+                  <span className="text-primary text-glow-neon block -mt-4 lg:-mt-8 opacity-90">Experiences</span>
                 </h1>
                 
                 <p className="text-lg md:text-xl text-muted-foreground/80 max-w-[500px] leading-relaxed font-medium">
@@ -109,9 +109,9 @@ export function HeroSection() {
             </MotionDiv>
           </div>
 
-          {/* Right Content: Vertical Floating Icon Stack */}
+          {/* Right Content: Glass-morphism Card Stack */}
           <div className="relative flex flex-col gap-6 items-center lg:items-end pr-0 lg:pr-12">
-            {iconStack.map((item, i) => (
+            {stackItems.map((item, i) => (
               <motion.div
                 key={item.label}
                 custom={i}
@@ -119,12 +119,15 @@ export function HeroSection() {
                 initial="hidden"
                 animate="visible"
                 whileHover={{ x: -10, scale: 1.02 }}
-                className="group relative w-full max-w-[340px] bg-white/[0.02] border border-white/10 backdrop-blur-sm p-6 flex items-center gap-6 transition-colors hover:border-primary/30 hover:bg-white/[0.04]"
+                className="group relative w-full max-w-[360px] glass-card p-6 flex items-center gap-6 transition-all duration-500 hover:border-primary/50 hover:bg-white/[0.06]"
               >
-                <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center border border-white/10 bg-white/[0.02] transition-colors group-hover:border-primary/50">
-                  <item.icon className="w-6 h-6 text-white/70 group-hover:text-primary transition-colors" strokeWidth={1} />
+                {/* Glow behind card */}
+                <div className="absolute -inset-1 bg-primary/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                
+                <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center border border-white/10 bg-white/[0.05] rounded-xl transition-colors group-hover:border-primary/50">
+                  <item.icon className="w-7 h-7 text-white/70 group-hover:text-primary transition-colors" strokeWidth={1.5} />
                 </div>
-                <div className="space-y-1">
+                <div className="space-y-1 relative z-10">
                   <h3 className="font-headline text-sm font-bold text-white uppercase tracking-widest">{item.label}</h3>
                   <p className="text-xs text-muted-foreground font-medium">{item.description}</p>
                 </div>
