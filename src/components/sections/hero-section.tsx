@@ -31,9 +31,9 @@ const textVariants = {
 };
 
 const cardVariants = {
-  hidden: { x: 30, opacity: 0 },
+  hidden: { scale: 0.95, opacity: 0 },
   visible: {
-    x: 0,
+    scale: 1,
     opacity: 1,
     transition: {
       duration: 0.8,
@@ -45,51 +45,48 @@ const cardVariants = {
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative w-full min-h-[75vh] md:min-h-[600px] overflow-hidden flex items-center pt-20 pb-12">
+    <section id="home" className="relative w-full min-h-[85vh] md:min-h-[750px] overflow-hidden flex items-center pt-24 pb-16">
       <FuturisticBackground />
 
       <div className="relative z-10 container mx-auto px-4 md:px-6">
         <MotionDiv
-          className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center"
+          className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          <div className="space-y-8 max-w-2xl">
-            <MotionDiv variants={textVariants} className="space-y-5">
+          {/* Left Content */}
+          <div className="space-y-8">
+            <MotionDiv variants={textVariants} className="space-y-6">
               <div className="space-y-3">
-                <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] text-white/40 block mb-1">
-                  We Build
+                <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] text-primary/80 block mb-1">
+                  Established Excellence
                 </span>
-                <h1 className="font-headline tracking-tight leading-[1.15] text-white text-2xl md:text-3xl lg:text-4xl font-black">
-                  <span className="relative inline-block text-primary text-glow-primary">
+                <h1 className="font-headline tracking-tight leading-[1.1] text-white text-3xl md:text-4xl lg:text-5xl font-black">
+                  <span className="relative inline-block text-white">
                     Future-Ready
-                    <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-primary/10 blur-[40px] -z-10 rounded-full" />
+                    <span className="absolute -bottom-2 left-0 w-full h-1 bg-primary/30 rounded-full" />
                   </span>
                   <br />
-                  <span className="relative inline-block text-accent text-glow-accent mt-1">
-                    Digital
-                    <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-accent/10 blur-[30px] -z-10 rounded-full" />
-                  </span>
-                  <span className="block mt-1 text-xl md:text-2xl lg:text-3xl font-bold text-white/90">
-                    Experiences
-                  </span>
+                  <span className="text-primary text-glow-primary">Digital</span>
+                  <br />
+                  <span className="text-white/90">Experiences</span>
                 </h1>
               </div>
               
-              <p className="text-sm md:text-base text-muted-foreground max-w-lg leading-relaxed font-medium">
-                We craft high-performance digital solutions and AI-driven automation designed to scale your business for the next era of technology.
+              <p className="text-sm md:text-base text-muted-foreground max-w-[520px] leading-relaxed font-medium">
+                We design high-performance digital ecosystems and AI-driven solutions that accelerate growth and secure your business's future in the technology era.
               </p>
             </MotionDiv>
 
             <MotionDiv variants={textVariants} className="flex flex-wrap items-center gap-4">
-              <Button size="lg" className="h-12 px-8 text-sm font-bold rounded-full transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(249,115,22,0.4)] active:scale-95 flex items-center gap-2 group bg-primary text-primary-foreground border-none" asChild>
+              <Button size="lg" className="h-12 px-8 text-sm font-bold rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(249,115,22,0.4)] active:scale-95 flex items-center gap-2 group bg-primary text-primary-foreground border-none" asChild>
                 <Link href="#contact">
                   Start Your Project
                   <Rocket className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" className="h-12 px-8 text-sm font-bold rounded-full border-white/10 bg-white/[0.02] backdrop-blur-md hover:bg-white/5 hover:border-white/20 transition-all flex items-center gap-2 group text-white" asChild>
+              <Button size="lg" variant="outline" className="h-12 px-8 text-sm font-bold rounded-full border-white/10 bg-white/[0.03] backdrop-blur-md hover:bg-white/10 hover:border-white/30 transition-all flex items-center gap-2 group text-white" asChild>
                 <Link href="#services">
                   View Our Services
                   <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -98,95 +95,67 @@ export function HeroSection() {
             </MotionDiv>
           </div>
 
-          <MotionDiv variants={cardVariants} className="hidden lg:flex justify-end relative">
-            {/* Anchored Digital Sun Orb */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] pointer-events-none -z-10">
-              {/* Core Glows */}
+          {/* Right Content: Feature Card with Background Sun */}
+          <div className="relative flex justify-center lg:justify-end">
+            {/* The Digital Sun: Positioned BEHIND the card */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[160%] h-[160%] pointer-events-none z-0">
+              {/* Core Radial Glows */}
               <motion.div 
-                className="absolute inset-[15%] bg-primary/20 rounded-full blur-[60px]"
-                animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.7, 0.4] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <motion.div 
-                className="absolute inset-[25%] bg-accent/15 rounded-full blur-[40px]"
-                animate={{ scale: [1.2, 1, 1.2], opacity: [0.3, 0.5, 0.3] }}
+                className="absolute inset-[20%] bg-primary/25 rounded-full blur-[80px]"
+                animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
               />
+              <motion.div 
+                className="absolute inset-[30%] bg-accent/10 rounded-full blur-[60px]"
+                animate={{ scale: [1.2, 1, 1.2], opacity: [0.2, 0.4, 0.2] }}
+                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+              />
 
-              <svg viewBox="0 0 200 200" className="w-full h-full">
-                <defs>
-                  <radialGradient id="sun-core" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.8" />
-                    <stop offset="60%" stopColor="hsl(var(--primary))" stopOpacity="0.2" />
-                    <stop offset="100%" stopColor="hsl(var(--accent))" stopOpacity="0" />
-                  </radialGradient>
-                  <filter id="glow">
-                    <feGaussianBlur stdDeviation="2" result="coloredBlur" />
-                    <feMerge>
-                      <feMergeNode in="coloredBlur" />
-                      <feMergeNode in="SourceGraphic" />
-                    </feMerge>
-                  </filter>
-                </defs>
-
-                {/* Central Core */}
-                <circle cx="100" cy="100" r="35" fill="url(#sun-core)" filter="url(#glow)" />
-
-                {/* Rotating Rings */}
+              <svg viewBox="0 0 200 200" className="w-full h-full opacity-60">
+                {/* Rotating Tech Rings */}
                 <motion.g
                   animate={{ rotate: 360 }}
-                  transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                  transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
                   style={{ originX: "100px", originY: "100px" }}
                 >
                   <circle 
-                    cx="100" cy="100" r="75" 
+                    cx="100" cy="100" r="85" 
                     fill="none" 
                     stroke="hsl(var(--primary))" 
                     strokeWidth="0.5" 
-                    strokeDasharray="10 20 5 15"
-                    opacity="0.3"
+                    strokeDasharray="15 30 5 20"
+                    opacity="0.2"
                   />
                 </motion.g>
 
                 <motion.g
                   animate={{ rotate: -360 }}
-                  transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                  transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
                   style={{ originX: "100px", originY: "100px" }}
                 >
                   <circle 
-                    cx="100" cy="100" r="60" 
+                    cx="100" cy="100" r="70" 
                     fill="none" 
                     stroke="hsl(var(--accent))" 
                     strokeWidth="0.3" 
-                    strokeDasharray="2 4"
-                    opacity="0.4"
+                    strokeDasharray="4 8"
+                    opacity="0.3"
                   />
-                  {/* Rays */}
-                  {[...Array(8)].map((_, i) => (
-                    <line
-                      key={`ray-${i}`}
-                      x1="100" y1="30" x2="100" y2="45"
-                      stroke="hsl(var(--primary))"
-                      strokeWidth="0.8"
-                      transform={`rotate(${i * 45} 100 100)`}
-                      opacity="0.5"
-                    />
-                  ))}
                 </motion.g>
 
                 {/* Orbiting Particles */}
-                {[...Array(6)].map((_, i) => (
+                {[...Array(5)].map((_, i) => (
                   <motion.circle
                     key={`orbit-${i}`}
-                    r="0.8"
+                    r="1"
                     fill={i % 2 === 0 ? "hsl(var(--primary))" : "hsl(var(--accent))"}
                     animate={{
-                      cx: [100 + Math.cos(i) * 85, 100 + Math.cos(i + Math.PI * 2) * 85],
-                      cy: [100 + Math.sin(i) * 85, 100 + Math.sin(i + Math.PI * 2) * 85],
-                      opacity: [0.2, 0.8, 0.2]
+                      cx: [100 + Math.cos(i) * 90, 100 + Math.cos(i + Math.PI * 2) * 90],
+                      cy: [100 + Math.sin(i) * 90, 100 + Math.sin(i + Math.PI * 2) * 90],
+                      opacity: [0, 0.8, 0]
                     }}
                     transition={{
-                      duration: 15 + i * 2,
+                      duration: 20 + i * 4,
                       repeat: Infinity,
                       ease: "linear"
                     }}
@@ -195,40 +164,51 @@ export function HeroSection() {
               </svg>
             </div>
 
-            <Card className="glass-card rounded-[2rem] w-full max-w-sm glow-border overflow-hidden border-white/10 bg-white/[0.03] backdrop-blur-3xl relative z-10 shadow-2xl">
-              <CardContent className="p-8 space-y-6">
-                <div className="space-y-6">
-                    <div className="flex items-center gap-4 group">
-                      <div className="p-2.5 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-all duration-300">
-                          <CheckCircle className="h-5 w-5 text-primary shadow-sm" />
+            {/* Floating Feature Card */}
+            <MotionDiv 
+              variants={cardVariants}
+              animate={{ y: [0, -12, 0] }}
+              transition={{ 
+                y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+                duration: 0.8 // for the initial variants
+              }}
+              className="relative z-10 w-full max-w-sm"
+            >
+              <Card className="glass-card rounded-[2.5rem] glow-border overflow-hidden border-white/10 bg-white/[0.04] backdrop-blur-3xl shadow-2xl">
+                <CardContent className="p-10 space-y-8">
+                  <div className="space-y-8">
+                      <div className="flex items-center gap-5 group">
+                        <div className="p-3 rounded-2xl bg-primary/10 group-hover:bg-primary/20 transition-all duration-300">
+                            <CheckCircle className="h-6 w-6 text-primary" />
+                        </div>
+                        <div className="space-y-1">
+                          <span className="font-headline font-bold text-lg text-white block">Hyper-Scalable</span>
+                          <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">Cloud-native architecture</p>
+                        </div>
                       </div>
-                      <div className="space-y-0.5">
-                        <span className="font-headline font-bold text-base block">Fast & Scalable</span>
-                        <p className="text-[10px] text-muted-foreground uppercase tracking-wider font-semibold">Engineered for growth</p>
+                      <div className="flex items-center gap-5 group">
+                        <div className="p-3 rounded-2xl bg-accent/10 group-hover:bg-accent/20 transition-all duration-300">
+                            <CheckCircle className="h-6 w-6 text-accent" />
+                        </div>
+                        <div className="space-y-1">
+                          <span className="font-headline font-bold text-lg text-white block">AI Intelligence</span>
+                          <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">Smart automation</p>
+                        </div>
                       </div>
-                    </div>
-                    <div className="flex items-center gap-4 group">
-                      <div className="p-2.5 rounded-xl bg-accent/10 group-hover:bg-accent/20 transition-all duration-300">
-                          <CheckCircle className="h-5 w-5 text-accent" />
+                      <div className="flex items-center gap-5 group">
+                        <div className="p-3 rounded-2xl bg-primary/10 group-hover:bg-primary/20 transition-all duration-300">
+                            <CheckCircle className="h-6 w-6 text-primary" />
+                        </div>
+                        <div className="space-y-1">
+                          <span className="font-headline font-bold text-lg text-white block">Military Grade</span>
+                          <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">Zero-trust security</p>
+                        </div>
                       </div>
-                      <div className="space-y-0.5">
-                        <span className="font-headline font-bold text-base block">AI-Powered UI</span>
-                        <p className="text-[10px] text-muted-foreground uppercase tracking-wider font-semibold">Intelligent design</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-4 group">
-                      <div className="p-2.5 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-all duration-300">
-                          <CheckCircle className="h-5 w-5 text-primary" />
-                      </div>
-                      <div className="space-y-0.5">
-                        <span className="font-headline font-bold text-base block">Secure & Robust</span>
-                        <p className="text-[10px] text-muted-foreground uppercase tracking-wider font-semibold">Enterprise-grade</p>
-                      </div>
-                    </div>
-                </div>
-              </CardContent>
-            </Card>
-          </MotionDiv>
+                  </div>
+                </CardContent>
+              </Card>
+            </MotionDiv>
+          </div>
         </MotionDiv>
       </div>
     </section>
