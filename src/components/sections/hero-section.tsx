@@ -78,7 +78,7 @@ export function HeroSection() {
               </div>
               
               <p className="text-base md:text-lg text-muted-foreground max-w-[520px] leading-relaxed font-medium">
-                We build high-performance web ecosystems, intelligent AI automation, and secure cloud infrastructures that accelerate business growth.
+                High-performance web ecosystems, intelligent AI automation, and secure cloud infrastructures built to accelerate your business growth.
               </p>
             </MotionDiv>
 
@@ -100,65 +100,69 @@ export function HeroSection() {
 
           {/* Right Content: Feature Card with Background Sun */}
           <div className="relative flex justify-center lg:justify-end">
-            {/* The Digital Sun: Positioned BEHIND the card */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] pointer-events-none z-0">
-              {/* Core Radial Glows */}
+            
+            {/* The Digital Sun: Centered behind the card */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[160%] h-[160%] pointer-events-none z-0 flex items-center justify-center">
+              
+              {/* Central Radial Glows */}
               <motion.div 
-                className="absolute inset-[20%] bg-primary/20 rounded-full blur-[90px]"
-                animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <motion.div 
-                className="absolute inset-[30%] bg-accent/10 rounded-full blur-[70px]"
-                animate={{ scale: [1.2, 1, 1.2], opacity: [0.2, 0.4, 0.2] }}
+                className="absolute w-[60%] h-[60%] bg-primary/15 rounded-full blur-[100px]"
+                animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.5, 0.3] }}
                 transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
               />
+              <motion.div 
+                className="absolute w-[40%] h-[40%] bg-accent/5 rounded-full blur-[80px]"
+                animate={{ scale: [1.2, 0.9, 1.2], opacity: [0.2, 0.4, 0.2] }}
+                transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+              />
 
-              <svg viewBox="0 0 200 200" className="w-full h-full opacity-60">
-                {/* Rotating Tech Rings */}
+              {/* Rotating Tech SVG Rings */}
+              <svg viewBox="0 0 200 200" className="w-full h-full opacity-40">
+                {/* Slow External Ring */}
+                <motion.g
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                  style={{ originX: "100px", originY: "100px" }}
+                >
+                  <circle 
+                    cx="100" cy="100" r="92" 
+                    fill="none" 
+                    stroke="hsl(var(--primary))" 
+                    strokeWidth="0.4" 
+                    strokeDasharray="40 80 20 60"
+                    opacity="0.2"
+                  />
+                </motion.g>
+
+                {/* Counter-Rotating Middle Ring */}
+                <motion.g
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                  style={{ originX: "100px", originY: "100px" }}
+                >
+                  <circle 
+                    cx="100" cy="100" r="78" 
+                    fill="none" 
+                    stroke="hsl(var(--accent))" 
+                    strokeWidth="0.3" 
+                    strokeDasharray="10 20"
+                    opacity="0.3"
+                  />
+                </motion.g>
+
+                {/* Rapid Inner Ring */}
                 <motion.g
                   animate={{ rotate: 360 }}
                   transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
                   style={{ originX: "100px", originY: "100px" }}
                 >
                   <circle 
-                    cx="100" cy="100" r="85" 
-                    fill="none" 
-                    stroke="hsl(var(--primary))" 
-                    strokeWidth="0.5" 
-                    strokeDasharray="20 40 10 30"
-                    opacity="0.2"
-                  />
-                </motion.g>
-
-                <motion.g
-                  animate={{ rotate: -360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  style={{ originX: "100px", originY: "100px" }}
-                >
-                  <circle 
-                    cx="100" cy="100" r="72" 
-                    fill="none" 
-                    stroke="hsl(var(--accent))" 
-                    strokeWidth="0.4" 
-                    strokeDasharray="5 15"
-                    opacity="0.3"
-                  />
-                </motion.g>
-
-                {/* Fast Inner Ring */}
-                <motion.g
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-                  style={{ originX: "100px", originY: "100px" }}
-                >
-                  <circle 
-                    cx="100" cy="100" r="95" 
+                    cx="100" cy="100" r="65" 
                     fill="none" 
                     stroke="hsl(var(--primary))" 
                     strokeWidth="0.2" 
-                    strokeDasharray="1 10"
-                    opacity="0.1"
+                    strokeDasharray="1 15"
+                    opacity="0.2"
                   />
                 </motion.g>
               </svg>
@@ -167,9 +171,9 @@ export function HeroSection() {
             {/* Floating Feature Card */}
             <MotionDiv 
               variants={cardVariants}
-              animate={{ y: [0, -12, 0] }}
+              animate={{ y: [0, -15, 0] }}
               transition={{ 
-                y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+                y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
                 duration: 0.8 
               }}
               className="relative z-10 w-full max-w-sm"
@@ -182,8 +186,8 @@ export function HeroSection() {
                             <Zap className="h-6 w-6 text-primary" />
                         </div>
                         <div className="space-y-1">
-                          <span className="font-headline font-bold text-lg text-white block">Fast & Scalable</span>
-                          <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">Web Development</p>
+                          <span className="font-headline font-bold text-lg text-white block">Scalable Dev</span>
+                          <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">Web Ecosystems</p>
                         </div>
                       </div>
                       <div className="flex items-center gap-5 group">
@@ -192,7 +196,7 @@ export function HeroSection() {
                         </div>
                         <div className="space-y-1">
                           <span className="font-headline font-bold text-lg text-white block">AI-Powered</span>
-                          <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">Smart Solutions</p>
+                          <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">Automation</p>
                         </div>
                       </div>
                       <div className="flex items-center gap-5 group">
@@ -201,7 +205,7 @@ export function HeroSection() {
                         </div>
                         <div className="space-y-1">
                           <span className="font-headline font-bold text-lg text-white block">Secure Cloud</span>
-                          <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">Enterprise Infrastructure</p>
+                          <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">Infrastructure</p>
                         </div>
                       </div>
                   </div>
