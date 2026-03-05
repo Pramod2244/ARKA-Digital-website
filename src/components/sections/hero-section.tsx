@@ -49,19 +49,35 @@ export function HeroSection() {
 
       <div className="relative z-10 container mx-auto p-4">
         <MotionDiv
-          className="grid lg:grid-cols-2 gap-16 items-center"
+          className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          <div className="space-y-10">
-            <MotionDiv variants={textVariants} className="space-y-6">
-              <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[1.05] text-white">
-                We Build <br />
-                <span className="text-primary text-glow-primary">Future-Ready</span> <br />
-                <span className="text-accent text-glow-accent">Digital</span> Experiences
+          <div className="space-y-8">
+            <MotionDiv variants={textVariants} className="space-y-4">
+              <h1 className="font-headline tracking-tight leading-[1.1] text-white">
+                <span className="block text-sm md:text-base lg:text-lg font-bold uppercase tracking-[0.2em] text-white/50 mb-3">
+                  We Build
+                </span>
+                
+                <span className="relative inline-block text-4xl md:text-5xl lg:text-6xl font-black text-primary text-glow-primary mb-2">
+                  <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary/20 blur-[60px] -z-10 rounded-full" />
+                  Future-Ready
+                </span>
+                
+                <span className="block mt-1">
+                  <span className="relative inline-block text-3xl md:text-4xl lg:text-5xl font-extrabold text-accent text-glow-accent mr-3">
+                    <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-accent/20 blur-[50px] -z-10 rounded-full" />
+                    Digital
+                  </span>
+                  <span className="text-2xl md:text-3xl lg:text-4xl font-bold text-white/90">
+                    Experiences
+                  </span>
+                </span>
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed font-medium">
+              
+              <p className="text-lg md:text-xl text-muted-foreground max-w-lg leading-relaxed font-medium pt-4">
                 Arkaa Digital is a premium agency specializing in high-performance web apps, AI automation, and future-proof digital strategy.
               </p>
             </MotionDiv>
@@ -84,7 +100,7 @@ export function HeroSection() {
 
           <MotionDiv variants={cardVariants} className="hidden lg:flex justify-end">
             <Card className="glass-card rounded-[2.5rem] w-full max-w-md glow-border overflow-hidden border-white/10 bg-white/[0.02] backdrop-blur-2xl">
-              <CardContent className="p-12 space-y-8">
+              <CardContent className="p-10 space-y-8">
                 <div className="space-y-6">
                     <div className="flex items-center gap-5 group">
                       <div className="p-3 rounded-2xl bg-primary/10 group-hover:bg-primary/20 transition-all duration-300">
