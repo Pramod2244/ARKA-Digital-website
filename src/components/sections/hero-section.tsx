@@ -58,11 +58,15 @@ export function HeroSection() {
           {/* Left Content */}
           <div className="space-y-8">
             <MotionDiv variants={textVariants} className="space-y-6">
-              <div className="space-y-3">
+              <div className="space-y-3 relative">
+                {/* Subtle Back Glow for Headline */}
+                <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-[60px] -z-10" />
+                <div className="absolute top-1/2 -right-10 w-32 h-32 bg-accent/5 rounded-full blur-[50px] -z-10" />
+
                 <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] text-primary/80 block mb-1">
                   Established Excellence
                 </span>
-                <h1 className="font-headline tracking-tight leading-[1.1] text-white text-3xl md:text-4xl lg:text-5xl font-black">
+                <h1 className="font-headline tracking-tight leading-[1.1] text-white text-3xl md:text-4xl lg:text-6xl font-black">
                   <span className="relative inline-block text-white">
                     Future-Ready
                     <span className="absolute -bottom-2 left-0 w-full h-1 bg-primary/30 rounded-full" />

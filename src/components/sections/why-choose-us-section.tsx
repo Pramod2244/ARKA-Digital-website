@@ -93,7 +93,7 @@ export function WhyChooseUsSection() {
         viewport={{ once: true, amount: 0.2 }}
         className="container relative z-10 mx-auto px-4"
       >
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Left Content: Text & Bullet Points */}
           <MotionDiv 
             className="space-y-6"
