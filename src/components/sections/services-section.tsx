@@ -43,16 +43,20 @@ export function ServicesSection() {
     <section id="services" className="relative py-16 md:py-24 overflow-hidden" ref={ref}>
       {/* Enhanced Background Decorative Elements */}
       <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
-        {/* Faint Futuristic Grid Pattern - Minimal and Premium */}
+        {/* Faint Futuristic Grid Pattern */}
         <div 
           className="absolute inset-0 bg-grid-white opacity-[0.03]" 
           style={{ backgroundSize: '50px 50px' }}
         />
         
-        {/* Subtle Ambient Lighting */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(25,95,53,0.03)_0%,transparent_70%)]" />
+        {/* Soft Radial Glows - Orange (Primary) and Blue (Accent) */}
+        <div className="absolute top-0 -left-20 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] opacity-40" />
+        <div className="absolute bottom-0 -right-20 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] opacity-30" />
         
-        {/* Transition Mask */}
+        {/* Subtle Ambient Lighting Overlay */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(25,95,53,0.02)_0%,transparent_70%)]" />
+        
+        {/* Transition Mask for seamless flow */}
         <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
       </div>
 
