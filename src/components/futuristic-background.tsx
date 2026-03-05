@@ -24,57 +24,50 @@ export function FuturisticBackground() {
         }}
       />
 
-      {/* 2. The Digital Sun (Arka) - Core Glow */}
-      <div className="absolute top-[-15%] left-1/2 -translate-x-1/2 w-[100%] h-[70%] rounded-full bg-primary/10 blur-[140px] pointer-events-none" />
-      <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[50%] h-[40%] rounded-full bg-primary/20 blur-[100px] pointer-events-none animate-pulse" />
-      
-      {/* 3. AI Network Connections & Radiant Rays */}
+      {/* 2. AI Network Connections & Floating Data Lines */}
       <svg className="absolute inset-0 w-full h-full opacity-30">
         <defs>
-          <linearGradient id="ray-orange" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.6" />
+          <linearGradient id="flow-orange" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="transparent" stopOpacity="0" />
+            <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.5" />
             <stop offset="100%" stopColor="transparent" stopOpacity="0" />
           </linearGradient>
-          <linearGradient id="ray-blue" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="hsl(var(--accent))" stopOpacity="0.4" />
+          <linearGradient id="flow-blue" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="transparent" stopOpacity="0" />
+            <stop offset="50%" stopColor="hsl(var(--accent))" stopOpacity="0.4" />
             <stop offset="100%" stopColor="transparent" stopOpacity="0" />
           </linearGradient>
         </defs>
         
-        {/* Animated Radiant Data Lines */}
-        {[...Array(16)].map((_, i) => {
-          const angle = (i * 22.5) * (Math.PI / 180);
-          const x2 = 50 + Math.cos(angle) * 120 + "%";
-          const y2 = 0 + Math.sin(angle) * 120 + "%";
-          
-          return (
-            <motion.line
-              key={`ray-${i}`}
-              x1="50%"
-              y1="0%"
-              x2={x2}
-              y2={y2}
-              stroke={i % 4 === 0 ? "url(#ray-blue)" : "url(#ray-orange)"}
-              strokeWidth={i % 5 === 0 ? "1.5" : "0.5"}
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ 
-                pathLength: [0, 1, 0],
-                opacity: [0, 0.4, 0]
-              }}
-              transition={{
-                duration: 10 + i,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: i * 0.4
-              }}
-            />
-          );
-        })}
+        {/* Vertical Data Stream Lines */}
+        {[...Array(10)].map((_, i) => (
+          <motion.line
+            key={`stream-${i}`}
+            x1={`${10 + i * 10}%`}
+            y1="-10%"
+            x2={`${10 + i * 10}%`}
+            y2="110%"
+            stroke={i % 2 === 0 ? "url(#flow-blue)" : "url(#flow-orange)"}
+            strokeWidth="0.5"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ 
+              pathLength: [0, 1],
+              opacity: [0, 0.3, 0],
+              y: ["-100%", "100%"]
+            }}
+            transition={{
+              duration: 15 + Math.random() * 20,
+              repeat: Infinity,
+              ease: "linear",
+              delay: i * 2
+            }}
+          />
+        ))}
 
         {/* Neural Network Nodes & Links */}
-        {[...Array(8)].map((_, i) => {
+        {[...Array(12)].map((_, i) => {
           const x = 10 + Math.random() * 80 + "%";
-          const y = 20 + Math.random() * 60 + "%";
+          const y = 10 + Math.random() * 80 + "%";
           return (
             <g key={`node-group-${i}`}>
               <motion.circle
@@ -88,21 +81,21 @@ export function FuturisticBackground() {
               <motion.circle
                 cx={x}
                 cy={y}
-                r="8"
+                r="10"
                 stroke={i % 2 === 0 ? "hsl(var(--primary))" : "hsl(var(--accent))"}
                 strokeWidth="0.5"
                 fill="none"
-                animate={{ opacity: [0.1, 0, 0.1], scale: [0.5, 2, 0.5] }}
-                transition={{ duration: 6, repeat: Infinity, delay: i }}
+                animate={{ opacity: [0.1, 0, 0.1], scale: [0.5, 2.5, 0.5] }}
+                transition={{ duration: 8, repeat: Infinity, delay: i }}
               />
             </g>
           );
         })}
       </svg>
 
-      {/* 4. Floating Glowing Particles (Dual Tone) */}
+      {/* 3. Floating Glowing Particles */}
       <div className="absolute inset-0">
-        {[...Array(40)].map((_, i) => (
+        {[...Array(50)].map((_, i) => (
           <motion.div
             key={`particle-${i}`}
             className="absolute rounded-full"
@@ -117,13 +110,13 @@ export function FuturisticBackground() {
                 : "0 0 8px hsl(var(--primary) / 0.8)",
             }}
             animate={{
-              y: [0, -100, 0],
-              x: [0, (Math.random() - 0.5) * 50, 0],
-              opacity: [0, 0.6, 0],
-              scale: [0.8, 1.2, 0.8]
+              y: [0, -120, 0],
+              x: [0, (Math.random() - 0.5) * 60, 0],
+              opacity: [0, 0.5, 0],
+              scale: [0.8, 1.3, 0.8]
             }}
             transition={{
-              duration: 12 + Math.random() * 15,
+              duration: 15 + Math.random() * 20,
               repeat: Infinity,
               ease: "linear",
               delay: Math.random() * 10
@@ -132,9 +125,9 @@ export function FuturisticBackground() {
         ))}
       </div>
       
-      {/* 5. Readability & Depth Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background" />
-      <div className="absolute inset-0 bg-background/20 backdrop-blur-[2px]" />
+      {/* 4. Readability & Depth Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+      <div className="absolute inset-0 bg-background/20 backdrop-blur-[1px]" />
     </div>
   );
 }
