@@ -75,37 +75,30 @@ export function TestimonialsSection() {
 
   return (
     <section id="testimonials" className="relative py-16 md:py-24 overflow-hidden">
+      {/* Seamless Transition Mask - Top */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background to-transparent z-10" />
+
       {/* Background Radial Glows - Orange and Blue */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full -z-10 pointer-events-none">
-        {/* Soft Orange Glow */}
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] opacity-40" />
-        {/* Soft Blue Glow */}
         <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px] opacity-30" />
-        
-        {/* Ambient Vignette */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(2,6,23,0.5)_100%)]" />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.2 }}
+        className="container mx-auto px-4 relative z-10"
+      >
         <div className="text-center space-y-3 mb-12">
-          <motion.h2 
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="font-headline text-2xl md:text-3xl font-bold tracking-tight text-white"
-          >
+          <h2 className="font-headline text-2xl md:text-3xl font-bold tracking-tight text-white">
             What Our <span className="text-primary text-glow-primary">Clients</span> Say
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-            className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto"
-          >
+          </h2>
+          <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
             Don't just take our word for it. Hear from the businesses we've helped transform.
-          </motion.p>
+          </p>
         </div>
 
         <motion.div
@@ -178,7 +171,10 @@ export function TestimonialsSection() {
             </div>
           </Carousel>
         </motion.div>
-      </div>
+      </motion.div>
+
+      {/* Seamless Transition Mask - Bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-10" />
     </section>
   );
 }

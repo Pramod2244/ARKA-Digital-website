@@ -5,6 +5,7 @@ import { CheckCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { MotionDiv } from '../motion-provider';
+import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 const leftVariants = {
@@ -55,38 +56,43 @@ export function WhyChooseUsSection() {
 
   return (
     <section id="why-choose-us" className="relative py-16 md:py-24 overflow-hidden">
+      {/* Seamless Transition Mask - Top */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background to-transparent z-10" />
+
       {/* Enhanced Background Architecture */}
       <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
-        {/* Background Image - Highly desaturated and subtle */}
+        {/* Background Image */}
         {whyChooseUsImage && (
           <Image
             src={whyChooseUsImage.imageUrl}
             alt={whyChooseUsImage.description}
             fill
-            className="object-cover opacity-[0.08] grayscale"
+            className="object-cover opacity-[0.06] grayscale"
             data-ai-hint={whyChooseUsImage.imageHint}
           />
         )}
         
         {/* Faint Futuristic Grid Pattern */}
         <div 
-          className="absolute inset-0 bg-grid-white opacity-[0.04]" 
+          className="absolute inset-0 bg-grid-white opacity-[0.03]" 
           style={{ backgroundSize: '50px 50px' }}
         />
         
-        {/* Soft Radial Gradient Glows (Blue and Orange) */}
-        {/* Orange Glow (Primary) behind the left content area */}
+        {/* Soft Radial Gradient Glows */}
         <div className="absolute top-1/4 -left-20 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[140px] opacity-50" />
-        
-        {/* Blue Glow (Accent) behind the right commitment card */}
         <div className="absolute bottom-1/4 -right-20 w-[700px] h-[700px] bg-accent/10 rounded-full blur-[160px] opacity-40" />
         
         {/* Dark Overlays for Readability & Depth */}
         <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(2,6,23,0.4)_100%)]" />
       </div>
       
-      <div className="container relative z-10 mx-auto px-4">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.2 }}
+        className="container relative z-10 mx-auto px-4"
+      >
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content: Text & Bullet Points */}
           <MotionDiv 
@@ -125,7 +131,6 @@ export function WhyChooseUsSection() {
             viewport={{ once: true, amount: 0.3 }}
             className="relative"
           >
-            {/* Decorative Glow specific to card */}
             <div className="absolute -inset-4 bg-primary/5 blur-[100px] rounded-full -z-10" />
             
             <Card className="glass-card rounded-[1.5rem] border-white/5 bg-white/[0.02] backdrop-blur-2xl shadow-2xl relative overflow-hidden group">
@@ -161,7 +166,10 @@ export function WhyChooseUsSection() {
             </Card>
           </MotionDiv>
         </div>
-      </div>
+      </motion.div>
+
+      {/* Seamless Transition Mask - Bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-10" />
     </section>
   );
 }

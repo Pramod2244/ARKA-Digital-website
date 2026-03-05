@@ -1,9 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Code2, Cloud, TrendingUp, Palette, Layers } from "lucide-react";
-import { useInView } from "@/hooks/use-in-view";
-import { useRef } from "react";
+import { Code2, Cloud, TrendingUp, Palette, Layers, Cpu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
@@ -33,51 +31,46 @@ const services = [
     title: "Cloud & DevOps",
     description: "Implement secure cloud infrastructure and DevOps automation for reliable and scalable systems.",
   },
+  {
+    icon: Cpu,
+    title: "AI & Automation",
+    description: "Leverage cutting-edge AI to automate workflows and drive intelligent business decision making.",
+  },
 ];
 
 export function ServicesSection() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, threshold: 0.1 });
-
   return (
-    <section id="services" className="relative py-16 md:py-24 overflow-hidden" ref={ref}>
+    <section id="services" className="relative py-16 md:py-24 overflow-hidden">
+      {/* Seamless Transition Mask - Top */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background to-transparent z-10" />
+
       {/* Enhanced Background Decorative Elements */}
       <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
         {/* Faint Futuristic Grid Pattern */}
         <div 
           className="absolute inset-0 bg-grid-white opacity-[0.03]" 
-          style={{ backgroundSize: '50px 50px' }}
+          style={{ backgroundSize: '40px 40px' }}
         />
         
-        {/* Soft Radial Glows - Orange (Primary) and Blue (Accent) */}
-        <div className="absolute top-1/4 -left-20 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] opacity-40" />
-        <div className="absolute bottom-1/4 -right-20 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] opacity-30" />
-        
-        {/* Transition Mask for seamless flow */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+        {/* Soft Radial Glows */}
+        <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[140px] opacity-40" />
+        <div className="absolute top-1/2 right-1/4 translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/10 rounded-full blur-[140px] opacity-30" />
       </div>
 
-      <div className={cn(
-        "container mx-auto px-4 transition-all duration-1000 ease-out",
-        isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-      )}>
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.2 }}
+        className="container mx-auto px-4"
+      >
         <div className="text-center space-y-3 mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="font-headline text-2xl md:text-3xl font-bold tracking-tight text-white"
-          >
+          <h2 className="font-headline text-2xl md:text-3xl font-bold tracking-tight text-white">
             Our <span className="text-primary text-glow-primary">Services</span>
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto font-medium"
-          >
+          </h2>
+          <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto font-medium">
             We offer a comprehensive suite of high-performance technology services designed to scale your business into the future.
-          </motion.p>
+          </p>
         </div>
 
         {/* 2-over-3 Grid Layout */}
@@ -101,7 +94,7 @@ export function ServicesSection() {
                   whileHover={{ y: -8 }}
                   className="h-full"
                 >
-                  <Card className="h-full glass-card border-white/5 bg-white/[0.02] backdrop-blur-xl relative group overflow-hidden transition-all duration-500 hover:border-primary/50 hover:shadow-[0_0_25px_rgba(249,115,22,0.1)] flex flex-col p-6 md:p-8">
+                  <Card className="h-full glass-card border-white/5 bg-white/[0.02] backdrop-blur-xl relative group overflow-hidden transition-all duration-500 hover:border-primary/50 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] flex flex-col p-6 md:p-8">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     
                     {/* Professional Solar Icon Container */}
@@ -129,7 +122,10 @@ export function ServicesSection() {
             );
           })}
         </div>
-      </div>
+      </motion.div>
+
+      {/* Seamless Transition Mask - Bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-10" />
     </section>
   );
 }
