@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MotionDiv } from "@/components/motion-provider";
-import { Rocket, ArrowRight, Server, Cpu, Globe } from "lucide-react";
+import { Rocket, Cpu, ShieldCheck, ArrowRight } from "lucide-react";
 import { FuturisticBackground } from "../futuristic-background";
 import { motion } from "framer-motion";
 
@@ -12,204 +12,146 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.15,
     },
   },
 };
 
 const textVariants = {
-  hidden: { x: -40, opacity: 0 },
+  hidden: { x: -30, opacity: 0 },
   visible: {
     x: 0,
     opacity: 1,
     transition: {
-      duration: 1,
+      duration: 0.8,
       ease: [0.22, 1, 0.36, 1],
     },
   },
 };
 
+const cardVariants = {
+  hidden: { x: 50, opacity: 0 },
+  visible: (i: number) => ({
+    x: 0,
+    opacity: 1,
+    transition: {
+      delay: 0.4 + i * 0.1,
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  }),
+};
+
+const iconStack = [
+  {
+    icon: Rocket,
+    label: "Scalable Dev",
+    description: "High-performance web ecosystems",
+    color: "hsl(var(--primary))",
+  },
+  {
+    icon: Cpu,
+    label: "AI Automation",
+    description: "Intelligent agentic workflows",
+    color: "hsl(var(--accent))",
+  },
+  {
+    icon: ShieldCheck,
+    label: "Secure Cloud",
+    description: "Fortified digital infrastructure",
+    color: "hsl(var(--primary))",
+  },
+];
+
 export function HeroSection() {
   return (
-    <section id="home" className="relative w-full min-h-[90vh] flex items-center pt-24 pb-16 overflow-hidden">
+    <section id="home" className="relative w-full min-h-screen flex items-center pt-20 pb-16 overflow-hidden">
       <FuturisticBackground />
 
-      <div className="relative z-10 container mx-auto px-4 md:px-6">
+      <div className="relative z-10 container mx-auto px-6 lg:px-12">
         <MotionDiv
-          className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto"
+          className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center max-w-7xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          {/* Left Content: Bold High-Performance Messaging */}
-          <div className="space-y-10">
-            <MotionDiv variants={textVariants} className="space-y-6">
-              <div className="space-y-4">
-                <motion.span 
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                  className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] text-primary"
-                >
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                  </span>
-                  Future-Ready Digital Ecosystems
-                </motion.span>
-                
-                <h1 className="font-headline tracking-tight leading-[1.05] text-white text-5xl md:text-6xl lg:text-7xl font-black">
+          {/* Left Content: Minimalist Typography */}
+          <div className="space-y-12">
+            <MotionDiv variants={textVariants} className="relative pl-8 md:pl-12 border-l border-primary/30">
+              {/* Subtle Orange Accent Line */}
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-full shadow-[0_0_15px_hsl(var(--primary)/0.5)]" />
+              
+              <div className="space-y-6">
+                <h1 className="font-headline tracking-tight leading-[1.1] text-white text-5xl md:text-6xl lg:text-7xl font-black">
                   Next-Gen <br />
-                  <span className="text-primary text-glow-neon">Digital</span> <br />
+                  <span className="text-primary/90 text-glow-neon">Digital</span> <br />
                   Experiences
                 </h1>
+                
+                <p className="text-lg md:text-xl text-muted-foreground/80 max-w-[500px] leading-relaxed font-medium">
+                  We engineer minimalist, high-performance web applications and intelligent AI solutions for forward-thinking enterprises.
+                </p>
               </div>
-              
-              <p className="text-lg md:text-xl text-muted-foreground max-w-[540px] leading-relaxed font-medium">
-                High-performance web applications, intelligent AI automation, and secure cloud infrastructures engineered for exponential growth.
-              </p>
             </MotionDiv>
 
-            <MotionDiv variants={textVariants} className="flex flex-wrap items-center gap-5">
-              <Button size="lg" className="h-14 px-10 text-sm font-bold rounded-full transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(249,115,22,0.5)] active:scale-95 flex items-center gap-2 bg-primary text-primary-foreground border-none group" asChild>
+            <MotionDiv variants={textVariants} className="flex flex-wrap items-center gap-6 pl-8 md:pl-12">
+              <Button size="lg" className="h-14 px-10 text-sm font-bold rounded-none transition-all hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(249,115,22,0.3)] active:scale-95 bg-primary text-primary-foreground border-none uppercase tracking-widest" asChild>
                 <Link href="#contact">
-                  Start Your Project
-                  <Rocket className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  Start Project
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" className="h-14 px-10 text-sm font-bold rounded-full border-white/10 bg-white/[0.02] backdrop-blur-md hover:bg-white/10 hover:border-white/20 transition-all flex items-center gap-2 text-white group" asChild>
+              <Button size="lg" variant="ghost" className="h-14 px-6 text-sm font-bold rounded-none hover:bg-white/5 transition-all flex items-center gap-2 text-white group uppercase tracking-widest" asChild>
                 <Link href="#services">
-                  Explore Services
+                  Our Work
                   <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
             </MotionDiv>
-
-            {/* Subtle Stat/Trust Line */}
-            <motion.div 
-              variants={textVariants}
-              className="flex items-center gap-8 pt-4"
-            >
-              <div className="space-y-1">
-                <p className="text-white font-bold text-xl">50+</p>
-                <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">Projects Delivered</p>
-              </div>
-              <div className="w-px h-10 bg-white/10" />
-              <div className="space-y-1">
-                <p className="text-white font-bold text-xl">99.9%</p>
-                <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">Uptime Guaranteed</p>
-              </div>
-            </motion.div>
           </div>
 
-          {/* Right Content: 3D Isometric Server Rack / Digital Orb Visual */}
-          <div className="relative flex items-center justify-center py-10 lg:py-0">
-            {/* Background Solar Halo */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] pointer-events-none z-0">
-               <motion.div 
-                className="absolute inset-0 bg-primary/10 rounded-full blur-[120px]"
-                animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
-                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <svg viewBox="0 0 200 200" className="w-full h-full opacity-30">
-                <motion.circle 
-                  cx="100" cy="100" r="90" 
-                  fill="none" stroke="hsl(var(--primary))" strokeWidth="0.2" strokeDasharray="50 100"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-                  style={{ originX: "100px", originY: "100px" }}
-                />
-                <motion.circle 
-                  cx="100" cy="100" r="75" 
-                  fill="none" stroke="hsl(var(--accent))" strokeWidth="0.3" strokeDasharray="10 20"
-                  animate={{ rotate: -360 }}
-                  transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-                  style={{ originX: "100px", originY: "100px" }}
-                />
-              </svg>
-            </div>
-
-            {/* Main Visual: Isometric Glowing Server Rack */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.5, ease: "easeOut" }}
-              className="relative z-10 w-full max-w-[480px]"
-            >
-              <svg viewBox="0 0 500 500" className="w-full h-auto drop-shadow-[0_0_50px_rgba(249,115,22,0.2)]">
-                {/* 3D Isometric Planes */}
-                <motion.path
-                  d="M250 100 L450 200 L250 300 L50 200 Z"
-                  fill="rgba(30, 41, 59, 0.4)"
-                  stroke="hsl(var(--primary))"
-                  strokeWidth="1"
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                />
-                <motion.path
-                  d="M250 140 L410 220 L250 300 L90 220 Z"
-                  fill="rgba(30, 41, 59, 0.6)"
-                  stroke="hsl(var(--accent))"
-                  strokeWidth="0.5"
-                  animate={{ y: [0, -15, 0] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-                />
+          {/* Right Content: Vertical Floating Icon Stack */}
+          <div className="relative flex flex-col gap-6 items-center lg:items-end pr-0 lg:pr-12">
+            {iconStack.map((item, i) => (
+              <motion.div
+                key={item.label}
+                custom={i}
+                variants={cardVariants}
+                initial="hidden"
+                animate="visible"
+                whileHover={{ x: -10, scale: 1.02 }}
+                className="group relative w-full max-w-[340px] bg-white/[0.02] border border-white/10 backdrop-blur-sm p-6 flex items-center gap-6 transition-colors hover:border-primary/30 hover:bg-white/[0.04]"
+              >
+                <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center border border-white/10 bg-white/[0.02] transition-colors group-hover:border-primary/50">
+                  <item.icon className="w-6 h-6 text-white/70 group-hover:text-primary transition-colors" strokeWidth={1} />
+                </div>
+                <div className="space-y-1">
+                  <h3 className="font-headline text-sm font-bold text-white uppercase tracking-widest">{item.label}</h3>
+                  <p className="text-xs text-muted-foreground font-medium">{item.description}</p>
+                </div>
                 
-                {/* Central Data Core */}
-                <motion.circle
-                  cx="250" cy="210" r="40"
-                  fill="hsl(var(--primary))"
-                  className="opacity-20"
-                  animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.3, 0.1] }}
-                  transition={{ duration: 4, repeat: Infinity }}
+                {/* Subtle Floating Animation */}
+                <motion.div
+                  className="absolute inset-0 pointer-events-none"
+                  animate={{ y: [0, -5, 0] }}
+                  transition={{ duration: 4 + i, repeat: Infinity, ease: "easeInOut" }}
                 />
-                <motion.circle
-                  cx="250" cy="210" r="15"
-                  fill="hsl(var(--primary))"
-                  animate={{ scale: [1, 1.5, 1], filter: ["blur(4px)", "blur(8px)", "blur(4px)"] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-
-                {/* Floating Tech Cubes / Rack Components */}
-                {[...Array(3)].map((_, i) => (
-                  <motion.g
-                    key={`server-row-${i}`}
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
-                  >
-                    <path
-                      d={`M${200 + i * 20} ${250 + i * 10} L${300 + i * 20} ${300 + i * 10} L${200 + i * 20} ${350 + i * 10} L${100 + i * 20} ${300 + i * 10} Z`}
-                      fill="rgba(255, 255, 255, 0.05)"
-                      stroke="rgba(255, 255, 255, 0.1)"
-                      strokeWidth="0.5"
-                    />
-                    {/* Glowing Light Strips */}
-                    <motion.rect
-                      x={180 + i * 20} y={280 + i * 10} width="40" height="2"
-                      fill="hsl(var(--primary))"
-                      animate={{ opacity: [0.2, 1, 0.2] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
-                    />
-                  </motion.g>
-                ))}
-
-                {/* Vertical Connectivity Lines */}
-                <motion.path
-                  d="M250 100 L250 400"
-                  stroke="url(#line-grad)"
-                  strokeWidth="0.5"
-                  strokeDasharray="4 4"
-                />
-                <defs>
-                  <linearGradient id="line-grad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="hsl(var(--primary))" />
-                    <stop offset="100%" stopColor="transparent" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </motion.div>
+              </motion.div>
+            ))}
+            
+            {/* Minimalist Background Texture Overlay */}
+            <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-10 pointer-events-none">
+                <svg viewBox="0 0 200 200" className="w-full h-full stroke-white/20" fill="none">
+                    <circle cx="100" cy="100" r="80" strokeWidth="0.5" strokeDasharray="1 4" />
+                    <circle cx="100" cy="100" r="60" strokeWidth="0.5" strokeDasharray="1 8" />
+                </svg>
+            </div>
           </div>
         </MotionDiv>
+      </div>
+      
+      {/* Decorative Corner Element */}
+      <div className="absolute bottom-12 right-12 hidden lg:block opacity-20">
+        <div className="w-24 h-24 border-r border-b border-primary/40" />
       </div>
     </section>
   );
