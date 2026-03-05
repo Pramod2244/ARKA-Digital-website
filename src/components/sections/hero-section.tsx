@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MotionDiv } from "@/components/motion-provider";
 import { Card, CardContent } from "../ui/card";
-import { CheckCircle, Rocket, ArrowRight, ShieldCheck, Cpu, Zap } from "lucide-react";
+import { Rocket, ArrowRight, ShieldCheck, Cpu, Zap } from "lucide-react";
 import { FuturisticBackground } from "../futuristic-background";
 import { motion } from "framer-motion";
 
@@ -45,12 +45,12 @@ const cardVariants = {
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative w-full min-h-[85vh] md:min-h-[750px] overflow-hidden flex items-center pt-24 pb-16">
+    <section id="home" className="relative w-full min-h-[85vh] md:min-h-[800px] overflow-hidden flex items-center pt-24 pb-16">
       <FuturisticBackground />
 
       <div className="relative z-10 container mx-auto px-4 md:px-6">
         <MotionDiv
-          className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center max-w-6xl mx-auto"
+          className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-7xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -71,13 +71,13 @@ export function HeroSection() {
                     <span className="absolute -bottom-2 left-0 w-full h-1 bg-primary/30 rounded-full" />
                   </span>
                   <br />
-                  <span className="text-primary text-glow-primary">Digital</span>
+                  <span className="text-accent text-glow-accent">Digital</span>
                   <br />
                   <span className="text-white/90">Experiences</span>
                 </h1>
               </div>
               
-              <p className="text-base md:text-lg text-muted-foreground max-w-[520px] leading-relaxed font-medium">
+              <p className="text-base md:text-lg text-muted-foreground max-w-[580px] leading-relaxed font-medium">
                 High-performance web ecosystems, intelligent AI automation, and secure cloud infrastructures built to accelerate your business growth.
               </p>
             </MotionDiv>
@@ -99,24 +99,24 @@ export function HeroSection() {
           </div>
 
           {/* Right Content: Feature Card with Background Sun */}
-          <div className="relative flex justify-center lg:justify-end">
+          <div className="relative flex justify-center lg:justify-end py-10">
             
-            {/* The Digital Sun: Centered behind the card */}
+            {/* The Digital Sun: Precisely centered behind the card */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[160%] h-[160%] pointer-events-none z-0 flex items-center justify-center">
               
-              {/* Central Radial Glows */}
+              {/* Central Radial Glows - Centered and even */}
               <motion.div 
                 className="absolute w-[60%] h-[60%] bg-primary/15 rounded-full blur-[100px]"
                 animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.5, 0.3] }}
                 transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
               />
               <motion.div 
-                className="absolute w-[40%] h-[40%] bg-accent/5 rounded-full blur-[80px]"
+                className="absolute w-[40%] h-[40%] bg-accent/10 rounded-full blur-[80px]"
                 animate={{ scale: [1.2, 0.9, 1.2], opacity: [0.2, 0.4, 0.2] }}
                 transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
               />
 
-              {/* Rotating Tech SVG Rings */}
+              {/* Rotating Tech SVG Rings - Centered around the card */}
               <svg viewBox="0 0 200 200" className="w-full h-full opacity-40">
                 {/* Slow External Ring */}
                 <motion.g
