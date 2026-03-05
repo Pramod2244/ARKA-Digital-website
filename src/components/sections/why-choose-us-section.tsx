@@ -55,20 +55,36 @@ export function WhyChooseUsSection() {
 
   return (
     <section id="why-choose-us" className="relative py-16 md:py-24 overflow-hidden">
-      {/* Background Image with Dark Overlay */}
-      {whyChooseUsImage && (
-        <div className="absolute inset-0 -z-10">
+      {/* Enhanced Background Architecture */}
+      <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
+        {/* Background Image - Highly desaturated and subtle */}
+        {whyChooseUsImage && (
           <Image
             src={whyChooseUsImage.imageUrl}
             alt={whyChooseUsImage.description}
             fill
-            className="object-cover opacity-25"
+            className="object-cover opacity-[0.08] grayscale"
             data-ai-hint={whyChooseUsImage.imageHint}
           />
-          <div className="absolute inset-0 bg-background/95 backdrop-blur-[1px]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
-        </div>
-      )}
+        )}
+        
+        {/* Faint Futuristic Grid Pattern */}
+        <div 
+          className="absolute inset-0 bg-grid-white opacity-[0.04]" 
+          style={{ backgroundSize: '50px 50px' }}
+        />
+        
+        {/* Soft Radial Gradient Glows (Blue and Orange) */}
+        {/* Orange Glow (Primary) behind the left content area */}
+        <div className="absolute top-1/4 -left-20 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[140px] opacity-50" />
+        
+        {/* Blue Glow (Accent) behind the right commitment card */}
+        <div className="absolute bottom-1/4 -right-20 w-[700px] h-[700px] bg-accent/10 rounded-full blur-[160px] opacity-40" />
+        
+        {/* Dark Overlays for Readability & Depth */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(2,6,23,0.4)_100%)]" />
+      </div>
       
       <div className="container relative z-10 mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -109,7 +125,7 @@ export function WhyChooseUsSection() {
             viewport={{ once: true, amount: 0.3 }}
             className="relative"
           >
-            {/* Decorative Glow behind card */}
+            {/* Decorative Glow specific to card */}
             <div className="absolute -inset-4 bg-primary/5 blur-[100px] rounded-full -z-10" />
             
             <Card className="glass-card rounded-[1.5rem] border-white/5 bg-white/[0.02] backdrop-blur-2xl shadow-2xl relative overflow-hidden group">
