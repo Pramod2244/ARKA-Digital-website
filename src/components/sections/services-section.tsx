@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Code2, Cloud, TrendingUp, Palette, Layers, Cpu } from "lucide-react";
+import { Code2, Cloud, TrendingUp, Palette, Layers } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
@@ -50,11 +50,8 @@ export function ServicesSection() {
         />
         
         {/* Soft Radial Glows - Orange (Primary) and Blue (Accent) */}
-        <div className="absolute top-0 -left-20 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] opacity-40" />
-        <div className="absolute bottom-0 -right-20 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] opacity-30" />
-        
-        {/* Subtle Ambient Lighting Overlay */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(25,95,53,0.02)_0%,transparent_70%)]" />
+        <div className="absolute top-1/4 -left-20 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] opacity-40" />
+        <div className="absolute bottom-1/4 -right-20 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] opacity-30" />
         
         {/* Transition Mask for seamless flow */}
         <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
@@ -107,10 +104,11 @@ export function ServicesSection() {
                   <Card className="h-full glass-card border-white/5 bg-white/[0.02] backdrop-blur-xl relative group overflow-hidden transition-all duration-500 hover:border-primary/50 hover:shadow-[0_0_25px_rgba(249,115,22,0.1)] flex flex-col p-6 md:p-8">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     
+                    {/* Professional Solar Icon Container */}
                     <div className="relative mb-6">
-                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center relative transition-transform duration-500 group-hover:scale-110">
-                        <div className="absolute inset-0 rounded-xl bg-primary/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        <service.icon className="h-6 w-6 text-primary relative z-10 shadow-[0_0_12px_rgba(249,115,22,0.4)]" />
+                      <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 flex items-center justify-center relative transition-all duration-500 group-hover:scale-110 group-hover:border-primary/40 group-hover:shadow-[0_0_20px_hsl(var(--primary)/0.4)]">
+                        <div className="absolute inset-0 rounded-full bg-primary/10 blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
+                        <service.icon className="h-7 w-7 text-primary relative z-10 filter drop-shadow-[0_0_8px_hsl(var(--primary)/0.5)]" />
                       </div>
                     </div>
 
