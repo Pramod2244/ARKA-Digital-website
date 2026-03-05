@@ -143,9 +143,6 @@ export function HeroSection() {
               </h1>
               
               <div className="space-y-6">
-                <p className="text-lg md:text-xl text-muted-foreground/90 max-w-xl font-medium leading-relaxed">
-                  Experience the radiance of high-performance engineering. We build powerful digital solutions powered by the Arkaa digital core.
-                </p>
                 <div className="flex items-center gap-3 text-xs md:text-sm font-bold tracking-[0.2em] text-primary/80 uppercase">
                   <span>Web Apps</span>
                   <span className="text-muted-foreground/30">•</span>
