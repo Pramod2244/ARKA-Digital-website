@@ -4,19 +4,19 @@
 
 @layer base {
   :root {
-    --background: 222 84% 4.9%; /* Dark Blue */
+    --background: 222 84% 4.9%; /* Deep Navy/Black */
     --foreground: 210 40% 98%;
     --card: 222 84% 5.9%;
     --card-foreground: 210 40% 98%;
     --popover: 222 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 25 95% 53%; /* Orange */
+    --primary: 25 95% 53%; /* Sun Orange */
     --primary-foreground: 210 40% 98%;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-    --accent: 45 95% 53%; /* Gold/Yellow */
+    --accent: 199 89% 48%; /* Neon Blue */
     --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
@@ -33,13 +33,13 @@
     --card-foreground: 210 40% 98%;
     --popover: 222 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 25 95% 53%; /* Orange */
+    --primary: 25 95% 53%;
     --primary-foreground: 210 40% 98%;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-    --accent: 45 95% 53%; /* Gold/Yellow */
+    --accent: 199 89% 48%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
@@ -64,5 +64,11 @@
   }
   .glow-border {
     @apply shadow-[0_0_20px] shadow-primary/20;
+  }
+  .text-glow-primary {
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.5);
+  }
+  .text-glow-accent {
+    text-shadow: 0 0 10px hsl(var(--accent) / 0.5);
   }
 }

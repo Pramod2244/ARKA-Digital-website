@@ -41,9 +41,7 @@ const cardVariants = {
   },
 };
 
-
 export function HeroSection() {
-
   return (
     <section id="home" className="relative w-full h-screen min-h-[700px] overflow-hidden flex items-center">
       <FuturisticBackground />
@@ -58,7 +56,7 @@ export function HeroSection() {
           <div className="space-y-8">
             <MotionDiv variants={itemVariants}>
               <h1 className="font-headline text-5xl md:text-7xl font-black tracking-tight leading-[1.1] text-white">
-                We Build <span className="text-primary">Future-Ready</span> Digital Experiences
+                We Build <span className="text-primary text-glow-primary">Future-Ready</span> <span className="text-accent text-glow-accent">Digital</span> Experiences
               </h1>
             </MotionDiv>
             <MotionDiv variants={itemVariants}>
@@ -68,39 +66,38 @@ export function HeroSection() {
             </MotionDiv>
 
             <MotionDiv variants={itemVariants} className="flex flex-wrap justify-start gap-4 pt-2">
-              <Button size="lg" className="h-14 px-8 text-lg font-bold rounded-full transition-all hover:scale-105 active:scale-95" asChild>
+              <Button size="lg" className="h-14 px-8 text-lg font-bold rounded-full transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/20" asChild>
                 <Link href="#contact">Get In Touch</Link>
               </Button>
             </MotionDiv>
           </div>
 
           <MotionDiv variants={cardVariants} className="hidden md:flex justify-end">
-            <Card className="glass-card rounded-3xl w-full max-w-sm glow-border overflow-hidden border-white/5 bg-white/[0.03]">
+            <Card className="glass-card rounded-3xl w-full max-w-sm glow-border overflow-hidden border-white/5 bg-white/[0.03] backdrop-blur-xl">
               <CardContent className="p-10 space-y-6">
                 <div className="space-y-4">
                     <li className="flex items-center gap-4 group">
-                    <div className="p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                        <CheckCircle className="h-5 w-5 text-primary" />
-                    </div>
-                    <span className="font-medium text-lg">Fast & Scalable</span>
+                      <div className="p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                          <CheckCircle className="h-5 w-5 text-primary" />
+                      </div>
+                      <span className="font-medium text-lg">Fast & Scalable</span>
                     </li>
                     <li className="flex items-center gap-4 group">
-                    <div className="p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                        <CheckCircle className="h-5 w-5 text-primary" />
-                    </div>
-                    <span className="font-medium text-lg">Premium Animations</span>
+                      <div className="p-2 rounded-full bg-accent/10 group-hover:bg-accent/20 transition-colors">
+                          <CheckCircle className="h-5 w-5 text-accent" />
+                      </div>
+                      <span className="font-medium text-lg">Premium Animations</span>
                     </li>
                     <li className="flex items-center gap-4 group">
-                    <div className="p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                        <CheckCircle className="h-5 w-5 text-primary" />
-                    </div>
-                    <span className="font-medium text-lg">AI-Driven UI/UX</span>
+                      <div className="p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                          <CheckCircle className="h-5 w-5 text-primary" />
+                      </div>
+                      <span className="font-medium text-lg">AI-Driven UI/UX</span>
                     </li>
                 </div>
               </CardContent>
             </Card>
           </MotionDiv>
-
         </MotionDiv>
       </div>
     </section>

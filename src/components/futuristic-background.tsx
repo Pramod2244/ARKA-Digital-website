@@ -14,101 +14,123 @@ export function FuturisticBackground() {
 
   return (
     <div className="absolute inset-0 overflow-hidden bg-[#020617] -z-10">
-      {/* The Tech Grid */}
+      {/* The Tech Grid Layer */}
       <div 
-        className="absolute inset-0 opacity-[0.15]"
+        className="absolute inset-0 opacity-[0.2]"
         style={{
           backgroundImage: `linear-gradient(to right, #1e293b 1px, transparent 1px), linear-gradient(to bottom, #1e293b 1px, transparent 1px)`,
-          backgroundSize: '40px 40px',
-          maskImage: 'radial-gradient(ellipse at center, black, transparent 80%)'
+          backgroundSize: '50px 50px',
+          maskImage: 'radial-gradient(ellipse at center, black, transparent 90%)'
         }}
       />
 
-      {/* Glowing Ambient Orbs */}
-      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/10 blur-[120px]" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-accent/10 blur-[120px]" />
+      {/* Glowing Ambient Orbs - Dynamic Depth */}
+      <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-primary/20 blur-[150px] animate-pulse" />
+      <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-accent/20 blur-[150px] animate-pulse" style={{ animationDelay: '1s' }} />
+      <div className="absolute top-[30%] right-[10%] w-[30%] h-[30%] rounded-full bg-primary/5 blur-[100px]" />
 
-      {/* Moving Light Lines */}
+      {/* Moving Light Lines (Data Streams) */}
       <svg className="absolute inset-0 w-full h-full">
         <defs>
-          <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <linearGradient id="line-gradient-primary" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="transparent" />
-            <stop offset="50%" stopColor="var(--primary)" stopOpacity="0.5" />
+            <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.6" />
+            <stop offset="100%" stopColor="transparent" />
+          </linearGradient>
+          <linearGradient id="line-gradient-accent" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="transparent" />
+            <stop offset="50%" stopColor="hsl(var(--accent))" stopOpacity="0.4" />
             <stop offset="100%" stopColor="transparent" />
           </linearGradient>
         </defs>
         
-        {[...Array(6)].map((_, i) => (
+        {[...Array(8)].map((_, i) => (
           <motion.path
-            key={`line-${i}`}
-            d={`M ${-100} ${100 + i * 150} L ${2000} ${100 + i * 150 + 100}`}
-            stroke="url(#line-gradient)"
-            strokeWidth="1"
+            key={`stream-${i}`}
+            d={`M ${-500} ${100 + i * 180} L ${2500} ${100 + i * 180 + 150}`}
+            stroke={i % 2 === 0 ? "url(#line-gradient-primary)" : "url(#line-gradient-accent)"}
+            strokeWidth="1.5"
             fill="none"
-            initial={{ pathLength: 0, opacity: 0, x: -100 }}
+            initial={{ pathLength: 0, opacity: 0, x: -200 }}
             animate={{ 
               pathLength: [0, 1, 0],
-              opacity: [0, 0.3, 0],
-              x: [0, 200, 400]
+              opacity: [0, 0.4, 0],
+              x: [0, 300, 600]
             }}
             transition={{
-              duration: 10 + i * 2,
+              duration: 12 + i * 3,
               repeat: Infinity,
               ease: "linear",
-              delay: i * 1.5
+              delay: i * 2
             }}
           />
         ))}
       </svg>
 
-      {/* Floating Digital Particles */}
+      {/* High-Tech Particles */}
       <div className="absolute inset-0">
-        {[...Array(30)].map((_, i) => (
+        {[...Array(40)].map((_, i) => (
           <motion.div
-            key={`particle-${i}`}
+            key={`p-${i}`}
             className="absolute rounded-full"
             style={{
-              width: Math.random() * 3 + 1 + "px",
-              height: Math.random() * 3 + 1 + "px",
+              width: Math.random() * 4 + 1 + "px",
+              height: Math.random() * 4 + 1 + "px",
               backgroundColor: i % 2 === 0 ? "hsl(var(--primary))" : "hsl(var(--accent))",
               left: Math.random() * 100 + "%",
               top: Math.random() * 100 + "%",
               boxShadow: i % 2 === 0 
-                ? "0 0 10px hsl(var(--primary) / 0.5)" 
-                : "0 0 10px hsl(var(--accent) / 0.5)"
+                ? "0 0 12px hsl(var(--primary) / 0.8)" 
+                : "0 0 12px hsl(var(--accent) / 0.8)"
             }}
             animate={{
-              y: [0, -40, 0],
-              opacity: [0.1, 0.6, 0.1],
-              scale: [1, 1.2, 1]
+              y: [0, -100, 0],
+              x: [0, (Math.random() - 0.5) * 50, 0],
+              opacity: [0.2, 0.8, 0.2],
+              scale: [1, 1.5, 1]
             }}
             transition={{
-              duration: 5 + Math.random() * 5,
+              duration: 7 + Math.random() * 8,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: Math.random() * 5
+              delay: Math.random() * 10
             }}
           />
         ))}
       </div>
 
-      {/* Subtle Data Connections */}
-      <svg className="absolute inset-0 w-full h-full opacity-20">
-        {[...Array(4)].map((_, i) => (
-          <motion.circle
-            key={`node-${i}`}
-            r="2"
-            fill="white"
-            cx={20 + i * 25 + "%"}
-            cy={30 + (i % 2) * 40 + "%"}
-            animate={{ opacity: [0.2, 0.8, 0.2] }}
-            transition={{ duration: 3, repeat: Infinity, delay: i }}
-          />
-        ))}
+      {/* Subtle AI Connection Nodes */}
+      <svg className="absolute inset-0 w-full h-full opacity-30">
+        {[...Array(5)].map((_, i) => {
+          const cx = 15 + i * 20 + "%";
+          const cy = 20 + (i % 3) * 25 + "%";
+          return (
+            <React.Fragment key={`node-group-${i}`}>
+              <motion.circle
+                cx={cx}
+                cy={cy}
+                r="3"
+                fill="white"
+                animate={{ opacity: [0.1, 0.5, 0.1], scale: [1, 1.3, 1] }}
+                transition={{ duration: 4, repeat: Infinity, delay: i }}
+              />
+              <motion.circle
+                cx={cx}
+                cy={cy}
+                r="8"
+                stroke="white"
+                strokeWidth="0.5"
+                fill="none"
+                animate={{ scale: [1, 2], opacity: [0.5, 0] }}
+                transition={{ duration: 3, repeat: Infinity, delay: i }}
+              />
+            </React.Fragment>
+          );
+        })}
       </svg>
       
-      {/* Dark Overlay for readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background" />
+      {/* Dark Readability Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/60 to-background" />
     </div>
   );
 }
