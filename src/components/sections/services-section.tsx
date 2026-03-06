@@ -7,33 +7,33 @@ import { motion } from "framer-motion";
 const services = [
   {
     icon: Code2,
-    title: "Web Development",
-    description: "Build fast, secure, and scalable web applications using modern technologies to support business growth.",
+    title: "Web Engineering",
+    description: "Build fast, secure, and scalable web applications using modern technologies to drive your business growth.",
   },
   {
     icon: Palette,
-    title: "UI/UX Design",
-    description: "Create intuitive and visually engaging user interfaces that deliver seamless digital experiences.",
+    title: "Product Design",
+    description: "Create intuitive and visually engaging user interfaces that deliver seamless, world-class digital experiences.",
   },
   {
     icon: Layers,
-    title: "Branding",
-    description: "Develop strong brand identities that communicate your vision and make your business stand out.",
+    title: "Brand Identity",
+    description: "Develop strong brand identities that communicate your vision and make your business stand out in the market.",
   },
   {
     icon: TrendingUp,
-    title: "Digital Marketing & SEO",
-    description: "Increase online visibility with data-driven marketing strategies and search engine optimization.",
+    title: "Digital Growth",
+    description: "Increase online visibility with data-driven marketing strategies and expert search engine optimization.",
   },
   {
     icon: Cloud,
-    title: "Cloud & DevOps",
-    description: "Implement secure cloud infrastructure and DevOps automation for reliable and scalable systems.",
+    title: "Cloud Systems",
+    description: "Implement secure cloud infrastructure and DevOps automation for reliable, high-performance digital systems.",
   },
   {
     icon: Cpu,
-    title: "AI & Automation",
-    description: "Leverage cutting-edge AI to automate workflows and drive intelligent business decision making.",
+    title: "AI Intelligence",
+    description: "Leverage cutting-edge AI to automate complex workflows and drive intelligent business decision making.",
   },
 ];
 
@@ -111,12 +111,12 @@ export function ServicesSection() {
               viewport={{ once: true }}
               className="h-full"
             >
-              <Card className="h-full glass-card border-white/5 bg-white/[0.02] relative group overflow-hidden transition-all duration-500 hover:border-primary/50 hover:shadow-[0_0_40px_rgba(249,115,22,0.1)] flex flex-col p-10 rounded-[2.5rem]">
+              <Card className="h-full glass-card border-white/5 bg-white/[0.02] backdrop-blur-xl relative group overflow-hidden transition-all duration-500 hover:border-primary/50 hover:shadow-[0_0_40px_rgba(249,115,22,0.15)] flex flex-col p-8 md:p-10 rounded-[2.5rem]">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 
                 <div className="relative mb-8">
-                  <div className="w-16 h-16 rounded-3xl bg-primary/10 border border-white/10 flex items-center justify-center relative transition-all duration-500 group-hover:scale-110 group-hover:border-primary/40">
-                    <service.icon className="h-8 w-8 text-primary relative z-10 filter drop-shadow-[0_0_8px_hsl(var(--primary)/0.5)]" />
+                  <div className="w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center relative transition-all duration-500 group-hover:scale-110 group-hover:border-primary/40 shadow-[0_0_15px_rgba(249,115,22,0.1)]">
+                    <service.icon className="h-8 w-8 text-primary relative z-10 filter drop-shadow-[0_0_8px_hsl(var(--primary)/0.6)]" />
                   </div>
                 </div>
 
@@ -127,7 +127,7 @@ export function ServicesSection() {
                 </CardHeader>
                 
                 <CardContent className="p-0 relative z-10 flex-grow">
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed text-base min-h-[4.5rem]">
                     {service.description}
                   </p>
                 </CardContent>
