@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Autoplay from "embla-carousel-autoplay";
 import { Quote, Star } from "lucide-react";
 import { motion } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useMemo } from "react";
 
 import {
   Carousel,
@@ -69,9 +69,11 @@ const itemVariants = {
 };
 
 export function TestimonialsSection() {
-  const plugin = useRef(
+  const autoplay = useRef(
     Autoplay({ delay: 5000, stopOnInteraction: true })
   );
+
+  const plugins = useMemo(() => [autoplay.current], []);
 
   return (
     <section id="testimonials" className="relative py-20 md:py-28 overflow-hidden">
@@ -107,10 +109,10 @@ export function TestimonialsSection() {
           viewport={{ once: true, amount: 0.2 }}
         >
           <Carousel
-            plugins={[plugin.current]}
+            plugins={plugins}
             className="w-full max-w-6xl mx-auto"
-            onMouseEnter={plugin.current.stop}
-            onMouseLeave={plugin.current.reset}
+            onMouseEnter={autoplay.current.stop}
+            onMouseLeave={autoplay.current.reset}
             opts={{
               align: "center",
               loop: false,
@@ -163,8 +165,8 @@ export function TestimonialsSection() {
             </CarouselContent>
             
             <div className="flex justify-center items-center gap-4 mt-12 relative z-20">
-              <CarouselPrevious className="relative translate-y-0 left-0 h-14 w-14 border-white/10 bg-white/5 hover:bg-white/10 hover:text-primary hover:border-primary/50 rounded-full transition-all duration-300 disabled:opacity-30 disabled:pointer-events-none" />
-              <CarouselNext className="relative translate-y-0 right-0 h-14 w-14 border-white/10 bg-white/5 hover:bg-white/10 hover:text-primary hover:border-primary/50 rounded-full transition-all duration-300 disabled:opacity-30 disabled:pointer-events-none" />
+              <CarouselPrevious className="static translate-y-0 h-14 w-14 border-white/10 bg-white/5 hover:bg-white/10 hover:text-primary hover:border-primary/50 rounded-full transition-all duration-300 disabled:opacity-30 disabled:pointer-events-none" />
+              <CarouselNext className="static translate-y-0 h-14 w-14 border-white/10 bg-white/5 hover:bg-white/10 hover:text-primary hover:border-primary/50 rounded-full transition-all duration-300 disabled:opacity-30 disabled:pointer-events-none" />
             </div>
           </Carousel>
         </motion.div>
