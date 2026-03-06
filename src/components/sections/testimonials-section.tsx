@@ -161,9 +161,11 @@ export function TestimonialsSection() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="hidden lg:flex justify-center gap-4 mt-12">
-              <CarouselPrevious className="static translate-y-0 h-12 w-12 border-white/10 bg-white/5 hover:bg-white/10 hover:text-primary rounded-full" />
-              <CarouselNext className="static translate-y-0 h-12 w-12 border-white/10 bg-white/5 hover:bg-white/10 hover:text-primary rounded-full" />
+            
+            {/* Improved Navigation Container */}
+            <div className="flex justify-center items-center gap-4 mt-12 relative z-20">
+              <CarouselPrevious className="relative translate-y-0 left-0 h-14 w-14 border-white/10 bg-white/5 hover:bg-white/10 hover:text-primary hover:border-primary/50 rounded-full transition-all duration-300" />
+              <CarouselNext className="relative translate-y-0 right-0 h-14 w-14 border-white/10 bg-white/5 hover:bg-white/10 hover:text-primary hover:border-primary/50 rounded-full transition-all duration-300" />
             </div>
           </Carousel>
         </motion.div>
