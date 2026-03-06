@@ -3,6 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Code2, Cloud, TrendingUp, Palette, Layers, Cpu } from "lucide-react";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const services = [
   {
@@ -38,6 +39,12 @@ const services = [
 ];
 
 export function ServicesSection() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <section id="services" className="relative py-24 md:py-32 overflow-hidden bg-background">
       {/* 1. ATMOSPHERIC BACKGROUND SYSTEM */}
@@ -52,8 +59,8 @@ export function ServicesSection() {
         <div className="absolute top-1/4 -left-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] opacity-30" />
         <div className="absolute bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[120px] opacity-20" />
         
-        {/* Ambient Particle System */}
-        {[...Array(12)].map((_, i) => (
+        {/* Ambient Particle System - Deferred to avoid hydration mismatch */}
+        {mounted && [...Array(12)].map((_, i) => (
           <motion.div
             key={`service-particle-${i}`}
             className="absolute w-1 h-1 rounded-full"

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { MotionDiv } from "@/components/motion-provider";
 import { ArrowRight, Cpu, Cloud, Code2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -50,6 +51,12 @@ const services = [
 ];
 
 export function HeroSection() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <section id="home" className="relative w-full min-h-[90vh] flex items-center pt-24 pb-16 overflow-hidden">
       {/* 1. LAYERED BACKGROUND SYSTEM (The Arkaa Sun Core) */}
@@ -98,30 +105,32 @@ export function HeroSection() {
             </motion.div>
         </div>
 
-        {/* Global Particles */}
-        <div className="absolute inset-0 opacity-[0.15]">
-           {[...Array(15)].map((_, i) => (
-             <motion.div
-               key={i}
-               className="absolute w-1 h-1 bg-primary rounded-full"
-               initial={{ 
-                 x: Math.random() * 100 + "%", 
-                 y: Math.random() * 100 + "%",
-                 opacity: Math.random()
-               }}
-               animate={{ 
-                 y: ["-10%", "110%"],
-                 opacity: [0, 1, 0]
-               }}
-               transition={{ 
-                 duration: 10 + Math.random() * 20, 
-                 repeat: Infinity, 
-                 ease: "linear",
-                 delay: Math.random() * 10
-               }}
-             />
-           ))}
-        </div>
+        {/* Global Particles - Deferred to avoid hydration mismatch */}
+        {mounted && (
+          <div className="absolute inset-0 opacity-[0.15]">
+            {[...Array(15)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-1 h-1 bg-primary rounded-full"
+                initial={{ 
+                  x: Math.random() * 100 + "%", 
+                  y: Math.random() * 100 + "%",
+                  opacity: Math.random()
+                }}
+                animate={{ 
+                  y: ["-10%", "110%"],
+                  opacity: [0, 1, 0]
+                }}
+                transition={{ 
+                  duration: 10 + Math.random() * 20, 
+                  repeat: Infinity, 
+                  ease: "linear",
+                  delay: Math.random() * 10
+                }}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
       {/* 2. CONTENT LAYER */}

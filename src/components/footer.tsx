@@ -3,8 +3,15 @@
 import Link from 'next/link';
 import { Mail, MapPin, Phone, Sun } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 export function Footer() {
+  const [year, setYear] = useState<number | null>(null);
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
   return (
     <footer className="bg-background border-t border-white/10">
       <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
@@ -52,7 +59,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 border-t border-white/10 pt-4 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Arkaa Digital. All rights reserved.</p>
+          <p>&copy; {year || '...'} Arkaa Digital. All rights reserved.</p>
         </div>
       </div>
     </footer>
