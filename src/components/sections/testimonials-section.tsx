@@ -112,8 +112,8 @@ export function TestimonialsSection() {
             onMouseEnter={plugin.current.stop}
             onMouseLeave={plugin.current.reset}
             opts={{
-              align: "start",
-              loop: true,
+              align: "center",
+              loop: false,
             }}
           >
             <CarouselContent className="-ml-4 md:-ml-6">
@@ -162,10 +162,9 @@ export function TestimonialsSection() {
               ))}
             </CarouselContent>
             
-            {/* Improved Navigation Container */}
             <div className="flex justify-center items-center gap-4 mt-12 relative z-20">
-              <CarouselPrevious className="relative translate-y-0 left-0 h-14 w-14 border-white/10 bg-white/5 hover:bg-white/10 hover:text-primary hover:border-primary/50 rounded-full transition-all duration-300" />
-              <CarouselNext className="relative translate-y-0 right-0 h-14 w-14 border-white/10 bg-white/5 hover:bg-white/10 hover:text-primary hover:border-primary/50 rounded-full transition-all duration-300" />
+              <CarouselPrevious className="relative translate-y-0 left-0 h-14 w-14 border-white/10 bg-white/5 hover:bg-white/10 hover:text-primary hover:border-primary/50 rounded-full transition-all duration-300 disabled:opacity-30 disabled:pointer-events-none" />
+              <CarouselNext className="relative translate-y-0 right-0 h-14 w-14 border-white/10 bg-white/5 hover:bg-white/10 hover:text-primary hover:border-primary/50 rounded-full transition-all duration-300 disabled:opacity-30 disabled:pointer-events-none" />
             </div>
           </Carousel>
         </motion.div>
