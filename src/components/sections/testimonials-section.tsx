@@ -98,8 +98,15 @@ const itemVariants = {
 
 export function TestimonialsSection() {
   const [mounted, setMounted] = useState(false);
+  
+  // Requirement: Autoplay every 4.5 seconds.
+  // Requirement: Pause on hover using stopOnMouseEnter.
   const autoplay = useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: true })
+    Autoplay({ 
+      delay: 4500, 
+      stopOnInteraction: false, 
+      stopOnMouseEnter: true 
+    })
   );
 
   const plugins = useMemo(() => [autoplay.current], []);
@@ -179,8 +186,6 @@ export function TestimonialsSection() {
           <Carousel
             plugins={plugins}
             className="w-full max-w-7xl mx-auto"
-            onMouseEnter={() => autoplay.current.stop()}
-            onMouseLeave={() => autoplay.current.reset()}
             opts={{
               align: "center",
               loop: true,
