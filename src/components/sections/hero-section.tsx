@@ -58,16 +58,17 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section id="home" className="relative w-full min-h-[90vh] flex items-center pt-24 pb-16 overflow-hidden">
-      {/* 1. LAYERED BACKGROUND SYSTEM (The Arkaa Sun Core) */}
+    <section id="home" className="relative w-full min-h-[90vh] flex items-center pt-24 pb-16 overflow-hidden bg-[#050506]">
+      {/* 1. LAYERED BACKGROUND SYSTEM (The Arkaa Sun + Neural Space) */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        {/* Main Energy Core Glow */}
-        <div className="absolute top-1/2 left-1/2 lg:left-[70%] -translate-x-1/2 -translate-y-1/2 w-[90vw] h-[90vw] max-w-[1000px] max-h-[1000px]">
+        
+        {/* Main Energy Core Glow (Right Aligned) */}
+        <div className="absolute top-1/2 left-1/2 lg:left-[75%] -translate-x-1/2 -translate-y-1/2 w-[90vw] h-[90vw] max-w-[1000px] max-h-[1000px]">
             {/* Outer Soft Radial Glow */}
             <motion.div 
               animate={{ 
                 scale: [1, 1.05, 1],
-                opacity: [0.2, 0.4, 0.2] 
+                opacity: [0.15, 0.3, 0.15] 
               }}
               transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
               className="absolute inset-0 bg-primary/10 rounded-full blur-[160px]" 
@@ -75,20 +76,24 @@ export function HeroSection() {
             
             {/* Bright Energy Core */}
             <motion.div 
-              animate={{ scale: [1, 1.1, 1], opacity: [0.4, 0.7, 0.4] }}
+              animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30%] h-[30%] bg-primary/30 rounded-full blur-[90px]" 
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[25%] h-[25%] bg-primary/25 rounded-full blur-[80px]" 
             />
 
-            {/* Slow Rotating Tech Rings */}
+            {/* Slow Rotating Tech Rings (60s rotation) */}
             <motion.div 
               animate={{ rotate: 360 }}
               transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-0 p-8"
+              className="absolute inset-0 p-4"
             >
-              <svg viewBox="0 0 100 100" className="w-full h-full opacity-30 stroke-primary/50 fill-none">
-                <circle cx="50" cy="50" r="48" strokeWidth="0.1" strokeDasharray="1 3" />
-                <circle cx="50" cy="50" r="44" strokeWidth="0.2" strokeDasharray="10 15" />
+              <svg viewBox="0 0 100 100" className="w-full h-full opacity-20 stroke-primary/40 fill-none">
+                <circle cx="50" cy="50" r="48" strokeWidth="0.05" strokeDasharray="1 4" />
+                <circle cx="50" cy="50" r="44" strokeWidth="0.1" strokeDasharray="8 12" />
+                {/* Neural Network Line Hints */}
+                <path d="M50 2 L50 10" strokeWidth="0.2" className="text-accent" />
+                <path d="M50 90 L50 98" strokeWidth="0.2" className="text-accent" />
+                <circle cx="50" cy="2" r="0.3" fill="currentColor" className="text-accent" />
               </svg>
             </motion.div>
 
@@ -96,44 +101,78 @@ export function HeroSection() {
             <motion.div 
               animate={{ rotate: -360 }}
               transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-0 p-24"
+              className="absolute inset-0 p-20"
             >
-              <svg viewBox="0 0 100 100" className="w-full h-full opacity-20 stroke-primary/40 fill-none">
-                <circle cx="50" cy="50" r="45" strokeWidth="0.15" strokeDasharray="2 8" />
-                <circle cx="50" cy="5" r="0.6" fill="currentColor" className="text-primary filter drop-shadow-[0_0_8px_hsl(var(--primary))]" />
+              <svg viewBox="0 0 100 100" className="w-full h-full opacity-15 stroke-primary/30 fill-none">
+                <circle cx="50" cy="50" r="45" strokeWidth="0.1" strokeDasharray="2 10" />
+                <circle cx="50" cy="5" r="0.5" fill="currentColor" className="text-primary filter drop-shadow-[0_0_8px_hsl(var(--primary))]" />
               </svg>
             </motion.div>
         </div>
 
-        {/* Global Particles - Deferred to avoid hydration mismatch */}
+        {/* 2. NEURAL SPACE PARTICLE SYSTEM */}
         {mounted && (
-          <div className="absolute inset-0 opacity-[0.15]">
-            {[...Array(15)].map((_, i) => (
+          <div className="absolute inset-0 z-0">
+            {/* Blue Space Particles */}
+            {[...Array(25)].map((_, i) => (
               <motion.div
-                key={i}
-                className="absolute w-1 h-1 bg-primary rounded-full"
-                initial={{ 
-                  x: Math.random() * 100 + "%", 
-                  y: Math.random() * 100 + "%",
-                  opacity: Math.random()
+                key={`particle-${i}`}
+                className="absolute rounded-full"
+                style={{
+                  width: Math.random() * 2 + 1,
+                  height: Math.random() * 2 + 1,
+                  background: i % 2 === 0 ? 'hsl(var(--accent))' : 'white',
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  opacity: Math.random() * 0.2 + 0.05,
+                  filter: 'blur(0.5px)',
                 }}
-                animate={{ 
-                  y: ["-10%", "110%"],
-                  opacity: [0, 1, 0]
+                animate={{
+                  y: [0, -40, 0],
+                  x: [0, Math.random() * 20 - 10, 0],
+                  opacity: [0.1, 0.3, 0.1],
                 }}
-                transition={{ 
-                  duration: 10 + Math.random() * 20, 
-                  repeat: Infinity, 
+                transition={{
+                  duration: 15 + Math.random() * 15,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: Math.random() * 10,
+                }}
+              />
+            ))}
+            
+            {/* Subtle Digital Trails (Thin Lines) */}
+            {[...Array(5)].map((_, i) => (
+              <motion.div
+                key={`trail-${i}`}
+                className="absolute bg-accent/10"
+                style={{
+                  width: '1px',
+                  height: Math.random() * 100 + 50,
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  rotate: `${Math.random() * 360}deg`,
+                  opacity: 0.05,
+                }}
+                animate={{
+                  opacity: [0.02, 0.1, 0.02],
+                  scaleY: [1, 1.2, 1],
+                }}
+                transition={{
+                  duration: 10 + Math.random() * 10,
+                  repeat: Infinity,
                   ease: "linear",
-                  delay: Math.random() * 10
                 }}
               />
             ))}
           </div>
         )}
+
+        {/* Depth Mask */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background opacity-80" />
       </div>
 
-      {/* 2. CONTENT LAYER */}
+      {/* 3. CONTENT LAYER */}
       <div className="relative z-10 container mx-auto px-6">
         <MotionDiv
           className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-center max-w-7xl mx-auto"
@@ -156,22 +195,22 @@ export function HeroSection() {
               </h1>
               
               <div className="pt-2">
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs md:text-sm font-medium tracking-[0.1em] text-muted-foreground/50 uppercase">
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs md:text-sm font-medium tracking-[0.2em] text-muted-foreground uppercase opacity-60">
                   <span>Web Apps</span>
-                  <span className="text-muted-foreground/20">•</span>
+                  <span className="text-muted-foreground/30">•</span>
                   <span>UI/UX</span>
-                  <span className="text-muted-foreground/20">•</span>
+                  <span className="text-muted-foreground/30">•</span>
                   <span>Branding</span>
-                  <span className="text-muted-foreground/20">•</span>
+                  <span className="text-muted-foreground/30">•</span>
                   <span>Automation</span>
-                  <span className="text-muted-foreground/20">•</span>
+                  <span className="text-muted-foreground/30">•</span>
                   <span>Growth</span>
                 </div>
               </div>
             </MotionDiv>
 
             <MotionDiv variants={textVariants} className="flex flex-wrap items-center gap-4 pt-4">
-              <Button size="lg" className="h-14 px-10 text-sm font-bold rounded-xl transition-all bg-gradient-to-r from-primary to-primary/80 text-primary-foreground hover:bg-primary/90 shadow-[0_10px_20px_rgba(249,115,22,0.2)] hover:shadow-[0_0_30px_rgba(249,115,22,0.4)] active:scale-95 uppercase tracking-widest" asChild>
+              <Button size="lg" className="h-14 px-10 text-sm font-bold rounded-xl transition-all bg-gradient-to-r from-primary to-primary/80 text-primary-foreground hover:bg-primary/90 shadow-[0_5px_15px_rgba(249,115,22,0.2)] hover:shadow-[0_0_20px_rgba(249,115,22,0.3)] active:scale-95 uppercase tracking-widest" asChild>
                 <Link href="#contact">
                   Start Project
                 </Link>
@@ -185,7 +224,7 @@ export function HeroSection() {
             </MotionDiv>
           </div>
 
-          {/* Right Content - Service Cards */}
+          {/* Right Content - Service Cards (Powered by the Sun) */}
           <div className="lg:col-span-2 relative flex flex-col gap-6 items-center lg:items-end">
             {services.map((service, i) => (
               <motion.div
