@@ -4,45 +4,37 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Code2, Cloud, TrendingUp, Palette, Layers, Cpu } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
 
 const services = [
   {
     icon: Code2,
     title: "Web Engineering",
     description: "Architecting ultra-high-performance, secure, and infinitely scalable web ecosystems with modern frameworks and resilient digital infrastructure.",
-    className: "lg:col-span-2 lg:row-span-1",
   },
   {
     icon: Cpu,
     title: "AI Intelligence",
     description: "Deploying proprietary neural architectures to automate mission-critical workflows and unlock exponential business value.",
-    className: "lg:col-span-1 lg:row-span-2",
-    highlight: true,
   },
   {
     icon: Palette,
     title: "Product Design",
-    description: "Synthesizing intuitive UX with cutting-edge visual aesthetics for world-class digital interactions.",
-    className: "lg:col-span-1 lg:row-span-1",
+    description: "Synthesizing intuitive UX with cutting-edge visual aesthetics for world-class digital interactions and experiences.",
   },
   {
     icon: Layers,
     title: "Brand Identity",
-    description: "Defining visionary brand narratives that bridge the gap between human values and technological progress.",
-    className: "lg:col-span-1 lg:row-span-1",
+    description: "Defining visionary brand narratives that bridge the gap between human values and technological progress globally.",
   },
   {
     icon: Cloud,
     title: "Cloud Systems",
-    description: "Automated, global-scale infrastructure with zero-latency deployment cycles and robust multi-cloud redundancy.",
-    className: "lg:col-span-1 lg:row-span-1",
+    description: "Automated, global-scale infrastructure with zero-latency deployment cycles and robust multi-cloud redundancy for stability.",
   },
   {
     icon: TrendingUp,
     title: "Digital Growth",
-    description: "Strategic search optimization and high-impact marketing funnels powered by real-time data analytics and performance-driven growth algorithms.",
-    className: "lg:col-span-2 lg:row-span-1",
+    description: "Strategic search optimization and high-impact marketing funnels powered by real-time data analytics and growth algorithms.",
   },
 ];
 
@@ -116,7 +108,7 @@ export function ServicesSection() {
           </p>
         </div>
 
-        {/* BENTO GRID LAYOUT */}
+        {/* SYMMETRICAL 3x2 GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {services.map((service, index) => (
             <motion.div
@@ -125,26 +117,16 @@ export function ServicesSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
               viewport={{ once: true }}
-              className={cn("relative group", service.className)}
+              className="relative group h-full"
             >
-              <Card className={cn(
-                "h-full glass-card border-white/5 bg-white/[0.01] backdrop-blur-3xl relative overflow-hidden transition-all duration-500 hover:border-primary/40 hover:shadow-[0_0_50px_rgba(249,115,22,0.1)] flex flex-col p-8 md:p-10 rounded-[2.5rem]",
-                service.highlight && "border-primary/20 bg-primary/[0.02]"
-              )}>
-                {/* Noise Texture Overlay */}
-                <div className="absolute inset-0 noise-bg pointer-events-none" />
-                
+              <Card className="h-full glass-card border-white/5 bg-white/[0.01] backdrop-blur-3xl relative overflow-hidden transition-all duration-500 hover:border-primary/40 hover:shadow-[0_0_50px_rgba(249,115,22,0.15)] flex flex-col p-8 md:p-10 rounded-[2.5rem]">
                 {/* Interactive Gradient Glow */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 
                 <div className="relative mb-8">
-                  <motion.div 
-                    animate={{ rotate: [0, 5, -5, 0] }}
-                    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                    className="w-16 h-16 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center relative transition-all duration-500 group-hover:scale-110 group-hover:border-primary/50 group-hover:bg-primary/5 shadow-2xl"
-                  >
+                  <div className="w-16 h-16 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center relative transition-all duration-500 group-hover:scale-110 group-hover:border-primary/50 group-hover:bg-primary/5 shadow-2xl">
                     <service.icon className="h-8 w-8 text-white filter drop-shadow-[0_0_12px_rgba(255,255,255,0.3)] group-hover:text-primary transition-colors duration-500" />
-                  </motion.div>
+                  </div>
                 </div>
 
                 <CardHeader className="p-0 mb-4 relative z-10">
