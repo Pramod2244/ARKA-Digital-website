@@ -1,10 +1,9 @@
-
 "use client";
 
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import Autoplay from "embla-carousel-autoplay";
-import { Quote, Star } from "lucide-react";
+import AutoScroll from "embla-carousel-auto-scroll";
+import { Quote, Star, MousePointer2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 
@@ -12,13 +11,11 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 
 const testimonials = [
   {
-    quote: "Arkaa Digital transformed our outdated system into a modern, cloud-based platform. Their team’s technical skill was outstanding.",
+    quote: "Arkaa Digital transformed our outdated system into a modern, cloud-based platform. Their team's technical skill was outstanding.",
     name: "Jane Doe",
     title: "CEO, Retail Client",
     avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704d",
@@ -78,13 +75,14 @@ const testimonials = [
 export function TestimonialsSection() {
   const [mounted, setMounted] = useState(false);
   
-  // Requirement: Autoplay every 4.5 seconds.
-  // Requirement: Pause on hover using stopOnMouseEnter.
-  const autoplay = useRef(
-    Autoplay({ 
-      delay: 4500, 
+  // Requirement: Infinite horizontal auto-scrolling with no snapping.
+  // Requirement: Pause on hover.
+  const autoScroll = useRef(
+    AutoScroll({ 
+      speed: 1, 
       stopOnInteraction: false, 
-      stopOnMouseEnter: true 
+      stopOnMouseEnter: true,
+      playOnInit: true
     })
   );
 
@@ -147,65 +145,74 @@ export function TestimonialsSection() {
           </p>
         </div>
 
-        <Carousel
-          plugins={[autoplay.current]}
-          className="w-full max-w-7xl mx-auto"
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-        >
-          <CarouselContent className="-ml-4 md:-ml-8">
-            {testimonials.map((testimonial, index) => (
-              <CarouselItem key={index} className="pl-4 md:pl-8 md:basis-1/2 lg:basis-1/3">
-                <div className="h-full p-1">
-                  <Card className="h-full glass-card border-white/5 bg-white/[0.02] backdrop-blur-xl group hover:border-primary/40 transition-all duration-500 overflow-hidden relative rounded-[2.5rem] flex flex-col p-8 md:p-10">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                    
-                    <div className="relative z-10 flex flex-col h-full">
-                      <div className="flex justify-between items-start mb-8">
-                        <div className="p-4 rounded-2xl bg-primary/10 border border-primary/20 group-hover:bg-primary/20 transition-all duration-500">
-                          <Quote className="h-6 w-6 text-primary filter drop-shadow-[0_0_8px_hsl(var(--primary)/0.6)]" />
+        <div className="relative">
+          <Carousel
+            plugins={[autoScroll.current]}
+            className="w-full"
+            opts={{
+              align: "start",
+              loop: true,
+              skipSnaps: true,
+              dragFree: true
+            }}
+          >
+            <CarouselContent className="-ml-4 md:-ml-8 cursor-grab active:cursor-grabbing">
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem key={index} className="pl-4 md:pl-8 basis-full md:basis-1/2 lg:basis-1/3">
+                  <div className="h-full p-1">
+                    <Card className="h-full glass-card border-white/5 bg-white/[0.02] backdrop-blur-xl group hover:border-primary/40 transition-all duration-500 overflow-hidden relative rounded-[2.5rem] flex flex-col p-8 md:p-10 select-none">
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                      
+                      <div className="relative z-10 flex flex-col h-full">
+                        <div className="flex justify-between items-start mb-8">
+                          <div className="p-4 rounded-2xl bg-primary/10 border border-primary/20 group-hover:bg-primary/20 transition-all duration-500">
+                            <Quote className="h-6 w-6 text-primary filter drop-shadow-[0_0_8px_hsl(var(--primary)/0.6)]" />
+                          </div>
+                          <div className="flex gap-1.5 pt-2">
+                            {[...Array(testimonial.rating)].map((_, i) => (
+                              <Star key={i} className="h-3.5 w-3.5 fill-primary text-primary" />
+                            ))}
+                          </div>
                         </div>
-                        <div className="flex gap-1.5 pt-2">
-                          {[...Array(testimonial.rating)].map((_, i) => (
-                            <Star key={i} className="h-3.5 w-3.5 fill-primary text-primary" />
-                          ))}
-                        </div>
-                      </div>
 
-                      <div className="flex-grow mb-10">
-                        <p className="text-lg md:text-xl text-white/90 leading-relaxed font-medium italic">
-                          "{testimonial.quote}"
-                        </p>
-                      </div>
-
-                      <div className="flex items-center gap-5 pt-8 border-t border-white/5 mt-auto">
-                        <Avatar className="h-14 w-14 border-2 border-primary/20 shadow-[0_0_15px_rgba(249,115,22,0.1)] transition-transform duration-500 group-hover:scale-110">
-                          <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-                          <AvatarFallback className="bg-primary/10 text-primary font-bold">{testimonial.name.charAt(0)}</AvatarFallback>
-                        </Avatar>
-                        <div className="space-y-1">
-                          <p className="font-bold text-lg text-white group-hover:text-primary transition-colors duration-300">
-                            {testimonial.name}
-                          </p>
-                          <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-bold">
-                            {testimonial.title}
+                        <div className="flex-grow mb-10">
+                          <p className="text-lg md:text-xl text-white/90 leading-relaxed font-medium italic">
+                            "{testimonial.quote}"
                           </p>
                         </div>
+
+                        <div className="flex items-center gap-5 pt-8 border-t border-white/5 mt-auto">
+                          <Avatar className="h-14 w-14 border-2 border-primary/20 shadow-[0_0_15px_rgba(249,115,22,0.1)] transition-transform duration-500 group-hover:scale-110">
+                            <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
+                            <AvatarFallback className="bg-primary/10 text-primary font-bold">{testimonial.name.charAt(0)}</AvatarFallback>
+                          </Avatar>
+                          <div className="space-y-1">
+                            <p className="font-bold text-lg text-white group-hover:text-primary transition-colors duration-300">
+                              {testimonial.name}
+                            </p>
+                            <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-bold">
+                              {testimonial.title}
+                            </p>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </Card>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          
-          <div className="flex justify-center items-center gap-6 mt-16 relative z-20">
-            <CarouselPrevious className="static translate-y-0 h-16 w-16 border-white/10 bg-white/5 hover:bg-white/10 hover:text-primary hover:border-primary/50 rounded-full transition-all duration-300 group shadow-lg" />
-            <CarouselNext className="static translate-y-0 h-16 w-16 border-white/10 bg-white/5 hover:bg-white/10 hover:text-primary hover:border-primary/50 rounded-full transition-all duration-300 group shadow-lg" />
-          </div>
-        </Carousel>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+
+          {/* Seamless Transition Overlays */}
+          <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+        </div>
+
+        {/* Visual Indicator: Hover to Pause */}
+        <div className="flex justify-center items-center gap-2 mt-12 text-muted-foreground/60 text-[10px] uppercase tracking-[0.2em] font-bold">
+          <MousePointer2 className="h-3 w-3 animate-pulse" />
+          <span>Hover to Pause Stream</span>
+        </div>
       </div>
     </section>
   );
