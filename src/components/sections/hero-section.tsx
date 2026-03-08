@@ -147,7 +147,6 @@ export function HeroSection() {
             </p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-8 grayscale opacity-50 contrast-125">
-            {/* Simplified Client Indicators */}
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-full bg-slate-300" />
               <span className="text-[10px] font-black uppercase tracking-widest">Nexus Health</span>
