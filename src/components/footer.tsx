@@ -5,10 +5,26 @@ import { Mail, MapPin, Phone, Github, Linkedin, Twitter } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const LogoMark = () => (
-  <svg viewBox="0 0 40 40" className="h-12 w-12 text-primary" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M20 5L8 35H14L20 20L26 35H32L20 5Z" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-    <circle cx="20" cy="22" r="6" stroke="hsl(var(--secondary))" strokeWidth="1.5" strokeDasharray="3 3" />
-    <circle cx="20" cy="22" r="2" fill="currentColor" />
+  <svg viewBox="0 0 100 100" className="h-12 w-12 text-primary" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    {/* Central Solar Core */}
+    <circle cx="50" cy="50" r="18" />
+    {/* Primary Long Tapered Rays */}
+    {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
+      <path
+        key={`long-${angle}`}
+        d="M50 5 L56 32 L44 32 Z"
+        transform={`rotate(${angle} 50 50)`}
+      />
+    ))}
+    {/* Secondary Short Tapered Rays */}
+    {[22.5, 67.5, 112.5, 157.5, 202.5, 247.5, 292.5, 337.5].map((angle) => (
+      <path
+        key={`short-${angle}`}
+        d="M50 15 L54 35 L46 35 Z"
+        transform={`rotate(${angle} 50 50)`}
+        opacity="0.9"
+      />
+    ))}
   </svg>
 );
 
