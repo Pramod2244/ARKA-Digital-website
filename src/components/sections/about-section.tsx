@@ -32,9 +32,9 @@ export function AboutSection() {
   const teamImg = PlaceHolderImages.find(img => img.id === 'tech-collab');
 
   return (
-    <section id="about" className="py-24 bg-[#A67C52] relative overflow-hidden pl-[70px]">
+    <section id="about" className="py-24 bg-[#FFF9F2] relative overflow-hidden pl-[70px]">
       {/* Soft Glow Background Element */}
-      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
@@ -44,22 +44,22 @@ export function AboutSection() {
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            <div className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white text-[10px] font-black uppercase tracking-[0.3em]">Our Story</div>
-            <h2 className="font-headline text-4xl md:text-5xl font-black text-white leading-tight">
+            <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.3em]">Our Story</div>
+            <h2 className="font-headline text-4xl md:text-5xl font-black text-slate-900 leading-tight">
               Engineering the Future of <br />
               <span className="text-primary">Digital Innovation</span>
             </h2>
-            <p className="text-lg text-slate-100 font-medium leading-relaxed">
+            <p className="text-lg text-slate-600 font-medium leading-relaxed">
               Arkaa Digital is a forward-thinking IT services company dedicated to delivering cutting-edge digital solutions that empower businesses to grow in the modern world.
             </p>
             <div className="grid sm:grid-cols-2 gap-8">
               {highlights.map((item) => (
                 <div key={item.title} className="space-y-3">
-                  <div className="w-12 h-12 rounded-2xl bg-white/10 shadow-sm flex items-center justify-center text-primary">
+                  <div className="w-12 h-12 rounded-2xl bg-white shadow-md flex items-center justify-center text-primary border border-slate-100">
                     <item.icon className="h-6 w-6" />
                   </div>
-                  <h4 className="font-black text-white uppercase tracking-wider text-sm">{item.title}</h4>
-                  <p className="text-sm text-slate-200 font-medium">{item.description}</p>
+                  <h4 className="font-black text-slate-900 uppercase tracking-wider text-sm">{item.title}</h4>
+                  <p className="text-sm text-slate-600 font-medium">{item.description}</p>
                 </div>
               ))}
             </div>
@@ -71,16 +71,16 @@ export function AboutSection() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="relative rounded-[4rem] overflow-hidden shadow-2xl border-8 border-white/10 bg-slate-800/20">
+            <div className="relative rounded-[4rem] overflow-hidden shadow-2xl border-8 border-white bg-slate-100">
               <Image 
                 src={teamImg?.imageUrl || ""} 
                 alt="Arkaa Tech Collaboration" 
                 width={800} 
                 height={1000} 
-                className="object-cover opacity-90"
+                className="object-cover"
                 data-ai-hint={teamImg?.imageHint}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent" />
             </div>
           </motion.div>
         </div>

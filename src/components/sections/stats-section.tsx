@@ -28,23 +28,22 @@ function Counter({ value, suffix }: { value: number, suffix: string }) {
     });
   }, [springValue, suffix]);
 
-  return <span ref={ref} className="text-5xl md:text-7xl font-black text-white leading-none">0</span>;
+  return <span ref={ref} className="text-5xl md:text-7xl font-black text-slate-900 leading-none">0</span>;
 }
 
 export function StatsSection() {
   return (
-    <section className="py-32 blue-gradient-bg relative overflow-hidden">
-      {/* Atmospheric Reactor Background Elements */}
-      <div className="absolute inset-0 bg-white/5 opacity-10 bg-grid-white pointer-events-none" />
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/10 rounded-full blur-[150px] pointer-events-none" />
+    <section className="py-32 bg-[#EFF6FF] relative overflow-hidden pl-[70px]">
+      {/* Subtle Background Elements */}
+      <div className="absolute inset-0 bg-secondary/5 opacity-5 pointer-events-none" />
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-16 md:gap-24">
           {stats.map((stat) => (
             <div key={stat.label} className="text-center space-y-6">
               <Counter value={stat.value} suffix={stat.suffix} />
-              <div className="h-2 w-16 bg-white/30 mx-auto rounded-full" />
-              <p className="text-[11px] uppercase tracking-[0.3em] font-black text-white/90">{stat.label}</p>
+              <div className="h-2 w-16 bg-secondary/20 mx-auto rounded-full" />
+              <p className="text-[11px] uppercase tracking-[0.3em] font-black text-slate-500">{stat.label}</p>
             </div>
           ))}
         </div>

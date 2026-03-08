@@ -74,52 +74,52 @@ export function ContactSection() {
     }
 
     return (
-        <section id="contact" className="py-24 bg-[#7A8F6A] relative overflow-hidden pl-[70px]">
+        <section id="contact" className="py-24 bg-[#F2F9F2] relative overflow-hidden pl-[70px]">
             <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center space-y-4 mb-20">
-                    <div className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white text-[10px] font-black uppercase tracking-[0.3em]">Get In Touch</div>
-                    <h2 className="font-headline text-4xl md:text-5xl font-black text-white tracking-tight">Connect with <span className="text-primary">Arkaa</span></h2>
-                    <p className="text-lg text-slate-100 max-w-xl mx-auto font-medium">Ready to start your next project? Fill out the form below and let's engineering your digital future.</p>
+                    <div className="inline-block px-4 py-1.5 rounded-full bg-slate-200 text-slate-500 text-[10px] font-black uppercase tracking-[0.3em]">Get In Touch</div>
+                    <h2 className="font-headline text-4xl md:text-5xl font-black text-slate-900 tracking-tight">Connect with <span className="text-primary">Arkaa</span></h2>
+                    <p className="text-lg text-slate-600 max-w-xl mx-auto font-medium">Ready to start your next project? Fill out the form below and let's engineering your digital future.</p>
                 </div>
 
                 <div className="grid lg:grid-cols-5 gap-16 max-w-6xl mx-auto items-start">
                     <div className="lg:col-span-2 space-y-12">
                         <div className="space-y-8">
-                            <h3 className="font-headline text-3xl font-black text-white leading-tight">Expert Consultation <br /> Within 24 Hours</h3>
+                            <h3 className="font-headline text-3xl font-black text-slate-900 leading-tight">Expert Consultation <br /> Within 24 Hours</h3>
                             <div className="space-y-8">
                                 <div className="flex gap-6 items-center">
-                                    <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center text-primary border border-white/10">
+                                    <div className="w-14 h-14 rounded-2xl bg-white shadow-md flex items-center justify-center text-primary border border-slate-100">
                                         <div className="p-3 rounded-xl bg-primary/10 text-primary">
                                             <Mail className="h-6 w-6" />
                                         </div>
                                     </div>
                                     <div>
-                                        <p className="text-[10px] uppercase font-black text-slate-300 tracking-widest mb-1">Email Support</p>
-                                        <p className="text-lg font-black text-white">hey@arkaadigital.com</p>
+                                        <p className="text-[10px] uppercase font-black text-slate-400 tracking-widest mb-1">Email Support</p>
+                                        <p className="text-lg font-black text-slate-900">hey@arkaadigital.com</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-6 items-center">
-                                    <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center text-secondary border border-white/10">
+                                    <div className="w-14 h-14 rounded-2xl bg-white shadow-md flex items-center justify-center text-secondary border border-slate-100">
                                         <div className="p-3 rounded-xl bg-secondary/10 text-secondary">
                                             <Phone className="h-6 w-6" />
                                         </div>
                                     </div>
                                     <div>
-                                        <p className="text-[10px] uppercase font-black text-slate-300 tracking-widest mb-1">Call Experts</p>
-                                        <p className="text-lg font-black text-white">+91 8050332452</p>
+                                        <p className="text-[10px] uppercase font-black text-slate-400 tracking-widest mb-1">Call Experts</p>
+                                        <p className="text-lg font-black text-slate-900">+91 8050332452</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="p-8 rounded-[2.5rem] bg-white/5 border border-white/10">
-                          <p className="text-sm font-bold text-slate-100 leading-relaxed italic">
+                        <div className="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-lg">
+                          <p className="text-sm font-bold text-slate-600 leading-relaxed italic">
                             "We are committed to delivering measurable value. Our agile approach ensures your vision becomes a scalable reality."
                           </p>
                         </div>
                     </div>
 
-                    <Card className="lg:col-span-3 border border-white/10 shadow-2xl p-8 md:p-12 rounded-[3rem] bg-white/10 backdrop-blur-md">
+                    <Card className="lg:col-span-3 border border-slate-100 shadow-2xl p-8 md:p-12 rounded-[3rem] bg-white">
                         <Form {...form}>
                             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                                 <div className="grid md:grid-cols-2 gap-8">
@@ -128,13 +128,13 @@ export function ContactSection() {
                                         name="name"
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel className="font-black uppercase tracking-widest text-[10px] text-slate-300">Your Name</FormLabel>
+                                                <FormLabel className="font-black uppercase tracking-widest text-[10px] text-slate-400">Your Name</FormLabel>
                                                 <FormControl>
                                                     <div className="relative group">
-                                                        <User className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 group-focus-within:text-primary transition-colors" />
+                                                        <User className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-300 group-focus-within:text-primary transition-colors" />
                                                         <Input 
                                                             placeholder="John Doe" 
-                                                            className="pl-12 h-14 border-white/10 bg-white/5 text-white focus:bg-white/10 transition-all rounded-2xl font-medium placeholder:text-slate-500"
+                                                            className="pl-12 h-14 border-slate-100 bg-slate-50 text-slate-900 focus:bg-white transition-all rounded-2xl font-medium placeholder:text-slate-300"
                                                             {...field} 
                                                         />
                                                     </div>
@@ -148,13 +148,13 @@ export function ContactSection() {
                                         name="email"
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel className="font-black uppercase tracking-widest text-[10px] text-slate-300">Email Address</FormLabel>
+                                                <FormLabel className="font-black uppercase tracking-widest text-[10px] text-slate-400">Email Address</FormLabel>
                                                 <FormControl>
                                                     <div className="relative group">
-                                                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 group-focus-within:text-primary transition-colors" />
+                                                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-300 group-focus-within:text-primary transition-colors" />
                                                         <Input 
                                                             placeholder="john@example.com" 
-                                                            className="pl-12 h-14 border-white/10 bg-white/5 text-white focus:bg-white/10 transition-all rounded-2xl font-medium placeholder:text-slate-500"
+                                                            className="pl-12 h-14 border-slate-100 bg-slate-50 text-slate-900 focus:bg-white transition-all rounded-2xl font-medium placeholder:text-slate-300"
                                                             {...field} 
                                                         />
                                                     </div>
@@ -169,13 +169,13 @@ export function ContactSection() {
                                     name="subject"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel className="font-black uppercase tracking-widest text-[10px] text-slate-300">Project Type</FormLabel>
+                                            <FormLabel className="font-black uppercase tracking-widest text-[10px] text-slate-400">Project Type</FormLabel>
                                             <FormControl>
                                                 <div className="relative group">
-                                                    <Tag className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 group-focus-within:text-primary transition-colors" />
+                                                    <Tag className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-300 group-focus-within:text-primary transition-colors" />
                                                     <Input 
                                                         placeholder="e.g. HIMS Development" 
-                                                        className="pl-12 h-14 border-white/10 bg-white/5 text-white focus:bg-white/10 transition-all rounded-2xl font-medium placeholder:text-slate-500"
+                                                        className="pl-12 h-14 border-slate-100 bg-slate-50 text-slate-900 focus:bg-white transition-all rounded-2xl font-medium placeholder:text-slate-300"
                                                         {...field} 
                                                     />
                                                 </div>
@@ -189,11 +189,11 @@ export function ContactSection() {
                                     name="message"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel className="font-black uppercase tracking-widest text-[10px] text-slate-300">Tell Us More</FormLabel>
+                                            <FormLabel className="font-black uppercase tracking-widest text-[10px] text-slate-400">Tell Us More</FormLabel>
                                             <FormControl>
                                                 <Textarea 
                                                     placeholder="Briefly describe your project goals..." 
-                                                    className="min-h-[150px] border-white/10 bg-white/5 text-white focus:bg-white/10 transition-all rounded-[2rem] p-6 font-medium resize-none placeholder:text-slate-500"
+                                                    className="min-h-[150px] border-slate-100 bg-slate-50 text-slate-900 focus:bg-white transition-all rounded-[2rem] p-6 font-medium resize-none placeholder:text-slate-300"
                                                     {...field} 
                                                 />
                                             </FormControl>
