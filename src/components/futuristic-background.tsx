@@ -14,51 +14,44 @@ export function FuturisticBackground() {
 
   return (
     <div className="fixed inset-0 overflow-hidden bg-background -z-20">
-      {/* 1. Light Atmospheric Layers */}
-      <div className="absolute top-[-10%] right-[-10%] w-[70%] h-[70%] bg-primary/5 blur-[160px] rounded-full opacity-30" />
-      <div className="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] bg-accent/5 blur-[140px] rounded-full opacity-20" />
+      {/* 1. Deep Atmospheric Layers */}
+      <div className="absolute top-[-10%] right-[-10%] w-[80%] h-[80%] bg-primary/10 blur-[180px] rounded-full opacity-40" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[70%] h-[70%] bg-accent/5 blur-[160px] rounded-full opacity-30" />
 
-      {/* 2. Neural Tech Grid (Light) */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
-        <div className="absolute inset-0 bg-grid-white" style={{ backgroundSize: '60px 60px' }} />
+      {/* 2. Neural Tech Grid */}
+      <div className="absolute inset-0 opacity-[0.05] pointer-events-none">
+        <div className="absolute inset-0 bg-grid-white" style={{ backgroundSize: '50px 50px' }} />
       </div>
 
-      {/* 3. Subtle Multi-Colored Tech Particles */}
+      {/* 3. Floating Particles */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(30)].map((_, i) => (
+        {[...Array(40)].map((_, i) => (
           <motion.div
-            key={`global-particle-${i}`}
+            key={`p-${i}`}
             className="absolute rounded-full"
             style={{
-              width: Math.random() * 2 + 1,
-              height: Math.random() * 2 + 1,
-              background: i % 3 === 0 
-                ? 'hsl(var(--primary))' 
-                : i % 3 === 1 
-                ? 'hsl(var(--accent))' 
-                : 'rgba(0,0,0,0.1)',
+              width: Math.random() * 3 + 1,
+              height: Math.random() * 3 + 1,
+              background: i % 2 === 0 ? 'hsl(var(--primary))' : 'hsl(var(--accent))',
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              opacity: Math.random() * 0.2 + 0.05,
-              filter: 'blur(0.5px)',
+              opacity: Math.random() * 0.3 + 0.1,
             }}
             animate={{
-              y: [0, -60, 0],
+              y: [0, -100, 0],
+              x: [0, Math.random() * 40 - 20, 0],
               opacity: [0.1, 0.4, 0.1],
-              scale: [1, 1.2, 1],
+              scale: [1, 1.5, 1],
             }}
             transition={{
-              duration: 10 + Math.random() * 10,
+              duration: 15 + Math.random() * 15,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: Math.random() * 5,
+              delay: Math.random() * 10,
             }}
           />
         ))}
       </div>
-      
-      {/* 4. Depth Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-transparent to-background/80 opacity-60" />
     </div>
   );
 }
