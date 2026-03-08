@@ -10,15 +10,23 @@ import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/s
 const LogoMark = () => (
   <svg viewBox="0 0 100 100" className="h-10 w-10 text-primary" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     {/* Central Solar Core */}
-    <circle cx="50" cy="50" r="20" />
-    {/* 16 Sharp Triangular Rays Radiating Outward */}
-    {[0, 22.5, 45, 67.5, 90, 112.5, 135, 157.5, 180, 202.5, 225, 247.5, 270, 292.5, 315, 337.5].map((angle) => (
-      <path
-        key={angle}
-        d="M50 5 L55 35 L45 35 Z"
-        transform={`rotate(${angle} 50 50)`}
-      />
-    ))}
+    <circle cx="50" cy="50" r="22" />
+    {/* 16 Alternating Long and Short Sharp Triangular Rays */}
+    {Array.from({ length: 16 }).map((_, i) => {
+      const angle = i * 22.5;
+      const isLong = i % 2 === 0;
+      // Long rays extend further out, short rays are smaller
+      const d = isLong 
+        ? "M50 2 L57 34 L43 34 Z" // Long ray
+        : "M50 14 L55 34 L45 34 Z"; // Short ray
+      return (
+        <path
+          key={i}
+          d={d}
+          transform={`rotate(${angle} 50 50)`}
+        />
+      );
+    })}
   </svg>
 );
 
@@ -47,7 +55,7 @@ export function Header() {
         <Link href="/" className="flex items-center gap-3 group">
           <LogoMark />
           <div className="flex flex-col">
-            <span className="font-headline text-xl font-black tracking-[0.15em] uppercase text-slate-900 leading-none">
+            <span className="font-headline text-xl font-black tracking-[0.25em] uppercase text-slate-900 leading-none">
               Arkaa <span className="text-primary">Digital</span>
             </span>
             <span className="text-[7px] uppercase tracking-[0.4em] font-black text-slate-400 mt-1">Engineering the Future</span>
