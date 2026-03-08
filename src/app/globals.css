@@ -46,6 +46,9 @@
   .glow-border-blue {
     box-shadow: 0 0 15px hsl(var(--secondary) / 0.1), inset 0 0 10px hsl(var(--secondary) / 0.05);
   }
+  .glow-border-orange {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.1), inset 0 0 10px hsl(var(--primary) / 0.05);
+  }
   .text-glow-orange {
     text-shadow: 0 0 20px hsl(var(--primary) / 0.3);
   }
