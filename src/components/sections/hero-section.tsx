@@ -40,7 +40,7 @@ export function HeroSection() {
       <div 
         className="absolute inset-0 -z-10" 
         style={{ 
-          background: 'linear-gradient(180deg, #FFFFFF 0%, #FFF4EC 50%, #FFE8D9 100%)' 
+          background: 'linear-gradient(180deg, #FFFFFF 0%, #FFF3E8 50%, #FFE8D9 100%)' 
         }} 
       />
       <div className="absolute inset-0 bg-grid-slate opacity-[0.03] pointer-events-none" />
@@ -74,7 +74,7 @@ export function HeroSection() {
             </div>
             
             <p className="text-lg md:text-xl text-slate-500 max-w-xl font-medium leading-relaxed tracking-wide">
-              ARKAA DIGITAL develops websites, hospital management systems, and custom digital solutions for businesses and healthcare organizations.
+              ARKAA DIGITAL develops websites, hospital management systems (HIMS), and custom digital platforms for businesses and healthcare organizations.
             </p>
 
             <div className="flex flex-wrap gap-5 pt-4">
@@ -88,59 +88,65 @@ export function HeroSection() {
           </MotionDiv>
 
           <div className="relative h-[650px] hidden lg:flex items-center justify-center">
-            {/* Layered Floating Mockups */}
+            {/* Layered Floating UI Cards */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.9, x: 50 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
               className="relative w-full h-full"
             >
-              {/* Analytics Dashboard (Bottom) */}
+              {/* Analytics Dashboard (Back Layer) */}
               <motion.div 
                 animate={{ y: [0, 15, 0], x: [0, -10, 0] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute top-64 right-10 w-[65%] bg-white rounded-[2.5rem] shadow-2xl border border-slate-100 p-4 z-10 overflow-hidden"
               >
-                <Image 
-                  src={analyticsImg?.imageUrl || ""} 
-                  alt="Business Analytics" 
-                  width={500} 
-                  height={300} 
-                  className="rounded-2xl"
-                  data-ai-hint={analyticsImg?.imageHint}
-                />
+                <div className="bg-slate-50 rounded-xl overflow-hidden">
+                  <Image 
+                    src={analyticsImg?.imageUrl || ""} 
+                    alt="Business Analytics Panel" 
+                    width={500} 
+                    height={300} 
+                    className="rounded-2xl"
+                    data-ai-hint="analytics dashboard"
+                  />
+                </div>
               </motion.div>
 
-              {/* HIMS Dashboard (Middle) */}
+              {/* HIMS Dashboard (Middle Layer) */}
               <motion.div 
                 animate={{ y: [0, -25, 0], x: [0, 15, 0] }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                 className="absolute top-10 right-0 w-[80%] bg-white rounded-[3rem] shadow-2xl border border-secondary/10 p-6 z-20 glow-border-blue overflow-hidden"
               >
-                <Image 
-                  src={himsImg?.imageUrl || ""} 
-                  alt="HIMS Platform" 
-                  width={800} 
-                  height={500} 
-                  className="rounded-2xl"
-                  data-ai-hint={himsImg?.imageHint}
-                />
+                <div className="bg-slate-50 rounded-2xl overflow-hidden">
+                  <Image 
+                    src={himsImg?.imageUrl || ""} 
+                    alt="Hospital Management Interface" 
+                    width={800} 
+                    height={500} 
+                    className="rounded-2xl"
+                    data-ai-hint="medical dashboard"
+                  />
+                </div>
               </motion.div>
 
-              {/* Web Interface (Top/Front) */}
+              {/* Web Admin Interface (Front Layer) */}
               <motion.div 
                 animate={{ y: [0, 20, 0], x: [0, -15, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
                 className="absolute top-48 -left-10 w-[60%] bg-white rounded-[2.5rem] shadow-2xl border border-primary/10 p-5 z-30 glow-border-orange"
               >
-                <Image 
-                  src={webImg?.imageUrl || ""} 
-                  alt="Web Development UI" 
-                  width={400} 
-                  height={600} 
-                  className="rounded-2xl"
-                  data-ai-hint={webImg?.imageHint}
-                />
+                <div className="bg-slate-50 rounded-2xl overflow-hidden">
+                  <Image 
+                    src={webImg?.imageUrl || ""} 
+                    alt="Website Admin Dashboard" 
+                    width={400} 
+                    height={600} 
+                    className="rounded-2xl"
+                    data-ai-hint="website dashboard"
+                  />
+                </div>
               </motion.div>
             </motion.div>
           </div>
