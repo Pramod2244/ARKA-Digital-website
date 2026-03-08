@@ -12,7 +12,7 @@ export function HeroSection() {
   const dashboardImg = PlaceHolderImages.find(img => img.id === 'hero-software-platform');
 
   return (
-    <section id="home" className="relative w-full pt-48 pb-32 overflow-hidden bg-[#FFF1E6] pl-[70px]">
+    <section id="home" className="relative w-full pt-48 pb-32 overflow-hidden bg-[#F3F6FA] pl-[70px]">
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <MotionDiv
@@ -21,10 +21,6 @@ export function HeroSection() {
             transition={{ duration: 0.8 }}
             className="flex flex-col items-start text-left max-w-2xl"
           >
-            <div className="inline-block px-4 py-1.5 rounded-full bg-orange-100/50 text-primary text-[10px] font-black uppercase tracking-[0.3em] mb-6 border border-orange-200/50">
-              Engineering Digital Solutions
-            </div>
-            
             <h1 className="font-headline text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight text-slate-900 mb-8">
               We Build Smart <br />
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#FF8A30]">Digital</span> Platforms

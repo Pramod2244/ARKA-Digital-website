@@ -41,7 +41,6 @@ export function AboutSection() {
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.3em]">Our Story</div>
             <h2 className="font-headline text-4xl md:text-5xl font-black text-slate-900 leading-tight">
               Engineering the Future of <br />
               <span className="text-primary">Digital Innovation</span>
