@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -32,7 +33,7 @@ export function Footer() {
   }, []);
 
   return (
-    <footer className="bg-[#1E2A32] text-slate-300 py-24 px-4 overflow-hidden relative pl-[70px]">
+    <footer className="bg-[#1F2933] text-slate-300 py-24 px-4 overflow-hidden relative pl-[70px]">
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 blur-[150px] -z-10 rounded-full" />
       
       <div className="container mx-auto max-w-7xl">
@@ -92,7 +93,7 @@ export function Footer() {
                 hey@arkaadigital.com
               </div>
               <div className="flex items-center gap-5 hover:text-white transition-colors cursor-pointer group">
-                <div className="p-3 rounded-xl bg-secondary/10 text-secondary group-hover:bg-secondary group-hover:text-white transition-all">
+                <div className="p-3 rounded-xl bg-[#3B82F6]/10 text-[#3B82F6] group-hover:bg-[#3B82F6] group-hover:text-white transition-all">
                   <Phone className="h-4 w-4" />
                 </div>
                 +91 8050332452

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -14,13 +15,10 @@ const industries = [
 
 export function IndustriesSection() {
   return (
-    <section id="industries" className="py-24 bg-[#FAF3F0] relative overflow-hidden pl-[70px]">
-      {/* Background Tech Glow */}
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[140px] pointer-events-none" />
-
+    <section id="industries" className="py-24 bg-[#F9F6F2] relative overflow-hidden pl-[70px]">
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-20 space-y-4">
-          <div className="inline-block px-4 py-1.5 rounded-full bg-slate-200 text-slate-500 text-[10px] font-black uppercase tracking-[0.3em]">Market Verticals</div>
+          <div className="inline-block px-4 py-1.5 rounded-full bg-slate-200/50 text-slate-500 text-[10px] font-black uppercase tracking-[0.3em]">Market Verticals</div>
           <h2 className="font-headline text-4xl md:text-5xl font-black text-slate-900 tracking-tight">Industries We <span className="text-primary">Serve</span></h2>
           <p className="text-slate-600 max-w-xl mx-auto font-medium">Tailored digital systems for sector-specific challenges across various domains.</p>
         </div>

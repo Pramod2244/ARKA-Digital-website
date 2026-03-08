@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -32,10 +33,7 @@ export function AboutSection() {
   const teamImg = PlaceHolderImages.find(img => img.id === 'tech-collab-office');
 
   return (
-    <section id="about" className="py-24 bg-[#FFF9F2] relative overflow-hidden pl-[70px]">
-      {/* Soft Glow Background Element */}
-      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
-
+    <section id="about" className="py-24 bg-[#F7F3EE] relative overflow-hidden pl-[70px]">
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
           <motion.div
@@ -71,7 +69,7 @@ export function AboutSection() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="relative rounded-[4rem] overflow-hidden shadow-2xl border-8 border-white bg-slate-100 min-h-[400px]">
+            <div className="relative rounded-[4rem] overflow-hidden shadow-2xl border-8 border-white bg-white/50 min-h-[400px]">
               {teamImg?.imageUrl && (
                 <Image 
                   src={teamImg.imageUrl} 
@@ -82,7 +80,6 @@ export function AboutSection() {
                   data-ai-hint={teamImg?.imageHint}
                 />
               )}
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent" />
             </div>
           </motion.div>
         </div>

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -74,10 +75,10 @@ export function ContactSection() {
     }
 
     return (
-        <section id="contact" className="py-24 bg-[#F2F9F2] relative overflow-hidden pl-[70px]">
+        <section id="contact" className="py-24 bg-[#EFF4F7] relative overflow-hidden pl-[70px]">
             <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center space-y-4 mb-20">
-                    <div className="inline-block px-4 py-1.5 rounded-full bg-slate-200 text-slate-500 text-[10px] font-black uppercase tracking-[0.3em]">Get In Touch</div>
+                    <div className="inline-block px-4 py-1.5 rounded-full bg-slate-200/50 text-slate-500 text-[10px] font-black uppercase tracking-[0.3em]">Get In Touch</div>
                     <h2 className="font-headline text-4xl md:text-5xl font-black text-slate-900 tracking-tight">Connect with <span className="text-primary">Arkaa</span></h2>
                     <p className="text-lg text-slate-600 max-w-xl mx-auto font-medium">Ready to start your next project? Fill out the form below and let's engineering your digital future.</p>
                 </div>
@@ -99,8 +100,8 @@ export function ContactSection() {
                                     </div>
                                 </div>
                                 <div className="flex gap-6 items-center">
-                                    <div className="w-14 h-14 rounded-2xl bg-white shadow-md flex items-center justify-center text-secondary border border-slate-100">
-                                        <div className="p-3 rounded-xl bg-secondary/10 text-secondary">
+                                    <div className="w-14 h-14 rounded-2xl bg-white shadow-md flex items-center justify-center text-[#3B82F6] border border-slate-100">
+                                        <div className="p-3 rounded-xl bg-[#3B82F6]/10 text-[#3B82F6]">
                                             <Phone className="h-6 w-6" />
                                         </div>
                                     </div>
@@ -112,14 +113,14 @@ export function ContactSection() {
                             </div>
                         </div>
 
-                        <div className="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-lg">
+                        <div className="p-8 rounded-[2.5rem] bg-white/50 border border-white shadow-lg backdrop-blur-sm">
                           <p className="text-sm font-bold text-slate-600 leading-relaxed italic">
                             "We are committed to delivering measurable value. Our agile approach ensures your vision becomes a scalable reality."
                           </p>
                         </div>
                     </div>
 
-                    <Card className="lg:col-span-3 border border-slate-100 shadow-2xl p-8 md:p-12 rounded-[3rem] bg-white">
+                    <Card className="lg:col-span-3 border border-white shadow-2xl p-8 md:p-12 rounded-[3rem] bg-white/80 backdrop-blur-md">
                         <Form {...form}>
                             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                                 <div className="grid md:grid-cols-2 gap-8">
@@ -134,7 +135,7 @@ export function ContactSection() {
                                                         <User className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-300 group-focus-within:text-primary transition-colors" />
                                                         <Input 
                                                             placeholder="John Doe" 
-                                                            className="pl-12 h-14 border-slate-100 bg-slate-50 text-slate-900 focus:bg-white transition-all rounded-2xl font-medium placeholder:text-slate-300"
+                                                            className="pl-12 h-14 border-slate-100 bg-white/50 text-slate-900 focus:bg-white transition-all rounded-2xl font-medium placeholder:text-slate-300"
                                                             {...field} 
                                                         />
                                                     </div>
@@ -154,7 +155,7 @@ export function ContactSection() {
                                                         <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-300 group-focus-within:text-primary transition-colors" />
                                                         <Input 
                                                             placeholder="john@example.com" 
-                                                            className="pl-12 h-14 border-slate-100 bg-slate-50 text-slate-900 focus:bg-white transition-all rounded-2xl font-medium placeholder:text-slate-300"
+                                                            className="pl-12 h-14 border-slate-100 bg-white/50 text-slate-900 focus:bg-white transition-all rounded-2xl font-medium placeholder:text-slate-300"
                                                             {...field} 
                                                         />
                                                     </div>
@@ -175,7 +176,7 @@ export function ContactSection() {
                                                     <Tag className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-300 group-focus-within:text-primary transition-colors" />
                                                     <Input 
                                                         placeholder="e.g. HIMS Development" 
-                                                        className="pl-12 h-14 border-slate-100 bg-slate-50 text-slate-900 focus:bg-white transition-all rounded-2xl font-medium placeholder:text-slate-300"
+                                                        className="pl-12 h-14 border-slate-100 bg-white/50 text-slate-900 focus:bg-white transition-all rounded-2xl font-medium placeholder:text-slate-300"
                                                         {...field} 
                                                     />
                                                 </div>
@@ -193,7 +194,7 @@ export function ContactSection() {
                                             <FormControl>
                                                 <Textarea 
                                                     placeholder="Briefly describe your project goals..." 
-                                                    className="min-h-[150px] border-slate-100 bg-slate-50 text-slate-900 focus:bg-white transition-all rounded-[2rem] p-6 font-medium resize-none placeholder:text-slate-300"
+                                                    className="min-h-[150px] border-slate-100 bg-white/50 text-slate-900 focus:bg-white transition-all rounded-[2rem] p-6 font-medium resize-none placeholder:text-slate-300"
                                                     {...field} 
                                                 />
                                             </FormControl>

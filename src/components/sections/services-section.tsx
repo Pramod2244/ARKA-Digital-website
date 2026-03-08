@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -14,7 +15,7 @@ const services = [
     description: "Modern, responsive websites designed for performance, SEO, and strong online presence.",
     icon: Globe,
     image: PlaceHolderImages.find(img => img.id === 'web-dev-v2'),
-    bgColor: "bg-slate-100",
+    bgColor: "bg-white/50",
     accent: "text-primary",
   },
   {
@@ -22,15 +23,15 @@ const services = [
     description: "Advanced HIMS platforms that streamline hospital workflows including patient records, billing, and appointment management.",
     icon: Hospital,
     image: PlaceHolderImages.find(img => img.id === 'hims-dashboard-v2'),
-    bgColor: "bg-slate-100",
-    accent: "text-secondary",
+    bgColor: "bg-white/50",
+    accent: "text-[#3B82F6]",
   },
   {
     title: "Custom Web Applications",
     description: "Tailored digital platforms designed specifically for business workflows and automation.",
     icon: Cpu,
     image: PlaceHolderImages.find(img => img.id === 'analytics-core-v2'),
-    bgColor: "bg-slate-100",
+    bgColor: "bg-white/50",
     accent: "text-primary",
   },
   {
@@ -38,20 +39,20 @@ const services = [
     description: "Clean, intuitive user interfaces that improve usability and engagement.",
     icon: Palette,
     image: PlaceHolderImages.find(img => img.id === 'ui-ux-design-v2'),
-    bgColor: "bg-slate-100",
-    accent: "text-secondary",
+    bgColor: "bg-white/50",
+    accent: "text-[#3B82F6]",
   }
 ];
 
 export function ServicesSection() {
   return (
-    <section id="services" className="bg-[#F2F9F5] overflow-hidden pl-[70px]">
+    <section id="services" className="bg-[#EEF3F8] overflow-hidden pl-[70px]">
       <div className="container mx-auto max-w-7xl px-6 py-32">
         <div className="text-center mb-24 space-y-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="inline-block px-5 py-2 rounded-full bg-slate-200 text-slate-500 text-[10px] font-black uppercase tracking-[0.4em]"
+            className="inline-block px-5 py-2 rounded-full bg-slate-200/50 text-slate-500 text-[10px] font-black uppercase tracking-[0.4em]"
           >
             Digital Capabilities
           </motion.div>
@@ -87,7 +88,6 @@ export function ServicesSection() {
                 index % 2 === 1 && "lg:flex-row-reverse"
               )}
             >
-              {/* Image Side */}
               <div className="w-full lg:w-1/2 group">
                 <div className={cn(
                   "relative h-[400px] md:h-[500px] w-full rounded-[3.5rem] overflow-hidden shadow-xl transition-all duration-700 group-hover:scale-[1.02] border-8 border-white",
@@ -105,7 +105,6 @@ export function ServicesSection() {
                 </div>
               </div>
 
-              {/* Text Side */}
               <div className="w-full lg:w-1/2 space-y-8">
                 <div className={cn(
                   "w-16 h-16 rounded-3xl flex items-center justify-center bg-white shadow-xl border border-slate-100",
@@ -130,7 +129,7 @@ export function ServicesSection() {
                     <span className="text-sm font-bold text-slate-700">Scalable Architecture</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+                    <div className="w-6 h-6 rounded-full bg-[#3B82F6]/10 flex items-center justify-center text-[#3B82F6]">
                       <ArrowRight className="h-3 w-3" />
                     </div>
                     <span className="text-sm font-bold text-slate-700">Enterprise Security</span>
