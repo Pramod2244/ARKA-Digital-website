@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -11,14 +12,14 @@ const LogoMark = () => (
   <svg viewBox="0 0 100 100" className="h-10 w-10 text-primary" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     {/* Central Solar Core */}
     <circle cx="50" cy="50" r="22" />
-    {/* 16 Alternating Long and Short Sharp Triangular Rays */}
+    {/* 16 Alternating Long and Short Razor-Sharp Triangular Rays */}
     {Array.from({ length: 16 }).map((_, i) => {
       const angle = i * 22.5;
       const isLong = i % 2 === 0;
-      // Long rays extend further out, short rays are smaller
+      // Long rays extend near the edge, short rays are smaller. Both are very thin.
       const d = isLong 
-        ? "M50 2 L57 34 L43 34 Z" // Long ray
-        : "M50 14 L55 34 L45 34 Z"; // Short ray
+        ? "M50 2 L51.5 34 L48.5 34 Z" // Long thin ray
+        : "M50 16 L51.2 34 L48.8 34 Z"; // Short thin ray
       return (
         <path
           key={i}
@@ -55,7 +56,7 @@ export function Header() {
         <Link href="/" className="flex items-center gap-3 group">
           <LogoMark />
           <div className="flex flex-col">
-            <span className="font-headline text-xl font-black tracking-[0.25em] uppercase text-slate-900 leading-none">
+            <span className="font-headline text-xl font-black tracking-[0.3em] uppercase text-slate-900 leading-none">
               Arkaa <span className="text-primary">Digital</span>
             </span>
             <span className="text-[7px] uppercase tracking-[0.4em] font-black text-slate-400 mt-1">Engineering the Future</span>

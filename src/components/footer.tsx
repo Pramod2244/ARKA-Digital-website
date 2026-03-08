@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -8,13 +9,14 @@ const LogoMark = () => (
   <svg viewBox="0 0 100 100" className="h-12 w-12 text-primary" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     {/* Central Solar Core */}
     <circle cx="50" cy="50" r="22" />
-    {/* 16 Alternating Long and Short Sharp Triangular Rays */}
+    {/* 16 Alternating Long and Short Razor-Sharp Triangular Rays */}
     {Array.from({ length: 16 }).map((_, i) => {
       const angle = i * 22.5;
       const isLong = i % 2 === 0;
+      // Long rays extend near the edge, short rays are smaller. Both are very thin.
       const d = isLong 
-        ? "M50 2 L57 34 L43 34 Z" 
-        : "M50 14 L55 34 L45 34 Z";
+        ? "M50 2 L51.5 34 L48.5 34 Z" 
+        : "M50 16 L51.2 34 L48.8 34 Z";
       return (
         <path
           key={i}
@@ -43,7 +45,7 @@ export function Footer() {
             <Link href="/" className="flex items-center gap-4 group">
               <LogoMark />
               <div className="flex flex-col">
-                <span className="block font-headline text-2xl font-black tracking-[0.25em] text-white uppercase leading-none">Arkaa</span>
+                <span className="block font-headline text-2xl font-black tracking-[0.3em] text-white uppercase leading-none">Arkaa</span>
                 <span className="block text-[8px] uppercase tracking-[0.4em] text-primary font-black mt-2">Engineering the Future</span>
               </div>
             </Link>
