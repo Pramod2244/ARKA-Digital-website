@@ -35,9 +35,9 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased flex flex-col min-h-screen bg-background selection:bg-primary selection:text-primary-foreground">
         <FirebaseClientProvider>
-          <SidebarProvider>
+          <SidebarProvider defaultOpen={false}>
             <AppSidebar />
-            <SidebarInset className="flex flex-col min-h-screen relative">
+            <SidebarInset className="flex flex-col min-h-screen relative transition-all duration-500">
               <MotionProvider>
                 <ScrollProgress />
                 <main className="flex-grow">
