@@ -5,7 +5,6 @@ import { useInView } from "@/hooks/use-in-view";
 import { motion, useSpring } from "framer-motion";
 
 const stats = [
-  { value: 100, label: "Projects Completed", suffix: "+" },
   { value: 50, label: "Happy Clients", suffix: "+" },
   { value: 5, label: "Years Experience", suffix: "+" },
   { value: 20, label: "Technologies Used", suffix: "+" },
@@ -38,7 +37,7 @@ export function StatsSection() {
       <div className="absolute inset-0 bg-secondary/5 opacity-5 pointer-events-none" />
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-16 md:gap-24">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-16 md:gap-24 max-w-5xl mx-auto">
           {stats.map((stat) => (
             <div key={stat.label} className="text-center space-y-6">
               <Counter value={stat.value} suffix={stat.suffix} />
