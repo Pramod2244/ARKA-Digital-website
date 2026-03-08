@@ -3,13 +3,13 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MotionDiv } from "@/components/motion-provider";
-import { Zap, Shield } from "lucide-react";
+import { Zap, Shield, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const LogoMark = () => (
-  <svg viewBox="0 0 100 100" className="h-16 w-16 md:h-24 md:w-24 text-primary shrink-0" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 100 100" className="h-16 w-16 md:h-20 md:w-20 text-primary shrink-0" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <circle cx="50" cy="50" r="18" />
     {Array.from({ length: 16 }).map((_, i) => {
       const angle = i * 22.5;
@@ -35,7 +35,7 @@ export function HeroSection() {
 
   return (
     <section id="home" className="relative w-full min-h-screen flex flex-col pt-32 pb-16 overflow-hidden">
-      {/* Premium Soft Background */}
+      {/* Premium Ergonomic Background */}
       <div className="absolute inset-0 bg-[#F7F8FA] -z-20" />
       <div 
         className="absolute inset-0 -z-10" 
@@ -48,64 +48,59 @@ export function HeroSection() {
       {/* Soft Low-Opacity Atmospheric Glows */}
       <div className="absolute top-[-10%] -right-[10%] w-[900px] h-[900px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-[-10%] -left-[10%] w-[800px] h-[800px] bg-secondary/5 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-1/4 left-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px] pointer-events-none" style={{ backgroundColor: 'rgba(255,106,0,0.08)' }} />
+      <div className="absolute top-1/4 left-10 w-64 h-64 bg-primary/10 rounded-full blur-[100px] pointer-events-none" style={{ backgroundColor: 'rgba(255,106,0,0.08)' }} />
 
       <div className="container mx-auto px-6 relative z-10 flex-grow flex items-center">
         <div className="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto w-full">
           <MotionDiv
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-12"
+            className="space-y-10"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 border border-primary/5 rounded-full bg-white/60 backdrop-blur-md shadow-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-2 border border-primary/10 rounded-full bg-white/60 backdrop-blur-md shadow-sm">
               <Zap className="h-4 w-4 text-primary animate-pulse" />
-              <span className="text-[10px] uppercase tracking-[0.4em] font-black text-slate-500">Engineering Your Success</span>
+              <span className="text-[10px] uppercase tracking-[0.4em] font-black text-slate-500">Next-Gen Engineering</span>
             </div>
             
-            <div className="flex flex-col gap-6">
-              <div className="flex items-center gap-4">
-                 <LogoMark />
-                 <span className="text-[10px] uppercase tracking-[0.4em] font-black text-primary italic">Innovation Studio</span>
-              </div>
+            <div className="space-y-6">
               <h1 className="font-headline text-5xl md:text-7xl font-black leading-[1.05] tracking-tight text-slate-900">
                 Building Powerful <br />
                 <span className="text-primary text-glow-orange italic">Digital Platforms</span>
               </h1>
+              <p className="text-lg md:text-xl text-slate-600 max-w-xl font-medium leading-relaxed tracking-wide">
+                ARKAA DIGITAL develops websites, hospital management systems (HIMS), and custom digital platforms for businesses and healthcare organizations.
+              </p>
             </div>
-            
-            <p className="text-lg md:text-xl text-slate-600 max-w-xl font-medium leading-relaxed tracking-wide">
-              ARKAA DIGITAL develops websites, hospital management systems (HIMS), and custom digital platforms for businesses and healthcare organizations.
-            </p>
 
-            <div className="flex flex-wrap gap-5 pt-4">
+            <div className="flex flex-wrap gap-5">
               <Button size="lg" className="h-16 px-12 text-xs font-black rounded-full bg-primary text-white hover:bg-primary/90 shadow-xl shadow-primary/20 transition-all hover:-translate-y-1 uppercase tracking-[0.3em]" asChild>
                 <Link href="#contact">Start Your Project</Link>
               </Button>
-              <Button size="lg" className="h-16 px-12 text-xs font-black rounded-full bg-secondary text-white hover:bg-secondary/90 shadow-xl shadow-secondary/20 transition-all hover:-translate-y-1 uppercase tracking-[0.3em]" asChild>
+              <Button size="lg" variant="outline" className="h-16 px-12 text-xs font-black rounded-full border-2 border-slate-200 bg-white/50 backdrop-blur-md text-slate-900 hover:bg-white transition-all hover:-translate-y-1 uppercase tracking-[0.3em]" asChild>
                 <Link href="#services">Our Services</Link>
               </Button>
             </div>
           </MotionDiv>
 
-          <div className="relative h-[650px] hidden lg:flex items-center justify-center">
-            {/* Layered Floating UI Cards */}
+          <div className="relative h-[600px] hidden lg:flex items-center justify-center">
+            {/* Layered Floating UI Dashboard Architecture */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.9, x: 50 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
               className="relative w-full h-full"
             >
-              {/* Analytics Dashboard (Back Layer) */}
+              {/* Analytics Core (Back Layer) */}
               <motion.div 
                 animate={{ y: [0, 15, 0], x: [0, -10, 0] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-64 right-10 w-[65%] bg-white rounded-[2.5rem] shadow-2xl border border-slate-100 p-4 z-10 overflow-hidden"
+                className="absolute top-60 right-0 w-[70%] bg-white rounded-[2.5rem] shadow-2xl border border-slate-100 p-4 z-10 overflow-hidden"
               >
-                <div className="bg-slate-50/50 rounded-xl overflow-hidden">
+                <div className="bg-slate-50/50 rounded-xl overflow-hidden border border-slate-100">
                   <Image 
                     src={analyticsImg?.imageUrl || ""} 
-                    alt="Business Analytics Panel" 
+                    alt="Business Analytics Platform" 
                     width={500} 
                     height={300} 
                     className="rounded-2xl"
@@ -114,13 +109,13 @@ export function HeroSection() {
                 </div>
               </motion.div>
 
-              {/* HIMS Dashboard (Middle Layer) */}
+              {/* HIMS Platform (Middle Layer) */}
               <motion.div 
                 animate={{ y: [0, -25, 0], x: [0, 15, 0] }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute top-10 right-0 w-[80%] bg-white rounded-[3rem] shadow-2xl border border-secondary/10 p-6 z-20 glow-border-blue overflow-hidden"
+                className="absolute top-10 right-0 w-[85%] bg-white rounded-[3rem] shadow-2xl border border-secondary/10 p-6 z-20 glow-border-blue overflow-hidden"
               >
-                <div className="bg-slate-50/50 rounded-2xl overflow-hidden">
+                <div className="bg-slate-50/50 rounded-2xl overflow-hidden border border-slate-100">
                   <Image 
                     src={himsImg?.imageUrl || ""} 
                     alt="Hospital Management Interface" 
@@ -132,16 +127,16 @@ export function HeroSection() {
                 </div>
               </motion.div>
 
-              {/* Web Admin Interface (Front Layer) */}
+              {/* Web Administration (Front Layer) */}
               <motion.div 
                 animate={{ y: [0, 20, 0], x: [0, -15, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute top-48 -left-10 w-[60%] bg-white rounded-[2.5rem] shadow-2xl border border-primary/10 p-5 z-30 glow-border-orange"
+                className="absolute top-40 -left-10 w-[65%] bg-white rounded-[2.5rem] shadow-2xl border border-primary/10 p-5 z-30 glow-border-orange overflow-hidden"
               >
-                <div className="bg-slate-50/50 rounded-2xl overflow-hidden">
+                <div className="bg-slate-50/50 rounded-2xl overflow-hidden border border-slate-100">
                   <Image 
                     src={webImg?.imageUrl || ""} 
-                    alt="Website Admin Dashboard" 
+                    alt="Website Builder Dashboard" 
                     width={400} 
                     height={600} 
                     className="rounded-2xl"
