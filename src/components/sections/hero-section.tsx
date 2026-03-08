@@ -49,21 +49,21 @@ export function HeroSection() {
             </div>
             
             <h1 className="font-headline text-5xl md:text-7xl font-black leading-[1.05] tracking-tight text-slate-900">
-              Transforming Ideas into <br />
-              <span className="text-primary text-glow-orange">Powerful Digital</span> <br />
-              Solutions
+              Building Powerful <br />
+              <span className="text-primary text-glow-orange">Digital Solutions</span> <br />
+              for Every Industry
             </h1>
             
             <p className="text-lg md:text-xl text-slate-600 max-w-xl font-medium leading-relaxed">
-              ARKAA DIGITAL develops websites, HIMS systems, and custom digital platforms for businesses, hospitals, and startups.
+              ARKAA DIGITAL develops websites, hospital systems, and custom digital platforms that help hospitals, businesses, and startups grow with technology.
             </p>
 
             <div className="flex flex-wrap gap-5 pt-4">
               <Button size="lg" className="h-16 px-12 text-xs font-bold rounded-full bg-primary text-white hover:bg-primary/90 shadow-xl shadow-primary/20 transition-all hover:-translate-y-1 uppercase tracking-[0.2em]" asChild>
-                <Link href="#services">Our Services</Link>
+                <Link href="#contact">Start Your Project</Link>
               </Button>
               <Button size="lg" className="h-16 px-12 text-xs font-bold rounded-full bg-secondary text-white hover:bg-secondary/90 shadow-xl shadow-secondary/20 transition-all hover:-translate-y-1 uppercase tracking-[0.2em]" asChild>
-                <Link href="#contact">Start Your Project</Link>
+                <Link href="#services">Our Services</Link>
               </Button>
             </div>
           </MotionDiv>
