@@ -20,9 +20,9 @@
     },
     {
       "id": "web-interface-ui",
-      "description": "Modern high-performance responsive website layout with marketing analytics",
-      "imageUrl": "https://picsum.photos/seed/arkaa-web-v3/1000/800",
-      "imageHint": "web interface"
+      "description": "Modern website analytics dashboard showing real-time performance metrics and responsive layout components",
+      "imageUrl": "https://picsum.photos/seed/arkaa-web-analytics-v5/1000/800",
+      "imageHint": "website dashboard"
     },
     {
       "id": "analytics-ui",

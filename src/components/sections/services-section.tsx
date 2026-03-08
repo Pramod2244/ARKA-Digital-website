@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -11,10 +12,10 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 const services = [
   {
     title: "Website Development",
-    description: "Modern, responsive websites designed for performance, SEO, and strong online presence. We build digital storefronts that convert visitors into customers.",
+    description: "Modern, responsive websites designed for performance, SEO, and strong online presence. We build high-speed digital storefronts and performance-tracking dashboards.",
     features: ["Performance Optimized", "SEO Strategy", "Responsive Design", "Custom Branding"],
     image: PlaceHolderImages.find(img => img.id === 'web-interface-ui')?.imageUrl || "",
-    imageHint: PlaceHolderImages.find(img => img.id === 'web-interface-ui')?.imageHint || "web development",
+    imageHint: PlaceHolderImages.find(img => img.id === 'web-interface-ui')?.imageHint || "website dashboard",
     bgColor: "bg-white",
     imageLeft: true,
   },
@@ -32,7 +33,7 @@ const services = [
     description: "Tailored digital platforms designed specifically for business workflows and automation. Solving complex problems with scalable software architecture.",
     features: ["Custom Workflows", "Business Automation", "Scalable Tech", "API Integration"],
     image: PlaceHolderImages.find(img => img.id === 'analytics-ui')?.imageUrl || "",
-    imageHint: PlaceHolderImages.find(img => img.id === 'analytics-ui')?.imageHint || "software interface",
+    imageHint: PlaceHolderImages.find(img => img.id === 'analytics-ui')?.imageHint || "admin panel",
     bgColor: "bg-white",
     imageLeft: true,
   },
@@ -41,7 +42,7 @@ const services = [
     description: "Clean, intuitive user interfaces that improve usability and engagement. We focus on the user journey to create products that people love to use.",
     features: ["User-Centric Design", "Prototyping", "Accessibility", "Visual Identity"],
     image: PlaceHolderImages.find(img => img.id === 'ui-ux-design-showcase')?.imageUrl || "",
-    imageHint: PlaceHolderImages.find(img => img.id === 'ui-ux-design-showcase')?.imageHint || "mobile ui",
+    imageHint: PlaceHolderImages.find(img => img.id === 'ui-ux-design-showcase')?.imageHint || "ui design",
     bgColor: "bg-[#FFF4EC]",
     imageLeft: false,
   }
