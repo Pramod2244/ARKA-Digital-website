@@ -10,22 +10,13 @@ import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/s
 const LogoMark = () => (
   <svg viewBox="0 0 100 100" className="h-10 w-10 text-primary" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     {/* Central Solar Core */}
-    <circle cx="50" cy="50" r="18" />
-    {/* Primary Long Tapered Rays */}
-    {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
+    <circle cx="50" cy="50" r="20" />
+    {/* 16 Sharp Triangular Rays Radiating Outward */}
+    {[0, 22.5, 45, 67.5, 90, 112.5, 135, 157.5, 180, 202.5, 225, 247.5, 270, 292.5, 315, 337.5].map((angle) => (
       <path
-        key={`long-${angle}`}
-        d="M50 5 L56 32 L44 32 Z"
+        key={angle}
+        d="M50 5 L55 35 L45 35 Z"
         transform={`rotate(${angle} 50 50)`}
-      />
-    ))}
-    {/* Secondary Short Tapered Rays */}
-    {[22.5, 67.5, 112.5, 157.5, 202.5, 247.5, 292.5, 337.5].map((angle) => (
-      <path
-        key={`short-${angle}`}
-        d="M50 15 L54 35 L46 35 Z"
-        transform={`rotate(${angle} 50 50)`}
-        opacity="0.9"
       />
     ))}
   </svg>
