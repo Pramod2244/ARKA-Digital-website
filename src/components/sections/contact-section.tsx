@@ -195,6 +195,7 @@ export function ContactSection() {
                                                     placeholder="Briefly describe your project goals..." 
                                                     className="min-h-[150px] border-slate-100 bg-white/50 text-slate-900 focus:bg-white transition-all rounded-[2rem] p-6 font-medium resize-none placeholder:text-slate-300"
                                                     {...field} 
+                                                    spellCheck={false}
                                                 />
                                             </FormControl>
                                             <FormMessage />

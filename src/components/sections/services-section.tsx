@@ -162,7 +162,6 @@ export function ServicesSection() {
   return (
     <section id="services" className="bg-[#E9F1FB] overflow-hidden pl-[70px] relative">
       <div className="container mx-auto max-w-7xl px-6 py-16 md:py-20">
-        {/* Header */}
         <div className="text-center mb-10 space-y-4">
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
@@ -174,14 +173,12 @@ export function ServicesSection() {
           </motion.h2>
         </div>
 
-        {/* Carousel Container */}
         <div className="max-w-6xl mx-auto relative px-4 lg:px-16">
           <Carousel setApi={setApi} className="w-full" opts={{ loop: true }}>
             <CarouselContent>
               {services.map((service, index) => (
                 <CarouselItem key={index}>
                   <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 py-4">
-                    {/* Image Column */}
                     <div className="w-full lg:w-1/2">
                       <div className="relative h-[300px] md:h-[400px] w-full rounded-[3rem] overflow-hidden shadow-xl border-[10px] border-white bg-white">
                         {service.image?.imageUrl && (
@@ -196,7 +193,6 @@ export function ServicesSection() {
                       </div>
                     </div>
 
-                    {/* Content Column */}
                     <div className="w-full lg:w-1/2 space-y-6 lg:space-y-8">
                       <div className={cn(
                         "w-20 h-20 rounded-[2rem] flex items-center justify-center bg-white shadow-xl border border-slate-50 p-4 transition-transform hover:scale-105 duration-300",
@@ -214,7 +210,6 @@ export function ServicesSection() {
                         </p>
                       </div>
                       
-                      {/* Features Grid */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                         {service.features.map((feature, fIndex) => (
                           <div key={fIndex} className="flex items-center gap-3">
@@ -243,14 +238,12 @@ export function ServicesSection() {
               ))}
             </CarouselContent>
             
-            {/* Navigation Arrows */}
             <div className="hidden lg:block">
               <CarouselPrevious className="absolute -left-16 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white shadow-lg hover:bg-slate-50 text-slate-900 border-none transition-all z-20" />
               <CarouselNext className="absolute -right-16 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white shadow-lg hover:bg-slate-50 text-slate-900 border-none transition-all z-20" />
             </div>
           </Carousel>
 
-          {/* Navigation Dots */}
           <div className="flex justify-center gap-3 mt-10">
             {Array.from({ length: count }).map((_, i) => (
               <button
