@@ -33,11 +33,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
       </head>
-      <body className="font-body antialiased flex flex-col min-h-screen bg-background selection:bg-primary selection:text-primary-foreground">
+      <body className="font-body antialiased flex bg-[#F7F8FA] selection:bg-primary selection:text-primary-foreground">
         <FirebaseClientProvider>
-          <SidebarProvider defaultOpen={false}>
+          <SidebarProvider defaultOpen={true}>
             <AppSidebar />
-            <SidebarInset className="flex flex-col min-h-screen relative transition-all duration-500">
+            <SidebarInset className="flex-1 min-h-screen relative overflow-x-hidden ml-[70px]">
               <MotionProvider>
                 <ScrollProgress />
                 <main className="flex-grow">

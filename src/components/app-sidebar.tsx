@@ -2,14 +2,8 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { 
-  Home, 
-  LayoutGrid, 
-  Briefcase, 
-  Cpu, 
-  Info, 
-  Mail, 
-} from "lucide-react";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 import {
   Sidebar,
   SidebarContent,
@@ -17,77 +11,60 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarRail,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { cn } from "@/lib/utils";
 
 const navItems = [
-  { label: "Home", icon: Home, href: "#home" },
-  { label: "Services", icon: LayoutGrid, href: "#services" },
-  { label: "Projects", icon: Briefcase, href: "#portfolio" },
-  { label: "Technologies", icon: Cpu, href: "#technologies" },
-  { label: "About", icon: Info, href: "#about" },
-  { label: "Contact", icon: Mail, href: "#contact" },
+  { label: "Home", href: "#home" },
+  { label: "Services", href: "#services" },
+  { label: "Projects", href: "#portfolio" },
+  { label: "Technologies", href: "#technologies" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
 ];
 
-const SidebarLogo = ({ isCollapsed }: { isCollapsed: boolean }) => (
-  <div className="flex items-center justify-center h-12 w-12 transition-all duration-500">
-    <svg viewBox="0 0 100 100" className={cn("text-primary transition-all duration-500", isCollapsed ? "h-4 w-4" : "h-8 w-8")} fill="currentColor">
-      <circle cx="50" cy="50" r="30" />
+const SidebarLogo = () => (
+  <div className="flex items-center justify-center">
+    <svg viewBox="0 0 100 100" className="h-6 w-6 text-primary" fill="currentColor">
+      <circle cx="50" cy="50" r="35" />
     </svg>
   </div>
 );
 
 export function AppSidebar() {
-  const { state, setOpen } = useSidebar();
-  const isCollapsed = state === "collapsed";
-
+  const { state } = useSidebar();
+  // Ensure we don't expand by ignoring the 'state' and forcing a minimal width
+  
   return (
     <Sidebar 
-      collapsible="icon" 
-      className="border-r border-white/5 bg-[#1E2A32]/95 backdrop-blur-xl transition-all duration-500 ease-in-out group/sidebar"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      collapsible="none" 
+      className="w-[70px] border-r border-slate-200 bg-[#F7F8FA] fixed inset-y-0 left-0 z-50 transition-none"
     >
-      <SidebarHeader className="py-10 flex items-center justify-center overflow-hidden">
-        <Link href="/" className="flex items-center gap-4 px-2">
-          <SidebarLogo isCollapsed={isCollapsed} />
-          {!isCollapsed && (
-            <div className="flex flex-col animate-in fade-in slide-in-from-left-2 duration-500">
-              <span className="font-headline text-xs font-black tracking-[0.4em] uppercase text-white leading-none">
-                Arkaa
-              </span>
-              <span className="text-[6px] uppercase tracking-[0.5em] text-primary font-black mt-1 italic">Digital</span>
-            </div>
-          )}
+      <SidebarHeader className="py-12 flex items-center justify-center">
+        <Link href="/" className="flex flex-col items-center gap-2">
+          <SidebarLogo />
+          <span className="text-[8px] font-black uppercase tracking-[0.2em] text-slate-900 mt-2 rotate-[-90deg] origin-center">
+            Arkaa
+          </span>
         </Link>
       </SidebarHeader>
 
-      <SidebarContent className="px-3 flex flex-col justify-center gap-4">
-        <SidebarMenu className="gap-6">
+      <SidebarContent className="flex flex-col items-center justify-center gap-12 py-10">
+        <SidebarMenu className="flex flex-col items-center gap-16">
           {navItems.map((item) => (
             <SidebarMenuItem key={item.label}>
               <SidebarMenuButton 
                 asChild 
-                tooltip={item.label}
-                className={cn(
-                  "h-10 rounded-full transition-all duration-300 group/item relative overflow-hidden",
-                  "hover:bg-white/5 hover:text-primary"
-                )}
+                className="p-0 hover:bg-transparent active:bg-transparent"
               >
-                <a href={item.href} className="flex items-center gap-6">
-                  <div className="flex-shrink-0 flex items-center justify-center w-6 h-6">
-                    <item.icon className={cn(
-                      "transition-all duration-300",
-                      isCollapsed ? "h-4 w-4 text-slate-400 group-hover/item:text-primary" : "h-5 w-5"
-                    )} />
-                  </div>
-                  {!isCollapsed && (
-                    <span className="font-bold text-[10px] uppercase tracking-[0.3em] text-slate-300 group-hover/item:text-white animate-in fade-in slide-in-from-left-4 duration-500">
-                      {item.label}
-                    </span>
-                  )}
+                <a 
+                  href={item.href} 
+                  className="flex flex-col items-center gap-6 group/nav"
+                >
+                  <span className="text-[7px] font-black uppercase tracking-[0.4em] text-slate-400 group-hover/nav:text-primary transition-colors vertical-text rotate-180">
+                    {item.label}
+                  </span>
+                  <div className="w-4 h-[1px] bg-slate-200 group-hover/nav:bg-primary group-hover/nav:w-6 transition-all duration-300" />
                 </a>
               </SidebarMenuButton>
             </SidebarMenuItem>
@@ -95,7 +72,12 @@ export function AppSidebar() {
         </SidebarMenu>
       </SidebarContent>
 
-      <SidebarRail />
+      <style jsx global>{`
+        .vertical-text {
+          writing-mode: vertical-rl;
+          text-orientation: mixed;
+        }
+      `}</style>
     </Sidebar>
   );
 }
