@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -27,8 +26,8 @@ export function HeroSection() {
             </div>
             
             <h1 className="font-headline text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight text-slate-900 mb-8">
-              Building Powerful <br />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#FF8A30]">Digital</span> Solutions
+              We Build Smart <br />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#FF8A30]">Digital</span> Platforms
             </h1>
             
             <p className="text-xl text-slate-600 font-medium leading-relaxed mb-10 max-w-lg">

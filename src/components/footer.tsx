@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from 'next/link';
@@ -29,7 +28,7 @@ export function Footer() {
   const [year, setYear] = useState<number | null>(null);
 
   useEffect(() => {
-    setYear(year || new Date().getFullYear());
+    setYear(new Date().getFullYear());
   }, []);
 
   return (
