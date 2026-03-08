@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from 'next/link';
@@ -114,14 +113,14 @@ export function Header() {
           <NavigationMenu>
             <NavigationMenuList className="gap-2">
               <NavigationMenuItem>
-                <Link href="#home" legacyBehavior passHref>
-                  <NavigationMenuLink className={cn(
+                <NavigationMenuLink asChild>
+                  <Link href="#home" className={cn(
                     "px-4 py-2 text-xs font-black uppercase tracking-widest transition-colors",
                     "text-slate-600 hover:text-primary"
                   )}>
                     Home
-                  </NavigationMenuLink>
-                </Link>
+                  </Link>
+                </NavigationMenuLink>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
@@ -165,14 +164,14 @@ export function Header() {
 
               {navLinks.slice(1).map((link) => (
                 <NavigationMenuItem key={link.href}>
-                  <Link href={link.href} legacyBehavior passHref>
-                    <NavigationMenuLink className={cn(
+                  <NavigationMenuLink asChild>
+                    <Link href={link.href} className={cn(
                       "px-4 py-2 text-xs font-black uppercase tracking-widest transition-colors",
                       "text-slate-600 hover:text-primary"
                     )}>
                       {link.label}
-                    </NavigationMenuLink>
-                  </Link>
+                    </Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
               ))}
             </NavigationMenuList>
