@@ -24,8 +24,7 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { errorEmitter } from "@/firebase/error-emitter";
 import { FirestorePermissionError, type SecurityRuleContext } from "@/firebase/errors";
 
-// Replace this with your actual Zoho Flow or Zapier Webhook URL
-const ZOHO_WEBHOOK_URL = "https://flow.zoho.com/webhooks/incoming/..."; 
+const ZOHO_WEBHOOK_URL = "https://flow.zoho.in/60066892414/flow/webhook/incoming?zapikey=1001.f535287f02f527c39f3fd70817a55cac.929563d7435f52fbf3fe1aad89c56004&isdebug=false"; 
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -58,13 +57,18 @@ export function ContactSection() {
     });
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
+        if (isSubmitting) return;
         setIsSubmitting(true);
-        const submissionTime = new Date().toLocaleString();
+
+        const submissionTime = new Date().toLocaleString('en-IN', { 
+            timeZone: 'Asia/Kolkata',
+            dateStyle: 'medium',
+            timeStyle: 'short'
+        });
 
         try {
-            // 1. Send to Zoho Sheets (via Webhook)
-            // We use a try-catch for the network request but proceed to Firestore regardless
-            fetch(ZOHO_WEBHOOK_URL, {
+            // 1. Send to Zoho Flow (Sheets Integration)
+            await fetch(ZOHO_WEBHOOK_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -74,8 +78,8 @@ export function ContactSection() {
                     "Message": values.message,
                     "Date/Time": submissionTime
                 }),
-                mode: 'no-cors' // Common for simple webhooks
-            }).catch(err => console.warn("Webhook delivery pending or failed:", err));
+                keepalive: true
+            });
 
             // 2. Save to Firestore as backup/primary record
             if (firestore) {
@@ -102,6 +106,7 @@ export function ContactSection() {
             
             form.reset();
         } catch (error) {
+            console.error("Submission error:", error);
             toast({
                 variant: "destructive",
                 title: "Submission Error",
