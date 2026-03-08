@@ -5,7 +5,7 @@ import { Footer } from '@/components/footer';
 import { MotionProvider } from '@/components/motion-provider';
 import { ScrollProgress } from '@/components/scroll-progress';
 import { FirebaseClientProvider } from '@/firebase';
-import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
+import { SidebarProvider } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/app-sidebar';
 
 export const metadata: Metadata = {
@@ -36,10 +36,10 @@ export default function RootLayout({
       <body className="font-body antialiased bg-[#F7F8FA] selection:bg-primary selection:text-primary-foreground overflow-x-hidden">
         <FirebaseClientProvider>
           <div className="flex min-h-screen">
-            {/* Minimal Fixed Sidebar */}
+            {/* Minimal Fixed Left Sidebar (70px) */}
             <AppSidebar />
             
-            {/* Main Content Area Offset by Sidebar Width */}
+            {/* Main Content Area Offset by Sidebar Width (ml-[70px]) */}
             <main className="flex-1 ml-[70px] relative min-w-0">
               <MotionProvider>
                 <ScrollProgress />
