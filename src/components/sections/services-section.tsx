@@ -102,20 +102,20 @@ const HIMSIcon = () => (
 
 const services = [
   {
-    title: "Website Development",
-    description: "Modern, responsive websites designed for performance, SEO, and a strong online presence.",
-    icon: WebDevIcon,
-    image: PlaceHolderImages.find(img => img.id === 'web-dev-v2'),
-    accent: "text-primary",
-    features: ["Responsive Design", "SEO Optimization", "Fast Performance", "Mobile Friendly"]
-  },
-  {
     title: "Hospital Management Systems",
     description: "Advanced HIMS platforms that streamline hospital workflows including patient records, billing, and appointments.",
     icon: HIMSIcon,
     image: PlaceHolderImages.find(img => img.id === 'hims-system-illustration'),
     accent: "text-[#3B82F6]",
     features: ["Patient Records Management", "Appointment Scheduling", "Billing & Insurance", "Hospital Workflow Automation"]
+  },
+  {
+    title: "Website Development",
+    description: "Modern, responsive websites designed for performance, SEO, and a strong online presence.",
+    icon: WebDevIcon,
+    image: PlaceHolderImages.find(img => img.id === 'web-dev-v2'),
+    accent: "text-primary",
+    features: ["Responsive Design", "SEO Optimization", "Fast Performance", "Mobile Friendly"]
   },
   {
     title: "UI / UX Design",
@@ -207,7 +207,7 @@ export function ServicesSection() {
                           <div key={fIndex} className="flex items-center gap-3">
                             <div className={cn(
                               "w-5 h-5 rounded-full flex items-center justify-center",
-                              index % 2 === 0 ? "bg-primary/10 text-primary" : "bg-[#3B82F6]/10 text-[#3B82F6]"
+                              index === 0 ? "bg-[#3B82F6]/10 text-[#3B82F6]" : (index % 2 === 0 ? "bg-[#3B82F6]/10 text-[#3B82F6]" : "bg-primary/10 text-primary")
                             )}>
                               <CheckCircle2 className="h-3 w-3" />
                             </div>
