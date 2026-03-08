@@ -79,7 +79,7 @@ export function TestimonialsSection() {
     <section id="testimonials" className="py-24 bg-[#F5F7FA] overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center space-y-4 mb-20">
-          <div className="inline-block px-4 py-1.5 rounded-full bg-slate-200 text-slate-500 text-[9px] font-black uppercase tracking-[0.3em]">Client Success</div>
+          <div className="inline-block px-4 py-1.5 rounded-full bg-slate-200 text-slate-500 text-[10px] font-black uppercase tracking-[0.3em]">Client Success</div>
           <h2 className="font-headline text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
             Trusted by <span className="text-secondary text-glow-orange">Leaders</span>
           </h2>
@@ -89,8 +89,8 @@ export function TestimonialsSection() {
           </div>
         </div>
 
-        <div className="relative px-10">
-          {/* Gradient Masks */}
+        <div className="relative px-6">
+          {/* Gradient Masks for Seamless Edge Effect */}
           <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#F5F7FA] to-transparent z-10 pointer-events-none" />
           <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#F5F7FA] to-transparent z-10 pointer-events-none" />
 
@@ -105,7 +105,7 @@ export function TestimonialsSection() {
             <CarouselContent className="-ml-4 md:-ml-8">
               {testimonials.map((testimonial, index) => (
                 <CarouselItem key={index} className="pl-4 md:pl-8 basis-full md:basis-1/2 lg:basis-1/3">
-                  <Card className="h-full border-none shadow-xl shadow-slate-200/50 bg-white p-10 rounded-[3rem] flex flex-col justify-between hover:shadow-2xl transition-all duration-500">
+                  <Card className="h-full border-none shadow-xl shadow-slate-200/40 bg-white p-10 rounded-[3rem] flex flex-col justify-between hover:shadow-2xl transition-all duration-500">
                     <div className="space-y-6">
                       <div className="flex justify-between items-center">
                         <div className="p-4 rounded-2xl bg-secondary/5 text-secondary border border-secondary/10">
@@ -123,9 +123,9 @@ export function TestimonialsSection() {
                     </div>
 
                     <div className="flex items-center gap-5 mt-10 pt-8 border-t border-slate-50">
-                      <Avatar className="h-14 w-14 border-2 border-slate-50 shadow-sm">
+                      <Avatar className="h-14 w-14 border-2 border-white shadow-md">
                         <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-                        <AvatarFallback className="font-black">{testimonial.name.charAt(0)}</AvatarFallback>
+                        <AvatarFallback className="font-black bg-slate-100">{testimonial.name.charAt(0)}</AvatarFallback>
                       </Avatar>
                       <div>
                         <p className="font-black text-slate-900 leading-tight">{testimonial.name}</p>

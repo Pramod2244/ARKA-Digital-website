@@ -8,10 +8,11 @@ import { ArrowRight, Sparkles } from "lucide-react";
 export function CTASection() {
   return (
     <section className="py-24 px-4 bg-white overflow-hidden">
-      <div className="container mx-auto max-w-6xl rounded-[4rem] relative overflow-hidden shadow-2xl shadow-primary/20">
+      <div className="container mx-auto max-w-6xl rounded-[4.5rem] relative overflow-hidden shadow-[0_40px_100px_-20px_rgba(255,106,0,0.3)]">
+        {/* Radiating Arkaa Orange Gradient Background */}
         <div className="absolute inset-0 orange-gradient-bg -z-10" />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-[120px] -z-10" />
-        <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-black/5 rounded-full blur-[100px] -z-10" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/10 rounded-full blur-[120px] -z-10" />
+        <div className="absolute -bottom-20 -left-20 w-[500px] h-[500px] bg-black/5 rounded-full blur-[100px] -z-10" />
         
         <div className="py-24 text-center space-y-12 px-8">
           <motion.div
@@ -19,8 +20,8 @@ export function CTASection() {
             whileInView={{ opacity: 1, y: 0 }}
             className="space-y-6"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.3em] mx-auto">
-              <Sparkles className="h-3 w-3" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white text-[11px] font-black uppercase tracking-[0.3em] mx-auto">
+              <Sparkles className="h-3.5 w-3.5" />
               Next-Gen Engineering
             </div>
             <h2 className="font-headline text-5xl md:text-7xl font-black text-white tracking-tight leading-[1.1]">
@@ -32,7 +33,7 @@ export function CTASection() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-6"

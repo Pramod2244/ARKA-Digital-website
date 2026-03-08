@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Code2, Palette, Hospital, Cpu, Cloud } from "lucide-react";
+import { Code2, Palette, Hospital, Cpu, Cloud, Settings } from "lucide-react";
 import { motion } from "framer-motion";
 
 const services = [
@@ -29,16 +29,23 @@ const services = [
     icon: Cloud,
     title: "Cloud Solutions",
     description: "Scalable cloud architecture, hosting, and server management to ensure 99.9% uptime for your digital assets.",
+  },
+  {
+    icon: Settings,
+    title: "Software Solutions",
+    description: "Comprehensive software engineering services focused on long-term scalability and business efficiency.",
   }
 ];
 
 export function ServicesSection() {
   return (
     <section id="services" className="py-24 bg-[#F0F7FF] relative overflow-hidden">
+      {/* Background Decorative Grid */}
       <div className="absolute top-0 left-0 w-full h-full opacity-30 bg-grid-slate pointer-events-none" />
+      
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center space-y-4 mb-20">
-          <div className="inline-block px-4 py-1.5 rounded-full bg-secondary/10 text-secondary text-[9px] font-black uppercase tracking-[0.3em]">Our Expertise</div>
+          <div className="inline-block px-4 py-1.5 rounded-full bg-secondary/10 text-secondary text-[10px] font-black uppercase tracking-[0.3em]">Our Expertise</div>
           <h2 className="font-headline text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
             Specialized <span className="text-primary text-glow-orange">Services</span>
           </h2>
@@ -56,9 +63,9 @@ export function ServicesSection() {
               transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full border border-white/50 shadow-xl shadow-slate-200/40 bg-white/60 backdrop-blur-md hover:-translate-y-2 hover:border-primary/50 transition-all duration-500 rounded-[3rem] overflow-hidden group">
+              <Card className="h-full border border-white/50 shadow-xl shadow-slate-200/30 bg-white/70 backdrop-blur-md hover:-translate-y-2 hover:border-primary transition-all duration-500 rounded-[3rem] overflow-hidden group">
                 <CardHeader className="pt-10 pb-4">
-                  <div className="w-16 h-16 rounded-[1.5rem] bg-primary/5 flex items-center justify-center mb-6 group-hover:bg-primary transition-all duration-500">
+                  <div className="w-16 h-16 rounded-[1.8rem] bg-white shadow-lg flex items-center justify-center mb-6 group-hover:bg-primary transition-all duration-500 border border-slate-50">
                     <service.icon className="h-8 w-8 text-primary group-hover:text-white transition-colors" />
                   </div>
                   <CardTitle className="font-headline text-2xl font-black text-slate-900 leading-tight">
