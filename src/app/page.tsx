@@ -4,7 +4,6 @@ import { AboutSection } from '@/components/sections/about-section';
 import { IndustriesSection } from '@/components/sections/industries-section';
 import { TechnologiesSection } from '@/components/sections/technologies-section';
 import { ContactSection } from '@/components/sections/contact-section';
-import { CTASection } from '@/components/sections/cta-section';
 
 export default function Home() {
   return (
@@ -14,7 +13,6 @@ export default function Home() {
       <AboutSection />
       <IndustriesSection />
       <TechnologiesSection />
-      <CTASection />
       <ContactSection />
     </div>
   );
