@@ -33,21 +33,26 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
       </head>
-      <body className="font-body antialiased flex bg-[#F7F8FA] selection:bg-primary selection:text-primary-foreground">
+      <body className="font-body antialiased bg-[#F7F8FA] selection:bg-primary selection:text-primary-foreground overflow-x-hidden">
         <FirebaseClientProvider>
-          <SidebarProvider defaultOpen={true}>
+          <div className="flex min-h-screen">
+            {/* Minimal Fixed Sidebar */}
             <AppSidebar />
-            <SidebarInset className="flex-1 min-h-screen relative overflow-x-hidden ml-[70px]">
+            
+            {/* Main Content Area Offset by Sidebar Width */}
+            <main className="flex-1 ml-[70px] relative min-w-0">
               <MotionProvider>
                 <ScrollProgress />
-                <main className="flex-grow">
-                  {children}
-                </main>
-                <Footer />
+                <div className="flex flex-col min-h-screen">
+                  <div className="flex-grow">
+                    {children}
+                  </div>
+                  <Footer />
+                </div>
                 <Toaster />
               </MotionProvider>
-            </SidebarInset>
-          </SidebarProvider>
+            </main>
+          </div>
         </FirebaseClientProvider>
       </body>
     </html>
