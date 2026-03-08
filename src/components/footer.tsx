@@ -12,7 +12,7 @@ const LogoMark = () => (
     {Array.from({ length: 16 }).map((_, i) => {
       const angle = i * 22.5;
       const isLong = i % 2 === 0;
-      // Precise path for the "leaf" or "petal" ray shape from the reference image
+      // Precise path for the "leaf" or "petal" ray shape
       const d = isLong 
         ? "M 50 2 Q 53 15 50 28 Q 47 15 50 2 Z" // Long petal ray
         : "M 50 12 Q 52 20 50 28 Q 48 20 50 12 Z"; // Short petal ray
@@ -44,8 +44,10 @@ export function Footer() {
             <Link href="/" className="flex items-center gap-4 group">
               <LogoMark />
               <div className="flex flex-col">
-                <span className="block font-headline text-2xl font-black tracking-[0.3em] text-white uppercase leading-none">Arkaa</span>
-                <span className="block text-[8px] uppercase tracking-[0.4em] text-primary font-black mt-2">Engineering the Future</span>
+                <span className="block font-headline text-2xl font-black tracking-[0.3em] text-white uppercase leading-none">
+                  Arkaa <span className="text-primary">Digital</span>
+                </span>
+                <span className="block text-[8px] uppercase tracking-[0.4em] text-primary font-black mt-2">Building what's next</span>
               </div>
             </Link>
             <p className="text-sm leading-relaxed max-w-xs font-medium text-slate-400">

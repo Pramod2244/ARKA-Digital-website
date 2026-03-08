@@ -9,14 +9,15 @@ import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/s
 
 const LogoMark = () => (
   <svg viewBox="0 0 100 100" className="h-10 w-10 text-primary" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-    {/* Central Solar Core */}
+    {/* Central Solar Core with a gap from the rays */}
     <circle cx="50" cy="50" r="18" />
     {/* 16 Alternating Long and Short Petal-Shaped Rays with a gap from the core */}
     {Array.from({ length: 16 }).map((_, i) => {
       const angle = i * 22.5;
       const isLong = i % 2 === 0;
-      // Precise path for the "leaf" or "petal" ray shape from the reference image
-      // Inner tips stop at y=28 (Gap of 4 units from circle boundary at y=32)
+      // Precise path for the "leaf" or "petal" ray shape
+      // Inner tips stop at y=28 (Gap of 10 units from center, 4 units from circle boundary at radius 18/radius 24 context)
+      // Actually circle radius is 18. So distance is 50-18=32. Inner tip at 28 means a 4 unit gap.
       const d = isLong 
         ? "M 50 2 Q 53 15 50 28 Q 47 15 50 2 Z" // Long petal ray
         : "M 50 12 Q 52 20 50 28 Q 48 20 50 12 Z"; // Short petal ray
@@ -59,7 +60,7 @@ export function Header() {
             <span className="font-headline text-xl font-black tracking-[0.3em] uppercase text-slate-900 leading-none">
               Arkaa <span className="text-primary">Digital</span>
             </span>
-            <span className="text-[7px] uppercase tracking-[0.4em] font-black text-slate-400 mt-1">Engineering the Future</span>
+            <span className="text-[7px] uppercase tracking-[0.4em] font-black text-slate-400 mt-1">Building what's next</span>
           </div>
         </Link>
         
