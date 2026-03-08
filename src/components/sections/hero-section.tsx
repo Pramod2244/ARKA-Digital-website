@@ -3,89 +3,133 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MotionDiv } from "@/components/motion-provider";
-import { Zap, ShieldCheck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export function HeroSection() {
-  const mainDashboard = PlaceHolderImages.find(img => img.id === 'hero-software-platform');
+  const dashboardImg = PlaceHolderImages.find(img => img.id === 'hero-software-platform');
+  const secondaryImg = PlaceHolderImages.find(img => img.id === 'analytics-core-v2');
+
+  const HeroLogoIcon = () => (
+    <svg viewBox="0 0 100 100" className="h-12 w-12 text-primary mb-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="18" />
+      {Array.from({ length: 16 }).map((_, i) => {
+        const angle = i * 22.5;
+        const isLong = i % 2 === 0;
+        const d = isLong 
+          ? "M 50 2 Q 53 15 50 28 Q 47 15 50 2 Z" 
+          : "M 50 12 Q 52 20 50 28 Q 48 20 50 12 Z"; 
+        return (
+          <path
+            key={i}
+            d={d}
+            transform={`rotate(${angle} 50 50)`}
+          />
+        );
+      })}
+    </svg>
+  );
 
   return (
-    <section id="home" className="relative w-full pt-48 pb-32 overflow-hidden bg-[#F7F8FA] pl-[70px]">
-      {/* Soft Ambient Gradients */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#FFE9DC] rounded-full blur-[140px] opacity-40 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#E8F0FF] rounded-full blur-[140px] opacity-40 pointer-events-none" />
+    <section id="home" className="relative w-full pt-40 pb-32 overflow-hidden bg-white pl-[70px]">
+      {/* Subtle Background Elements */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] opacity-30 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[140px] opacity-30 pointer-events-none" />
       
-      {/* Subtle Digital Grid */}
-      <div className="absolute inset-0 bg-grid-slate opacity-[0.05] pointer-events-none" />
-
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           
           <MotionDiv
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex flex-col items-center"
+            className="flex flex-col items-start text-left max-w-2xl"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 border border-slate-200 rounded-full bg-white/50 backdrop-blur-md shadow-sm mb-8">
-              <Zap className="h-3.5 w-3.5 text-primary" />
-              <span className="text-[10px] uppercase tracking-[0.4em] font-black text-slate-500">Engineering Digital Solutions</span>
-            </div>
+            <HeroLogoIcon />
             
-            <h1 className="font-headline text-5xl md:text-7xl font-black leading-[1.05] tracking-tight text-slate-900 mb-8">
-              We Build Smart <br />
-              <span className="text-primary italic">Digital Platforms</span>
+            <h1 className="font-headline text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight text-slate-900 mb-8">
+              Building Powerful <br />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-[#FF8A30] to-primary">Digital</span> Solutions <br />
+              for Every Industry
             </h1>
             
-            <p className="text-lg md:text-xl text-slate-600 max-w-2xl font-medium leading-relaxed mb-12">
-              ARKAA DIGITAL develops modern websites, hospital management systems, and custom digital platforms that help businesses and healthcare organizations operate efficiently in the digital world.
+            <p className="text-xl text-slate-500 font-medium leading-relaxed mb-10 max-w-lg">
+              ARKAA DIGITAL develops modern websites, hospital management systems, and custom digital platforms that help businesses and healthcare organizations operate efficiently.
             </p>
 
-            <div className="flex flex-wrap items-center justify-center gap-5 mb-20">
-              <Button size="lg" className="h-16 px-12 text-xs font-black rounded-full bg-primary text-white hover:bg-primary/90 shadow-xl shadow-primary/20 transition-all hover:-translate-y-1 uppercase tracking-[0.3em]" asChild>
+            <div className="flex flex-wrap items-center gap-5">
+              <Button size="lg" className="h-16 px-10 text-xs font-black rounded-full bg-primary text-white hover:bg-primary/90 shadow-2xl shadow-primary/20 transition-all hover:-translate-y-1 uppercase tracking-[0.2em]" asChild>
                 <Link href="#contact">Start Your Project</Link>
               </Button>
-              <Button size="lg" variant="outline" className="h-16 px-12 text-xs font-black rounded-full border-2 border-slate-200 bg-white/50 backdrop-blur-md text-slate-900 hover:bg-slate-100 transition-all hover:-translate-y-1 uppercase tracking-[0.3em]" asChild>
-                <Link href="#services">Explore Our Services</Link>
+              <Button size="lg" variant="outline" className="h-16 px-10 text-xs font-black rounded-full border-2 border-secondary bg-white text-secondary hover:bg-secondary/5 transition-all hover:-translate-y-1 uppercase tracking-[0.2em] group" asChild>
+                <Link href="#services" className="flex items-center gap-3">
+                  Explore Our Services
+                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </Button>
             </div>
           </MotionDiv>
 
           <MotionDiv
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="w-full relative group"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="relative h-[600px] hidden lg:block"
           >
-            <div className="relative rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] border-[12px] border-white bg-white/50 aspect-video md:aspect-[16/10]">
-              {mainDashboard?.imageUrl && (
-                <Image 
-                  src={mainDashboard.imageUrl} 
-                  alt="High Performance Digital Platform Dashboard" 
-                  fill 
-                  className="object-cover transition-transform duration-1000 group-hover:scale-[1.02]"
-                  priority
-                  data-ai-hint={mainDashboard?.imageHint}
-                />
-              )}
-              <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent pointer-events-none" />
-            </div>
-
+            {/* Main Browser Window (Glassmorphism) */}
             <motion.div 
-              animate={{ y: [0, -15, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-10 -right-10 hidden lg:flex bg-white/90 backdrop-blur-md p-4 rounded-3xl shadow-2xl border border-slate-100 items-center gap-4"
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute top-0 right-0 w-[90%] h-[450px] bg-white/40 backdrop-blur-xl rounded-[2.5rem] border border-white/40 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] overflow-hidden z-20"
             >
-              <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
-                <ShieldCheck className="h-6 w-6" />
+              {/* Fake Browser Top Bar */}
+              <div className="h-10 bg-white/60 flex items-center px-6 gap-2 border-b border-white/40">
+                <div className="w-2.5 h-2.5 rounded-full bg-red-400/50" />
+                <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/50" />
+                <div className="w-2.5 h-2.5 rounded-full bg-green-400/50" />
               </div>
-              <div className="text-left">
-                <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Enterprise Security</p>
-                <p className="text-xs font-black text-slate-900">Validated Systems</p>
+              <div className="relative w-full h-full">
+                {dashboardImg?.imageUrl && (
+                  <Image 
+                    src={dashboardImg.imageUrl} 
+                    alt="Product Interface Dashboard" 
+                    fill 
+                    className="object-cover opacity-90"
+                    data-ai-hint={dashboardImg?.imageHint}
+                  />
+                )}
               </div>
             </motion.div>
+
+            {/* Overlapping Secondary Browser Window */}
+            <motion.div 
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+              className="absolute bottom-10 left-0 w-[70%] h-[350px] bg-white/20 backdrop-blur-2xl rounded-[2.5rem] border border-white/30 shadow-[0_24px_48px_-12px_rgba(0,0,0,0.15)] overflow-hidden z-30"
+            >
+              <div className="h-10 bg-white/40 flex items-center px-6 gap-2 border-b border-white/30">
+                <div className="w-2.5 h-2.5 rounded-full bg-slate-300/50" />
+                <div className="w-2.5 h-2.5 rounded-full bg-slate-300/50" />
+                <div className="w-2.5 h-2.5 rounded-full bg-slate-300/50" />
+              </div>
+              <div className="relative w-full h-full bg-gradient-to-br from-secondary/10 to-transparent">
+                {secondaryImg?.imageUrl && (
+                  <Image 
+                    src={secondaryImg.imageUrl} 
+                    alt="Analytics Visuals" 
+                    fill 
+                    className="object-cover opacity-80"
+                    data-ai-hint={secondaryImg?.imageHint}
+                  />
+                )}
+              </div>
+            </motion.div>
+
+            {/* Floating Tech Elements */}
+            <div className="absolute top-1/4 -right-8 w-24 h-24 bg-primary/20 rounded-3xl blur-2xl animate-pulse" />
+            <div className="absolute -bottom-10 left-1/4 w-32 h-32 bg-secondary/20 rounded-full blur-3xl animate-pulse delay-1000" />
           </MotionDiv>
         </div>
       </div>
