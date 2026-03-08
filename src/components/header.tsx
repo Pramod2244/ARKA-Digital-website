@@ -5,7 +5,7 @@ import { Button } from './ui/button';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { motion, AnimatePresence } from 'framer-motion';
 
 const LogoMark = () => (
@@ -75,6 +75,10 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="w-full sm:max-w-none p-0 border-none bg-white">
+              <div className="sr-only">
+                <SheetTitle>Navigation Menu</SheetTitle>
+                <SheetDescription>Access Arkaa Digital's main sections and project inquiry.</SheetDescription>
+              </div>
               <div className="flex h-full w-full overflow-hidden">
                 {/* Left Side: Navigation Panel */}
                 <div className="w-full lg:w-1/2 h-full flex flex-col p-8 md:p-16 lg:p-24 relative bg-white">
