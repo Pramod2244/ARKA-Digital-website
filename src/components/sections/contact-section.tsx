@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -23,8 +22,7 @@ import { useFirestore } from "@/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { errorEmitter } from "@/firebase/error-emitter";
 import { FirestorePermissionError, type SecurityRuleContext } from "@/firebase/errors";
-
-const ZOHO_WEBHOOK_URL = "https://flow.zoho.in/60066892414/flow/webhook/incoming?zapikey=1001.f535287f02f527c39f3fd70817a55cac.929563d7435f52fbf3fe1aad89c56004&isdebug=false"; 
+import { submitToZoho } from "@/app/actions/contact";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -67,19 +65,18 @@ export function ContactSection() {
         });
 
         try {
-            // 1. Send to Zoho Flow (Sheets Integration)
-            await fetch(ZOHO_WEBHOOK_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    "Name": values.name,
-                    "Email": values.email,
-                    "Project Type": values.subject,
-                    "Message": values.message,
-                    "Date/Time": submissionTime
-                }),
-                keepalive: true
+            // 1. Send to Zoho via Server Action (Bypasses Client-side CORS)
+            const zohoResult = await submitToZoho({
+                name: values.name,
+                email: values.email,
+                subject: values.subject,
+                message: values.message,
+                submissionTime: submissionTime
             });
+
+            if (!zohoResult.success) {
+                throw new Error(zohoResult.error);
+            }
 
             // 2. Save to Firestore as backup/primary record
             if (firestore) {
