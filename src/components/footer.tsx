@@ -69,24 +69,24 @@ export function Footer() {
           <div>
             <h4 className="font-headline text-white font-black uppercase tracking-widest text-xs mb-8">Get In Touch</h4>
             <div className="space-y-6 text-sm font-medium">
-              <p className="flex items-center gap-4 hover:text-white transition-colors cursor-pointer">
+              <div className="flex items-center gap-4 hover:text-white transition-colors cursor-pointer">
                 <div className="p-2 rounded-lg bg-primary/10 text-primary">
                   <Mail className="h-4 w-4" />
                 </div>
                 hey@arkaadigital.com
-              </p>
-              <p className="flex items-center gap-4 hover:text-white transition-colors cursor-pointer">
+              </div>
+              <div className="flex items-center gap-4 hover:text-white transition-colors cursor-pointer">
                 <div className="p-2 rounded-lg bg-secondary/10 text-secondary">
                   <Phone className="h-4 w-4" />
                 </div>
                 +91 8050332452
-              </p>
-              <p className="flex items-start gap-4 hover:text-white transition-colors cursor-pointer">
+              </div>
+              <div className="flex items-start gap-4 hover:text-white transition-colors cursor-pointer">
                 <div className="p-2 rounded-lg bg-white/5 text-white">
                   <MapPin className="h-4 w-4" />
                 </div>
                 Chikkaballapura, Karnataka - 562101
-              </p>
+              </div>
             </div>
           </div>
         </div>
