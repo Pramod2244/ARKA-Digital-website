@@ -7,34 +7,70 @@
       "imageHint": "circuit board"
     },
     {
-      "id": "why-choose-us",
-      "description": "Team of developers collaborating on a project with laptops",
-      "imageUrl": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NjEzMDQ5Mjh8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "teamwork office"
+      "id": "tech-collab",
+      "description": "Software engineering team collaborating on architectural diagrams in a modern tech office",
+      "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1080",
+      "imageHint": "software engineering"
     },
     {
       "id": "hims-dashboard-ui",
-      "description": "Clean medical dashboard interface for hospital management",
-      "imageUrl": "https://picsum.photos/seed/arkaa-hims-dashboard/1000/800",
+      "description": "Clinical hospital management dashboard showing patient records and medical analytics",
+      "imageUrl": "https://picsum.photos/seed/arkaa-hims-v3/1000/800",
       "imageHint": "medical dashboard"
     },
     {
       "id": "web-interface-ui",
-      "description": "Modern high-performance website layout",
-      "imageUrl": "https://picsum.photos/seed/arkaa-web-interface/1000/800",
-      "imageHint": "web design"
+      "description": "Modern high-performance responsive website layout with marketing analytics",
+      "imageUrl": "https://picsum.photos/seed/arkaa-web-v3/1000/800",
+      "imageHint": "web interface"
     },
     {
       "id": "analytics-ui",
-      "description": "Business analytics dashboard with growth charts",
-      "imageUrl": "https://picsum.photos/seed/arkaa-analytics/1000/800",
-      "imageHint": "analytics dashboard"
+      "description": "Enterprise-grade business analytics dashboard with real-time growth charts",
+      "imageUrl": "https://picsum.photos/seed/arkaa-admin-v3/1000/800",
+      "imageHint": "admin panel"
     },
     {
       "id": "ui-ux-design-showcase",
-      "description": "Sleek mobile app UI and UX design layout",
-      "imageUrl": "https://picsum.photos/seed/arkaa-ux-showcase/1000/800",
-      "imageHint": "mobile ui"
+      "description": "Product design showcase showing wireframes and mobile UI components",
+      "imageUrl": "https://picsum.photos/seed/arkaa-ux-v3/1000/800",
+      "imageHint": "ui design"
+    },
+    {
+      "id": "portfolio-hims",
+      "description": "Healthcare Nexus HIMS system interface",
+      "imageUrl": "https://picsum.photos/seed/p-hims/800/600",
+      "imageHint": "hospital software"
+    },
+    {
+      "id": "portfolio-enterprise",
+      "description": "FinFlow corporate enterprise system admin panel",
+      "imageUrl": "https://picsum.photos/seed/p-enterprise/800/600",
+      "imageHint": "enterprise system"
+    },
+    {
+      "id": "portfolio-edu",
+      "description": "EduSpark educational management portal",
+      "imageUrl": "https://picsum.photos/seed/p-edu/800/600",
+      "imageHint": "learning portal"
+    },
+    {
+      "id": "portfolio-retail",
+      "description": "Vibe Commerce next-gen retail analytics",
+      "imageUrl": "https://picsum.photos/seed/p-retail/800/600",
+      "imageHint": "retail dashboard"
+    },
+    {
+      "id": "portfolio-saas",
+      "description": "SaaS analytics pro product interface",
+      "imageUrl": "https://picsum.photos/seed/p-saas/800/600",
+      "imageHint": "saas interface"
+    },
+    {
+      "id": "portfolio-studio",
+      "description": "Creative studio design system showcase",
+      "imageUrl": "https://picsum.photos/seed/p-studio/800/600",
+      "imageHint": "design system"
     }
   ]
 }

@@ -2,15 +2,46 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ExternalLink, Layout } from "lucide-react";
+import { ExternalLink } from "lucide-react";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const projects = [
-  { id: 1, title: "Healthcare Nexus HIMS", category: "Hospital Management", image: "https://picsum.photos/seed/p1/800/600" },
-  { id: 2, title: "FinFlow Enterprise", category: "Corporate Web", image: "https://picsum.photos/seed/p2/800/600" },
-  { id: 3, title: "EduSpark Portal", category: "Educational System", image: "https://picsum.photos/seed/p3/800/600" },
-  { id: 4, title: "Vibe Commerce", category: "Next-Gen Retail", image: "https://picsum.photos/seed/p4/800/600" },
-  { id: 5, title: "SaaS Analytics Pro", category: "Web Application", image: "https://picsum.photos/seed/p5/800/600" },
-  { id: 6, title: "Arkaa Creative Studio", category: "Design Showcase", image: "https://picsum.photos/seed/p6/800/600" },
+  { 
+    id: 1, 
+    title: "Healthcare Nexus HIMS", 
+    category: "Hospital Management", 
+    image: PlaceHolderImages.find(img => img.id === 'portfolio-hims') 
+  },
+  { 
+    id: 2, 
+    title: "FinFlow Enterprise", 
+    category: "Corporate Web", 
+    image: PlaceHolderImages.find(img => img.id === 'portfolio-enterprise') 
+  },
+  { 
+    id: 3, 
+    title: "EduSpark Portal", 
+    category: "Educational System", 
+    image: PlaceHolderImages.find(img => img.id === 'portfolio-edu') 
+  },
+  { 
+    id: 4, 
+    title: "Vibe Commerce", 
+    category: "Next-Gen Retail", 
+    image: PlaceHolderImages.find(img => img.id === 'portfolio-retail') 
+  },
+  { 
+    id: 5, 
+    title: "SaaS Analytics Pro", 
+    category: "Web Application", 
+    image: PlaceHolderImages.find(img => img.id === 'portfolio-saas') 
+  },
+  { 
+    id: 6, 
+    title: "Arkaa Creative Studio", 
+    category: "Design Showcase", 
+    image: PlaceHolderImages.find(img => img.id === 'portfolio-studio') 
+  },
 ];
 
 export function PortfolioSection() {
@@ -34,11 +65,11 @@ export function PortfolioSection() {
             >
               <div className="aspect-[4/3] overflow-hidden">
                 <Image 
-                  src={project.image} 
+                  src={project.image?.imageUrl || ""} 
                   alt={project.title} 
                   fill 
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  data-ai-hint="project showcase"
+                  data-ai-hint={project.image?.imageHint}
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-12">

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, Award, Zap, ShieldCheck } from "lucide-react";
 import Image from "next/image";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const highlights = [
   {
@@ -28,6 +29,8 @@ const highlights = [
 ];
 
 export function AboutSection() {
+  const teamImg = PlaceHolderImages.find(img => img.id === 'tech-collab');
+
   return (
     <section id="about" className="py-24 bg-[#FFF3EB] overflow-hidden">
       <div className="container mx-auto px-6">
@@ -67,12 +70,12 @@ export function AboutSection() {
           >
             <div className="relative rounded-[4rem] overflow-hidden shadow-2xl border-8 border-white">
               <Image 
-                src="https://picsum.photos/seed/arkaa-team/800/1000" 
-                alt="Arkaa Team Workspace" 
+                src={teamImg?.imageUrl || ""} 
+                alt="Arkaa Tech Collaboration" 
                 width={800} 
                 height={1000} 
                 className="object-cover"
-                data-ai-hint="modern office workspace"
+                data-ai-hint={teamImg?.imageHint}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
             </div>
