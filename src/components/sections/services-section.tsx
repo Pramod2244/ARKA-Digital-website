@@ -11,8 +11,9 @@ import {
   Hospital, 
   Cpu, 
   Palette, 
-  Cloud, 
-  Code2 
+  Cloud,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { cn } from "@/lib/utils";
@@ -20,6 +21,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
   type CarouselApi,
 } from "@/components/ui/carousel";
 
@@ -53,18 +56,11 @@ const services = [
     accent: "text-[#3B82F6]",
   },
   {
-    title: "Cloud Solutions",
-    description: "Scalable cloud architecture and migration services to ensure your data is secure and always accessible.",
+    title: "Cloud & Hosting Solutions",
+    description: "Scalable cloud architecture and managed hosting services to ensure your data is secure and always accessible.",
     icon: Cloud,
     image: PlaceHolderImages.find(img => img.id === 'cloud-solutions-v2'),
     accent: "text-primary",
-  },
-  {
-    title: "Software Development",
-    description: "Full-cycle software engineering services from conceptualization to deployment and maintenance.",
-    icon: Code2,
-    image: PlaceHolderImages.find(img => img.id === 'software-dev-v2'),
-    accent: "text-[#3B82F6]",
   }
 ];
 
@@ -114,61 +110,63 @@ export function ServicesSection() {
           </motion.p>
         </div>
 
-        <div className="max-w-5xl mx-auto relative">
-          <Carousel setApi={setApi} className="w-full">
+        <div className="max-w-6xl mx-auto relative group">
+          <Carousel setApi={setApi} className="w-full" opts={{ loop: true }}>
             <CarouselContent>
               {services.map((service, index) => (
                 <CarouselItem key={index}>
-                  <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16 p-6">
-                    <div className="w-full lg:w-1/2 group">
-                      <div className="relative h-[350px] md:h-[450px] w-full rounded-[3.5rem] overflow-hidden shadow-2xl transition-all duration-700 group-hover:scale-[1.02] border-8 border-white bg-white">
+                  <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16 p-4">
+                    {/* Image Column */}
+                    <div className="w-full lg:w-1/2">
+                      <div className="relative h-[400px] md:h-[500px] w-full rounded-[4rem] overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] border-[12px] border-white bg-white">
                         {service.image?.imageUrl && (
                           <Image
                             src={service.image.imageUrl}
                             alt={service.title}
                             fill
-                            className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                            className="object-cover transition-transform duration-1000"
                             data-ai-hint={service.image?.imageHint}
                           />
                         )}
                       </div>
                     </div>
 
-                    <div className="w-full lg:w-1/2 space-y-8">
+                    {/* Content Column */}
+                    <div className="w-full lg:w-1/2 space-y-10">
                       <div className={cn(
-                        "w-16 h-16 rounded-3xl flex items-center justify-center bg-white shadow-xl border border-slate-100",
+                        "w-20 h-20 rounded-[2rem] flex items-center justify-center bg-white shadow-2xl border border-slate-50",
                         service.accent
                       )}>
-                        <service.icon className="h-8 w-8" />
+                        <service.icon className="h-10 w-10" />
                       </div>
-                      <div className="space-y-4">
-                        <h3 className="font-headline text-3xl font-black text-slate-900 leading-tight">
+                      <div className="space-y-6">
+                        <h3 className="font-headline text-4xl font-black text-slate-900 leading-tight">
                           {service.title}
                         </h3>
-                        <p className="text-lg text-slate-600 font-medium leading-relaxed">
+                        <p className="text-xl text-slate-600 font-medium leading-relaxed">
                           {service.description}
                         </p>
                       </div>
                       
-                      <div className="space-y-3 pt-2">
-                        <div className="flex items-center gap-3">
-                          <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                            <ArrowRight className="h-3 w-3" />
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div className="flex items-center gap-4">
+                          <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                            <ArrowRight className="h-4 w-4" />
                           </div>
-                          <span className="text-sm font-bold text-slate-700">Scalable Architecture</span>
+                          <span className="text-sm font-black uppercase tracking-widest text-slate-700">Scalable Tech</span>
                         </div>
-                        <div className="flex items-center gap-3">
-                          <div className="w-6 h-6 rounded-full bg-[#3B82F6]/10 flex items-center justify-center text-[#3B82F6]">
-                            <ArrowRight className="h-3 w-3" />
+                        <div className="flex items-center gap-4">
+                          <div className="w-8 h-8 rounded-full bg-[#3B82F6]/10 flex items-center justify-center text-[#3B82F6]">
+                            <ArrowRight className="h-4 w-4" />
                           </div>
-                          <span className="text-sm font-bold text-slate-700">Enterprise Security</span>
+                          <span className="text-sm font-black uppercase tracking-widest text-slate-700">Secure Core</span>
                         </div>
                       </div>
 
-                      <Button className="h-14 px-10 text-xs font-black rounded-full bg-slate-900 text-white hover:bg-slate-800 transition-all active:scale-95 uppercase tracking-[0.2em] group" asChild>
-                        <Link href="#contact">
+                      <Button className="h-18 px-12 text-sm font-black rounded-full bg-slate-900 text-white hover:bg-slate-800 transition-all active:scale-95 uppercase tracking-[0.2em] group shadow-xl" asChild>
+                        <Link href="#contact" className="flex items-center gap-4">
                           Get Expert Consultation
-                          <ArrowRight className="ml-3 h-4 w-4 group-hover:translate-x-2 transition-transform" />
+                          <ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform" />
                         </Link>
                       </Button>
                     </div>
@@ -176,19 +174,25 @@ export function ServicesSection() {
                 </CarouselItem>
               ))}
             </CarouselContent>
+            
+            {/* Desktop Navigation Arrows */}
+            <div className="hidden lg:flex">
+                <CarouselPrevious className="left-[-60px] h-14 w-14 rounded-full bg-white/80 backdrop-blur-md border-none shadow-xl hover:bg-white text-slate-900" />
+                <CarouselNext className="right-[-60px] h-14 w-14 rounded-full bg-white/80 backdrop-blur-md border-none shadow-xl hover:bg-white text-slate-900" />
+            </div>
           </Carousel>
 
           {/* Custom Navigation Dots */}
-          <div className="flex justify-center gap-3 mt-12">
+          <div className="flex justify-center gap-4 mt-16">
             {Array.from({ length: count }).map((_, i) => (
               <button
                 key={i}
                 onClick={() => api?.scrollTo(i)}
                 className={cn(
-                  "h-2 transition-all duration-300 rounded-full",
+                  "h-2.5 transition-all duration-500 rounded-full",
                   current === i 
-                    ? "w-8 bg-primary shadow-[0_0_10px_rgba(255,106,0,0.5)]" 
-                    : "w-2 bg-slate-300 hover:bg-slate-400"
+                    ? "w-12 bg-primary shadow-[0_0_20px_rgba(255,106,0,0.4)]" 
+                    : "w-2.5 bg-slate-300 hover:bg-slate-400"
                 )}
                 aria-label={`Go to slide ${i + 1}`}
               />
