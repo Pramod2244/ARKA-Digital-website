@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import { useInView } from "@/hooks/use-in-view";
 import { motion, useSpring } from "framer-motion";
 
@@ -28,19 +28,20 @@ function Counter({ value, suffix }: { value: number, suffix: string }) {
     });
   }, [springValue, suffix]);
 
-  return <span ref={ref} className="text-5xl md:text-6xl font-black text-slate-900">0</span>;
+  return <span ref={ref} className="text-5xl md:text-6xl font-black text-white">0</span>;
 }
 
 export function StatsSection() {
   return (
-    <section className="py-24 bg-white border-y border-slate-100">
-      <div className="container mx-auto px-4">
+    <section className="py-24 blue-gradient-bg relative overflow-hidden">
+      <div className="absolute inset-0 bg-white/5 opacity-20 bg-grid-white pointer-events-none" />
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
           {stats.map((stat) => (
             <div key={stat.label} className="text-center space-y-4">
               <Counter value={stat.value} suffix={stat.suffix} />
-              <div className="h-1 w-10 bg-primary mx-auto rounded-full" />
-              <p className="text-xs uppercase tracking-[0.2em] font-black text-slate-500">{stat.label}</p>
+              <div className="h-1 w-12 bg-white/30 mx-auto rounded-full" />
+              <p className="text-xs uppercase tracking-[0.2em] font-black text-white/80">{stat.label}</p>
             </div>
           ))}
         </div>

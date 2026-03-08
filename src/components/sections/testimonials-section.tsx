@@ -21,7 +21,7 @@ const testimonials = [
     rating: 5
   },
   {
-    quote: "The business platform they developed for us has tripled our operational efficiency. Highly recommended.",
+    quote: "The business platform they developed for us has tripled our operational efficiency.",
     name: "Sarah Jenkins",
     title: "CEO, TechFlow Inc.",
     avatar: "https://i.pravatar.cc/150?u=2",
@@ -39,20 +39,6 @@ const testimonials = [
     name: "Emily Watson",
     title: "Founder, EduSpark",
     avatar: "https://i.pravatar.cc/150?u=4",
-    rating: 5
-  },
-  {
-    quote: "From cloud architecture to mobile app development, they handle everything with perfection.",
-    name: "Robert Black",
-    title: "CTO, LogisticHub",
-    avatar: "https://i.pravatar.cc/150?u=5",
-    rating: 5
-  },
-  {
-    quote: "A truly professional agency that understands the business goals as well as the technology.",
-    name: "Lisa Ray",
-    title: "VP, Global Retail",
-    avatar: "https://i.pravatar.cc/150?u=6",
     rating: 5
   }
 ];
@@ -76,15 +62,15 @@ export function TestimonialsSection() {
   if (!mounted) return null;
 
   return (
-    <section id="testimonials" className="py-24 bg-slate-50 overflow-hidden">
+    <section id="testimonials" className="py-24 bg-[#F5F7FA] overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center space-y-4 mb-20">
-          <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.3em]">Client Reviews</div>
+          <div className="inline-block px-4 py-1.5 rounded-full bg-slate-200 text-slate-500 text-[10px] font-black uppercase tracking-[0.3em]">Client Reviews</div>
           <h2 className="font-headline text-4xl md:text-5xl font-black text-slate-900">
-            Trusted by <span className="text-secondary">Industry Leaders</span>
+            Trusted by <span className="text-secondary">Leaders</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto font-medium">
-            Discover how Arkaa Digital is driving success for organizations worldwide.
+            Discover how we drive success for organizations worldwide.
           </p>
         </div>
 
@@ -100,7 +86,7 @@ export function TestimonialsSection() {
             <CarouselContent className="-ml-4 md:-ml-8">
               {testimonials.map((testimonial, index) => (
                 <CarouselItem key={index} className="pl-4 md:pl-8 basis-full md:basis-1/2 lg:basis-1/3">
-                  <Card className="h-full border-none shadow-xl shadow-slate-200/50 bg-white p-10 rounded-[2.5rem] flex flex-col justify-between hover:shadow-2xl transition-all duration-300">
+                  <Card className="h-full border-none shadow-xl shadow-slate-200/30 bg-white p-10 rounded-[2.5rem] flex flex-col justify-between hover:shadow-2xl transition-all duration-300">
                     <div className="space-y-6">
                       <div className="flex justify-between items-center">
                         <div className="p-3 rounded-2xl bg-secondary/5 text-secondary">
@@ -118,13 +104,13 @@ export function TestimonialsSection() {
                     </div>
 
                     <div className="flex items-center gap-4 mt-10 pt-8 border-t border-slate-50">
-                      <Avatar className="h-14 w-14 border-4 border-slate-50">
+                      <Avatar className="h-12 w-12 border-2 border-slate-50">
                         <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
                         <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
                       </Avatar>
                       <div>
-                        <p className="font-black text-slate-900 text-lg">{testimonial.name}</p>
-                        <p className="text-[10px] uppercase tracking-widest text-slate-400 font-black">{testimonial.title}</p>
+                        <p className="font-black text-slate-900">{testimonial.name}</p>
+                        <p className="text-[9px] uppercase tracking-widest text-slate-400 font-black">{testimonial.title}</p>
                       </div>
                     </div>
                   </Card>

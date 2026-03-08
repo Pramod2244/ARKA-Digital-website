@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { Button } from './ui/button';
-import { Menu, X } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
@@ -38,7 +38,7 @@ export function Header() {
       <div className="container flex items-center justify-between max-w-7xl mx-auto">
         <Link href="/" className="flex items-center gap-3 group">
           <LogoMark />
-          <span className="font-headline text-xl font-black tracking-tight uppercase text-slate-900">
+          <span className="font-headline text-xl font-black tracking-[0.15em] uppercase text-slate-900">
             Arkaa <span className="text-primary">Digital</span>
           </span>
         </Link>

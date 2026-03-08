@@ -11,7 +11,6 @@ export function CTASection() {
       <div className="container mx-auto max-w-6xl rounded-[3rem] relative overflow-hidden shadow-2xl shadow-primary/20">
         <div className="absolute inset-0 orange-gradient-bg -z-10" />
         <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-[100px] -z-10" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-black/5 rounded-full blur-[100px] -z-10" />
         
         <div className="py-20 text-center space-y-10 px-6">
           <motion.div
@@ -23,7 +22,7 @@ export function CTASection() {
               Let’s Build Your <br /> Next Digital Project
             </h2>
             <p className="text-white/80 text-lg md:text-xl font-medium max-w-2xl mx-auto">
-              Ready to scale your business with custom digital solutions? Connect with us today for a free consultation.
+              Ready to scale your business with custom digital solutions? Connect with us today.
             </p>
           </motion.div>
 

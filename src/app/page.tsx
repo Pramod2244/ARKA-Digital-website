@@ -12,9 +12,9 @@ export default function Home() {
     <div className="relative">
       <HeroSection />
       <ServicesSection />
+      <PortfolioSection />
       <IndustriesSection />
       <StatsSection />
-      <PortfolioSection />
       <TestimonialsSection />
       <CTASection />
       <ContactSection />

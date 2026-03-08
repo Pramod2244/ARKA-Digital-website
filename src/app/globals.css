@@ -23,7 +23,7 @@
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 25 100% 50%;
-    --radius: 1rem;
+    --radius: 1.5rem;
   }
 }
 
@@ -45,9 +45,6 @@
   }
   .text-glow-orange {
     text-shadow: 0 0 20px hsl(var(--primary) / 0.3);
-  }
-  .text-glow-blue {
-    text-shadow: 0 0 20px hsl(var(--secondary) / 0.3);
   }
   .orange-gradient-bg {
     background: linear-gradient(135deg, #FF6A00 0%, #FF8C00 100%);
