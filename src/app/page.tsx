@@ -6,12 +6,10 @@ import { PortfolioSection } from '@/components/sections/portfolio-section';
 import { TestimonialsSection } from '@/components/sections/testimonials-section';
 import { ContactSection } from '@/components/sections/contact-section';
 import { CTASection } from '@/components/sections/cta-section';
-import { FuturisticBackground } from '@/components/futuristic-background';
 
 export default function Home() {
   return (
-    <>
-      <FuturisticBackground />
+    <div className="relative">
       <HeroSection />
       <ServicesSection />
       <IndustriesSection />
@@ -20,6 +18,6 @@ export default function Home() {
       <TestimonialsSection />
       <CTASection />
       <ContactSection />
-    </>
+    </div>
   );
 }

@@ -1,52 +1,65 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Code2, Cloud, Palette, Layers, Cpu, Hospital } from "lucide-react";
+import { Code2, Cloud, Palette, Monitor, Cpu, Hospital } from "lucide-react";
 import { motion } from "framer-motion";
 
 const services = [
   {
-    icon: Hospital,
-    title: "HIMS Development",
-    description: "End-to-end Hospital Information Management Systems designed for clinics and large-scale medical institutions.",
-  },
-  {
     icon: Code2,
     title: "Website Development",
-    description: "High-performance business websites that act as your digital storefront and conversion engine.",
+    description: "High-performance, modern business websites that convert visitors into customers using the latest tech stacks.",
+    accent: "text-primary",
+    bg: "bg-primary/5"
+  },
+  {
+    icon: Hospital,
+    title: "HIMS Development",
+    description: "Robust and secure Hospital Information Management Systems designed to streamline clinical operations and patient care.",
+    accent: "text-secondary",
+    bg: "bg-secondary/5"
   },
   {
     icon: Cpu,
-    title: "Custom Web Apps",
-    description: "Tailored software solutions built with modern stacks to solve complex operational challenges.",
+    title: "Custom Web Applications",
+    description: "Tailored software solutions built with scalable architecture to solve your unique business challenges.",
+    accent: "text-primary",
+    bg: "bg-primary/5"
   },
   {
     icon: Palette,
-    title: "UI/UX Design",
-    description: "User-centric design systems that balance aesthetic beauty with functional simplicity.",
+    title: "UI / UX Design",
+    description: "User-centric designs focusing on simplicity, aesthetic beauty, and seamless interaction for all platforms.",
+    accent: "text-secondary",
+    bg: "bg-secondary/5"
   },
   {
     icon: Cloud,
     title: "Cloud Solutions",
-    description: "Scalable cloud architecture and automated deployment pipelines for mission-critical apps.",
+    description: "Scalable cloud architecture, hosting, and server management to ensure 99.9% uptime for your digital assets.",
+    accent: "text-primary",
+    bg: "bg-primary/5"
   },
   {
-    icon: Layers,
-    title: "Brand Strategy",
-    description: "Defining visionary brand narratives that bridge the gap between human values and tech.",
+    icon: Monitor,
+    title: "Business Platforms",
+    description: "End-to-end digital platforms that integrate your business processes into a unified, high-performance ecosystem.",
+    accent: "text-secondary",
+    bg: "bg-secondary/5"
   },
 ];
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-24 bg-background">
+    <section id="services" className="py-24 bg-slate-50/50">
       <div className="container mx-auto px-4">
         <div className="text-center space-y-4 mb-20">
-          <h2 className="font-headline text-4xl md:text-5xl font-bold text-white">
-            Our <span className="text-primary text-glow-primary">Expertise</span>
+          <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.3em]">Our Expertise</div>
+          <h2 className="font-headline text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
+            Specialized <span className="text-primary">Services</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-medium">
-            Cutting-edge engineering and intelligence solutions built for growth.
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto font-medium">
+            We bridge the gap between complex engineering and elegant digital experiences.
           </p>
         </div>
 
@@ -59,17 +72,18 @@ export function ServicesSection() {
               transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full glass-card glass-card-hover p-8 md:p-10 rounded-[2.5rem]">
-                <div className="w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-8">
-                  <service.icon className="h-8 w-8 text-primary" />
-                </div>
-                <CardHeader className="p-0 mb-4">
-                  <CardTitle className="font-headline text-2xl font-bold text-white tracking-tight">
+              <Card className="h-full border-none shadow-xl shadow-slate-200/50 bg-white hover:-translate-y-2 transition-all duration-500 rounded-[2rem] overflow-hidden group">
+                <div className={`h-1.5 w-full ${service.accent.includes('primary') ? 'bg-primary' : 'bg-secondary'}`} />
+                <CardHeader className="pt-8 pb-4">
+                  <div className={`w-14 h-14 rounded-2xl ${service.bg} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                    <service.icon className={`h-7 w-7 ${service.accent}`} />
+                  </div>
+                  <CardTitle className="font-headline text-2xl font-black text-slate-900 leading-tight">
                     {service.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="p-0">
-                  <p className="text-muted-foreground leading-relaxed">
+                <CardContent>
+                  <p className="text-slate-600 leading-relaxed font-medium">
                     {service.description}
                   </p>
                 </CardContent>

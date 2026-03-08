@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    --background: 222 47% 11%; /* Deep Navy Base */
-    --foreground: 210 40% 98%;
-    --card: 222 47% 13%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 25 95% 53%; /* Arkaa Orange */
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 25 100% 50%; /* Arkaa Orange #FF6A00 */
     --primary-foreground: 210 40% 98%;
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 210 100% 56%; /* Arkaa Blue #1E90FF */
     --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 199 89% 48%; /* Tech Blue */
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 100% 56%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 25 95% 53%;
-    --radius: 1.5rem;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 25 100% 50%;
+    --radius: 1rem;
   }
 }
 
@@ -32,25 +32,31 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-body antialiased selection:bg-primary selection:text-primary-foreground;
+    @apply bg-background text-foreground font-body antialiased selection:bg-primary/30 selection:text-foreground;
   }
 }
 
 @layer utilities {
   .glass-card {
-    @apply bg-card/40 backdrop-blur-xl border border-white/5 shadow-[0_8px_32px_rgba(0,0,0,0.3)];
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.05)];
   }
   .glass-card-hover {
-    @apply hover:border-primary/30 hover:shadow-[0_0_30px_rgba(249,115,22,0.1)] transition-all duration-500;
+    @apply hover:border-primary/30 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-500;
   }
-  .text-glow-primary {
-    text-shadow: 0 0 15px hsl(var(--primary) / 0.5);
+  .text-glow-orange {
+    text-shadow: 0 0 20px hsl(var(--primary) / 0.3);
   }
-  .bg-grid-white {
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  .text-glow-blue {
+    text-shadow: 0 0 20px hsl(var(--secondary) / 0.3);
   }
   .orange-gradient-bg {
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, #ff8c00 100%);
+    background: linear-gradient(135deg, #FF6A00 0%, #FF8C00 100%);
+  }
+  .blue-gradient-bg {
+    background: linear-gradient(135deg, #1E90FF 0%, #00BFFF 100%);
+  }
+  .bg-grid-slate {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
   }
 }

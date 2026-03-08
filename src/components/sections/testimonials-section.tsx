@@ -3,8 +3,7 @@
 import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import AutoScroll from "embla-carousel-auto-scroll";
-import { Quote, Star, MousePointer2 } from "lucide-react";
-import { motion } from "framer-motion";
+import { Quote, Star } from "lucide-react";
 import { useRef, useEffect, useState } from "react";
 
 import {
@@ -15,59 +14,45 @@ import {
 
 const testimonials = [
   {
-    quote: "Arkaa Digital transformed our outdated system into a modern, cloud-based platform. Their team's technical skill was outstanding.",
-    name: "Jane Doe",
-    title: "CEO, Retail Client",
-    avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704d",
+    quote: "Arkaa Digital completely transformed our HIMS system. Their technical expertise is truly unmatched.",
+    name: "Dr. Arvind Kumar",
+    title: "Director, City Hospital",
+    avatar: "https://i.pravatar.cc/150?u=1",
     rating: 5
   },
   {
-    quote: "The UI/UX design they delivered was not only beautiful but also incredibly intuitive. Our engagement has skyrocketed.",
-    name: "John Smith",
-    title: "Product Manager, Startup",
-    avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704e",
-    rating: 5
-  },
-  {
-    quote: "Working with Arkaa Digital felt like a true partnership. They were responsive, proactive, and genuinely invested in our success.",
-    name: "Emily White",
-    title: "Director, eCommerce",
-    avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704f",
-    rating: 5
-  },
-  {
-    quote: "Their AI automation solutions saved us hundreds of hours of manual work. A truly future-ready team for modern business.",
-    name: "Michael Chen",
-    title: "CTO, Fintech",
-    avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704g",
-    rating: 5
-  },
-  {
-    quote: "The scalability of the apps they build is unmatched. We grew 300% in six months without a single performance glitch.",
+    quote: "The business platform they developed for us has tripled our operational efficiency. Highly recommended.",
     name: "Sarah Jenkins",
-    title: "Head of Growth, SaaS Corp",
-    avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704h",
+    title: "CEO, TechFlow Inc.",
+    avatar: "https://i.pravatar.cc/150?u=2",
     rating: 5
   },
   {
-    quote: "From branding to full-stack execution, Arkaa Digital is a powerhouse. They understood our vision perfectly from day one.",
-    name: "David Rodriguez",
-    title: "Founder, EduTech",
-    avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704i",
+    quote: "Their UI/UX design approach made our application incredibly intuitive for our users.",
+    name: "Michael Chen",
+    title: "Product Head, FinSpark",
+    avatar: "https://i.pravatar.cc/150?u=3",
     rating: 5
   },
   {
-    quote: "They don't just write code; they solve business problems. Their strategic approach to digital transformation is refreshing.",
-    name: "Lisa Wang",
-    title: "Ops Director, Logistics Hub",
-    avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704j",
+    quote: "Fast, reliable, and visionary. Arkaa Digital is our long-term technology partner.",
+    name: "Emily Watson",
+    title: "Founder, EduSpark",
+    avatar: "https://i.pravatar.cc/150?u=4",
     rating: 5
   },
   {
-    quote: "Fast delivery, exceptional quality, and world-class support. Arkaa Digital is hands down the best agency we've worked with.",
+    quote: "From cloud architecture to mobile app development, they handle everything with perfection.",
     name: "Robert Black",
-    title: "Product Lead, CryptoVentures",
-    avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704k",
+    title: "CTO, LogisticHub",
+    avatar: "https://i.pravatar.cc/150?u=5",
+    rating: 5
+  },
+  {
+    quote: "A truly professional agency that understands the business goals as well as the technology.",
+    name: "Lisa Ray",
+    title: "VP, Global Retail",
+    avatar: "https://i.pravatar.cc/150?u=6",
     rating: 5
   }
 ];
@@ -91,24 +76,15 @@ export function TestimonialsSection() {
   if (!mounted) return null;
 
   return (
-    <section id="testimonials" className="relative py-24 md:py-32 overflow-hidden bg-background">
-      {/* ATMOSPHERIC BACKGROUND */}
-      <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] bg-grid-white" style={{ backgroundSize: '50px 50px' }} />
-        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[140px] opacity-20" />
-        <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[140px] opacity-15" />
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
+    <section id="testimonials" className="py-24 bg-slate-50 overflow-hidden">
+      <div className="container mx-auto px-4">
         <div className="text-center space-y-4 mb-20">
-          <div className="inline-flex items-center gap-2 px-3 py-1 border border-accent/20 rounded-full bg-accent/5 backdrop-blur-md mb-2">
-            <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent">Trust & Success</span>
-          </div>
-          <h2 className="font-headline text-4xl md:text-5xl font-bold tracking-tight text-foreground leading-tight">
-            Our <span className="text-primary text-glow-primary">Partners</span> Say
+          <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.3em]">Client Reviews</div>
+          <h2 className="font-headline text-4xl md:text-5xl font-black text-slate-900">
+            Trusted by <span className="text-secondary">Industry Leaders</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-medium">
-            Join the ranks of high-performance businesses that have scaled their digital potential with the Arkaa core.
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto font-medium">
+            Discover how Arkaa Digital is driving success for organizations worldwide.
           </p>
         </div>
 
@@ -119,60 +95,43 @@ export function TestimonialsSection() {
             opts={{
               align: "start",
               loop: true,
-              skipSnaps: true,
-              dragFree: true
             }}
           >
-            <CarouselContent className="-ml-4 md:-ml-8 cursor-grab active:cursor-grabbing">
+            <CarouselContent className="-ml-4 md:-ml-8">
               {testimonials.map((testimonial, index) => (
                 <CarouselItem key={index} className="pl-4 md:pl-8 basis-full md:basis-1/2 lg:basis-1/3">
-                  <div className="h-full p-1">
-                    <Card className="h-full glass-card glass-card-hover flex flex-col p-8 md:p-10 select-none rounded-[2.5rem]">
-                      <div className="flex justify-between items-start mb-8">
-                        <div className="p-4 rounded-2xl bg-accent/5 border border-accent/10">
-                          <Quote className="h-6 w-6 text-accent" />
+                  <Card className="h-full border-none shadow-xl shadow-slate-200/50 bg-white p-10 rounded-[2.5rem] flex flex-col justify-between hover:shadow-2xl transition-all duration-300">
+                    <div className="space-y-6">
+                      <div className="flex justify-between items-center">
+                        <div className="p-3 rounded-2xl bg-secondary/5 text-secondary">
+                          <Quote className="h-6 w-6" />
                         </div>
-                        <div className="flex gap-1.5 pt-2">
+                        <div className="flex gap-1">
                           {[...Array(testimonial.rating)].map((_, i) => (
-                            <Star key={i} className="h-3.5 w-3.5 fill-primary text-primary" />
+                            <Star key={i} className="h-4 w-4 fill-primary text-primary" />
                           ))}
                         </div>
                       </div>
+                      <p className="text-lg text-slate-600 font-medium italic leading-relaxed">
+                        "{testimonial.quote}"
+                      </p>
+                    </div>
 
-                      <div className="flex-grow mb-10">
-                        <p className="text-lg md:text-xl text-foreground/90 leading-relaxed font-medium italic">
-                          "{testimonial.quote}"
-                        </p>
+                    <div className="flex items-center gap-4 mt-10 pt-8 border-t border-slate-50">
+                      <Avatar className="h-14 w-14 border-4 border-slate-50">
+                        <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
+                        <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <p className="font-black text-slate-900 text-lg">{testimonial.name}</p>
+                        <p className="text-[10px] uppercase tracking-widest text-slate-400 font-black">{testimonial.title}</p>
                       </div>
-
-                      <div className="flex items-center gap-5 pt-8 border-t border-accent/10 mt-auto">
-                        <Avatar className="h-14 w-14 border-2 border-accent/20 shadow-[0_0_15px_rgba(0,186,255,0.05)]">
-                          <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-                          <AvatarFallback className="bg-accent/10 text-accent font-bold">{testimonial.name.charAt(0)}</AvatarFallback>
-                        </Avatar>
-                        <div className="space-y-1">
-                          <p className="font-bold text-lg text-foreground group-hover:text-primary transition-colors duration-300">
-                            {testimonial.name}
-                          </p>
-                          <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-bold">
-                            {testimonial.title}
-                          </p>
-                        </div>
-                      </div>
-                    </Card>
-                  </div>
+                    </div>
+                  </Card>
                 </CarouselItem>
               ))}
             </CarouselContent>
           </Carousel>
-
-          <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
-        </div>
-
-        <div className="flex justify-center items-center gap-2 mt-12 text-muted-foreground/60 text-[10px] uppercase tracking-[0.2em] font-bold">
-          <MousePointer2 className="h-3 w-3 animate-pulse" />
-          <span>Hover to Pause Stream</span>
         </div>
       </div>
     </section>

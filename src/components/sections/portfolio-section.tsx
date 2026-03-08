@@ -2,34 +2,35 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Search } from "lucide-react";
 
 const projects = [
-  { id: 1, title: "City Hospital HIMS", category: "Medical", image: "https://picsum.photos/seed/p1/600/400" },
-  { id: 2, title: "FinTech Enterprise", category: "Corporate", image: "https://picsum.photos/seed/p2/600/400" },
-  { id: 3, title: "EduTech Platform", category: "Education", image: "https://picsum.photos/seed/p3/600/400" },
-  { id: 4, title: "Modern eCommerce", category: "Retail", image: "https://picsum.photos/seed/p4/600/400" },
-  { id: 5, title: "SaaS Dashboard", category: "Software", image: "https://picsum.photos/seed/p5/600/400" },
-  { id: 6, title: "Creative Portfolio", category: "Design", image: "https://picsum.photos/seed/p6/600/400" },
+  { id: 1, title: "Healthcare Nexus HIMS", category: "Hospital Management", image: "https://picsum.photos/seed/p1/800/600" },
+  { id: 2, title: "FinFlow Enterprise", category: "Corporate Web", image: "https://picsum.photos/seed/p2/800/600" },
+  { id: 3, title: "EduSpark Portal", category: "Educational System", image: "https://picsum.photos/seed/p3/800/600" },
+  { id: 4, title: "Vibe Commerce", category: "Next-Gen Retail", image: "https://picsum.photos/seed/p4/800/600" },
+  { id: 5, title: "SaaS Analytics Pro", category: "Web Application", image: "https://picsum.photos/seed/p5/800/600" },
+  { id: 6, title: "Arkaa Creative Studio", category: "Design Showcase", image: "https://picsum.photos/seed/p6/800/600" },
 ];
 
 export function PortfolioSection() {
   return (
-    <section id="portfolio" className="py-24 bg-background/50">
+    <section id="portfolio" className="py-24 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-20">
-          <h2 className="font-headline text-4xl font-bold text-white">Our <span className="text-primary">Portfolio</span></h2>
-          <p className="text-muted-foreground mt-4">Exploring our latest digital craftmanship.</p>
+        <div className="text-center mb-20 space-y-4">
+          <div className="inline-block px-4 py-1.5 rounded-full bg-secondary/10 text-secondary text-[10px] font-black uppercase tracking-[0.3em]">Our Portfolio</div>
+          <h2 className="font-headline text-4xl md:text-5xl font-black text-slate-900">Featured <span className="text-secondary">Projects</span></h2>
+          <p className="text-slate-600 max-w-xl mx-auto font-medium">A selection of high-performance digital solutions crafted for industry leaders.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
           {projects.map((project, i) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: i * 0.1 }}
-              className="group relative overflow-hidden rounded-[2rem] glass-card"
+              className="group relative overflow-hidden rounded-[2.5rem] bg-slate-100 shadow-xl shadow-slate-200/50"
             >
               <div className="aspect-[4/3] overflow-hidden">
                 <Image 
@@ -37,14 +38,16 @@ export function PortfolioSection() {
                   alt={project.title} 
                   fill 
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  data-ai-hint="project preview"
+                  data-ai-hint="project showcase"
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
-                <p className="text-[10px] uppercase tracking-widest font-bold text-primary mb-2">{project.category}</p>
-                <h3 className="text-xl font-bold text-white flex items-center justify-between">
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8">
+                <p className="text-[10px] uppercase tracking-widest font-black text-primary mb-2">{project.category}</p>
+                <h3 className="text-2xl font-black text-white flex items-center justify-between">
                   {project.title}
-                  <ExternalLink className="h-5 w-5" />
+                  <div className="p-2 rounded-full bg-white/20 backdrop-blur-md">
+                    <ExternalLink className="h-5 w-5" />
+                  </div>
                 </h3>
               </div>
             </motion.div>
