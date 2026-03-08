@@ -28,7 +28,7 @@ function Counter({ value, suffix }: { value: number, suffix: string }) {
     });
   }, [springValue, suffix]);
 
-  return <span ref={ref} className="text-5xl md:text-6xl font-black text-white">0</span>;
+  return <span ref={ref} className="text-5xl md:text-7xl font-black text-white leading-none">0</span>;
 }
 
 export function StatsSection() {
@@ -36,12 +36,12 @@ export function StatsSection() {
     <section className="py-24 blue-gradient-bg relative overflow-hidden">
       <div className="absolute inset-0 bg-white/5 opacity-20 bg-grid-white pointer-events-none" />
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-16">
           {stats.map((stat) => (
-            <div key={stat.label} className="text-center space-y-4">
+            <div key={stat.label} className="text-center space-y-6">
               <Counter value={stat.value} suffix={stat.suffix} />
-              <div className="h-1 w-12 bg-white/30 mx-auto rounded-full" />
-              <p className="text-xs uppercase tracking-[0.2em] font-black text-white/80">{stat.label}</p>
+              <div className="h-1.5 w-16 bg-white/40 mx-auto rounded-full" />
+              <p className="text-[10px] uppercase tracking-[0.3em] font-black text-white/90">{stat.label}</p>
             </div>
           ))}
         </div>

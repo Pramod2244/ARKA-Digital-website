@@ -8,9 +8,13 @@ import { cn } from '@/lib/utils';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 
 const LogoMark = () => (
-  <svg viewBox="0 0 32 32" className="h-8 w-8 text-primary" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M16 4L6 26H26L16 4Z" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-    <circle cx="16" cy="17" r="5" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 3" className="text-secondary" />
+  <svg viewBox="0 0 40 40" className="h-10 w-10 text-primary" fill="none" xmlns="http://www.w3.org/2000/svg">
+    {/* Stylized 'A' Logo Mark */}
+    <path d="M20 5L8 35H14L20 20L26 35H32L20 5Z" fill="currentColor" fillOpacity="0.1" />
+    <path d="M20 5L8 35H14L20 20L26 35H32L20 5Z" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+    {/* Digital Sun Core */}
+    <circle cx="20" cy="22" r="6" stroke="hsl(var(--secondary))" strokeWidth="1.5" strokeDasharray="3 3" className="animate-[spin_10s_linear_infinite]" />
+    <circle cx="20" cy="22" r="2" fill="hsl(var(--primary))" className="animate-pulse" />
   </svg>
 );
 
@@ -38,18 +42,21 @@ export function Header() {
       <div className="container flex items-center justify-between max-w-7xl mx-auto">
         <Link href="/" className="flex items-center gap-3 group">
           <LogoMark />
-          <span className="font-headline text-xl font-black tracking-[0.15em] uppercase text-slate-900">
-            Arkaa <span className="text-primary">Digital</span>
-          </span>
+          <div className="flex flex-col">
+            <span className="font-headline text-xl font-black tracking-[0.15em] uppercase text-slate-900 leading-none">
+              Arkaa <span className="text-primary">Digital</span>
+            </span>
+            <span className="text-[7px] uppercase tracking-[0.4em] font-black text-slate-400 mt-1">Engineering the Future</span>
+          </div>
         </Link>
         
         <nav className="hidden md:flex items-center gap-2">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className="text-xs uppercase tracking-widest font-bold text-slate-500 hover:text-primary px-4 py-2 transition-colors">
+            <a key={link.href} href={link.href} className="text-[10px] uppercase tracking-[0.2em] font-black text-slate-500 hover:text-primary px-4 py-2 transition-colors">
               {link.label}
             </a>
           ))}
-          <Button className="ml-4 bg-secondary text-white font-bold rounded-full h-11 px-8 shadow-lg shadow-secondary/20 hover:bg-secondary/90 transition-all active:scale-95">
+          <Button size="sm" className="ml-4 bg-secondary text-white font-bold rounded-full h-10 px-8 shadow-lg shadow-secondary/20 hover:bg-secondary/90 transition-all active:scale-95 uppercase tracking-widest text-[9px]">
             Start Your Project
           </Button>
         </nav>
@@ -65,12 +72,12 @@ export function Header() {
               <nav className="flex flex-col gap-6 mt-12">
                 {navLinks.map((link) => (
                   <SheetClose asChild key={link.href}>
-                    <a href={link.href} className="text-sm uppercase tracking-widest font-bold text-slate-600 hover:text-primary">
+                    <a href={link.href} className="text-xs uppercase tracking-widest font-bold text-slate-600 hover:text-primary">
                       {link.label}
                     </a>
                   </SheetClose>
                 ))}
-                <Button className="bg-primary text-white font-bold rounded-full w-full h-12">
+                <Button className="bg-primary text-white font-bold rounded-full w-full h-12 uppercase tracking-widest text-xs">
                   Get Started
                 </Button>
               </nav>

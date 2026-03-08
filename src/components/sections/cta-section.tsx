@@ -3,25 +3,30 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 export function CTASection() {
   return (
     <section className="py-24 px-4 bg-white overflow-hidden">
-      <div className="container mx-auto max-w-6xl rounded-[3rem] relative overflow-hidden shadow-2xl shadow-primary/20">
+      <div className="container mx-auto max-w-6xl rounded-[4rem] relative overflow-hidden shadow-2xl shadow-primary/20">
         <div className="absolute inset-0 orange-gradient-bg -z-10" />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-[100px] -z-10" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-[120px] -z-10" />
+        <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-black/5 rounded-full blur-[100px] -z-10" />
         
-        <div className="py-20 text-center space-y-10 px-6">
+        <div className="py-24 text-center space-y-12 px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="space-y-4"
+            className="space-y-6"
           >
-            <h2 className="font-headline text-4xl md:text-6xl font-black text-white tracking-tight leading-tight">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.3em] mx-auto">
+              <Sparkles className="h-3 w-3" />
+              Next-Gen Engineering
+            </div>
+            <h2 className="font-headline text-5xl md:text-7xl font-black text-white tracking-tight leading-[1.1]">
               Let’s Build Your <br /> Next Digital Project
             </h2>
-            <p className="text-white/80 text-lg md:text-xl font-medium max-w-2xl mx-auto">
+            <p className="text-white/90 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">
               Ready to scale your business with custom digital solutions? Connect with us today.
             </p>
           </motion.div>
@@ -32,10 +37,10 @@ export function CTASection() {
             transition={{ delay: 0.2 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-6"
           >
-            <Button size="lg" className="h-16 px-12 text-lg font-bold rounded-full bg-white text-primary hover:bg-slate-50 shadow-2xl transition-all group active:scale-95" asChild>
-              <Link href="#contact" className="flex items-center gap-3">
+            <Button size="lg" className="h-18 px-14 text-sm font-black rounded-full bg-white text-primary hover:bg-slate-50 shadow-2xl transition-all group active:scale-95 uppercase tracking-[0.2em]" asChild>
+              <Link href="#contact" className="flex items-center gap-4">
                 Contact ARKAA DIGITAL
-                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform" />
               </Link>
             </Button>
           </motion.div>

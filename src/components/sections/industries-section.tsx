@@ -16,9 +16,9 @@ export function IndustriesSection() {
   return (
     <section className="py-24 bg-[#FFF4EC] border-y border-primary/5">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 space-y-4">
-          <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.3em]">Market Verticals</div>
-          <h2 className="font-headline text-4xl font-black text-slate-900">Industries We <span className="text-primary">Serve</span></h2>
+        <div className="text-center mb-20 space-y-4">
+          <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[9px] font-black uppercase tracking-[0.3em]">Market Verticals</div>
+          <h2 className="font-headline text-4xl md:text-5xl font-black text-slate-900 tracking-tight">Industries We <span className="text-primary">Serve</span></h2>
           <p className="text-slate-600 max-w-xl mx-auto font-medium">Tailored digital systems for sector-specific challenges.</p>
         </div>
 
@@ -31,10 +31,10 @@ export function IndustriesSection() {
               transition={{ delay: i * 0.1 }}
               className="group text-center space-y-6"
             >
-              <div className="mx-auto w-24 h-24 rounded-[2rem] bg-white shadow-lg shadow-primary/5 flex items-center justify-center group-hover:bg-primary group-hover:shadow-primary/30 transition-all duration-500 hover:-translate-y-2">
-                <item.icon className="h-10 w-10 text-primary group-hover:text-white transition-all scale-100 group-hover:scale-110" />
+              <div className="mx-auto w-28 h-28 rounded-[2.5rem] bg-white shadow-xl shadow-primary/5 flex items-center justify-center border border-white group-hover:bg-primary group-hover:shadow-primary/30 transition-all duration-500 hover:-translate-y-2">
+                <item.icon className="h-12 w-12 text-primary group-hover:text-white transition-all scale-100 group-hover:scale-110" />
               </div>
-              <p className="text-sm font-black uppercase tracking-widest text-slate-500 group-hover:text-slate-900 transition-colors">{item.name}</p>
+              <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-500 group-hover:text-slate-900 transition-colors">{item.name}</p>
             </motion.div>
           ))}
         </div>

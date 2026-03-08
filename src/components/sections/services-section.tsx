@@ -38,9 +38,9 @@ export function ServicesSection() {
       <div className="absolute top-0 left-0 w-full h-full opacity-30 bg-grid-slate pointer-events-none" />
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center space-y-4 mb-20">
-          <div className="inline-block px-4 py-1.5 rounded-full bg-secondary/10 text-secondary text-[10px] font-black uppercase tracking-[0.3em]">Our Expertise</div>
+          <div className="inline-block px-4 py-1.5 rounded-full bg-secondary/10 text-secondary text-[9px] font-black uppercase tracking-[0.3em]">Our Expertise</div>
           <h2 className="font-headline text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
-            Specialized <span className="text-primary">Services</span>
+            Specialized <span className="text-primary text-glow-orange">Services</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto font-medium">
             We bridge the gap between complex engineering and elegant digital experiences.
@@ -56,9 +56,9 @@ export function ServicesSection() {
               transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full border border-white/40 shadow-xl shadow-slate-200/50 bg-white/80 backdrop-blur-md hover:-translate-y-2 hover:border-primary/50 transition-all duration-500 rounded-[2.5rem] overflow-hidden group">
+              <Card className="h-full border border-white/50 shadow-xl shadow-slate-200/40 bg-white/60 backdrop-blur-md hover:-translate-y-2 hover:border-primary/50 transition-all duration-500 rounded-[3rem] overflow-hidden group">
                 <CardHeader className="pt-10 pb-4">
-                  <div className="w-16 h-16 rounded-2xl bg-primary/5 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                  <div className="w-16 h-16 rounded-[1.5rem] bg-primary/5 flex items-center justify-center mb-6 group-hover:bg-primary transition-all duration-500">
                     <service.icon className="h-8 w-8 text-primary group-hover:text-white transition-colors" />
                   </div>
                   <CardTitle className="font-headline text-2xl font-black text-slate-900 leading-tight">
@@ -66,7 +66,7 @@ export function ServicesSection() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-slate-600 leading-relaxed font-medium">
+                  <p className="text-slate-500 leading-relaxed font-medium">
                     {service.description}
                   </p>
                 </CardContent>
