@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from "react";
@@ -12,8 +13,7 @@ import {
   Cpu, 
   Palette, 
   Cloud,
-  CheckCircle2,
-  Code
+  CheckCircle2
 } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { cn } from "@/lib/utils";
@@ -66,14 +66,6 @@ const services = [
     image: PlaceHolderImages.find(img => img.id === 'cloud-solutions-v2'),
     accent: "text-primary",
     features: ["Cloud Deployment", "Server Management", "High Availability", "Performance Monitoring"]
-  },
-  {
-    title: "Software Development",
-    description: "End-to-end software engineering using modern tech stacks for robust enterprise solutions.",
-    icon: Code,
-    image: PlaceHolderImages.find(img => img.id === 'software-dev-v2'),
-    accent: "text-[#3B82F6]",
-    features: ["Full-Stack Dev", "Microservices", "Code Quality", "CI/CD Pipelines"]
   }
 ];
 
