@@ -1,6 +1,7 @@
 
 "use client";
 
+import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -15,13 +16,16 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, User, Tag, Send } from 'lucide-react';
+import { Mail, Phone, User, Tag, Send, Loader2 } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import { Card } from "../ui/card";
 import { useFirestore } from "@/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { errorEmitter } from "@/firebase/error-emitter";
 import { FirestorePermissionError, type SecurityRuleContext } from "@/firebase/errors";
+
+// Replace this with your actual Zoho Flow or Zapier Webhook URL
+const ZOHO_WEBHOOK_URL = "https://flow.zoho.com/webhooks/incoming/..."; 
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -41,6 +45,8 @@ const formSchema = z.object({
 export function ContactSection() {
     const { toast } = useToast();
     const { firestore } = useFirestore();
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -51,27 +57,59 @@ export function ContactSection() {
         },
     });
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        if (firestore) {
-            const contactsCollection = collection(firestore, 'contacts');
-            addDoc(contactsCollection, {
-                ...values,
-                createdAt: serverTimestamp(),
-            }).catch(async () => {
-                const permissionError = new FirestorePermissionError({
-                    path: 'contacts',
-                    operation: 'create',
-                    requestResourceData: values,
-                } satisfies SecurityRuleContext);
-                errorEmitter.emit('permission-error', permissionError);
-            });
-        }
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+        setIsSubmitting(true);
+        const submissionTime = new Date().toLocaleString();
 
-        toast({
-          title: "Message Sent!",
-          description: "Thank you for reaching out to Arkaa Digital. We will respond shortly.",
-        });
-        form.reset();
+        try {
+            // 1. Send to Zoho Sheets (via Webhook)
+            // We use a try-catch for the network request but proceed to Firestore regardless
+            fetch(ZOHO_WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    "Name": values.name,
+                    "Email": values.email,
+                    "Project Type": values.subject,
+                    "Message": values.message,
+                    "Date/Time": submissionTime
+                }),
+                mode: 'no-cors' // Common for simple webhooks
+            }).catch(err => console.warn("Webhook delivery pending or failed:", err));
+
+            // 2. Save to Firestore as backup/primary record
+            if (firestore) {
+                const contactsCollection = collection(firestore, 'contacts');
+                addDoc(contactsCollection, {
+                    ...values,
+                    createdAt: serverTimestamp(),
+                    source: 'web_form_zoho'
+                }).catch(async () => {
+                    const permissionError = new FirestorePermissionError({
+                        path: 'contacts',
+                        operation: 'create',
+                        requestResourceData: values,
+                    } satisfies SecurityRuleContext);
+                    errorEmitter.emit('permission-error', permissionError);
+                });
+            }
+
+            // 3. Success Feedback
+            toast({
+              title: "Thank you!",
+              description: "Your message has been received. We will respond shortly.",
+            });
+            
+            form.reset();
+        } catch (error) {
+            toast({
+                variant: "destructive",
+                title: "Submission Error",
+                description: "There was a problem sending your message. Please try again.",
+            });
+        } finally {
+            setIsSubmitting(false);
+        }
     }
 
     return (
@@ -133,6 +171,7 @@ export function ContactSection() {
                                                     <div className="relative group">
                                                         <User className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-300 group-focus-within:text-primary transition-colors" />
                                                         <Input 
+                                                            disabled={isSubmitting}
                                                             placeholder="John Doe" 
                                                             className="pl-12 h-14 border-slate-100 bg-white/50 text-slate-900 focus:bg-white transition-all rounded-2xl font-medium placeholder:text-slate-300"
                                                             {...field} 
@@ -153,6 +192,7 @@ export function ContactSection() {
                                                     <div className="relative group">
                                                         <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-300 group-focus-within:text-primary transition-colors" />
                                                         <Input 
+                                                            disabled={isSubmitting}
                                                             placeholder="john@example.com" 
                                                             className="pl-12 h-14 border-slate-100 bg-white/50 text-slate-900 focus:bg-white transition-all rounded-2xl font-medium placeholder:text-slate-300"
                                                             {...field} 
@@ -174,6 +214,7 @@ export function ContactSection() {
                                                 <div className="relative group">
                                                     <Tag className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-300 group-focus-within:text-primary transition-colors" />
                                                     <Input 
+                                                        disabled={isSubmitting}
                                                         placeholder="e.g. HIMS Development" 
                                                         className="pl-12 h-14 border-slate-100 bg-white/50 text-slate-900 focus:bg-white transition-all rounded-2xl font-medium placeholder:text-slate-300"
                                                         {...field} 
@@ -192,6 +233,7 @@ export function ContactSection() {
                                             <FormLabel className="font-black uppercase tracking-widest text-[10px] text-slate-400">Tell Us More</FormLabel>
                                             <FormControl>
                                                 <Textarea 
+                                                    disabled={isSubmitting}
                                                     placeholder="Briefly describe your project goals..." 
                                                     className="min-h-[150px] border-slate-100 bg-white/50 text-slate-900 focus:bg-white transition-all rounded-[2rem] p-6 font-medium resize-none placeholder:text-slate-300"
                                                     {...field} 
@@ -204,10 +246,20 @@ export function ContactSection() {
                                 />
                                 <Button 
                                     type="submit" 
+                                    disabled={isSubmitting}
                                     className="w-full h-16 text-lg font-black rounded-2xl bg-primary text-white shadow-xl shadow-primary/20 hover:bg-primary/90 transition-all active:scale-[0.98] uppercase tracking-[0.2em] group"
                                 >
-                                    Send Message
-                                    <Send className="ml-3 h-5 w-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                    {isSubmitting ? (
+                                        <>
+                                            Sending...
+                                            <Loader2 className="ml-3 h-5 w-5 animate-spin" />
+                                        </>
+                                    ) : (
+                                        <>
+                                            Send Message
+                                            <Send className="ml-3 h-5 w-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                        </>
+                                    )}
                                 </Button>
                             </form>
                         </Form>
