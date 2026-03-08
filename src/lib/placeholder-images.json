@@ -13,10 +13,10 @@
       "imageHint": "tech collaboration"
     },
     {
-      "id": "hims-dashboard-v2",
-      "description": "Sophisticated medical software interface showing patient analytics, clinical scheduling, and drug interaction modules",
-      "imageUrl": "https://picsum.photos/seed/arkaa-hims-v2/1000/800",
-      "imageHint": "medical dashboard"
+      "id": "hims-system-illustration",
+      "description": "A comprehensive hospital management system illustration showing a doctor on a laptop surrounded by health service icons like Pharmacy, Billing, Radiology, and EMR.",
+      "imageUrl": "https://picsum.photos/seed/arkaa-hims-infographic/1000/800",
+      "imageHint": "medical illustration"
     },
     {
       "id": "web-dev-v2",
@@ -41,30 +41,6 @@
       "description": "Abstract visualization of cloud infrastructure with glowing nodes and data streams",
       "imageUrl": "https://picsum.photos/seed/arkaa-cloud-v2/1000/800",
       "imageHint": "cloud computing"
-    },
-    {
-      "id": "software-dev-v2",
-      "description": "Clean modern coding environment with multiple monitors and professional setup",
-      "imageUrl": "https://picsum.photos/seed/arkaa-soft-v2/1000/800",
-      "imageHint": "software engineering"
-    },
-    {
-      "id": "portfolio-hims-nexus",
-      "description": "Modern hospital management system UI for Healthcare Nexus",
-      "imageUrl": "https://picsum.photos/seed/arkaa-p-hims-v2/800/600",
-      "imageHint": "hospital app"
-    },
-    {
-      "id": "portfolio-finflow",
-      "description": "Sleek financial enterprise dashboard for FinFlow systems",
-      "imageUrl": "https://picsum.photos/seed/arkaa-p-fin-v2/800/600",
-      "imageHint": "fintech dashboard"
-    },
-    {
-      "id": "portfolio-eduspark",
-      "description": "Modern learning management system portal for EduSpark",
-      "imageUrl": "https://picsum.photos/seed/arkaa-p-edu-v2/800/600",
-      "imageHint": "educational platform"
     }
   ]
 }

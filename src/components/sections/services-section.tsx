@@ -113,7 +113,7 @@ const services = [
     title: "Hospital Management Systems",
     description: "Advanced HIMS platforms that streamline hospital workflows including patient records, billing, and appointments.",
     icon: HIMSIcon,
-    image: PlaceHolderImages.find(img => img.id === 'hims-dashboard-v2'),
+    image: PlaceHolderImages.find(img => img.id === 'hims-system-illustration'),
     accent: "text-[#3B82F6]",
     features: ["Patient Records Management", "Appointment Scheduling", "Billing & Insurance", "Hospital Workflow Automation"]
   },
@@ -164,13 +164,6 @@ export function ServicesSection() {
       <div className="container mx-auto max-w-7xl px-6 py-20 lg:py-24">
         {/* Header - More Compact */}
         <div className="text-center mb-12 space-y-4">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="inline-block px-4 py-1.5 rounded-full bg-white/50 text-slate-500 text-[10px] font-black uppercase tracking-[0.3em] border border-white"
-          >
-            Digital Capabilities
-          </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -196,7 +189,7 @@ export function ServicesSection() {
                             src={service.image.imageUrl}
                             alt={service.title}
                             fill
-                            className="object-cover transition-transform duration-1000"
+                            className="object-contain p-4 transition-transform duration-1000"
                             data-ai-hint={service.image?.imageHint}
                           />
                         )}
