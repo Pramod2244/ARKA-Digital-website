@@ -72,30 +72,30 @@ export function AppSidebar() {
         </div>
       </Link>
 
-      {/* Navigation Indicators - Minimal Lines (Interactive) */}
-      <div className="flex-1 flex flex-col justify-center gap-6 w-full pointer-events-auto">
+      {/* Navigation Indicators - Minimal Circles (Interactive) */}
+      <div className="flex-1 flex flex-col justify-center gap-10 w-full pointer-events-auto">
         {navItems.map((item) => {
           const isActive = activeSection === item.id;
           return (
             <Link
               key={item.id}
               href={item.href}
-              className="relative flex flex-col items-center justify-center w-full group py-2"
+              className="relative flex flex-col items-center group py-2"
             >
-              {/* Horizontal Line Indicator */}
+              {/* Circular Indicator */}
               <div
                 className={cn(
-                  "h-[2px] transition-all duration-500 ease-in-out",
+                  "w-2 h-2 rounded-full border transition-all duration-500 ease-in-out",
                   isActive 
-                    ? "w-10 bg-primary shadow-[0_0_10px_rgba(255,106,0,0.5)]" 
-                    : "w-4 bg-white/30 group-hover:w-8 group-hover:bg-white/60"
+                    ? "bg-primary border-primary shadow-[0_0_12px_rgba(255,106,0,0.6)] scale-125" 
+                    : "bg-transparent border-white/30 group-hover:border-white/60 group-hover:scale-110"
                 )}
               />
               
-              {/* Label Reveal Below the Line */}
+              {/* Label Reveal Below the Circle */}
               <span className={cn(
-                "mt-2 text-[6px] font-black uppercase tracking-[0.15em] transition-all duration-500 whitespace-nowrap",
-                "opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 text-white/50",
+                "mt-3 text-[7px] font-black uppercase tracking-[0.15em] transition-all duration-500 whitespace-nowrap",
+                "opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 text-white/50",
                 isActive && "opacity-100 translate-y-0 text-primary"
               )}>
                 {item.label}
