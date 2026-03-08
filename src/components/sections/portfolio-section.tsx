@@ -31,12 +31,15 @@ const projects = [
 
 export function PortfolioSection() {
   return (
-    <section id="portfolio" className="py-32 bg-white">
-      <div className="container mx-auto px-6">
+    <section id="portfolio" className="py-32 bg-[#FFF4EC] relative overflow-hidden">
+      {/* Background Soft Glow */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-24 space-y-6">
           <div className="inline-block px-5 py-2 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.4em]">Our Work</div>
           <h2 className="font-headline text-4xl md:text-6xl font-black text-slate-900 tracking-tight">Featured <br /><span className="text-secondary">Projects</span></h2>
-          <p className="text-lg text-slate-500 font-medium max-w-xl mx-auto">High-performance digital systems crafted for industry leaders.</p>
+          <p className="text-lg text-slate-600 font-medium max-w-xl mx-auto">High-performance digital systems crafted for industry leaders.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-6 gap-8 max-w-7xl mx-auto">
@@ -57,7 +60,7 @@ export function PortfolioSection() {
                   </div>
                 </h3>
               </div>
-              <div className="relative w-full h-full min-h-[400px]">
+              <div className="relative w-full h-full min-h-[400px] bg-slate-50">
                 <Image 
                   src={project.image?.imageUrl || ""} 
                   alt={project.title} 

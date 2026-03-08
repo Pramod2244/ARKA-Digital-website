@@ -32,8 +32,11 @@ export function AboutSection() {
   const teamImg = PlaceHolderImages.find(img => img.id === 'tech-collab');
 
   return (
-    <section id="about" className="py-24 bg-[#FFF3EB] overflow-hidden">
-      <div className="container mx-auto px-6">
+    <section id="about" className="py-24 bg-white relative overflow-hidden">
+      {/* Soft Glow Background Element */}
+      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -52,7 +55,7 @@ export function AboutSection() {
             <div className="grid sm:grid-cols-2 gap-8">
               {highlights.map((item) => (
                 <div key={item.title} className="space-y-3">
-                  <div className="w-12 h-12 rounded-2xl bg-white shadow-md flex items-center justify-center text-primary">
+                  <div className="w-12 h-12 rounded-2xl bg-[#F7F8FA] shadow-sm flex items-center justify-center text-primary">
                     <item.icon className="h-6 w-6" />
                   </div>
                   <h4 className="font-black text-slate-900 uppercase tracking-wider text-sm">{item.title}</h4>
@@ -68,7 +71,7 @@ export function AboutSection() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="relative rounded-[4rem] overflow-hidden shadow-2xl border-8 border-white">
+            <div className="relative rounded-[4rem] overflow-hidden shadow-2xl border-8 border-white bg-slate-50">
               <Image 
                 src={teamImg?.imageUrl || ""} 
                 alt="Arkaa Tech Collaboration" 
@@ -77,10 +80,10 @@ export function AboutSection() {
                 className="object-cover"
                 data-ai-hint={teamImg?.imageHint}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent" />
             </div>
             {/* Decorative Element */}
-            <div className="absolute -bottom-10 -right-10 w-48 h-48 orange-gradient-bg rounded-full opacity-20 blur-3xl -z-10" />
+            <div className="absolute -bottom-10 -right-10 w-48 h-48 orange-gradient-bg rounded-full opacity-10 blur-3xl -z-10" />
           </motion.div>
         </div>
       </div>

@@ -76,8 +76,10 @@ export function ContactSection() {
 
     return (
         <section id="contact" className="py-24 bg-white relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-1/3 h-1/2 bg-slate-50 -z-10 rounded-bl-[10rem]" />
-            <div className="container mx-auto px-4">
+            {/* Background Soft Element */}
+            <div className="absolute top-0 right-0 w-1/3 h-1/2 bg-[#F7F8FA] -z-10 rounded-bl-[10rem]" />
+            
+            <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center space-y-4 mb-20">
                     <div className="inline-block px-4 py-1.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-black uppercase tracking-[0.3em]">Get In Touch</div>
                     <h2 className="font-headline text-4xl md:text-5xl font-black text-slate-900 tracking-tight">Connect with <span className="text-primary">Arkaa</span></h2>
@@ -110,14 +112,14 @@ export function ContactSection() {
                             </div>
                         </div>
 
-                        <div className="p-8 rounded-[2.5rem] bg-slate-50 border border-slate-100">
+                        <div className="p-8 rounded-[2.5rem] bg-[#F7F8FA] border border-slate-100">
                           <p className="text-sm font-bold text-slate-600 leading-relaxed italic">
                             "We are committed to delivering measurable value. Our agile approach ensures your vision becomes a scalable reality."
                           </p>
                         </div>
                     </div>
 
-                    <Card className="lg:col-span-3 border-none shadow-2xl shadow-slate-200 p-8 md:p-12 rounded-[3rem] bg-white">
+                    <Card className="lg:col-span-3 border-none shadow-2xl shadow-slate-200/40 p-8 md:p-12 rounded-[3rem] bg-white/80 backdrop-blur-md">
                         <Form {...form}>
                             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                                 <div className="grid md:grid-cols-2 gap-8">
@@ -132,7 +134,7 @@ export function ContactSection() {
                                                         <User className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-300 group-focus-within:text-primary transition-colors" />
                                                         <Input 
                                                             placeholder="John Doe" 
-                                                            className="pl-12 h-14 border-slate-100 bg-slate-50/50 focus:bg-white transition-all rounded-2xl font-medium"
+                                                            className="pl-12 h-14 border-slate-100 bg-[#F7F8FA] focus:bg-white transition-all rounded-2xl font-medium"
                                                             {...field} 
                                                         />
                                                     </div>
@@ -152,7 +154,7 @@ export function ContactSection() {
                                                         <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-300 group-focus-within:text-primary transition-colors" />
                                                         <Input 
                                                             placeholder="john@example.com" 
-                                                            className="pl-12 h-14 border-slate-100 bg-slate-50/50 focus:bg-white transition-all rounded-2xl font-medium"
+                                                            className="pl-12 h-14 border-slate-100 bg-[#F7F8FA] focus:bg-white transition-all rounded-2xl font-medium"
                                                             {...field} 
                                                         />
                                                     </div>
@@ -173,7 +175,7 @@ export function ContactSection() {
                                                     <Tag className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-300 group-focus-within:text-primary transition-colors" />
                                                     <Input 
                                                         placeholder="e.g. HIMS Development" 
-                                                        className="pl-12 h-14 border-slate-100 bg-slate-50/50 focus:bg-white transition-all rounded-2xl font-medium"
+                                                        className="pl-12 h-14 border-slate-100 bg-[#F7F8FA] focus:bg-white transition-all rounded-2xl font-medium"
                                                         {...field} 
                                                     />
                                                 </div>
@@ -191,7 +193,7 @@ export function ContactSection() {
                                             <FormControl>
                                                 <Textarea 
                                                     placeholder="Briefly describe your project goals..." 
-                                                    className="min-h-[150px] border-slate-100 bg-slate-50/50 focus:bg-white transition-all rounded-[2rem] p-6 font-medium resize-none"
+                                                    className="min-h-[150px] border-slate-100 bg-[#F7F8FA] focus:bg-white transition-all rounded-[2rem] p-6 font-medium resize-none"
                                                     {...field} 
                                                 />
                                             </FormControl>

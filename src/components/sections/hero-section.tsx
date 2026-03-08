@@ -35,19 +35,20 @@ export function HeroSection() {
 
   return (
     <section id="home" className="relative w-full min-h-screen flex flex-col pt-32 pb-16 overflow-hidden">
-      {/* Premium Multi-Layer Background */}
-      <div className="absolute inset-0 bg-white -z-20" />
+      {/* Premium Soft Background */}
+      <div className="absolute inset-0 bg-[#F7F8FA] -z-20" />
       <div 
         className="absolute inset-0 -z-10" 
         style={{ 
-          background: 'linear-gradient(180deg, #FFFFFF 0%, #FFF3E8 50%, #FFE8D9 100%)' 
+          background: 'linear-gradient(180deg, #F7F8FA 0%, #FFF4EC 100%)' 
         }} 
       />
-      <div className="absolute inset-0 bg-grid-slate opacity-[0.03] pointer-events-none" />
+      <div className="absolute inset-0 bg-grid-slate opacity-[0.02] pointer-events-none" />
       
-      {/* Atmospheric Glows */}
-      <div className="absolute top-[-10%] -right-[10%] w-[900px] h-[900px] bg-primary/10 rounded-full blur-[150px] pointer-events-none opacity-40" />
-      <div className="absolute bottom-[-10%] -left-[10%] w-[800px] h-[800px] bg-secondary/10 rounded-full blur-[140px] pointer-events-none opacity-30" />
+      {/* Soft Low-Opacity Atmospheric Glows */}
+      <div className="absolute top-[-10%] -right-[10%] w-[900px] h-[900px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] -left-[10%] w-[800px] h-[800px] bg-secondary/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/4 left-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px] pointer-events-none" style={{ backgroundColor: 'rgba(255,106,0,0.08)' }} />
 
       <div className="container mx-auto px-6 relative z-10 flex-grow flex items-center">
         <div className="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto w-full">
@@ -57,7 +58,7 @@ export function HeroSection() {
             transition={{ duration: 0.8 }}
             className="space-y-12"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 border border-primary/10 rounded-full bg-white/40 backdrop-blur-md shadow-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-2 border border-primary/5 rounded-full bg-white/60 backdrop-blur-md shadow-sm">
               <Zap className="h-4 w-4 text-primary animate-pulse" />
               <span className="text-[10px] uppercase tracking-[0.4em] font-black text-slate-500">Engineering Your Success</span>
             </div>
@@ -73,7 +74,7 @@ export function HeroSection() {
               </h1>
             </div>
             
-            <p className="text-lg md:text-xl text-slate-500 max-w-xl font-medium leading-relaxed tracking-wide">
+            <p className="text-lg md:text-xl text-slate-600 max-w-xl font-medium leading-relaxed tracking-wide">
               ARKAA DIGITAL develops websites, hospital management systems (HIMS), and custom digital platforms for businesses and healthcare organizations.
             </p>
 
@@ -101,7 +102,7 @@ export function HeroSection() {
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute top-64 right-10 w-[65%] bg-white rounded-[2.5rem] shadow-2xl border border-slate-100 p-4 z-10 overflow-hidden"
               >
-                <div className="bg-slate-50 rounded-xl overflow-hidden">
+                <div className="bg-slate-50/50 rounded-xl overflow-hidden">
                   <Image 
                     src={analyticsImg?.imageUrl || ""} 
                     alt="Business Analytics Panel" 
@@ -119,7 +120,7 @@ export function HeroSection() {
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                 className="absolute top-10 right-0 w-[80%] bg-white rounded-[3rem] shadow-2xl border border-secondary/10 p-6 z-20 glow-border-blue overflow-hidden"
               >
-                <div className="bg-slate-50 rounded-2xl overflow-hidden">
+                <div className="bg-slate-50/50 rounded-2xl overflow-hidden">
                   <Image 
                     src={himsImg?.imageUrl || ""} 
                     alt="Hospital Management Interface" 
@@ -137,7 +138,7 @@ export function HeroSection() {
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
                 className="absolute top-48 -left-10 w-[60%] bg-white rounded-[2.5rem] shadow-2xl border border-primary/10 p-5 z-30 glow-border-orange"
               >
-                <div className="bg-slate-50 rounded-2xl overflow-hidden">
+                <div className="bg-slate-50/50 rounded-2xl overflow-hidden">
                   <Image 
                     src={webImg?.imageUrl || ""} 
                     alt="Website Admin Dashboard" 
@@ -154,7 +155,7 @@ export function HeroSection() {
       </div>
 
       <div className="container mx-auto px-6 mt-12 pb-8 relative z-10">
-        <div className="max-w-7xl mx-auto pt-12 border-t border-slate-200/50 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="max-w-7xl mx-auto pt-12 border-t border-slate-200/30 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="flex items-center gap-3">
             <Shield className="h-4 w-4 text-slate-300" />
             <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400">

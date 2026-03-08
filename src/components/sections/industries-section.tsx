@@ -14,8 +14,11 @@ const industries = [
 
 export function IndustriesSection() {
   return (
-    <section className="py-24 bg-[#EAF4FF] border-y border-secondary/5">
-      <div className="container mx-auto px-4">
+    <section className="py-24 bg-[#F3F7FF] relative overflow-hidden">
+      {/* Background Tech Glow */}
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[140px] pointer-events-none" />
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-20 space-y-4">
           <div className="inline-block px-4 py-1.5 rounded-full bg-secondary/10 text-secondary text-[10px] font-black uppercase tracking-[0.3em]">Market Verticals</div>
           <h2 className="font-headline text-4xl md:text-5xl font-black text-slate-900 tracking-tight">Industries We <span className="text-secondary">Serve</span></h2>
