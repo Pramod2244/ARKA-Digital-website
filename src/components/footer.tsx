@@ -6,16 +6,13 @@ import { useEffect, useState } from 'react';
 
 const LogoMark = () => (
   <svg viewBox="0 0 100 100" className="h-12 w-12 text-primary" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-    {/* Central Solar Core */}
     <circle cx="50" cy="50" r="18" />
-    {/* 16 Alternating Long and Short Petal-Shaped Rays with a gap from the core */}
     {Array.from({ length: 16 }).map((_, i) => {
       const angle = i * 22.5;
       const isLong = i % 2 === 0;
-      // Precise path for the "leaf" or "petal" ray shape
       const d = isLong 
-        ? "M 50 2 Q 53 15 50 28 Q 47 15 50 2 Z" // Long petal ray
-        : "M 50 12 Q 52 20 50 28 Q 48 20 50 12 Z"; // Short petal ray
+        ? "M 50 2 Q 53 15 50 28 Q 47 15 50 2 Z" 
+        : "M 50 12 Q 52 20 50 28 Q 48 20 50 12 Z"; 
       return (
         <path
           key={i}
@@ -35,7 +32,7 @@ export function Footer() {
   }, []);
 
   return (
-    <footer className="bg-[#0A1F44] text-slate-300 py-24 px-4 overflow-hidden relative">
+    <footer className="bg-[#1E2A32] text-slate-300 py-24 px-4 overflow-hidden relative">
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 blur-[150px] -z-10 rounded-full" />
       
       <div className="container mx-auto max-w-7xl">
