@@ -12,7 +12,8 @@ import {
   Cpu, 
   Palette, 
   Cloud,
-  CheckCircle2
+  CheckCircle2,
+  Code
 } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { cn } from "@/lib/utils";
@@ -65,6 +66,14 @@ const services = [
     image: PlaceHolderImages.find(img => img.id === 'cloud-solutions-v2'),
     accent: "text-primary",
     features: ["Cloud Deployment", "Server Management", "High Availability", "Performance Monitoring"]
+  },
+  {
+    title: "Software Development",
+    description: "End-to-end software engineering using modern tech stacks for robust enterprise solutions.",
+    icon: Code,
+    image: PlaceHolderImages.find(img => img.id === 'software-dev-v2'),
+    accent: "text-[#3B82F6]",
+    features: ["Full-Stack Dev", "Microservices", "Code Quality", "CI/CD Pipelines"]
   }
 ];
 
@@ -85,44 +94,37 @@ export function ServicesSection() {
   }, [api]);
 
   return (
-    <section id="services" className="bg-[#E9F1FB] overflow-hidden pl-[70px]">
-      <div className="container mx-auto max-w-7xl px-6 py-32">
-        <div className="text-center mb-20 space-y-6">
+    <section id="services" className="bg-[#E9F1FB] overflow-hidden pl-[70px] relative">
+      <div className="container mx-auto max-w-7xl px-6 py-20 lg:py-24">
+        {/* Header - More Compact */}
+        <div className="text-center mb-12 space-y-4">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="inline-block px-5 py-2 rounded-full bg-slate-200/50 text-slate-500 text-[10px] font-black uppercase tracking-[0.4em]"
+            className="inline-block px-4 py-1.5 rounded-full bg-white/50 text-slate-500 text-[10px] font-black uppercase tracking-[0.3em] border border-white"
           >
             Digital Capabilities
           </motion.div>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="font-headline text-4xl md:text-6xl font-black text-slate-900 tracking-tight leading-tight"
+            className="font-headline text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight"
           >
-            Our Core <br />
-            <span className="text-primary">Services</span>
+            Our Core <span className="text-primary">Services</span>
           </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-lg text-slate-600 font-medium max-w-2xl mx-auto"
-          >
-            Explore our specialized engineering solutions designed to power modern businesses and healthcare.
-          </motion.p>
         </div>
 
-        <div className="max-w-6xl mx-auto relative group">
+        {/* Carousel Container */}
+        <div className="max-w-6xl mx-auto relative px-4 lg:px-12">
           <Carousel setApi={setApi} className="w-full" opts={{ loop: true }}>
             <CarouselContent>
               {services.map((service, index) => (
                 <CarouselItem key={index}>
-                  <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16 p-4">
-                    {/* Image Column */}
+                  <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 py-4">
+                    {/* Image Column - Controlled Height */}
                     <div className="w-full lg:w-1/2">
-                      <div className="relative h-[400px] md:h-[500px] w-full rounded-[4rem] overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] border-[12px] border-white bg-white">
+                      <div className="relative h-[300px] md:h-[400px] w-full rounded-[3rem] overflow-hidden shadow-xl border-[10px] border-white bg-white">
                         {service.image?.imageUrl && (
                           <Image
                             src={service.image.imageUrl}
@@ -135,67 +137,71 @@ export function ServicesSection() {
                       </div>
                     </div>
 
-                    {/* Content Column */}
-                    <div className="w-full lg:w-1/2 space-y-10">
+                    {/* Content Column - Streamlined */}
+                    <div className="w-full lg:w-1/2 space-y-6 lg:space-y-8">
                       <div className={cn(
-                        "w-20 h-20 rounded-[2rem] flex items-center justify-center bg-white shadow-2xl border border-slate-50",
+                        "w-16 h-16 rounded-[1.5rem] flex items-center justify-center bg-white shadow-lg border border-slate-50",
                         service.accent
                       )}>
-                        <service.icon className="h-10 w-10" />
+                        <service.icon className="h-8 w-8" />
                       </div>
-                      <div className="space-y-6">
-                        <h3 className="font-headline text-4xl font-black text-slate-900 leading-tight">
+                      
+                      <div className="space-y-4">
+                        <h3 className="font-headline text-3xl font-black text-slate-900 leading-tight">
                           {service.title}
                         </h3>
-                        <p className="text-xl text-slate-600 font-medium leading-relaxed">
+                        <p className="text-lg text-slate-600 font-medium leading-relaxed max-w-xl">
                           {service.description}
                         </p>
                       </div>
                       
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                      {/* Features Grid */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                         {service.features.map((feature, fIndex) => (
                           <div key={fIndex} className="flex items-center gap-3">
                             <div className={cn(
-                              "w-6 h-6 rounded-full flex items-center justify-center",
+                              "w-5 h-5 rounded-full flex items-center justify-center",
                               index % 2 === 0 ? "bg-primary/10 text-primary" : "bg-[#3B82F6]/10 text-[#3B82F6]"
                             )}>
-                              <CheckCircle2 className="h-3.5 w-3.5" />
+                              <CheckCircle2 className="h-3 w-3" />
                             </div>
-                            <span className="text-[11px] font-black uppercase tracking-widest text-slate-700">{feature}</span>
+                            <span className="text-[10px] font-black uppercase tracking-widest text-slate-700">{feature}</span>
                           </div>
                         ))}
                       </div>
 
-                      <Button className="h-18 px-12 text-sm font-black rounded-full bg-slate-900 text-white hover:bg-slate-800 transition-all active:scale-95 uppercase tracking-[0.2em] group shadow-xl" asChild>
-                        <Link href="#contact" className="flex items-center gap-4">
-                          Get Expert Consultation
-                          <ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform" />
-                        </Link>
-                      </Button>
+                      <div className="pt-2">
+                        <Button className="h-14 px-10 text-xs font-black rounded-full bg-slate-900 text-white hover:bg-slate-800 transition-all active:scale-95 uppercase tracking-[0.2em] group shadow-xl" asChild>
+                          <Link href="#contact" className="flex items-center gap-4">
+                            Consult with Experts
+                            <ArrowRight className="h-4 w-4 group-hover:translate-x-1.5 transition-transform" />
+                          </Link>
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
             
-            {/* Desktop Navigation Arrows */}
-            <div className="hidden lg:flex">
-                <CarouselPrevious className="left-[-60px] h-14 w-14 rounded-full bg-white/80 backdrop-blur-md border-none shadow-xl hover:bg-white text-slate-900" />
-                <CarouselNext className="right-[-60px] h-14 w-14 rounded-full bg-white/80 backdrop-blur-md border-none shadow-xl hover:bg-white text-slate-900" />
+            {/* Navigation Arrows - Always Visible on Desktop */}
+            <div className="hidden lg:block">
+              <CarouselPrevious className="absolute -left-6 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white shadow-lg hover:bg-slate-50 text-slate-900 border-none transition-all z-20" />
+              <CarouselNext className="absolute -right-6 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white shadow-lg hover:bg-slate-50 text-slate-900 border-none transition-all z-20" />
             </div>
           </Carousel>
 
-          {/* Custom Navigation Dots */}
-          <div className="flex justify-center gap-4 mt-16">
+          {/* Navigation Dots - Tighter Spacing */}
+          <div className="flex justify-center gap-3 mt-10">
             {Array.from({ length: count }).map((_, i) => (
               <button
                 key={i}
                 onClick={() => api?.scrollTo(i)}
                 className={cn(
-                  "h-2.5 transition-all duration-500 rounded-full",
+                  "h-2 transition-all duration-500 rounded-full",
                   current === i 
-                    ? "w-12 bg-primary shadow-[0_0_20px_rgba(255,106,0,0.4)]" 
-                    : "w-2.5 bg-slate-300 hover:bg-slate-400"
+                    ? "w-10 bg-primary shadow-[0_0_15px_rgba(255,106,0,0.3)]" 
+                    : "w-2 bg-slate-300 hover:bg-slate-400"
                 )}
                 aria-label={`Go to slide ${i + 1}`}
               />
