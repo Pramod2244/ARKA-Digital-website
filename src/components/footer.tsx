@@ -7,15 +7,15 @@ import { useEffect, useState } from 'react';
 const LogoMark = () => (
   <svg viewBox="0 0 100 100" className="h-12 w-12 text-primary" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     {/* Central Solar Core */}
-    <circle cx="50" cy="50" r="20" />
-    {/* 16 Alternating Long and Short Petal-Shaped Rays */}
+    <circle cx="50" cy="50" r="18" />
+    {/* 16 Alternating Long and Short Petal-Shaped Rays with a gap from the core */}
     {Array.from({ length: 16 }).map((_, i) => {
       const angle = i * 22.5;
       const isLong = i % 2 === 0;
       // Precise path for the "leaf" or "petal" ray shape from the reference image
       const d = isLong 
-        ? "M 50 2 Q 55 16 50 32 Q 45 16 50 2 Z" // Long petal ray
-        : "M 50 14 Q 54 23 50 32 Q 46 23 50 14 Z"; // Short petal ray
+        ? "M 50 2 Q 53 15 50 28 Q 47 15 50 2 Z" // Long petal ray
+        : "M 50 12 Q 52 20 50 28 Q 48 20 50 12 Z"; // Short petal ray
       return (
         <path
           key={i}
