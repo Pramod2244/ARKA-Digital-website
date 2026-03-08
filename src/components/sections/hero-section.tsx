@@ -9,11 +9,14 @@ import Image from "next/image";
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative w-full min-h-screen flex items-center pt-24 pb-16 overflow-hidden bg-white">
-      {/* Abstract Background Shapes */}
-      <div className="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none opacity-40" />
-      <div className="absolute bottom-1/4 -left-20 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[100px] pointer-events-none opacity-30" />
+    <section id="home" className="relative w-full min-h-screen flex items-center pt-24 pb-16 overflow-hidden bg-gradient-to-br from-[#FFFFFF] via-[#FFF4EC] to-[#FFE6D6]">
+      {/* Abstract Background Shapes - Soft Glows */}
+      <div className="absolute top-[-10%] -right-[10%] w-[800px] h-[800px] bg-primary/10 rounded-full blur-[150px] pointer-events-none opacity-60" />
+      <div className="absolute bottom-[-10%] -left-[10%] w-[700px] h-[700px] bg-secondary/5 rounded-full blur-[130px] pointer-events-none opacity-40" />
       
+      {/* Subtle Digital Grid Overlay */}
+      <div className="absolute inset-0 bg-grid-slate opacity-[0.03] pointer-events-none" />
+
       {/* Floating Kinetic Shapes */}
       <motion.div 
         animate={{ 
@@ -21,7 +24,7 @@ export function HeroSection() {
           rotate: [0, 5, 0]
         }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-40 left-[5%] w-40 h-40 orange-gradient-bg opacity-[0.03] rounded-[3rem] blur-3xl pointer-events-none" 
+        className="absolute top-40 left-[5%] w-40 h-40 orange-gradient-bg opacity-[0.05] rounded-[3rem] blur-3xl pointer-events-none" 
       />
       <motion.div 
         animate={{ 
@@ -29,7 +32,7 @@ export function HeroSection() {
           x: [0, 15, 0]
         }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="absolute bottom-20 right-[10%] w-64 h-64 blue-gradient-bg opacity-[0.02] rounded-full blur-[80px] pointer-events-none" 
+        className="absolute bottom-20 right-[10%] w-64 h-64 blue-gradient-bg opacity-[0.03] rounded-full blur-[80px] pointer-events-none" 
       />
 
       <div className="container mx-auto px-6 relative z-10">
@@ -40,7 +43,7 @@ export function HeroSection() {
             transition={{ duration: 0.8 }}
             className="space-y-10"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 border border-primary/20 rounded-full bg-primary/5 backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-2 border border-primary/20 rounded-full bg-white/60 backdrop-blur-md shadow-sm">
               <Zap className="h-4 w-4 text-primary animate-pulse" />
               <span className="text-[10px] uppercase tracking-[0.3em] font-black text-primary">Engineering Your Success</span>
             </div>
