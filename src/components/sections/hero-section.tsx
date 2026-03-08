@@ -9,7 +9,7 @@ import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export function HeroSection() {
-  const mainDashboard = PlaceHolderImages.find(img => img.id === 'hims-dashboard-ui');
+  const mainDashboard = PlaceHolderImages.find(img => img.id === 'hero-software-platform');
 
   return (
     <section id="home" className="relative w-full pt-48 pb-32 overflow-hidden bg-[#F7F8FA] pl-[70px]">
@@ -62,11 +62,11 @@ export function HeroSection() {
             <div className="relative rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] border-[12px] border-white bg-white/50 aspect-video md:aspect-[16/10]">
               <Image 
                 src={mainDashboard?.imageUrl || ""} 
-                alt="Digital Platform Dashboard" 
+                alt="High Performance Digital Platform Dashboard" 
                 fill 
                 className="object-cover transition-transform duration-1000 group-hover:scale-[1.02]"
                 priority
-                data-ai-hint="software dashboard"
+                data-ai-hint={mainDashboard?.imageHint}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent pointer-events-none" />
             </div>

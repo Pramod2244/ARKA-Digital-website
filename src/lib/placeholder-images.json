@@ -1,76 +1,58 @@
 {
   "placeholderImages": [
     {
-      "id": "hero-circuit-bg",
-      "description": "Macro shot of a sleek black circuit board with glowing orange copper traces",
-      "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1920",
-      "imageHint": "circuit board"
+      "id": "hero-software-platform",
+      "description": "Premium dark-themed software dashboard with glowing data visualizations and a clean sidebar navigation",
+      "imageUrl": "https://picsum.photos/seed/arkaa-hero-v2/1200/800",
+      "imageHint": "software dashboard"
     },
     {
-      "id": "tech-collab",
-      "description": "Software engineering team collaborating on architectural diagrams in a modern tech office",
-      "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1080",
-      "imageHint": "software engineering"
+      "id": "tech-collab-office",
+      "description": "Engineers collaborating in a modern glass-walled tech office with architectural diagrams on screens",
+      "imageUrl": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1080",
+      "imageHint": "tech collaboration"
     },
     {
-      "id": "hims-dashboard-ui",
-      "description": "Advanced hospital management system (HIMS) dashboard showing patient records, clinical schedules, billing modules, and medical analytics charts",
-      "imageUrl": "https://picsum.photos/seed/arkaa-hims-dashboard-v10/1000/800",
-      "imageHint": "medical dashboard"
+      "id": "hims-dashboard-v2",
+      "description": "Sophisticated medical software interface showing patient analytics, clinical scheduling, and drug interaction modules",
+      "imageUrl": "https://picsum.photos/seed/arkaa-hims-v2/1000/800",
+      "imageHint": "medical interface"
     },
     {
-      "id": "web-interface-ui",
-      "description": "Modern website builder and admin dashboard interface with sophisticated navigation panels and content management blocks",
-      "imageUrl": "https://picsum.photos/seed/arkaa-web-builder-v10/1000/800",
-      "imageHint": "website dashboard"
+      "id": "web-dev-v2",
+      "description": "Modern code editor and responsive website preview side-by-side with high-performance metrics",
+      "imageUrl": "https://picsum.photos/seed/arkaa-web-v2/1000/800",
+      "imageHint": "coding workspace"
     },
     {
-      "id": "analytics-ui",
-      "description": "Enterprise business analytics core showing real-time data visualization, growth statistics, and interactive graphs",
-      "imageUrl": "https://picsum.photos/seed/arkaa-analytics-core-v10/1000/800",
-      "imageHint": "admin panel"
+      "id": "analytics-core-v2",
+      "description": "Enterprise-grade analytics dashboard with real-time growth charts and predictive AI modeling graphs",
+      "imageUrl": "https://picsum.photos/seed/arkaa-analytics-v2/1000/800",
+      "imageHint": "data visualization"
     },
     {
-      "id": "ui-ux-design-showcase",
-      "description": "Product design showcase showing wireframes and mobile UI components",
-      "imageUrl": "https://picsum.photos/seed/arkaa-ux-v10/1000/800",
+      "id": "ui-ux-design-v2",
+      "description": "A design workspace showing high-fidelity mobile app wireframes and a clean design system palette",
+      "imageUrl": "https://picsum.photos/seed/arkaa-ux-v2/1000/800",
       "imageHint": "ui design"
     },
     {
-      "id": "portfolio-hims",
-      "description": "Healthcare Nexus HIMS system interface",
-      "imageUrl": "https://picsum.photos/seed/p-hims-v10/800/600",
-      "imageHint": "hospital software"
+      "id": "portfolio-hims-nexus",
+      "description": "Modern hospital management system UI for Healthcare Nexus",
+      "imageUrl": "https://picsum.photos/seed/arkaa-p-hims-v2/800/600",
+      "imageHint": "hospital app"
     },
     {
-      "id": "portfolio-enterprise",
-      "description": "FinFlow corporate enterprise system admin panel",
-      "imageUrl": "https://picsum.photos/seed/p-enterprise-v10/800/600",
-      "imageHint": "enterprise system"
+      "id": "portfolio-finflow",
+      "description": "Sleek financial enterprise dashboard for FinFlow systems",
+      "imageUrl": "https://picsum.photos/seed/arkaa-p-fin-v2/800/600",
+      "imageHint": "fintech dashboard"
     },
     {
-      "id": "portfolio-edu",
-      "description": "EduSpark educational management portal",
-      "imageUrl": "https://picsum.photos/seed/p-edu-v10/800/600",
-      "imageHint": "learning portal"
-    },
-    {
-      "id": "portfolio-retail",
-      "description": "Vibe Commerce next-gen retail analytics",
-      "imageUrl": "https://picsum.photos/seed/p-retail-v10/800/600",
-      "imageHint": "retail dashboard"
-    },
-    {
-      "id": "portfolio-saas",
-      "description": "SaaS analytics pro product interface",
-      "imageUrl": "https://picsum.photos/seed/p-saas-v10/800/600",
-      "imageHint": "saas interface"
-    },
-    {
-      "id": "portfolio-studio",
-      "description": "Creative studio design system showcase",
-      "imageUrl": "https://picsum.photos/seed/p-studio-v10/800/600",
-      "imageHint": "design system"
+      "id": "portfolio-eduspark",
+      "description": "Modern learning management system portal for EduSpark",
+      "imageUrl": "https://picsum.photos/seed/arkaa-p-edu-v2/800/600",
+      "imageHint": "educational platform"
     }
   ]
 }

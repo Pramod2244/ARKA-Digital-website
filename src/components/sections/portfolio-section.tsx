@@ -10,21 +10,21 @@ const projects = [
     id: 1, 
     title: "Healthcare Nexus HIMS", 
     category: "Clinical Software", 
-    image: PlaceHolderImages.find(img => img.id === 'portfolio-hims'),
+    image: PlaceHolderImages.find(img => img.id === 'portfolio-hims-nexus'),
     grid: "md:col-span-4 md:row-span-2"
   },
   { 
     id: 2, 
     title: "FinFlow Enterprise", 
     category: "Financial Core", 
-    image: PlaceHolderImages.find(img => img.id === 'portfolio-enterprise'),
+    image: PlaceHolderImages.find(img => img.id === 'portfolio-finflow'),
     grid: "md:col-span-2 md:row-span-1"
   },
   { 
     id: 3, 
     title: "EduSpark Portal", 
     category: "Learning LMS", 
-    image: PlaceHolderImages.find(img => img.id === 'portfolio-edu'),
+    image: PlaceHolderImages.find(img => img.id === 'portfolio-eduspark'),
     grid: "md:col-span-2 md:row-span-1"
   }
 ];
