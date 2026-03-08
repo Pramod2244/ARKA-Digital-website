@@ -29,7 +29,7 @@ const highlights = [
 ];
 
 export function AboutSection() {
-  const teamImg = PlaceHolderImages.find(img => img.id === 'tech-collab');
+  const teamImg = PlaceHolderImages.find(img => img.id === 'tech-collab-office');
 
   return (
     <section id="about" className="py-24 bg-[#FFF9F2] relative overflow-hidden pl-[70px]">
@@ -71,15 +71,17 @@ export function AboutSection() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="relative rounded-[4rem] overflow-hidden shadow-2xl border-8 border-white bg-slate-100">
-              <Image 
-                src={teamImg?.imageUrl || ""} 
-                alt="Arkaa Tech Collaboration" 
-                width={800} 
-                height={1000} 
-                className="object-cover"
-                data-ai-hint={teamImg?.imageHint}
-              />
+            <div className="relative rounded-[4rem] overflow-hidden shadow-2xl border-8 border-white bg-slate-100 min-h-[400px]">
+              {teamImg?.imageUrl && (
+                <Image 
+                  src={teamImg.imageUrl} 
+                  alt="Arkaa Tech Collaboration" 
+                  width={800} 
+                  height={1000} 
+                  className="object-cover"
+                  data-ai-hint={teamImg?.imageHint}
+                />
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent" />
             </div>
           </motion.div>

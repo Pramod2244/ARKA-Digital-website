@@ -61,13 +61,15 @@ export function PortfolioSection() {
                 </h3>
               </div>
               <div className="relative w-full h-full min-h-[400px] bg-slate-50">
-                <Image 
-                  src={project.image?.imageUrl || ""} 
-                  alt={project.title} 
-                  fill 
-                  className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                  data-ai-hint={project.image?.imageHint}
-                />
+                {project.image?.imageUrl && (
+                  <Image 
+                    src={project.image.imageUrl} 
+                    alt={project.title} 
+                    fill 
+                    className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                    data-ai-hint={project.image?.imageHint}
+                  />
+                )}
               </div>
             </motion.div>
           ))}

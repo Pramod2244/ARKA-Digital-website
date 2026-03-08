@@ -93,13 +93,15 @@ export function ServicesSection() {
                   "relative h-[400px] md:h-[500px] w-full rounded-[3.5rem] overflow-hidden shadow-xl transition-all duration-700 group-hover:scale-[1.02] border-8 border-white",
                   service.bgColor
                 )}>
-                  <Image
-                    src={service.image?.imageUrl || ""}
-                    alt={service.title}
-                    fill
-                    className="object-cover transition-transform duration-1000 group-hover:scale-110"
-                    data-ai-hint={service.image?.imageHint}
-                  />
+                  {service.image?.imageUrl && (
+                    <Image
+                      src={service.image.imageUrl}
+                      alt={service.title}
+                      fill
+                      className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                      data-ai-hint={service.image?.imageHint}
+                    />
+                  )}
                 </div>
               </div>
 

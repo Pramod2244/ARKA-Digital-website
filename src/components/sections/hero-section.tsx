@@ -60,14 +60,16 @@ export function HeroSection() {
             className="w-full relative group"
           >
             <div className="relative rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] border-[12px] border-white bg-white/50 aspect-video md:aspect-[16/10]">
-              <Image 
-                src={mainDashboard?.imageUrl || ""} 
-                alt="High Performance Digital Platform Dashboard" 
-                fill 
-                className="object-cover transition-transform duration-1000 group-hover:scale-[1.02]"
-                priority
-                data-ai-hint={mainDashboard?.imageHint}
-              />
+              {mainDashboard?.imageUrl && (
+                <Image 
+                  src={mainDashboard.imageUrl} 
+                  alt="High Performance Digital Platform Dashboard" 
+                  fill 
+                  className="object-cover transition-transform duration-1000 group-hover:scale-[1.02]"
+                  priority
+                  data-ai-hint={mainDashboard?.imageHint}
+                />
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent pointer-events-none" />
             </div>
 
