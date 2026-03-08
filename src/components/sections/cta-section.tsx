@@ -1,9 +1,10 @@
+
 "use client";
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export function CTASection() {
   return (
@@ -17,10 +18,6 @@ export function CTASection() {
             whileInView={{ opacity: 1, y: 0 }}
             className="space-y-6"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full border border-slate-200 text-slate-500 text-[11px] font-black uppercase tracking-[0.3em] mx-auto">
-              <Sparkles className="h-3.5 w-3.5 text-primary" />
-              Next-Gen Engineering
-            </div>
             <h2 className="font-headline text-5xl md:text-7xl font-black text-slate-900 tracking-tight leading-[1.1]">
               Let’s Build Your <br /> Next Digital Project
             </h2>

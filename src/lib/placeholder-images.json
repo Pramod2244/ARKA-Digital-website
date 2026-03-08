@@ -14,8 +14,8 @@
     },
     {
       "id": "hims-system-illustration",
-      "description": "Modern hospital management system infographic with a friendly doctor on a laptop screen surrounded by floating service icons like pharmacy, billing, radiology, ambulance, and assets management.",
-      "imageUrl": "https://picsum.photos/seed/arkaa-hims-infographic-v5/1000/800",
+      "description": "Comprehensive hospital management system infographic with a medical professional at the center of a laptop UI, surrounded by modular icons for pharmacy, billing, radiology, laboratory, and patient records.",
+      "imageUrl": "https://picsum.photos/seed/arkaa-hims-infographic-final/1000/800",
       "imageHint": "medical infographic"
     },
     {
@@ -41,6 +41,24 @@
       "description": "Abstract visualization of cloud infrastructure with glowing nodes and data streams",
       "imageUrl": "https://picsum.photos/seed/arkaa-cloud-v2/1000/800",
       "imageHint": "cloud computing"
+    },
+    {
+      "id": "portfolio-hims-nexus",
+      "description": "Healthcare software platform with medical charts and patient data visualization",
+      "imageUrl": "https://picsum.photos/seed/arkaa-port-hims/1200/800",
+      "imageHint": "healthcare software"
+    },
+    {
+      "id": "portfolio-finflow",
+      "description": "Financial enterprise dashboard with real-time trading charts and portfolio management",
+      "imageUrl": "https://picsum.photos/seed/arkaa-port-fin/1200/800",
+      "imageHint": "financial dashboard"
+    },
+    {
+      "id": "portfolio-eduspark",
+      "description": "Modern educational learning management system portal with student progress tracking",
+      "imageUrl": "https://picsum.photos/seed/arkaa-port-edu/1200/800",
+      "imageHint": "learning portal"
     }
   ]
 }

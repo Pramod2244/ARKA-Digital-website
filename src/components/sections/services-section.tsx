@@ -161,9 +161,9 @@ export function ServicesSection() {
 
   return (
     <section id="services" className="bg-[#E9F1FB] overflow-hidden pl-[70px] relative">
-      <div className="container mx-auto max-w-7xl px-6 py-20 lg:py-24">
+      <div className="container mx-auto max-w-7xl px-6 py-16 md:py-20">
         {/* Header */}
-        <div className="text-center mb-12 space-y-4">
+        <div className="text-center mb-10 space-y-4">
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -175,7 +175,7 @@ export function ServicesSection() {
         </div>
 
         {/* Carousel Container */}
-        <div className="max-w-6xl mx-auto relative px-4 lg:px-12">
+        <div className="max-w-6xl mx-auto relative px-4 lg:px-16">
           <Carousel setApi={setApi} className="w-full" opts={{ loop: true }}>
             <CarouselContent>
               {services.map((service, index) => (
@@ -245,8 +245,8 @@ export function ServicesSection() {
             
             {/* Navigation Arrows */}
             <div className="hidden lg:block">
-              <CarouselPrevious className="absolute -left-6 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white shadow-lg hover:bg-slate-50 text-slate-900 border-none transition-all z-20" />
-              <CarouselNext className="absolute -right-6 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white shadow-lg hover:bg-slate-50 text-slate-900 border-none transition-all z-20" />
+              <CarouselPrevious className="absolute -left-16 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white shadow-lg hover:bg-slate-50 text-slate-900 border-none transition-all z-20" />
+              <CarouselNext className="absolute -right-16 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white shadow-lg hover:bg-slate-50 text-slate-900 border-none transition-all z-20" />
             </div>
           </Carousel>
 

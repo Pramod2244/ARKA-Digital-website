@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -37,7 +38,6 @@ export function PortfolioSection() {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-24 space-y-6">
-          <div className="inline-block px-5 py-2 rounded-full bg-secondary/10 text-secondary text-[10px] font-black uppercase tracking-[0.4em]">Our Work</div>
           <h2 className="font-headline text-4xl md:text-6xl font-black text-slate-900 tracking-tight">Featured <br /><span className="text-primary">Projects</span></h2>
           <p className="text-lg text-slate-600 font-medium max-w-xl mx-auto">High-performance digital systems crafted for industry leaders.</p>
         </div>
