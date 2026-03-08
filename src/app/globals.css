@@ -23,7 +23,7 @@
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 25 100% 50%;
-    --radius: 1.5rem;
+    --radius: 2rem;
   }
 }
 
@@ -38,7 +38,7 @@
 
 @layer utilities {
   .glass-card {
-    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.05)];
+    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.05)];
   }
   .glass-card-hover {
     @apply hover:border-primary/30 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-500;
@@ -47,10 +47,10 @@
     text-shadow: 0 0 20px hsl(var(--primary) / 0.3);
   }
   .orange-gradient-bg {
-    background: linear-gradient(135deg, #FF6A00 0%, #FF8C00 100%);
+    background: linear-gradient(135deg, #FF6A00 0%, #FF8A30 100%);
   }
   .blue-gradient-bg {
-    background: linear-gradient(135deg, #1E90FF 0%, #00BFFF 100%);
+    background: linear-gradient(135deg, #1E90FF 0%, #0A66C2 100%);
   }
   .bg-grid-slate {
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),

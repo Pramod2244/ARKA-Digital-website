@@ -1,121 +1,84 @@
 "use client";
 
-import { Card, CardContent } from "@/components/ui/card";
-import { Lightbulb, Award, Cog, Globe, Users, Package, Smile } from "lucide-react";
-import { useInView } from "@/hooks/use-in-view";
-import { useRef } from "react";
-import { cn } from "@/lib/utils";
-import { motion, useSpring, useTransform, useScroll } from "framer-motion";
-import { useEffect } from "react";
+import { motion } from "framer-motion";
+import { CheckCircle2, Award, Zap, ShieldCheck } from "lucide-react";
+import Image from "next/image";
 
-const keyValues = [
-  {
-    icon: Lightbulb,
-    title: "Innovation that Inspires",
-  },
+const highlights = [
   {
     icon: Award,
-    title: "Commitment to Excellence",
+    title: "Industry Excellence",
+    description: "Delivering world-class digital standards for global clients.",
   },
   {
-    icon: Cog,
-    title: "Technology that Transforms",
+    icon: Zap,
+    title: "Agile Development",
+    description: "Rapid iteration and deployment for faster time-to-market.",
   },
   {
-    icon: Globe,
-    title: "Sustainability and Scalability",
+    icon: ShieldCheck,
+    title: "Secure Architecture",
+    description: "Robust, enterprise-grade security for every HIMS and web app.",
+  },
+  {
+    icon: CheckCircle2,
+    title: "Result Oriented",
+    description: "Focusing on measurable ROI and business efficiency.",
   },
 ];
-
-const stats = [
-  {
-    icon: Users,
-    value: 20,
-    label: "Happy Clients",
-  },
-  {
-    icon: Package,
-    value: 50,
-    label: "Projects Delivered",
-  },
-  {
-    icon: Smile,
-    value: 98,
-    label: "Satisfaction Rate",
-    suffix: "%"
-  },
-];
-
-
-function AnimatedStat({ value, label, suffix = "", icon: Icon }: { value: number, label: string, suffix?: string, icon: React.ElementType }) {
-  const ref = useRef<HTMLParagraphElement>(null);
-  const isInView = useInView(ref, { once: true });
-  const motionValue = useSpring(0, { damping: 100, stiffness: 100 });
-
-  useEffect(() => {
-    if (isInView) {
-      motionValue.set(value);
-    }
-  }, [motionValue, isInView, value]);
-
-  useEffect(() => {
-    const unsubscribe = motionValue.on("change", (latest) => {
-      if (ref.current) {
-        ref.current.textContent = Math.round(latest).toString() + suffix;
-      }
-    });
-    return unsubscribe;
-  }, [motionValue, suffix]);
-  
-  return (
-     <div className="text-center">
-        <Icon className="h-10 w-10 text-primary mx-auto mb-2" />
-        <p ref={ref} className="font-headline text-4xl font-bold"></p>
-        <p className="text-muted-foreground mt-1">{label}</p>
-    </div>
-  );
-}
-
 
 export function AboutSection() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, threshold: 0.2 });
-
   return (
-    <section id="about" className="py-16 md:py-24" ref={ref}>
-      <div
-        className={cn(
-          "container mx-auto px-4 transition-opacity duration-1000 ease-out",
-          isInView ? "opacity-100" : "opacity-0"
-        )}
-      >
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div
-            className={cn(
-              "space-y-4 transition-all duration-1000 ease-out",
-              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            )}
+    <section id="about" className="py-24 bg-[#FFF3EB] overflow-hidden">
+      <div className="container mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-8"
           >
-            <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">About Arkaa Digital</h2>
-            <p className="text-lg text-muted-foreground">
+            <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.3em]">Our Story</div>
+            <h2 className="font-headline text-4xl md:text-5xl font-black text-slate-900 leading-tight">
+              Engineering the Future of <br />
+              <span className="text-primary">Digital Innovation</span>
+            </h2>
+            <p className="text-lg text-slate-600 font-medium leading-relaxed">
               Arkaa Digital is a forward-thinking IT services company dedicated to delivering cutting-edge digital solutions that empower businesses to grow in the modern world.
             </p>
-            <p className="text-muted-foreground">
-              Our name “Arka” symbolizes the Sun — a source of light, energy, and knowledge — reflecting our mission to illuminate digital paths for our clients through innovation and technology.
-            </p>
-          </div>
-          <div
-            className={cn(
-              "transition-all duration-1000 ease-out delay-200",
-              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            )}
-          >
-            <div className="grid grid-cols-3 gap-6">
-              {stats.map((stat) => (
-                <AnimatedStat key={stat.label} {...stat} />
+            <div className="grid sm:grid-cols-2 gap-8">
+              {highlights.map((item) => (
+                <div key={item.title} className="space-y-3">
+                  <div className="w-12 h-12 rounded-2xl bg-white shadow-md flex items-center justify-center text-primary">
+                    <item.icon className="h-6 w-6" />
+                  </div>
+                  <h4 className="font-black text-slate-900 uppercase tracking-wider text-sm">{item.title}</h4>
+                  <p className="text-sm text-slate-500 font-medium">{item.description}</p>
+                </div>
               ))}
             </div>
-          </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="relative"
+          >
+            <div className="relative rounded-[4rem] overflow-hidden shadow-2xl border-8 border-white">
+              <Image 
+                src="https://picsum.photos/seed/arkaa-team/800/1000" 
+                alt="Arkaa Team Workspace" 
+                width={800} 
+                height={1000} 
+                className="object-cover"
+                data-ai-hint="modern office workspace"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
+            </div>
+            {/* Decorative Element */}
+            <div className="absolute -bottom-10 -right-10 w-48 h-48 orange-gradient-bg rounded-full opacity-20 blur-3xl -z-10" />
+          </motion.div>
         </div>
       </div>
     </section>

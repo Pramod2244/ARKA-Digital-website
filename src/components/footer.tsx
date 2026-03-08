@@ -20,7 +20,7 @@ export function Footer() {
   }, []);
 
   return (
-    <footer className="bg-slate-950 text-slate-400 py-24 px-4 overflow-hidden relative">
+    <footer className="bg-[#0A1F44] text-slate-300 py-24 px-4 overflow-hidden relative">
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 blur-[150px] -z-10 rounded-full" />
       
       <div className="container mx-auto max-w-7xl">
@@ -51,7 +51,7 @@ export function Footer() {
 
           <div>
             <h4 className="font-headline text-white font-black uppercase tracking-[0.3em] text-[10px] mb-10">Solutions</h4>
-            <nav className="flex flex-col space-y-5 text-xs font-black uppercase tracking-widest">
+            <nav className="flex flex-col space-y-5 text-xs font-bold uppercase tracking-widest">
               <Link href="#" className="hover:text-primary transition-colors">Website Development</Link>
               <Link href="#" className="hover:text-primary transition-colors">HIMS Systems</Link>
               <Link href="#" className="hover:text-primary transition-colors">Custom Web Apps</Link>
@@ -61,7 +61,7 @@ export function Footer() {
 
           <div>
             <h4 className="font-headline text-white font-black uppercase tracking-[0.3em] text-[10px] mb-10">Company</h4>
-            <nav className="flex flex-col space-y-5 text-xs font-black uppercase tracking-widest">
+            <nav className="flex flex-col space-y-5 text-xs font-bold uppercase tracking-widest">
               <Link href="#home" className="hover:text-primary transition-colors">Home</Link>
               <Link href="#services" className="hover:text-primary transition-colors">Our Services</Link>
               <Link href="#portfolio" className="hover:text-primary transition-colors">Portfolio</Link>
@@ -71,7 +71,7 @@ export function Footer() {
 
           <div>
             <h4 className="font-headline text-white font-black uppercase tracking-[0.3em] text-[10px] mb-10">Get In Touch</h4>
-            <div className="space-y-8 text-xs font-black uppercase tracking-widest">
+            <div className="space-y-8 text-xs font-bold uppercase tracking-widest">
               <div className="flex items-center gap-5 hover:text-white transition-colors cursor-pointer group">
                 <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all">
                   <Mail className="h-4 w-4" />

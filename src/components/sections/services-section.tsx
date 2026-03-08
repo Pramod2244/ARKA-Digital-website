@@ -39,7 +39,7 @@ const services = [
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-24 bg-[#F0F7FF] relative overflow-hidden">
+    <section id="services" className="py-24 bg-[#F2F8FF] relative overflow-hidden">
       {/* Background Decorative Grid */}
       <div className="absolute top-0 left-0 w-full h-full opacity-30 bg-grid-slate pointer-events-none" />
       
@@ -47,7 +47,7 @@ export function ServicesSection() {
         <div className="text-center space-y-4 mb-20">
           <div className="inline-block px-4 py-1.5 rounded-full bg-secondary/10 text-secondary text-[10px] font-black uppercase tracking-[0.3em]">Our Expertise</div>
           <h2 className="font-headline text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
-            Specialized <span className="text-primary text-glow-orange">Services</span>
+            Specialized <span className="text-primary">Services</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto font-medium">
             We bridge the gap between complex engineering and elegant digital experiences.

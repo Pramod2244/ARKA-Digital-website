@@ -34,7 +34,7 @@ function Counter({ value, suffix }: { value: number, suffix: string }) {
 export function StatsSection() {
   return (
     <section className="py-32 blue-gradient-bg relative overflow-hidden">
-      {/* Atmospheric reactor background elements */}
+      {/* Atmospheric Reactor Background Elements */}
       <div className="absolute inset-0 bg-white/5 opacity-10 bg-grid-white pointer-events-none" />
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/10 rounded-full blur-[150px] pointer-events-none" />
       
