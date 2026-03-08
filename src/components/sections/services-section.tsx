@@ -118,14 +118,6 @@ const services = [
     features: ["Patient Records Management", "Appointment Scheduling", "Billing & Insurance", "Hospital Workflow Automation"]
   },
   {
-    title: "Custom Web Applications",
-    description: "Tailored digital platforms designed specifically for business workflows and complex automation.",
-    icon: WebAppsIcon,
-    image: PlaceHolderImages.find(img => img.id === 'analytics-core-v2'),
-    accent: "text-primary",
-    features: ["Workflow Automation", "Secure Data Handling", "API Integration", "Scalable Architecture"]
-  },
-  {
     title: "UI / UX Design",
     description: "Clean, intuitive user interfaces that improve usability and engagement across all platforms.",
     icon: UIUXIcon,
