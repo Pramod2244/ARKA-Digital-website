@@ -12,8 +12,7 @@ import {
   Cpu, 
   Palette, 
   Cloud,
-  ChevronLeft,
-  ChevronRight
+  CheckCircle2
 } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { cn } from "@/lib/utils";
@@ -33,6 +32,7 @@ const services = [
     icon: Globe,
     image: PlaceHolderImages.find(img => img.id === 'web-dev-v2'),
     accent: "text-primary",
+    features: ["Responsive Design", "SEO Optimization", "Fast Performance", "Mobile Friendly"]
   },
   {
     title: "Hospital Management Systems",
@@ -40,6 +40,7 @@ const services = [
     icon: Hospital,
     image: PlaceHolderImages.find(img => img.id === 'hims-dashboard-v2'),
     accent: "text-[#3B82F6]",
+    features: ["Patient Records Management", "Appointment Scheduling", "Billing & Insurance", "Hospital Workflow Automation"]
   },
   {
     title: "Custom Web Applications",
@@ -47,6 +48,7 @@ const services = [
     icon: Cpu,
     image: PlaceHolderImages.find(img => img.id === 'analytics-core-v2'),
     accent: "text-primary",
+    features: ["Workflow Automation", "Secure Data Handling", "API Integration", "Scalable Architecture"]
   },
   {
     title: "UI / UX Design",
@@ -54,6 +56,7 @@ const services = [
     icon: Palette,
     image: PlaceHolderImages.find(img => img.id === 'ui-ux-design-v2'),
     accent: "text-[#3B82F6]",
+    features: ["User-Centered Design", "Interactive Prototypes", "Clean Interface Layout", "Mobile Experience Optimization"]
   },
   {
     title: "Cloud & Hosting Solutions",
@@ -61,6 +64,7 @@ const services = [
     icon: Cloud,
     image: PlaceHolderImages.find(img => img.id === 'cloud-solutions-v2'),
     accent: "text-primary",
+    features: ["Cloud Deployment", "Server Management", "High Availability", "Performance Monitoring"]
   }
 ];
 
@@ -149,18 +153,17 @@ export function ServicesSection() {
                       </div>
                       
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                        <div className="flex items-center gap-4">
-                          <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                            <ArrowRight className="h-4 w-4" />
+                        {service.features.map((feature, fIndex) => (
+                          <div key={fIndex} className="flex items-center gap-3">
+                            <div className={cn(
+                              "w-6 h-6 rounded-full flex items-center justify-center",
+                              index % 2 === 0 ? "bg-primary/10 text-primary" : "bg-[#3B82F6]/10 text-[#3B82F6]"
+                            )}>
+                              <CheckCircle2 className="h-3.5 w-3.5" />
+                            </div>
+                            <span className="text-[11px] font-black uppercase tracking-widest text-slate-700">{feature}</span>
                           </div>
-                          <span className="text-sm font-black uppercase tracking-widest text-slate-700">Scalable Tech</span>
-                        </div>
-                        <div className="flex items-center gap-4">
-                          <div className="w-8 h-8 rounded-full bg-[#3B82F6]/10 flex items-center justify-center text-[#3B82F6]">
-                            <ArrowRight className="h-4 w-4" />
-                          </div>
-                          <span className="text-sm font-black uppercase tracking-widest text-slate-700">Secure Core</span>
-                        </div>
+                        ))}
                       </div>
 
                       <Button className="h-18 px-12 text-sm font-black rounded-full bg-slate-900 text-white hover:bg-slate-800 transition-all active:scale-95 uppercase tracking-[0.2em] group shadow-xl" asChild>
