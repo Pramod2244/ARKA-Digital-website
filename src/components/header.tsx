@@ -1,12 +1,21 @@
+
 "use client";
 
 import Link from 'next/link';
 import { Button } from './ui/button';
-import { Menu, X, ArrowRight } from 'lucide-react';
+import { Menu, X, ArrowRight, Globe, Hospital, Cpu, Palette, Cloud } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle, SheetDescription } from "@/components/ui/sheet";
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
 
 const LogoMark = () => (
   <svg viewBox="0 0 100 100" className="h-10 w-10 text-primary" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -28,6 +37,39 @@ const LogoMark = () => (
   </svg>
 );
 
+const serviceItems = [
+  {
+    title: "Website Development",
+    description: "Modern performance-first sites for global businesses.",
+    icon: Globe,
+    href: "#services",
+  },
+  {
+    title: "HIMS Systems",
+    description: "Streamlined clinical operations for hospitals.",
+    icon: Hospital,
+    href: "#services",
+  },
+  {
+    title: "Custom Web Applications",
+    description: "Scalable business automation and workflows.",
+    icon: Cpu,
+    href: "#services",
+  },
+  {
+    title: "UI / UX Design",
+    description: "User-centric interface design and prototyping.",
+    icon: Palette,
+    href: "#services",
+  },
+  {
+    title: "Cloud Solutions",
+    description: "Robust infrastructure and cloud migration services.",
+    icon: Cloud,
+    href: "#services",
+  },
+];
+
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -40,29 +82,104 @@ export function Header() {
 
   const navLinks = [
     { href: "#home", label: "Home" },
-    { href: "#services", label: "Services" },
-    { href: "#portfolio", label: "Projects" },
-    { href: "#technologies", label: "Technologies" },
+    { href: "#portfolio", label: "Portfolio" },
     { href: "#about", label: "About" },
     { href: "#contact", label: "Contact" },
   ];
 
   return (
     <header className={cn(
-      "fixed top-0 z-50 w-full transition-all duration-300 px-6 py-4",
-      isScrolled ? "bg-white/80 backdrop-blur-xl border-b border-slate-100 py-3 shadow-sm" : "bg-transparent"
+      "fixed top-0 left-0 right-0 z-50 px-6 py-6 transition-all duration-500",
+      isScrolled ? "py-4" : "py-8"
     )}>
-      <div className="container flex items-center justify-between max-w-7xl mx-auto">
+      <div className={cn(
+        "container mx-auto max-w-7xl flex items-center justify-between px-6 h-16 transition-all duration-500",
+        isScrolled 
+          ? "bg-white/80 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.05)] rounded-full" 
+          : "bg-transparent"
+      )}>
+        {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
           <LogoMark />
           <div className="flex flex-col">
-            <span className="font-headline text-xl font-black tracking-[0.3em] uppercase text-slate-900 leading-none">
+            <span className="font-headline text-lg font-black tracking-[0.3em] uppercase text-slate-900 leading-none">
               Arkaa <span className="text-primary">Digital</span>
             </span>
-            <span className="text-[7px] uppercase tracking-[0.4em] font-black text-slate-400 mt-1 italic">Building what's next</span>
+            <span className="text-[6px] uppercase tracking-[0.4em] font-black text-slate-400 mt-1 italic">Building what's next</span>
           </div>
         </Link>
         
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:block">
+          <NavigationMenu>
+            <NavigationMenuList className="gap-2">
+              <NavigationMenuItem>
+                <Link href="#home" legacyBehavior passHref>
+                  <NavigationMenuLink className={cn(
+                    "px-4 py-2 text-xs font-black uppercase tracking-widest transition-colors",
+                    "text-slate-600 hover:text-primary"
+                  )}>
+                    Home
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="text-xs">Services</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <div className="w-[600px] p-6 grid grid-cols-2 gap-4">
+                    <div className="col-span-1 bg-slate-50 rounded-2xl p-6 flex flex-col justify-between">
+                      <div>
+                        <h4 className="font-black uppercase tracking-[0.2em] text-[10px] text-primary mb-4">Our Expertise</h4>
+                        <p className="text-sm font-medium text-slate-600 leading-relaxed">
+                          We develop world-class digital systems and high-performance websites for global innovators.
+                        </p>
+                      </div>
+                      <Button variant="link" className="p-0 text-xs font-black uppercase tracking-widest h-auto group text-primary" asChild>
+                        <Link href="#services">
+                          View All Services
+                          <ArrowRight className="ml-2 h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                      </Button>
+                    </div>
+                    <div className="col-span-1 space-y-1">
+                      {serviceItems.map((item) => (
+                        <Link
+                          key={item.title}
+                          href={item.href}
+                          className="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors group"
+                        >
+                          <div className="mt-1 p-2 rounded-lg bg-white shadow-sm border border-slate-100 group-hover:text-primary group-hover:border-primary/20 transition-all">
+                            <item.icon className="h-4 w-4" />
+                          </div>
+                          <div>
+                            <div className="text-xs font-black uppercase tracking-widest text-slate-900 mb-1">{item.title}</div>
+                            <div className="text-[10px] font-medium text-slate-400 leading-tight">{item.description}</div>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              {navLinks.slice(1).map((link) => (
+                <NavigationMenuItem key={link.href}>
+                  <Link href={link.href} legacyBehavior passHref>
+                    <NavigationMenuLink className={cn(
+                      "px-4 py-2 text-xs font-black uppercase tracking-widest transition-colors",
+                      "text-slate-600 hover:text-primary"
+                    )}>
+                      {link.label}
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
+        </nav>
+
+        {/* CTA & Mobile Trigger */}
         <div className="flex items-center gap-4">
           <Button size="sm" className="hidden sm:flex bg-secondary text-white font-bold rounded-full h-10 px-8 shadow-lg shadow-secondary/20 hover:bg-secondary/90 transition-all active:scale-95 uppercase tracking-widest text-[9px]" asChild>
             <Link href="#contact">Start Your Project</Link>
@@ -70,7 +187,7 @@ export function Header() {
 
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-slate-900 hover:bg-slate-100 rounded-full h-12 w-12 group transition-colors">
+              <Button variant="ghost" size="icon" className="lg:hidden text-slate-900 hover:bg-slate-100 rounded-full h-10 w-10 group transition-colors">
                 <Menu className="h-6 w-6 group-hover:scale-110 transition-transform" />
               </Button>
             </SheetTrigger>
@@ -80,8 +197,7 @@ export function Header() {
                 <SheetDescription>Access Arkaa Digital's main sections and project inquiry.</SheetDescription>
               </div>
               <div className="flex h-full w-full overflow-hidden">
-                {/* Left Side: Navigation Panel */}
-                <div className="w-full lg:w-1/2 h-full flex flex-col p-8 md:p-16 lg:p-24 relative bg-white">
+                <div className="w-full h-full flex flex-col p-8 md:p-16 relative bg-white">
                   <div className="flex items-center justify-between mb-20">
                     <div className="flex items-center gap-3">
                       <LogoMark />
@@ -94,12 +210,11 @@ export function Header() {
                     </SheetClose>
                   </div>
 
-                  <div className="mb-8">
-                    <span className="text-[10px] uppercase tracking-[0.4em] font-black text-primary italic">Navigate Your Next</span>
-                  </div>
-
-                  <nav className="flex flex-col gap-4 md:gap-8">
-                    {navLinks.map((link, i) => (
+                  <nav className="flex flex-col gap-6">
+                    <div className="mb-4">
+                      <span className="text-[10px] uppercase tracking-[0.4em] font-black text-primary italic">Menu</span>
+                    </div>
+                    {[...navLinks.slice(0, 1), { href: "#services", label: "Services" }, ...navLinks.slice(1)].map((link, i) => (
                       <motion.div
                         key={link.href}
                         initial={{ opacity: 0, x: -20 }}
@@ -109,67 +224,28 @@ export function Header() {
                         <SheetClose asChild>
                           <a 
                             href={link.href} 
-                            className="group relative inline-block text-4xl md:text-6xl font-black text-slate-900 hover:text-primary transition-colors py-2"
+                            className="group relative inline-block text-3xl md:text-5xl font-black text-slate-900 hover:text-primary transition-colors py-2"
                           >
                             {link.label}
-                            <span className="absolute bottom-0 left-0 w-0 h-1 bg-primary transition-all duration-300 group-hover:w-full" />
                           </a>
                         </SheetClose>
                       </motion.div>
                     ))}
                   </nav>
 
-                  <div className="mt-auto pt-20">
+                  <div className="mt-auto pt-10">
                     <SheetClose asChild>
                       <Button 
                         size="lg" 
-                        className="h-16 px-12 text-sm font-black rounded-full bg-secondary text-white shadow-2xl shadow-secondary/20 hover:bg-secondary/90 transition-all uppercase tracking-[0.2em] group"
+                        className="w-full h-16 px-12 text-sm font-black rounded-full bg-secondary text-white shadow-2xl shadow-secondary/20 hover:bg-secondary/90 transition-all uppercase tracking-[0.2em] group"
                         asChild
                       >
-                        <Link href="#contact" className="flex items-center gap-4">
+                        <Link href="#contact" className="flex items-center justify-center gap-4">
                           Start Your Project
                           <ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform" />
                         </Link>
                       </Button>
                     </SheetClose>
-                  </div>
-                </div>
-
-                {/* Right Side: Visual Accent Panel */}
-                <div className="hidden lg:block lg:w-1/2 h-full relative overflow-hidden bg-gradient-to-br from-white via-[#FFF4EC] to-[#F5F9FF]">
-                  <div className="absolute inset-0 bg-grid-slate opacity-[0.03]" />
-                  
-                  {/* Kinetic Accent Shapes */}
-                  <motion.div 
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-                    className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] border border-primary/10 rounded-full opacity-30"
-                  />
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 orange-gradient-bg opacity-[0.05] rounded-full blur-[100px]" />
-                  <div className="absolute bottom-[10%] left-[10%] w-60 h-60 bg-secondary/10 rounded-full blur-[80px]" />
-
-                  <div className="absolute inset-0 flex flex-col items-center justify-center p-20 text-center">
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.5, duration: 0.8 }}
-                      className="space-y-6"
-                    >
-                      <h4 className="text-2xl font-black text-slate-900 uppercase tracking-tighter">Arkaa Digital Core</h4>
-                      <p className="text-slate-500 font-medium max-w-sm mx-auto leading-relaxed">
-                        Engineering world-class digital systems and high-performance experiences for global innovators.
-                      </p>
-                      <div className="pt-10 flex justify-center gap-12 grayscale opacity-40">
-                        <div className="flex flex-col items-center gap-2">
-                          <span className="text-3xl font-black text-slate-900">100+</span>
-                          <span className="text-[8px] uppercase font-black tracking-widest text-slate-400">Systems Delivered</span>
-                        </div>
-                        <div className="flex flex-col items-center gap-2">
-                          <span className="text-3xl font-black text-slate-900">5+</span>
-                          <span className="text-[8px] uppercase font-black tracking-widest text-slate-400">Years Active</span>
-                        </div>
-                      </div>
-                    </motion.div>
                   </div>
                 </div>
               </div>
