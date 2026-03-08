@@ -86,7 +86,7 @@ export function ServicesSection() {
   }, [api]);
 
   return (
-    <section id="services" className="bg-[#EEF3F8] overflow-hidden pl-[70px]">
+    <section id="services" className="bg-[#E9F1FB] overflow-hidden pl-[70px]">
       <div className="container mx-auto max-w-7xl px-6 py-32">
         <div className="text-center mb-20 space-y-6">
           <motion.div

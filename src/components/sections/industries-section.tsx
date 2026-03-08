@@ -15,7 +15,7 @@ const industries = [
 
 export function IndustriesSection() {
   return (
-    <section id="industries" className="py-24 bg-[#F9F6F2] relative overflow-hidden pl-[70px]">
+    <section id="industries" className="py-24 bg-[#EDF5F1] relative overflow-hidden pl-[70px]">
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-20 space-y-4">
           <div className="inline-block px-4 py-1.5 rounded-full bg-slate-200/50 text-slate-500 text-[10px] font-black uppercase tracking-[0.3em]">Market Verticals</div>
@@ -35,7 +35,7 @@ export function IndustriesSection() {
               <div className="mx-auto w-28 h-28 rounded-[3rem] bg-white shadow-lg flex items-center justify-center border border-slate-100 group-hover:bg-primary group-hover:border-primary transition-all duration-500 hover:-translate-y-2">
                 <item.icon className="h-10 w-10 text-slate-400 transition-all scale-100 group-hover:scale-110 group-hover:text-white" />
               </div>
-              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 group-hover:text-primary transition-colors">{item.name}</p>
+              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600 group-hover:text-primary transition-colors">{item.name}</p>
             </motion.div>
           ))}
         </div>

@@ -33,7 +33,7 @@ export function AboutSection() {
   const teamImg = PlaceHolderImages.find(img => img.id === 'tech-collab-office');
 
   return (
-    <section id="about" className="py-24 bg-[#F7F3EE] relative overflow-hidden pl-[70px]">
+    <section id="about" className="py-24 bg-[#F4EFEA] relative overflow-hidden pl-[70px]">
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
           <motion.div

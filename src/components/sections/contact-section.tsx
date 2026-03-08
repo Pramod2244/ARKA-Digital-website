@@ -75,7 +75,7 @@ export function ContactSection() {
     }
 
     return (
-        <section id="contact" className="py-24 bg-[#EFF4F7] relative overflow-hidden pl-[70px]">
+        <section id="contact" className="py-24 bg-[#EAF2F6] relative overflow-hidden pl-[70px]">
             <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center space-y-4 mb-20">
                     <div className="inline-block px-4 py-1.5 rounded-full bg-slate-200/50 text-slate-500 text-[10px] font-black uppercase tracking-[0.3em]">Get In Touch</div>

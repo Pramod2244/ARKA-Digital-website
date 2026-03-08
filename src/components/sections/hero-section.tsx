@@ -11,30 +11,9 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export function HeroSection() {
   const dashboardImg = PlaceHolderImages.find(img => img.id === 'hero-software-platform');
-  const secondaryImg = PlaceHolderImages.find(img => img.id === 'analytics-core-v2');
-
-  const HeroLogoIcon = () => (
-    <svg viewBox="0 0 100 100" className="h-12 w-12 text-primary mb-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="50" cy="50" r="18" />
-      {Array.from({ length: 16 }).map((_, i) => {
-        const angle = i * 22.5;
-        const isLong = i % 2 === 0;
-        const d = isLong 
-          ? "M 50 2 Q 53 15 50 28 Q 47 15 50 2 Z" 
-          : "M 50 12 Q 52 20 50 28 Q 48 20 50 12 Z"; 
-        return (
-          <path
-            key={i}
-            d={d}
-            transform={`rotate(${angle} 50 50)`}
-          />
-        );
-      })}
-    </svg>
-  );
 
   return (
-    <section id="home" className="relative w-full pt-48 pb-32 overflow-hidden bg-[#F6F7F9] pl-[70px]">
+    <section id="home" className="relative w-full pt-48 pb-32 overflow-hidden bg-[#F3F6FA] pl-[70px]">
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <MotionDiv
@@ -48,11 +27,11 @@ export function HeroSection() {
             </div>
             
             <h1 className="font-headline text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight text-slate-900 mb-8">
-              We Build Smart <br />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#FF8A30]">Digital</span> Platforms
+              Building Powerful <br />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#FF8A30]">Digital</span> Solutions
             </h1>
             
-            <p className="text-xl text-slate-500 font-medium leading-relaxed mb-10 max-w-lg">
+            <p className="text-xl text-slate-600 font-medium leading-relaxed mb-10 max-w-lg">
               ARKAA DIGITAL develops modern websites, hospital management systems, and custom digital platforms that help businesses and healthcare organizations operate efficiently in the digital world.
             </p>
 
@@ -78,7 +57,7 @@ export function HeroSection() {
             <motion.div 
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-0 right-0 w-[90%] h-[450px] bg-white/40 backdrop-blur-xl rounded-[2.5rem] border border-white/40 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] overflow-hidden z-20"
+              className="absolute top-0 right-0 w-[95%] h-[450px] bg-white/40 backdrop-blur-xl rounded-[2.5rem] border border-white/40 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] overflow-hidden z-20"
             >
               <div className="h-10 bg-white/60 flex items-center px-6 gap-2 border-b border-white/40">
                 <div className="w-2.5 h-2.5 rounded-full bg-red-400/50" />
@@ -101,24 +80,12 @@ export function HeroSection() {
             <motion.div 
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="absolute bottom-10 left-0 w-[70%] h-[350px] bg-white/20 backdrop-blur-2xl rounded-[2.5rem] border border-white/30 shadow-[0_24px_48px_-12px_rgba(0,0,0,0.15)] overflow-hidden z-30"
+              className="absolute bottom-10 left-0 w-[60%] h-[300px] bg-white/20 backdrop-blur-2xl rounded-[2.5rem] border border-white/30 shadow-[0_24px_48px_-12px_rgba(0,0,0,0.15)] overflow-hidden z-30 flex items-center justify-center"
             >
-              <div className="h-10 bg-white/40 flex items-center px-6 gap-2 border-b border-white/30">
-                <div className="w-2.5 h-2.5 rounded-full bg-slate-300/50" />
-                <div className="w-2.5 h-2.5 rounded-full bg-slate-300/50" />
-                <div className="w-2.5 h-2.5 rounded-full bg-slate-300/50" />
-              </div>
-              <div className="relative w-full h-full bg-gradient-to-br from-[#3B82F6]/10 to-transparent">
-                {secondaryImg?.imageUrl && (
-                  <Image 
-                    src={secondaryImg.imageUrl} 
-                    alt="Analytics Visuals" 
-                    fill 
-                    className="object-cover opacity-80"
-                    data-ai-hint={secondaryImg?.imageHint}
-                  />
-                )}
-              </div>
+               <div className="p-8 text-center">
+                  <p className="text-slate-900 font-black text-2xl uppercase tracking-widest mb-2">High Tech</p>
+                  <div className="h-1 w-12 bg-primary mx-auto rounded-full" />
+               </div>
             </motion.div>
           </MotionDiv>
         </div>
