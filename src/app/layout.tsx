@@ -1,11 +1,12 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
-import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { MotionProvider } from '@/components/motion-provider';
 import { ScrollProgress } from '@/components/scroll-progress';
 import { FirebaseClientProvider } from '@/firebase';
+import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
+import { AppSidebar } from '@/components/app-sidebar';
 
 export const metadata: Metadata = {
   title: 'Arkaa Digital | High-Performance Web & AI Engineering',
@@ -34,15 +35,19 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased flex flex-col min-h-screen bg-background selection:bg-primary selection:text-primary-foreground">
         <FirebaseClientProvider>
-          <MotionProvider>
-            <ScrollProgress />
-            <Header />
-            <main className="flex-grow">
-              {children}
-            </main>
-            <Footer />
-            <Toaster />
-          </MotionProvider>
+          <SidebarProvider>
+            <AppSidebar />
+            <SidebarInset className="flex flex-col min-h-screen relative">
+              <MotionProvider>
+                <ScrollProgress />
+                <main className="flex-grow">
+                  {children}
+                </main>
+                <Footer />
+                <Toaster />
+              </MotionProvider>
+            </SidebarInset>
+          </SidebarProvider>
         </FirebaseClientProvider>
       </body>
     </html>
