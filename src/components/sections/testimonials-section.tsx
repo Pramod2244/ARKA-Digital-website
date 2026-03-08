@@ -75,8 +75,6 @@ const testimonials = [
 export function TestimonialsSection() {
   const [mounted, setMounted] = useState(false);
   
-  // Requirement: Infinite horizontal auto-scrolling with no snapping.
-  // Requirement: Pause on hover.
   const autoScroll = useRef(
     AutoScroll({ 
       speed: 1, 
@@ -94,50 +92,19 @@ export function TestimonialsSection() {
 
   return (
     <section id="testimonials" className="relative py-24 md:py-32 overflow-hidden bg-background">
-      {/* Atmospheric Background System */}
+      {/* ATMOSPHERIC BACKGROUND */}
       <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
-        {/* Subtle Tech Grid */}
-        <div 
-          className="absolute inset-0 opacity-[0.02] bg-grid-white" 
-          style={{ backgroundSize: '50px 50px' }} 
-        />
-        
-        {/* Radial Energy Glows */}
-        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[140px] opacity-20" />
-        <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[140px] opacity-15" />
-        
-        {/* Ambient Particle System */}
-        {[...Array(15)].map((_, i) => (
-          <motion.div
-            key={`testimonial-particle-${i}`}
-            className="absolute w-1 h-1 rounded-full"
-            style={{
-              background: i % 2 === 0 ? 'hsl(var(--primary))' : 'hsl(var(--accent))',
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              opacity: Math.random() * 0.15,
-            }}
-            animate={{
-              y: [0, -50, 0],
-              opacity: [0.05, 0.2, 0.05],
-              scale: [1, 1.3, 1],
-            }}
-            transition={{
-              duration: 10 + Math.random() * 10,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: Math.random() * 5,
-            }}
-          />
-        ))}
+        <div className="absolute inset-0 opacity-[0.03] bg-grid-white" style={{ backgroundSize: '50px 50px' }} />
+        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[140px] opacity-20" />
+        <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[140px] opacity-15" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center space-y-4 mb-20">
-          <div className="inline-flex items-center gap-2 px-3 py-1 border border-primary/20 rounded-full bg-primary/5 backdrop-blur-md mb-2">
-            <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-primary">Trust & Success</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 border border-accent/20 rounded-full bg-accent/5 backdrop-blur-md mb-2">
+            <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent">Trust & Success</span>
           </div>
-          <h2 className="font-headline text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight">
+          <h2 className="font-headline text-4xl md:text-5xl font-bold tracking-tight text-foreground leading-tight">
             Our <span className="text-primary text-glow-primary">Partners</span> Say
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-medium">
@@ -160,40 +127,36 @@ export function TestimonialsSection() {
               {testimonials.map((testimonial, index) => (
                 <CarouselItem key={index} className="pl-4 md:pl-8 basis-full md:basis-1/2 lg:basis-1/3">
                   <div className="h-full p-1">
-                    <Card className="h-full glass-card border-white/5 bg-white/[0.02] backdrop-blur-xl group hover:border-primary/40 transition-all duration-500 overflow-hidden relative rounded-[2.5rem] flex flex-col p-8 md:p-10 select-none">
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                      
-                      <div className="relative z-10 flex flex-col h-full">
-                        <div className="flex justify-between items-start mb-8">
-                          <div className="p-4 rounded-2xl bg-primary/10 border border-primary/20 group-hover:bg-primary/20 transition-all duration-500">
-                            <Quote className="h-6 w-6 text-primary filter drop-shadow-[0_0_8px_hsl(var(--primary)/0.6)]" />
-                          </div>
-                          <div className="flex gap-1.5 pt-2">
-                            {[...Array(testimonial.rating)].map((_, i) => (
-                              <Star key={i} className="h-3.5 w-3.5 fill-primary text-primary" />
-                            ))}
-                          </div>
+                    <Card className="h-full glass-card glass-card-hover flex flex-col p-8 md:p-10 select-none rounded-[2.5rem]">
+                      <div className="flex justify-between items-start mb-8">
+                        <div className="p-4 rounded-2xl bg-accent/5 border border-accent/10">
+                          <Quote className="h-6 w-6 text-accent" />
                         </div>
+                        <div className="flex gap-1.5 pt-2">
+                          {[...Array(testimonial.rating)].map((_, i) => (
+                            <Star key={i} className="h-3.5 w-3.5 fill-primary text-primary" />
+                          ))}
+                        </div>
+                      </div>
 
-                        <div className="flex-grow mb-10">
-                          <p className="text-lg md:text-xl text-white/90 leading-relaxed font-medium italic">
-                            "{testimonial.quote}"
+                      <div className="flex-grow mb-10">
+                        <p className="text-lg md:text-xl text-foreground/90 leading-relaxed font-medium italic">
+                          "{testimonial.quote}"
+                        </p>
+                      </div>
+
+                      <div className="flex items-center gap-5 pt-8 border-t border-accent/10 mt-auto">
+                        <Avatar className="h-14 w-14 border-2 border-accent/20 shadow-[0_0_15px_rgba(0,186,255,0.05)]">
+                          <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
+                          <AvatarFallback className="bg-accent/10 text-accent font-bold">{testimonial.name.charAt(0)}</AvatarFallback>
+                        </Avatar>
+                        <div className="space-y-1">
+                          <p className="font-bold text-lg text-foreground group-hover:text-primary transition-colors duration-300">
+                            {testimonial.name}
                           </p>
-                        </div>
-
-                        <div className="flex items-center gap-5 pt-8 border-t border-white/5 mt-auto">
-                          <Avatar className="h-14 w-14 border-2 border-primary/20 shadow-[0_0_15px_rgba(249,115,22,0.1)] transition-transform duration-500 group-hover:scale-110">
-                            <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-                            <AvatarFallback className="bg-primary/10 text-primary font-bold">{testimonial.name.charAt(0)}</AvatarFallback>
-                          </Avatar>
-                          <div className="space-y-1">
-                            <p className="font-bold text-lg text-white group-hover:text-primary transition-colors duration-300">
-                              {testimonial.name}
-                            </p>
-                            <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-bold">
-                              {testimonial.title}
-                            </p>
-                          </div>
+                          <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-bold">
+                            {testimonial.title}
+                          </p>
                         </div>
                       </div>
                     </Card>
@@ -203,12 +166,10 @@ export function TestimonialsSection() {
             </CarouselContent>
           </Carousel>
 
-          {/* Seamless Transition Overlays */}
           <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
           <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
         </div>
 
-        {/* Visual Indicator: Hover to Pause */}
         <div className="flex justify-center items-center gap-2 mt-12 text-muted-foreground/60 text-[10px] uppercase tracking-[0.2em] font-bold">
           <MousePointer2 className="h-3 w-3 animate-pulse" />
           <span>Hover to Pause Stream</span>

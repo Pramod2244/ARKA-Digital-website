@@ -13,17 +13,17 @@ export function FuturisticBackground() {
   if (!mounted) return null;
 
   return (
-    <div className="fixed inset-0 overflow-hidden bg-[#050506] -z-20">
-      {/* 1. Deep Base Atmospheric Layers */}
-      <div className="absolute top-[-10%] right-[-10%] w-[70%] h-[70%] bg-primary/5 blur-[160px] rounded-full opacity-10" />
-      <div className="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] bg-accent/5 blur-[140px] rounded-full opacity-5" />
+    <div className="fixed inset-0 overflow-hidden bg-background -z-20">
+      {/* 1. Light Atmospheric Layers */}
+      <div className="absolute top-[-10%] right-[-10%] w-[70%] h-[70%] bg-primary/5 blur-[160px] rounded-full opacity-30" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] bg-accent/5 blur-[140px] rounded-full opacity-20" />
 
-      {/* 2. Neural Tech Grid */}
-      <div className="absolute inset-0 opacity-[0.02] pointer-events-none">
-        <div className="absolute inset-0 bg-grid-white/[0.2]" style={{ backgroundSize: '60px 60px' }} />
+      {/* 2. Neural Tech Grid (Light) */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+        <div className="absolute inset-0 bg-grid-white" style={{ backgroundSize: '60px 60px' }} />
       </div>
 
-      {/* 3. Subtle Multi-Colored Tech Particles (Low Opacity) */}
+      {/* 3. Subtle Multi-Colored Tech Particles */}
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(30)].map((_, i) => (
           <motion.div
@@ -36,11 +36,11 @@ export function FuturisticBackground() {
                 ? 'hsl(var(--primary))' 
                 : i % 3 === 1 
                 ? 'hsl(var(--accent))' 
-                : 'rgba(255,255,255,0.3)',
+                : 'rgba(0,0,0,0.1)',
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              opacity: Math.random() * 0.3 + 0.05,
-              filter: 'blur(1px)',
+              opacity: Math.random() * 0.2 + 0.05,
+              filter: 'blur(0.5px)',
             }}
             animate={{
               y: [0, -60, 0],
@@ -58,7 +58,7 @@ export function FuturisticBackground() {
       </div>
       
       {/* 4. Depth Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background opacity-95" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-transparent to-background/80 opacity-60" />
     </div>
   );
 }

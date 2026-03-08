@@ -46,47 +46,13 @@ export function ServicesSection() {
   }, []);
 
   return (
-    <section id="services" className="relative py-24 md:py-32 overflow-hidden bg-[#050506]">
-      {/* 1. ATMOSPHERIC BACKGROUND SYSTEM */}
+    <section id="services" className="relative py-24 md:py-32 overflow-hidden bg-background">
+      {/* ATMOSPHERIC BACKGROUND */}
       <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
-        {/* Subtle Tech Grid */}
-        <div 
-          className="absolute inset-0 opacity-[0.03] bg-grid-white" 
-          style={{ backgroundSize: '60px 60px' }} 
-        />
+        <div className="absolute inset-0 opacity-[0.03] bg-grid-white" style={{ backgroundSize: '60px 60px' }} />
         
-        {/* Radial Energy Glows */}
-        <div className="absolute top-1/4 -left-1/4 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[160px] opacity-20" />
-        <div className="absolute bottom-1/4 -right-1/4 w-[800px] h-[800px] bg-accent/10 rounded-full blur-[160px] opacity-15" />
-        
-        {/* Ambient Particle System */}
-        {mounted && [...Array(15)].map((_, i) => (
-          <motion.div
-            key={`service-particle-${i}`}
-            className="absolute w-1 h-1 rounded-full"
-            style={{
-              background: i % 2 === 0 ? 'hsl(var(--primary))' : 'hsl(var(--accent))',
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              opacity: Math.random() * 0.15,
-            }}
-            animate={{
-              y: [0, -60, 0],
-              opacity: [0.05, 0.2, 0.05],
-              scale: [1, 1.4, 1],
-            }}
-            transition={{
-              duration: 10 + Math.random() * 10,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: Math.random() * 5,
-            }}
-          />
-        ))}
-
-        {/* Transition Masking */}
-        <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-background to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent" />
+        <div className="absolute top-1/4 -left-1/4 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[160px] opacity-20" />
+        <div className="absolute bottom-1/4 -right-1/4 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[160px] opacity-15" />
       </div>
 
       <motion.div 
@@ -97,18 +63,17 @@ export function ServicesSection() {
         className="container mx-auto px-4 relative z-10"
       >
         <div className="text-center space-y-4 mb-20">
-          <div className="inline-flex items-center gap-2 px-3 py-1 border border-primary/20 rounded-full bg-primary/5 backdrop-blur-md mb-2">
-            <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-primary">Technical Core</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 border border-accent/20 rounded-full bg-accent/5 backdrop-blur-md mb-2">
+            <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-accent">Technical Core</span>
           </div>
-          <h2 className="font-headline text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight">
-            Our <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent text-glow-primary">Specializations</span>
+          <h2 className="font-headline text-4xl md:text-6xl font-bold tracking-tight text-foreground leading-tight">
+            Our <span className="text-primary text-glow-primary">Specializations</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-medium leading-relaxed">
             High-performance engineering and future-ready intelligence solutions built to scale the Arkaa Digital core.
           </p>
         </div>
 
-        {/* SYMMETRICAL 3x2 GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {services.map((service, index) => (
             <motion.div
@@ -119,18 +84,15 @@ export function ServicesSection() {
               viewport={{ once: true }}
               className="relative group h-full"
             >
-              <Card className="h-full glass-card border-white/5 bg-white/[0.01] backdrop-blur-3xl relative overflow-hidden transition-all duration-500 hover:border-primary/40 hover:shadow-[0_0_50px_rgba(249,115,22,0.15)] flex flex-col p-8 md:p-10 rounded-[2.5rem]">
-                {/* Interactive Gradient Glow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                
+              <Card className="h-full glass-card glass-card-hover flex flex-col p-8 md:p-10 rounded-[2.5rem]">
                 <div className="relative mb-8">
-                  <div className="w-16 h-16 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center relative transition-all duration-500 group-hover:scale-110 group-hover:border-primary/50 group-hover:bg-primary/5 shadow-2xl">
-                    <service.icon className="h-8 w-8 text-white filter drop-shadow-[0_0_12px_rgba(255,255,255,0.3)] group-hover:text-primary transition-colors duration-500" />
+                  <div className="w-16 h-16 rounded-2xl bg-accent/5 border border-accent/10 flex items-center justify-center relative transition-all duration-500 group-hover:scale-110 group-hover:border-accent/40 group-hover:bg-accent/10">
+                    <service.icon className="h-8 w-8 text-accent transition-colors duration-500" />
                   </div>
                 </div>
 
                 <CardHeader className="p-0 mb-4 relative z-10">
-                  <CardTitle className="font-headline text-2xl md:text-3xl font-bold text-white tracking-tight">
+                  <CardTitle className="font-headline text-2xl md:text-3xl font-bold text-foreground tracking-tight">
                     {service.title}
                   </CardTitle>
                 </CardHeader>
@@ -140,14 +102,6 @@ export function ServicesSection() {
                     {service.description}
                   </p>
                 </CardContent>
-
-                {/* Decorative Tech Detail */}
-                <div className="absolute bottom-6 right-8 opacity-20 group-hover:opacity-40 transition-opacity">
-                  <div className="flex gap-1.5">
-                    <div className="w-1.5 h-1.5 rounded-full bg-white/40" />
-                    <div className="w-4 h-1.5 rounded-full bg-primary/40" />
-                  </div>
-                </div>
               </Card>
             </motion.div>
           ))}

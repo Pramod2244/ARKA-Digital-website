@@ -9,7 +9,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/s
 import { motion } from 'framer-motion';
 
 const LogoMark = () => (
-  <svg viewBox="0 0 32 32" className="h-7 w-7 text-primary filter drop-shadow-[0_0_8px_hsl(var(--primary)/0.6)]" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 32 32" className="h-7 w-7 text-primary filter drop-shadow-[0_0_8px_hsl(var(--primary)/0.4)]" fill="none" xmlns="http://www.w3.org/2000/svg">
     <motion.path 
       initial={{ pathLength: 0, opacity: 0 }}
       animate={{ pathLength: 1, opacity: 1 }}
@@ -54,12 +54,12 @@ export function Header() {
   return (
     <header className={cn(
       "sticky top-0 z-50 w-full transition-all duration-300",
-      isScrolled ? "bg-background/80 backdrop-blur-lg border-b border-white/10 h-14" : "h-16 md:h-20"
+      isScrolled ? "bg-white/80 backdrop-blur-lg border-b border-accent/10 h-14" : "h-16 md:h-20"
     )}>
       <div className="container flex h-full max-w-screen-2xl items-center justify-between">
         <Link href="/" className="flex items-center gap-3 group">
           <LogoMark />
-          <span className="font-headline text-lg md:text-xl font-bold tracking-[0.15em] uppercase text-white group-hover:text-primary transition-colors duration-300">
+          <span className="font-headline text-lg md:text-xl font-bold tracking-[0.15em] uppercase text-foreground group-hover:text-primary transition-colors duration-300">
             Arkaa Digital
           </span>
         </Link>
@@ -78,10 +78,10 @@ export function Header() {
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[280px] bg-background border-l border-white/10">
+            <SheetContent side="right" className="w-[280px] bg-background border-l border-accent/10">
                 <div className="flex items-center gap-3 mt-2">
                     <LogoMark />
-                    <span className="font-headline text-lg font-bold tracking-[0.15em] uppercase">Arkaa Digital</span>
+                    <span className="font-headline text-lg font-bold tracking-[0.15em] uppercase text-foreground">Arkaa Digital</span>
                 </div>
               <nav className="flex flex-col gap-5 mt-10">
                 {navLinks.map((link) => (
