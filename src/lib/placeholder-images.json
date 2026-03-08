@@ -14,8 +14,8 @@
     },
     {
       "id": "hims-dashboard-ui",
-      "description": "Clinical hospital management dashboard showing patient records and medical analytics",
-      "imageUrl": "https://picsum.photos/seed/arkaa-hims-v3/1000/800",
+      "description": "Advanced hospital management system (HIMS) dashboard showing patient records, clinical schedules, and medical analytics",
+      "imageUrl": "https://picsum.photos/seed/arkaa-hims-v4/1000/800",
       "imageHint": "medical dashboard"
     },
     {
