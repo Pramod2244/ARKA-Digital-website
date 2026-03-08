@@ -32,7 +32,7 @@ export function AboutSection() {
   const teamImg = PlaceHolderImages.find(img => img.id === 'tech-collab');
 
   return (
-    <section id="about" className="py-24 bg-[#A67C52] relative overflow-hidden">
+    <section id="about" className="py-24 bg-[#A67C52] relative overflow-hidden pl-[70px]">
       {/* Soft Glow Background Element */}
       <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />
 

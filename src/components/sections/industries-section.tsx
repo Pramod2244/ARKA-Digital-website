@@ -14,7 +14,7 @@ const industries = [
 
 export function IndustriesSection() {
   return (
-    <section className="py-24 bg-[#8C6A5D] relative overflow-hidden">
+    <section id="technologies" className="py-24 bg-[#8C6A5D] relative overflow-hidden pl-[70px]">
       {/* Background Tech Glow */}
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[140px] pointer-events-none" />
 

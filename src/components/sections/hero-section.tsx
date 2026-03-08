@@ -32,7 +32,7 @@ export function HeroSection() {
   const mainDashboard = PlaceHolderImages.find(img => img.id === 'hims-dashboard-ui');
 
   return (
-    <section id="home" className="relative w-full pt-40 pb-32 overflow-hidden bg-[#2F3E46]">
+    <section id="home" className="relative w-full pt-40 pb-32 overflow-hidden bg-[#2F3E46] pl-[70px]">
       {/* Digital Grid Overlay */}
       <div className="absolute inset-0 bg-white opacity-[0.03] pointer-events-none" />
       
@@ -71,7 +71,7 @@ export function HeroSection() {
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-5 mb-20">
-              <Button size="lg" className="h-16 px-12 text-xs font-black rounded-full bg-secondary text-white hover:bg-secondary/90 shadow-xl shadow-secondary/20 transition-all hover:-translate-y-1 uppercase tracking-[0.3em]" asChild>
+              <Button size="lg" className="h-16 px-12 text-xs font-black rounded-full bg-primary text-white hover:bg-primary/90 shadow-xl shadow-primary/20 transition-all hover:-translate-y-1 uppercase tracking-[0.3em]" asChild>
                 <Link href="#contact">Start Your Project</Link>
               </Button>
               <Button size="lg" variant="outline" className="h-16 px-12 text-xs font-black rounded-full border-2 border-white/20 bg-white/5 backdrop-blur-md text-white hover:bg-white/10 transition-all hover:-translate-y-1 uppercase tracking-[0.3em]" asChild>

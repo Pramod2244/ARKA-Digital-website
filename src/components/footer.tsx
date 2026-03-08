@@ -28,11 +28,11 @@ export function Footer() {
   const [year, setYear] = useState<number | null>(null);
 
   useEffect(() => {
-    setYear(new Date().getFullYear());
+    setYear(year || new Date().getFullYear());
   }, []);
 
   return (
-    <footer className="bg-[#1E2A32] text-slate-300 py-24 px-4 overflow-hidden relative">
+    <footer className="bg-[#1E2A32] text-slate-300 py-24 px-4 overflow-hidden relative pl-[70px]">
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 blur-[150px] -z-10 rounded-full" />
       
       <div className="container mx-auto max-w-7xl">

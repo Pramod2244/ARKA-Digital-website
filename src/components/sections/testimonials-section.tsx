@@ -76,7 +76,7 @@ export function TestimonialsSection() {
   if (!mounted) return null;
 
   return (
-    <section id="testimonials" className="py-24 bg-[#5E7C8A] relative overflow-hidden">
+    <section id="testimonials" className="py-24 bg-[#5E7C8A] relative overflow-hidden pl-[70px]">
       {/* Soft Glow */}
       <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-white/5 rounded-full blur-[100px] pointer-events-none" />
 

@@ -74,7 +74,7 @@ export function ContactSection() {
     }
 
     return (
-        <section id="contact" className="py-24 bg-[#7A8F6A] relative overflow-hidden">
+        <section id="contact" className="py-24 bg-[#7A8F6A] relative overflow-hidden pl-[70px]">
             <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center space-y-4 mb-20">
                     <div className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white text-[10px] font-black uppercase tracking-[0.3em]">Get In Touch</div>
@@ -89,7 +89,9 @@ export function ContactSection() {
                             <div className="space-y-8">
                                 <div className="flex gap-6 items-center">
                                     <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center text-primary border border-white/10">
-                                        <Mail className="h-6 w-6" />
+                                        <div className="p-3 rounded-xl bg-primary/10 text-primary">
+                                            <Mail className="h-6 w-6" />
+                                        </div>
                                     </div>
                                     <div>
                                         <p className="text-[10px] uppercase font-black text-slate-300 tracking-widest mb-1">Email Support</p>
@@ -98,7 +100,9 @@ export function ContactSection() {
                                 </div>
                                 <div className="flex gap-6 items-center">
                                     <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center text-secondary border border-white/10">
-                                        <Phone className="h-6 w-6" />
+                                        <div className="p-3 rounded-xl bg-secondary/10 text-secondary">
+                                            <Phone className="h-6 w-6" />
+                                        </div>
                                     </div>
                                     <div>
                                         <p className="text-[10px] uppercase font-black text-slate-300 tracking-widest mb-1">Call Experts</p>

@@ -31,7 +31,7 @@ const projects = [
 
 export function PortfolioSection() {
   return (
-    <section id="portfolio" className="py-32 bg-[#4A6FA5] relative overflow-hidden">
+    <section id="portfolio" className="py-32 bg-[#4A6FA5] relative overflow-hidden pl-[70px]">
       {/* Background Soft Glow */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/5 rounded-full blur-[150px] pointer-events-none" />
 

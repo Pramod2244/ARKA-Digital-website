@@ -62,18 +62,18 @@ export function AppSidebar() {
   }, []);
 
   return (
-    <nav className="fixed inset-y-0 left-0 w-[70px] bg-white border-r border-slate-100 z-[100] flex flex-col items-center py-10 select-none overflow-y-auto no-scrollbar">
-      {/* Horizontal Brand & Logo Lockup at the Top */}
-      <Link href="#home" className="flex flex-col items-center gap-2 mb-16 group px-1">
+    <nav className="fixed inset-y-0 left-0 w-[70px] bg-transparent z-[100] flex flex-col items-center py-10 select-none pointer-events-none">
+      {/* Brand Lockup - Top Left (Fixed, Interactive) */}
+      <Link href="#home" className="flex flex-col items-center gap-2 mb-16 group px-1 pointer-events-auto">
         <SidebarLogo />
         <div className="flex flex-col items-center leading-tight">
-          <span className="text-[7px] font-black uppercase tracking-[0.2em] text-slate-900 group-hover:text-primary transition-colors">Arkaa</span>
+          <span className="text-[7px] font-black uppercase tracking-[0.2em] text-white/80 group-hover:text-primary transition-colors">Arkaa</span>
           <span className="text-[7px] font-black uppercase tracking-[0.2em] text-primary">Digital</span>
         </div>
       </Link>
 
-      {/* Navigation Indicators */}
-      <div className="flex-1 flex flex-col justify-center gap-6 w-full">
+      {/* Navigation Indicators - Minimal Lines (Interactive) */}
+      <div className="flex-1 flex flex-col justify-center gap-6 w-full pointer-events-auto">
         {navItems.map((item) => {
           const isActive = activeSection === item.id;
           return (
@@ -87,15 +87,15 @@ export function AppSidebar() {
                 className={cn(
                   "h-[2px] transition-all duration-500 ease-in-out",
                   isActive 
-                    ? "w-10 bg-primary shadow-[0_0_10px_rgba(255,106,0,0.3)] h-[2px]" 
-                    : "w-4 bg-slate-200 group-hover:w-8 group-hover:bg-slate-400"
+                    ? "w-10 bg-primary shadow-[0_0_10px_rgba(255,106,0,0.5)]" 
+                    : "w-4 bg-white/30 group-hover:w-8 group-hover:bg-white/60"
                 )}
               />
               
-              {/* Contextual Section Label Below the Line */}
+              {/* Label Reveal Below the Line */}
               <span className={cn(
                 "mt-2 text-[6px] font-black uppercase tracking-[0.15em] transition-all duration-500 whitespace-nowrap",
-                "opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 text-slate-400",
+                "opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 text-white/50",
                 isActive && "opacity-100 translate-y-0 text-primary"
               )}>
                 {item.label}
@@ -105,9 +105,9 @@ export function AppSidebar() {
         })}
       </div>
 
-      {/* Aesthetic Bottom Spacer */}
-      <div className="mt-auto pt-6 opacity-20">
-        <div className="w-[1px] h-10 bg-gradient-to-t from-transparent via-slate-400 to-transparent" />
+      {/* Aesthetic Spacer */}
+      <div className="mt-auto pt-6 opacity-10">
+        <div className="w-[1px] h-10 bg-gradient-to-t from-transparent via-white to-transparent" />
       </div>
     </nav>
   );
