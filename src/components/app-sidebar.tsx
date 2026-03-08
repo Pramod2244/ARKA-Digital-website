@@ -68,8 +68,11 @@ export function AppSidebar() {
         <Link href="#home" className="flex items-center gap-4 group">
           <SidebarLogo />
           <div className="flex flex-col leading-none">
-            <span className="text-[12px] font-black uppercase tracking-[0.4em] text-slate-900 group-hover:text-primary transition-colors">Arkaa</span>
-            <span className="text-[12px] font-black uppercase tracking-[0.4em] text-primary">Digital</span>
+            <div className="flex items-center gap-2">
+              <span className="text-[12px] font-black uppercase tracking-[0.4em] text-slate-900 group-hover:text-primary transition-colors">Arkaa</span>
+              <span className="text-[12px] font-black uppercase tracking-[0.4em] text-primary">Digital</span>
+            </div>
+            <span className="text-[7px] font-black uppercase tracking-[0.3em] text-slate-400 mt-1.5">Building what's next</span>
           </div>
         </Link>
       </div>
