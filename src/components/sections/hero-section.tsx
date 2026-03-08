@@ -28,7 +28,7 @@ export function HeroSection() {
             </h1>
             
             <p className="text-xl text-slate-600 font-medium leading-relaxed mb-10 max-w-lg">
-              ARKAA DIGITAL develops modern websites, hospital management systems, and custom digital platforms that help businesses and healthcare organizations operate efficiently in the digital world.
+              ARKAA DIGITAL develops modern websites, hospital management systems, and custom digital platforms that help businesses and healthcare organizations operate efficiently.
             </p>
 
             <div className="flex flex-wrap items-center gap-5">
