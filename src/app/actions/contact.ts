@@ -5,7 +5,7 @@
  * Moving this to the server resolves CORS issues that occur during client-side fetch.
  */
 
-const ZOHO_WEBHOOK_URL = "https://flow.zoho.in/60066892414/flow/webhook/incoming?zapikey=1001.f535287f02f527c39f3fd70817a55cac.929563d7435f52fbf3fe1aad89c56004&isdebug=false";
+const ZOHO_WEBHOOK_URL = "https://flow.zoho.in/60066961770/flow/webhook/incoming?zapikey=1001.ac2cb11074ede804c0e7bdcaf93442dc.9e3de0160abd3fc92b66e103017c3ba5&isdebug=false";
 
 export type ZohoSubmissionData = {
   name: string;
