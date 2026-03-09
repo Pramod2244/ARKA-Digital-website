@@ -5,16 +5,8 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-const navItems = [
-  { label: "Home", href: "#home", id: "home" },
-  { label: "Services", href: "#services", id: "services" },
-  { label: "Industries", href: "#industries", id: "industries" },
-  { label: "About", href: "#about", id: "about" },
-  { label: "Contact", href: "#contact", id: "contact" },
-];
-
 const SidebarLogo = () => (
-  <svg viewBox="0 0 100 100" className="h-12 w-12 text-primary shrink-0" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 100 100" className="h-10 w-10 text-primary shrink-0" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <circle cx="50" cy="50" r="18" />
     {Array.from({ length: 16 }).map((_, i) => {
       const angle = i * 22.5;
@@ -32,6 +24,14 @@ const SidebarLogo = () => (
     })}
   </svg>
 );
+
+const navItems = [
+  { label: "Home", href: "#home", id: "home" },
+  { label: "Services", href: "#services", id: "services" },
+  { label: "Industries", href: "#industries", id: "industries" },
+  { label: "About", href: "#about", id: "about" },
+  { label: "Contact", href: "#contact", id: "contact" },
+];
 
 export function AppSidebar() {
   const [activeSection, setActiveSection] = useState("home");
@@ -77,14 +77,14 @@ export function AppSidebar() {
     )}>
       <div className="container mx-auto flex items-center justify-between">
         {/* Branding */}
-        <Link href="#home" className="flex items-center gap-4 group">
+        <Link href="#home" className="flex items-center gap-3 group">
           <SidebarLogo />
-          <div className="flex flex-col leading-none">
-            <div className="flex items-center gap-2">
-              <span className="text-[18px] font-black uppercase tracking-[0.3em] text-slate-900 group-hover:text-primary transition-colors">Arkaa</span>
-              <span className="text-[18px] font-black uppercase tracking-[0.3em] text-primary">Digital</span>
+          <div className="flex flex-col justify-center leading-none">
+            <div className="flex items-baseline gap-1.5">
+              <span className="text-[18px] font-black uppercase tracking-tight text-slate-900 group-hover:text-primary transition-colors">Arkaa</span>
+              <span className="text-[18px] font-black uppercase tracking-tight text-primary">Digital</span>
             </div>
-            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mt-1">Building what's next</span>
+            <span className="text-[9px] font-black uppercase tracking-[0.15em] text-primary mt-0.5">Building what's next</span>
           </div>
         </Link>
 

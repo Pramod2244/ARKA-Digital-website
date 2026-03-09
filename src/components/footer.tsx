@@ -6,7 +6,7 @@ import { Mail, MapPin, Phone } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const LogoMark = () => (
-  <svg viewBox="0 0 100 100" className="h-14 w-14 text-primary shrink-0" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 100 100" className="h-10 w-10 text-primary shrink-0" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <circle cx="50" cy="50" r="18" />
     {Array.from({ length: 16 }).map((_, i) => {
       const angle = i * 22.5;
@@ -39,13 +39,14 @@ export function Footer() {
       <div className="container mx-auto max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20">
           <div className="space-y-8">
-            <Link href="/" className="flex items-center gap-4 group">
+            <Link href="/" className="flex items-center gap-3 group">
               <LogoMark />
-              <div className="flex flex-col">
-                <span className="block font-headline text-3xl font-black tracking-tight text-white uppercase leading-none">
-                  Arkaa <span className="text-primary ml-1">Digital</span>
-                </span>
-                <span className="block text-[10px] uppercase tracking-[0.3em] text-primary font-black mt-2 opacity-90">Building what's next</span>
+              <div className="flex flex-col justify-center leading-none">
+                <div className="flex items-baseline gap-1.5">
+                  <span className="text-[22px] font-black uppercase tracking-tight text-white">Arkaa</span>
+                  <span className="text-[22px] font-black uppercase tracking-tight text-primary">Digital</span>
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-[0.15em] text-primary mt-1">Building what's next</span>
               </div>
             </Link>
             <p className="text-sm leading-relaxed max-w-xs font-medium text-slate-400">
