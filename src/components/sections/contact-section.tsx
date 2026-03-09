@@ -76,10 +76,28 @@ export function ContactSection() {
     };
 
     /**
-     * Handles the background processing of the form data.
+     * Handles the background processing of the form data including ID generation.
      */
-    async function processBackgroundSubmission(values: z.infer<typeof formSchema>, nextLeadId: number) {
+    async function processBackgroundSubmission(values: z.infer<typeof formSchema>) {
         try {
+            // 1. Fetch next Lead ID (Source of Truth) in background
+            let nextLeadId = 1;
+            if (firestore) {
+                const contactsRef = collection(firestore, 'contacts');
+                const q = query(
+                    contactsRef, 
+                    where('source', '==', CURRENT_SOURCE),
+                    orderBy('leadId', 'desc'), 
+                    limit(1)
+                );
+                const querySnapshot = await getDocs(q);
+                
+                if (!querySnapshot.empty) {
+                    const lastDoc = querySnapshot.docs[0].data();
+                    nextLeadId = (lastDoc.leadId || 0) + 1;
+                }
+            }
+
             const formattedPayload = {
                 leadId: nextLeadId,
                 name: toTitleCase(values.name),
@@ -90,15 +108,14 @@ export function ContactSection() {
                 status: "New"
             };
 
-            // Send to Zoho Flow with standard lowercase mapping handled in the action
-            // Maps leadId to 'sl no' and 'lead_id'
+            // 2. Send to Zoho Flow (Async)
             submitToZoho(formattedPayload).then(result => {
                 if (!result.success) {
-                    console.error("Background Zoho integration error:", result.error);
+                    console.error("Zoho integration error:", result.error);
                 }
             });
 
-            // Backup to Firestore
+            // 3. Backup to Firestore (Async)
             if (firestore) {
                 const contactsCollection = collection(firestore, 'contacts');
                 addDoc(contactsCollection, {
@@ -115,7 +132,7 @@ export function ContactSection() {
                 });
             }
         } catch (error) {
-            console.error("Error in background submission processing:", error);
+            console.error("Background submission failed:", error);
         }
     }
 
@@ -124,39 +141,16 @@ export function ContactSection() {
         setIsSubmitting(true);
 
         try {
-            // 1. Fetch next Lead ID (Source of Truth: Highest + 1 for current version)
-            let nextLeadId = 1;
-            if (firestore) {
-                const contactsRef = collection(firestore, 'contacts');
-                // Filter by CURRENT_SOURCE to "start fresh" with a new numbering sequence
-                const q = query(
-                    contactsRef, 
-                    where('source', '==', CURRENT_SOURCE),
-                    orderBy('leadId', 'desc'), 
-                    limit(1)
-                );
-                const querySnapshot = await getDocs(q);
-                
-                if (!querySnapshot.empty) {
-                    const lastDoc = querySnapshot.docs[0].data();
-                    nextLeadId = (lastDoc.leadId || 0) + 1;
-                }
-            }
-
-            // 2. Show success message immediately (Optimistic UI)
+            // INSTANT RESPONSE: Show success modal and reset form immediately
             setShowSuccess(true);
-            
-            // 3. Capture current values
             const capturedValues = { ...values };
-            
-            // 4. Reset UI
             form.reset();
             setIsSubmitting(false);
 
-            // 5. Trigger background processing (Non-blocking)
-            processBackgroundSubmission(capturedValues, nextLeadId);
+            // Shift all data processing and network calls to the background
+            processBackgroundSubmission(capturedValues);
         } catch (error) {
-            console.error("Error generating lead ID:", error);
+            console.error("Instant submission trigger error:", error);
             setIsSubmitting(false);
             toast({
                 variant: "destructive",
