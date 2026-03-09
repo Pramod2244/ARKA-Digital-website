@@ -103,11 +103,12 @@ const HIMSIcon = () => (
 const services = [
   {
     title: "Hospital Management Systems",
-    description: "Advanced HIMS platforms that streamline hospital workflows including patient records, billing, and appointments.",
+    description: "Advanced HIMS platforms that streamline hospital workflows including patient records, billing, appointments, pharmacy, and laboratory management.",
     icon: HIMSIcon,
     image: PlaceHolderImages.find(img => img.id === 'hims-system-illustration'),
     accent: "text-[#3B82F6]",
-    features: ["Patient Records Management", "Appointment Scheduling", "Billing & Insurance", "Hospital Workflow Automation"]
+    features: ["Patient Records Management", "Appointment Scheduling", "Billing & Insurance", "Hospital Workflow Automation"],
+    cta: { label: "Learn More", href: "/hims-details" }
   },
   {
     title: "Website Development",
@@ -115,7 +116,8 @@ const services = [
     icon: WebDevIcon,
     image: PlaceHolderImages.find(img => img.id === 'web-dev-v2'),
     accent: "text-primary",
-    features: ["Responsive Design", "SEO Optimization", "Fast Performance", "Mobile Friendly"]
+    features: ["Responsive Design", "SEO Optimization", "Fast Performance", "Mobile Friendly"],
+    cta: { label: "Consult with Experts", href: "#contact" }
   },
   {
     title: "UI / UX Design",
@@ -123,7 +125,8 @@ const services = [
     icon: UIUXIcon,
     image: PlaceHolderImages.find(img => img.id === 'ui-ux-design-v2'),
     accent: "text-[#3B82F6]",
-    features: ["User-Centered Design", "Interactive Prototypes", "Clean Interface Layout", "Mobile Experience Optimization"]
+    features: ["User-Centered Design", "Interactive Prototypes", "Clean Interface Layout", "Mobile Experience Optimization"],
+    cta: { label: "Consult with Experts", href: "#contact" }
   },
   {
     title: "Cloud & Hosting Solutions",
@@ -131,7 +134,8 @@ const services = [
     icon: CloudIcon,
     image: PlaceHolderImages.find(img => img.id === 'cloud-solutions-v2'),
     accent: "text-primary",
-    features: ["Cloud Deployment", "Server Management", "High Availability", "Performance Monitoring"]
+    features: ["Cloud Deployment", "Server Management", "High Availability", "Performance Monitoring"],
+    cta: { label: "Consult with Experts", href: "#contact" }
   }
 ];
 
@@ -218,8 +222,8 @@ export function ServicesSection() {
 
                       <div className="pt-2">
                         <Button className="h-14 px-10 text-xs font-black rounded-full bg-slate-900 text-white hover:bg-slate-800 transition-all active:scale-95 uppercase tracking-[0.2em] group shadow-xl" asChild>
-                          <Link href="#contact" className="flex items-center gap-4">
-                            Consult with Experts
+                          <Link href={service.cta.href} className="flex items-center gap-4">
+                            {service.cta.label}
                             <ArrowRight className="h-4 w-4 group-hover:translate-x-1.5 transition-transform" />
                           </Link>
                         </Button>
