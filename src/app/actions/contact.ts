@@ -38,7 +38,7 @@ export async function submitToZoho(data: ZohoSubmissionData) {
       "message": data.message,
       "date & time": data.dateTime,
       "status": data.status,
-      "source": "arkaadigital_web_v1"
+      "source": "arkaadigital_web_v2"
     };
 
     const response = await fetch(ZOHO_WEBHOOK_URL, {

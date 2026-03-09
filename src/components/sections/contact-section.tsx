@@ -20,11 +20,13 @@ import { Mail, Phone, User, Tag, Send, Loader2, X } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import { Card } from "../ui/card";
 import { useFirestore } from "@/firebase";
-import { collection, addDoc, serverTimestamp, query, orderBy, limit, getDocs } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp, query, orderBy, limit, getDocs, where } from "firebase/firestore";
 import { errorEmitter } from "@/firebase/error-emitter";
 import { FirestorePermissionError, type SecurityRuleContext } from "@/firebase/errors";
 import { submitToZoho } from "@/app/actions/contact";
 import { format } from "date-fns";
+
+const CURRENT_SOURCE = "arkaadigital_web_v2";
 
 const formSchema = z.object({
   name: z.string()
@@ -102,7 +104,7 @@ export function ContactSection() {
                 addDoc(contactsCollection, {
                     ...formattedPayload,
                     createdAt: serverTimestamp(),
-                    source: 'arkaadigital_web_v1'
+                    source: CURRENT_SOURCE
                 }).catch(async (err) => {
                     const permissionError = new FirestorePermissionError({
                         path: 'contacts',
@@ -122,11 +124,17 @@ export function ContactSection() {
         setIsSubmitting(true);
 
         try {
-            // 1. Fetch next Lead ID (Sl No) from Firestore (Source of Truth: Highest + 1)
+            // 1. Fetch next Lead ID (Source of Truth: Highest + 1 for current version)
             let nextLeadId = 1;
             if (firestore) {
                 const contactsRef = collection(firestore, 'contacts');
-                const q = query(contactsRef, orderBy('leadId', 'desc'), limit(1));
+                // Filter by CURRENT_SOURCE to "start fresh" with a new numbering sequence
+                const q = query(
+                    contactsRef, 
+                    where('source', '==', CURRENT_SOURCE),
+                    orderBy('leadId', 'desc'), 
+                    limit(1)
+                );
                 const querySnapshot = await getDocs(q);
                 
                 if (!querySnapshot.empty) {
@@ -148,7 +156,7 @@ export function ContactSection() {
             // 5. Trigger background processing (Non-blocking)
             processBackgroundSubmission(capturedValues, nextLeadId);
         } catch (error) {
-            console.error("Error generating serial number:", error);
+            console.error("Error generating lead ID:", error);
             setIsSubmitting(false);
             toast({
                 variant: "destructive",
