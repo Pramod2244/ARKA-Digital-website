@@ -115,6 +115,7 @@ const MarketingIcon = () => (
 
 const services = [
   {
+    id: "hims-service",
     title: "Hospital Management Systems",
     description: "Advanced HIMS platforms that streamline hospital workflows including patient records, billing, appointments, pharmacy, and laboratory management.",
     icon: HIMSIcon,
@@ -124,6 +125,7 @@ const services = [
     cta: { label: "Learn More", href: "/hims-details" }
   },
   {
+    id: "web-dev-service",
     title: "Website Development",
     description: "Modern, responsive websites designed for performance, SEO, and a strong online presence.",
     icon: WebDevIcon,
@@ -133,6 +135,7 @@ const services = [
     cta: { label: "Learn More", href: "/web-dev-details" }
   },
   {
+    id: "ui-ux-service",
     title: "UI / UX Design",
     description: "Clean, intuitive user interfaces that improve usability and engagement across all platforms.",
     icon: UIUXIcon,
@@ -142,6 +145,7 @@ const services = [
     cta: { label: "Learn More", href: "/ui-ux-details" }
   },
   {
+    id: "marketing-service",
     title: "Digital Marketing",
     description: "Data-driven marketing strategies to increase brand visibility, generate leads, and drive business growth.",
     icon: MarketingIcon,
@@ -151,6 +155,7 @@ const services = [
     cta: { label: "Learn More", href: "/digital-marketing-details" }
   },
   {
+    id: "cloud-service",
     title: "Cloud & Hosting Solutions",
     description: "Scalable cloud architecture and managed hosting services to ensure your data is secure and always accessible.",
     icon: CloudIcon,
@@ -195,7 +200,7 @@ export function ServicesSection() {
           <Carousel setApi={setApi} className="w-full" opts={{ loop: true }}>
             <CarouselContent>
               {services.map((service, index) => (
-                <CarouselItem key={index}>
+                <CarouselItem key={index} id={service.id}>
                   <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 py-4">
                     <div className="w-full lg:w-1/2">
                       <div className="relative h-[300px] md:h-[400px] w-full rounded-[3rem] overflow-hidden shadow-xl border-[10px] border-white bg-white">
@@ -244,7 +249,7 @@ export function ServicesSection() {
 
                       <div className="pt-2">
                         <Button className="h-14 px-10 text-xs font-black rounded-full bg-slate-900 text-white hover:bg-slate-800 transition-all active:scale-95 uppercase tracking-[0.2em] group shadow-xl" asChild>
-                          <a href={service.cta.href} className="flex items-center gap-4">
+                          <a href={`${service.cta.href}#from-${service.id}`} className="flex items-center gap-4">
                             {service.cta.label}
                             <ArrowRight className="h-4 w-4 group-hover:translate-x-1.5 transition-transform" />
                           </a>

@@ -93,8 +93,8 @@ export default function UIUXDetailsPage() {
   return (
     <div className="bg-[#F8FAFC] min-h-screen pt-32 pb-24">
       <div className="container mx-auto px-6 max-w-7xl">
-        {/* Breadcrumb Navigation - Mapped to #services section */}
-        <Link href="/#services" className="inline-flex items-center gap-2 text-slate-500 hover:text-primary font-black uppercase tracking-widest text-[10px] mb-12 transition-colors">
+        {/* Breadcrumb Navigation - Mapped back to specific service anchor */}
+        <Link href="/#ui-ux-service" className="inline-flex items-center gap-2 text-slate-500 hover:text-primary font-black uppercase tracking-widest text-[10px] mb-12 transition-colors">
           <ArrowLeft className="h-4 w-4" />
           Back to Services
         </Link>

@@ -25,7 +25,17 @@ export function BackToServices() {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
-  // Only show on service detail pages (HIMS, Web Dev, UI/UX, Cloud, Marketing)
+  // Map each detail page path to its corresponding homepage service anchor ID
+  const getReturnAnchor = () => {
+    if (pathname.includes("hims-details")) return "/#hims-service";
+    if (pathname.includes("web-dev-details")) return "/#web-dev-service";
+    if (pathname.includes("ui-ux-details")) return "/#ui-ux-service";
+    if (pathname.includes("digital-marketing-details")) return "/#marketing-service";
+    if (pathname.includes("cloud-details")) return "/#cloud-service";
+    return "/#services"; // Default fallback
+  };
+
+  // Only show on service detail pages
   const isDetailPage = pathname.includes("-details");
   if (!isDetailPage) return null;
 
@@ -39,7 +49,7 @@ export function BackToServices() {
           className="fixed bottom-8 left-8 z-[120]"
         >
           <a
-            href="/#services"
+            href={getReturnAnchor()}
             className={cn(
               "flex items-center gap-3 px-6 py-4 rounded-full bg-white shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-slate-100 transition-all hover:-translate-y-1 active:scale-95 group",
               "text-slate-900 font-black uppercase tracking-[0.2em] text-[10px] whitespace-nowrap"
