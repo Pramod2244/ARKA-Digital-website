@@ -158,7 +158,7 @@ const services = [
     image: PlaceHolderImages.find(img => img.id === 'cloud-solutions-v2'),
     accent: "text-[#3B82F6]",
     features: ["Cloud Deployment", "Server Management", "High Availability", "Performance Monitoring"],
-    cta: { label: "Consult with Experts", href: "#contact" }
+    cta: { label: "Learn More", href: "/cloud-details" }
   }
 ];
 
