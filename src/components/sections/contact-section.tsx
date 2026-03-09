@@ -64,7 +64,9 @@ export function ContactSection() {
         }
     }, [showSuccess]);
 
-    // Formatting: krIshna → Krishna, joHN doe → John Doe
+    /**
+     * Formatting: krIshna → Krishna, joHN doe → John Doe
+     */
     const toTitleCase = (str: string) => {
         return str.trim().toLowerCase().split(/\s+/).map(word => 
             word.charAt(0).toUpperCase() + word.slice(1)
@@ -194,7 +196,7 @@ export function ContactSection() {
                                         name="name"
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel className="font-black uppercase tracking-widest text-[10px] text-slate-400">Your Name</FormLabel>
+                                                <FormLabel className="font-black uppercase tracking-widest text-[10px] text-slate-400">Name</FormLabel>
                                                 <FormControl>
                                                     <div className="relative group">
                                                         <User className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-300 group-focus-within:text-primary transition-colors" />
