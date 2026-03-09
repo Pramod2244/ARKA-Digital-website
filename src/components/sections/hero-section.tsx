@@ -13,10 +13,10 @@ export function HeroSection() {
   const dashboardImg = PlaceHolderImages.find(img => img.id === 'hero-software-platform');
 
   return (
-    <section id="home" className="relative w-full pt-48 pb-32 overflow-hidden bg-gradient-to-br from-[#ff7a18] to-[#ff4d00]">
+    <section id="home" className="relative w-full pt-48 pb-32 overflow-hidden bg-gradient-to-br from-[#ff9a4d] to-[#ff7a18]">
       {/* Decorative ambient glow */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-white/20 rounded-full blur-3xl" />
         <div className="absolute top-1/2 -right-24 w-64 h-64 bg-black/5 rounded-full blur-3xl" />
       </div>
 
@@ -30,7 +30,7 @@ export function HeroSection() {
           >
             <h1 className="font-headline text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight text-white mb-8">
               We Build Smart <br />
-              <span className="opacity-90">Digital Platforms</span>
+              <span className="opacity-95">Digital Platforms</span>
             </h1>
             
             <p className="text-xl text-white/90 font-medium leading-relaxed mb-10 max-w-lg">
@@ -38,7 +38,7 @@ export function HeroSection() {
             </p>
 
             <div className="flex flex-wrap items-center gap-5">
-              <Button size="lg" className="h-16 px-10 text-xs font-black rounded-full bg-white text-[#ff4d00] hover:bg-slate-50 shadow-2xl shadow-black/10 transition-all hover:-translate-y-1 uppercase tracking-[0.2em]" asChild>
+              <Button size="lg" className="h-16 px-10 text-xs font-black rounded-full bg-white text-[#ff7a18] hover:bg-slate-50 shadow-2xl shadow-black/10 transition-all hover:-translate-y-1 uppercase tracking-[0.2em]" asChild>
                 <Link href="#contact">Start Your Project</Link>
               </Button>
               <Button size="lg" variant="outline" className="h-16 px-10 text-xs font-black rounded-full border-2 border-white bg-transparent text-white hover:bg-white/10 transition-all hover:-translate-y-1 uppercase tracking-[0.2em] group" asChild>
