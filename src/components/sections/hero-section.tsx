@@ -13,11 +13,11 @@ export function HeroSection() {
   const dashboardImg = PlaceHolderImages.find(img => img.id === 'hero-software-platform');
 
   return (
-    <section id="home" className="relative w-full pt-48 pb-32 overflow-hidden bg-slate-50">
-      {/* Decorative ambient glow */}
+    <section id="home" className="relative w-full pt-48 pb-32 overflow-hidden bg-[#FDF6F0]">
+      {/* Decorative ambient glows in Navy and Orange */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-60" />
+        <div className="absolute top-1/2 -right-24 w-64 h-64 bg-[#0D1B2A]/5 rounded-full blur-3xl opacity-40" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -28,12 +28,12 @@ export function HeroSection() {
             transition={{ duration: 0.8 }}
             className="flex flex-col items-start text-left max-w-2xl"
           >
-            <h1 className="font-headline text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight text-slate-900 mb-8">
+            <h1 className="font-headline text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight text-[#0D1B2A] mb-8">
               We Build Smart <br />
               <span className="text-primary">Digital Platforms</span>
             </h1>
             
-            <p className="text-xl text-slate-600 font-medium leading-relaxed mb-10 max-w-lg">
+            <p className="text-xl text-[#1B263B]/80 font-medium leading-relaxed mb-10 max-w-lg">
               ARKAA DIGITAL develops modern websites, hospital management systems, and custom digital platforms that help businesses and healthcare organizations operate efficiently.
             </p>
 
@@ -41,7 +41,7 @@ export function HeroSection() {
               <Button size="lg" className="h-16 px-10 text-xs font-black rounded-full bg-primary text-white hover:bg-primary/90 shadow-2xl shadow-primary/20 transition-all hover:-translate-y-1 uppercase tracking-[0.2em]" asChild>
                 <Link href="#contact">Start Your Project</Link>
               </Button>
-              <Button size="lg" variant="outline" className="h-16 px-10 text-xs font-black rounded-full border-2 border-slate-200 bg-transparent text-slate-900 hover:bg-slate-50 transition-all hover:-translate-y-1 uppercase tracking-[0.2em] group" asChild>
+              <Button size="lg" variant="outline" className="h-16 px-10 text-xs font-black rounded-full border-2 border-[#0D1B2A]/20 bg-transparent text-[#0D1B2A] hover:bg-[#0D1B2A]/5 transition-all hover:-translate-y-1 uppercase tracking-[0.2em] group" asChild>
                 <Link href="#services" className="flex items-center gap-3">
                   Explore Our Services
                   <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -59,7 +59,7 @@ export function HeroSection() {
             <motion.div 
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-0 right-0 w-[95%] h-[450px] bg-white rounded-[2.5rem] border border-slate-100 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] overflow-hidden z-20"
+              className="absolute top-0 right-0 w-[95%] h-[450px] bg-white rounded-[2.5rem] border border-slate-100 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.15)] overflow-hidden z-20"
             >
               <div className="h-10 bg-slate-50 flex items-center px-6 gap-2 border-b border-slate-100">
                 <div className="w-2.5 h-2.5 rounded-full bg-red-400/20" />
@@ -82,7 +82,7 @@ export function HeroSection() {
             <motion.div 
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="absolute bottom-10 left-0 w-[60%] h-[300px] bg-white rounded-[2.5rem] border border-slate-100 shadow-[0_24px_48px_-12px_rgba(0,0,0,0.1)] overflow-hidden z-30 flex items-center justify-center"
+              className="absolute bottom-10 left-0 w-[60%] h-[300px] bg-white rounded-[2.5rem] border border-slate-100 shadow-[0_24px_48px_-12px_rgba(0,0,0,0.12)] overflow-hidden z-30 flex items-center justify-center"
             >
                <div className="p-8 text-center">
                   <p className="text-primary font-black text-2xl uppercase tracking-widest mb-2">High Tech</p>
