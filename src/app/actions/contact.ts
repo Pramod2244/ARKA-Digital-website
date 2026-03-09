@@ -21,7 +21,7 @@ export async function submitToZoho(data: ZohoSubmissionData) {
   try {
     /**
      * Mapping Internal Fields to Zoho Sheet lowercase column names:
-     * slNo -> sl no
+     * slNo -> sl no (also sending sl__no as per user requirement)
      * name -> name
      * email -> email
      * subject -> subject
@@ -31,6 +31,7 @@ export async function submitToZoho(data: ZohoSubmissionData) {
      */
     const payload = {
       "sl no": data.slNo,
+      "sl__no": data.slNo,
       "name": data.name,
       "email": data.email,
       "subject": data.subject,

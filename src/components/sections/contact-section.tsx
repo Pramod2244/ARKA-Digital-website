@@ -20,7 +20,7 @@ import { Mail, Phone, User, Tag, Send, Loader2, X } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import { Card } from "../ui/card";
 import { useFirestore } from "@/firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp, query, orderBy, limit, getDocs } from "firebase/firestore";
 import { errorEmitter } from "@/firebase/error-emitter";
 import { FirestorePermissionError, type SecurityRuleContext } from "@/firebase/errors";
 import { submitToZoho } from "@/app/actions/contact";
@@ -75,11 +75,9 @@ export function ContactSection() {
 
     /**
      * Handles the background processing of the form data.
-     * Generates Sl No from localStorage and maps values.
      */
     async function processBackgroundSubmission(values: z.infer<typeof formSchema>, nextSlNo: number) {
         try {
-            // Format Data according to standard naming and Zoho requirements
             const formattedPayload = {
                 slNo: nextSlNo,
                 name: toTitleCase(values.name),
@@ -122,24 +120,41 @@ export function ContactSection() {
         if (isSubmitting) return;
         setIsSubmitting(true);
 
-        // 1. Generate Sl No from localStorage instantly
-        const COUNTER_KEY = 'form_submission_counter';
-        const currentCounter = parseInt(localStorage.getItem(COUNTER_KEY) || '0', 10);
-        const nextSlNo = currentCounter + 1;
-        localStorage.setItem(COUNTER_KEY, nextSlNo.toString());
+        try {
+            // 1. Fetch next Sl No from Firestore (Source of Truth)
+            let nextSlNo = 1;
+            if (firestore) {
+                const contactsRef = collection(firestore, 'contacts');
+                const q = query(contactsRef, orderBy('slNo', 'desc'), limit(1));
+                const querySnapshot = await getDocs(q);
+                
+                if (!querySnapshot.empty) {
+                    const lastDoc = querySnapshot.docs[0].data();
+                    nextSlNo = (lastDoc.slNo || 0) + 1;
+                }
+            }
 
-        // 2. Show success message immediately (Optimistic UI)
-        setShowSuccess(true);
-        
-        // 3. Capture current values
-        const capturedValues = { ...values };
-        
-        // 4. Reset UI
-        form.reset();
-        setIsSubmitting(false);
+            // 2. Show success message immediately (Optimistic UI)
+            setShowSuccess(true);
+            
+            // 3. Capture current values
+            const capturedValues = { ...values };
+            
+            // 4. Reset UI
+            form.reset();
+            setIsSubmitting(false);
 
-        // 5. Trigger background processing (Non-blocking)
-        processBackgroundSubmission(capturedValues, nextSlNo);
+            // 5. Trigger background processing (Non-blocking)
+            processBackgroundSubmission(capturedValues, nextSlNo);
+        } catch (error) {
+            console.error("Error generating serial number:", error);
+            setIsSubmitting(false);
+            toast({
+                variant: "destructive",
+                title: "Submission Error",
+                description: "There was a problem preparing your inquiry. Please try again."
+            });
+        }
     }
 
     return (
