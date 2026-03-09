@@ -121,6 +121,7 @@ const services = [
     icon: HIMSIcon,
     image: PlaceHolderImages.find(img => img.id === 'hims-system-illustration'),
     accent: "text-[#3B82F6]",
+    bgColor: "bg-[#eff6ff]", // Soft medical blue
     features: ["Patient Records Management", "Appointment Scheduling", "Billing & Insurance", "Hospital Workflow Automation"],
     cta: { label: "Learn More", href: "/hims-details" }
   },
@@ -131,6 +132,7 @@ const services = [
     icon: WebDevIcon,
     image: PlaceHolderImages.find(img => img.id === 'web-dev-v2'),
     accent: "text-primary",
+    bgColor: "bg-[#eef6ff]", // Very light blue
     features: ["Responsive Design", "SEO Optimization", "Fast Performance", "Mobile Friendly"],
     cta: { label: "Learn More", href: "/web-dev-details" }
   },
@@ -141,6 +143,7 @@ const services = [
     icon: UIUXIcon,
     image: PlaceHolderImages.find(img => img.id === 'ui-ux-design-v2'),
     accent: "text-[#3B82F6]",
+    bgColor: "bg-[#f5f3ff]", // Light purple tint
     features: ["User-Centered Design", "Interactive Prototypes", "Clean Interface Layout", "Mobile Experience Optimization"],
     cta: { label: "Learn More", href: "/ui-ux-details" }
   },
@@ -151,6 +154,7 @@ const services = [
     icon: MarketingIcon,
     image: PlaceHolderImages.find(img => img.id === 'digital-marketing-v2'),
     accent: "text-primary",
+    bgColor: "bg-[#fff4ec]", // Light peach
     features: ["SEO Optimization", "Social Media Marketing", "PPC Advertising", "Content Marketing"],
     cta: { label: "Learn More", href: "/digital-marketing-details" }
   },
@@ -161,6 +165,7 @@ const services = [
     icon: CloudIcon,
     image: PlaceHolderImages.find(img => img.id === 'cloud-solutions-v2'),
     accent: "text-[#3B82F6]",
+    bgColor: "bg-[#eef9ff]", // Soft sky blue
     features: ["Cloud Deployment", "Server Management", "High Availability", "Performance Monitoring"],
     cta: { label: "Learn More", href: "/cloud-details" }
   }
@@ -183,9 +188,9 @@ export function ServicesSection() {
   }, [api]);
 
   return (
-    <section id="services" className="bg-[#E9F1FB] overflow-hidden relative">
-      <div className="container mx-auto max-w-7xl px-6 py-16 md:py-20">
-        <div className="text-center mb-10 space-y-4">
+    <section id="services" className="bg-[#f7f7f9] overflow-hidden relative">
+      <div className="container mx-auto max-w-7xl px-6 py-16 md:py-24">
+        <div className="text-center mb-16 space-y-4">
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -194,6 +199,9 @@ export function ServicesSection() {
           >
             Our Core <span className="text-primary">Services</span>
           </motion.h2>
+          <p className="text-slate-500 max-w-2xl mx-auto font-medium">
+            We offer specialized digital solutions tailored to help modern businesses and healthcare institutions thrive.
+          </p>
         </div>
 
         <div className="max-w-6xl mx-auto relative px-4 lg:px-16">
@@ -201,22 +209,25 @@ export function ServicesSection() {
             <CarouselContent>
               {services.map((service, index) => (
                 <CarouselItem key={index} id={service.id}>
-                  <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 py-4">
+                  <div className={cn(
+                    "flex flex-col lg:flex-row items-center gap-8 lg:gap-16 py-12 px-8 md:px-12 rounded-[4rem] transition-colors duration-500",
+                    service.bgColor
+                  )}>
                     <div className="w-full lg:w-1/2">
-                      <div className="relative h-[300px] md:h-[400px] w-full rounded-[3rem] overflow-hidden shadow-xl border-[10px] border-white bg-white">
+                      <div className="relative h-[300px] md:h-[450px] w-full rounded-[3rem] overflow-hidden shadow-2xl border-[12px] border-white bg-white">
                         {service.image?.imageUrl && (
                           <Image
                             src={service.image.imageUrl}
                             alt={service.title}
                             fill
-                            className="object-contain p-4 transition-transform duration-1000"
+                            className="object-contain p-6 transition-transform duration-1000"
                             data-ai-hint={service.image?.imageHint}
                           />
                         )}
                       </div>
                     </div>
 
-                    <div className="w-full lg:w-1/2 space-y-6 lg:space-y-8">
+                    <div className="w-full lg:w-1/2 space-y-8">
                       <div className={cn(
                         "w-20 h-20 rounded-[2rem] flex items-center justify-center bg-white shadow-xl border border-slate-50 p-4 transition-transform hover:scale-105 duration-300",
                         service.accent
@@ -233,22 +244,22 @@ export function ServicesSection() {
                         </p>
                       </div>
                       
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                         {service.features.map((feature, fIndex) => (
                           <div key={fIndex} className="flex items-center gap-3">
                             <div className={cn(
-                              "w-5 h-5 rounded-full flex items-center justify-center",
+                              "w-6 h-6 rounded-full flex items-center justify-center",
                               index % 2 === 0 ? "bg-[#3B82F6]/10 text-[#3B82F6]" : "bg-primary/10 text-primary"
                             )}>
-                              <CheckCircle2 className="h-3 w-3" />
+                              <CheckCircle2 className="h-3.5 w-3.5" />
                             </div>
-                            <span className="text-[10px] font-black uppercase tracking-widest text-slate-700">{feature}</span>
+                            <span className="text-[11px] font-black uppercase tracking-widest text-slate-700">{feature}</span>
                           </div>
                         ))}
                       </div>
 
-                      <div className="pt-2">
-                        <Button className="h-14 px-10 text-xs font-black rounded-full bg-slate-900 text-white hover:bg-slate-800 transition-all active:scale-95 uppercase tracking-[0.2em] group shadow-xl" asChild>
+                      <div className="pt-4">
+                        <Button className="h-16 px-12 text-xs font-black rounded-full bg-slate-900 text-white hover:bg-slate-800 transition-all active:scale-95 uppercase tracking-[0.2em] group shadow-xl" asChild>
                           <a href={`${service.cta.href}#from-${service.id}`} className="flex items-center gap-4">
                             {service.cta.label}
                             <ArrowRight className="h-4 w-4 group-hover:translate-x-1.5 transition-transform" />
@@ -262,21 +273,21 @@ export function ServicesSection() {
             </CarouselContent>
             
             <div className="hidden lg:block">
-              <CarouselPrevious className="absolute -left-16 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white shadow-lg hover:bg-slate-50 text-slate-900 border-none transition-all z-20" />
-              <CarouselNext className="absolute -right-16 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white shadow-lg hover:bg-slate-50 text-slate-900 border-none transition-all z-20" />
+              <CarouselPrevious className="absolute -left-16 top-1/2 -translate-y-1/2 h-14 w-14 rounded-full bg-white shadow-xl hover:bg-slate-50 text-slate-900 border-none transition-all z-20" />
+              <CarouselNext className="absolute -right-16 top-1/2 -translate-y-1/2 h-14 w-14 rounded-full bg-white shadow-xl hover:bg-slate-50 text-slate-900 border-none transition-all z-20" />
             </div>
           </Carousel>
 
-          <div className="flex justify-center gap-3 mt-10">
+          <div className="flex justify-center gap-3 mt-12">
             {Array.from({ length: count }).map((_, i) => (
               <button
                 key={i}
                 onClick={() => api?.scrollTo(i)}
                 className={cn(
-                  "h-2 transition-all duration-500 rounded-full",
+                  "h-2.5 transition-all duration-500 rounded-full",
                   current === i 
-                    ? "w-10 bg-primary shadow-[0_0_15px_rgba(255,106,0,0.3)]" 
-                    : "w-2 bg-slate-300 hover:bg-slate-400"
+                    ? "w-12 bg-primary shadow-[0_0_15px_rgba(255,106,0,0.3)]" 
+                    : "w-2.5 bg-slate-300 hover:bg-slate-400"
                 )}
                 aria-label={`Go to slide ${i + 1}`}
               />
