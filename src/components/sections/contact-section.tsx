@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -143,7 +144,7 @@ export function ContactSection() {
                                     </div>
                                     <div>
                                         <p className="text-[10px] uppercase font-black text-slate-400 tracking-widest mb-1">Call Experts</p>
-                                        <p className="text-lg font-black text-slate-900">+91 8050332452</p>
+                                        <p className="text-lg font-black text-slate-900">+91 7996935157</p>
                                     </div>
                                 </div>
                             </div>

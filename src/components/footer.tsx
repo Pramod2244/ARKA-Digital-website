@@ -27,9 +27,11 @@ const LogoMark = () => (
 
 export function Footer() {
   const [year, setYear] = useState<number | null>(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setYear(new Date().getFullYear());
+    setMounted(true);
   }, []);
 
   return (
@@ -86,7 +88,7 @@ export function Footer() {
                 <div className="p-3 rounded-xl bg-[#3B82F6]/10 text-[#3B82F6] group-hover:bg-[#3B82F6] group-hover:text-white transition-all">
                   <Phone className="h-4 w-4" />
                 </div>
-                +91 8050332452
+                +91 7996935157
               </div>
               <div className="flex items-start gap-5 hover:text-white transition-colors cursor-pointer group">
                 <div className="p-3 rounded-xl bg-white/5 text-white group-hover:bg-white/10 transition-all border border-white/5">
@@ -99,7 +101,7 @@ export function Footer() {
         </div>
 
         <div className="mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8 text-[9px] uppercase tracking-[0.4em] font-black">
-          <p suppressHydrationWarning>© {year || '2025'} Arkaa Digital. All rights reserved.</p>
+          <p suppressHydrationWarning>© {mounted ? (year || '2025') : '2025'} Arkaa Digital. All rights reserved.</p>
           <div className="flex gap-12">
             <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="#" className="hover:text-white transition-colors">Terms of Use</Link>
