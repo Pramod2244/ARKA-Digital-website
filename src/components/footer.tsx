@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import { Mail, MapPin, Phone, Github, Linkedin, Twitter } from 'lucide-react';
+import { Mail, MapPin, Phone } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const LogoMark = () => (
@@ -50,17 +50,6 @@ export function Footer() {
             <p className="text-sm leading-relaxed max-w-xs font-medium text-slate-400">
               We develop world-class digital systems, hospital management software, and high-performance websites for global innovators.
             </p>
-            <div className="flex gap-4">
-              <div className="p-3 rounded-xl bg-white/5 hover:bg-white/10 transition-all cursor-pointer text-white border border-white/5 hover:border-primary/50 group">
-                <Linkedin className="h-5 w-5 group-hover:scale-110 transition-transform" />
-              </div>
-              <div className="p-3 rounded-xl bg-white/5 hover:bg-white/10 transition-all cursor-pointer text-white border border-white/5 hover:border-primary/50 group">
-                <Twitter className="h-5 w-5 group-hover:scale-110 transition-transform" />
-              </div>
-              <div className="p-3 rounded-xl bg-white/5 hover:bg-white/10 transition-all cursor-pointer text-white border border-white/5 hover:border-primary/50 group">
-                <Github className="h-5 w-5 group-hover:scale-110 transition-transform" />
-              </div>
-            </div>
           </div>
 
           <div>
@@ -68,7 +57,6 @@ export function Footer() {
             <nav className="flex flex-col space-y-5 text-xs font-bold uppercase tracking-widest">
               <Link href="#" className="hover:text-primary transition-colors">Website Development</Link>
               <Link href="#" className="hover:text-primary transition-colors">HIMS Systems</Link>
-              <Link href="#" className="hover:text-primary transition-colors">Custom Web Apps</Link>
               <Link href="#" className="hover:text-primary transition-colors">Cloud Architecture</Link>
             </nav>
           </div>
@@ -84,8 +72,8 @@ export function Footer() {
 
           <div>
             <h4 className="font-headline text-white font-black uppercase tracking-[0.3em] text-[10px] mb-10">Get In Touch</h4>
-            <div className="space-y-8 text-xs font-bold uppercase tracking-widest">
-              <div className="flex items-center gap-5 hover:text-white transition-colors cursor-pointer group">
+            <div className="space-y-8 text-xs font-bold tracking-widest">
+              <div className="flex items-center gap-5 hover:text-white transition-colors cursor-pointer group lowercase">
                 <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all">
                   <Mail className="h-4 w-4" />
                 </div>
@@ -101,7 +89,7 @@ export function Footer() {
                 <div className="p-3 rounded-xl bg-white/5 text-white group-hover:bg-white/10 transition-all border border-white/5">
                   <MapPin className="h-4 w-4" />
                 </div>
-                Chikkaballapura, Karnataka - 562101
+                <span className="uppercase">Chikkaballapura, Karnataka - 562101</span>
               </div>
             </div>
           </div>
