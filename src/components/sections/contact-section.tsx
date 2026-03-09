@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -32,8 +31,8 @@ const formSchema = z.object({
   email: z.string().email({
     message: "Please enter a valid email address.",
   }),
-  subject: z.string().min(0, {
-    message: "Subject must contain characters.",
+  subject: z.string().min(2, {
+    message: "Subject must be at least 2 characters.",
   }),
   message: z.string().min(10, {
     message: "Message must be at least 10 characters.",
@@ -60,12 +59,11 @@ export function ContactSection() {
         setIsSubmitting(true);
 
         try {
-            // 1. Send to Zoho via Server Action (Bypasses Client-side CORS)
-            // Mapping UI 'subject' field to 'project' as per Zoho requirement
+            // 1. Send to Zoho via Server Action
             const zohoResult = await submitToZoho({
                 name: values.name,
                 email: values.email,
-                project: values.subject, 
+                subject: values.subject, 
                 message: values.message
             });
 
@@ -73,7 +71,7 @@ export function ContactSection() {
                 throw new Error(zohoResult.error);
             }
 
-            // 2. Save to Firestore as backup/primary record
+            // 2. Save to Firestore as backup
             if (firestore) {
                 const contactsCollection = collection(firestore, 'contacts');
                 addDoc(contactsCollection, {
@@ -206,7 +204,7 @@ export function ContactSection() {
                                     name="subject"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel className="font-black uppercase tracking-widest text-[10px] text-slate-400">Project Type</FormLabel>
+                                            <FormLabel className="font-black uppercase tracking-widest text-[10px] text-slate-400">Subject</FormLabel>
                                             <FormControl>
                                                 <div className="relative group">
                                                     <Tag className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-300 group-focus-within:text-primary transition-colors" />
@@ -227,11 +225,11 @@ export function ContactSection() {
                                     name="message"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel className="font-black uppercase tracking-widest text-[10px] text-slate-400">Tell Us More</FormLabel>
+                                            <FormLabel className="font-black uppercase tracking-widest text-[10px] text-slate-400">Message</FormLabel>
                                             <FormControl>
                                                 <Textarea 
                                                     disabled={isSubmitting}
-                                                    placeholder="Briefly describe your project goals..." 
+                                                    placeholder="Briefly describe your requirements..." 
                                                     className="min-h-[150px] border-slate-100 bg-white/50 text-slate-900 focus:bg-white transition-all rounded-[2rem] p-6 font-medium resize-none placeholder:text-slate-300"
                                                     {...field} 
                                                     spellCheck={false}
