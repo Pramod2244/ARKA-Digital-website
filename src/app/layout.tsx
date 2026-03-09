@@ -8,6 +8,7 @@ import { ScrollProgress } from '@/components/scroll-progress';
 import { FirebaseClientProvider } from '@/firebase';
 import { AppSidebar } from '@/components/app-sidebar';
 import { BackToTop } from '@/components/back-to-top';
+import { BackToServices } from '@/components/back-to-services';
 
 export const metadata: Metadata = {
   title: 'Arkaa Digital | High-Performance Web & AI Engineering',
@@ -57,6 +58,7 @@ export default function RootLayout({
                   </div>
                   <Footer />
                 </div>
+                <BackToServices />
                 <BackToTop />
                 <Toaster />
               </MotionProvider>
