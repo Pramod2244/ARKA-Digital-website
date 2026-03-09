@@ -9,10 +9,13 @@
 const ZOHO_WEBHOOK_URL = "https://flow.zoho.in/60066961770/flow/webhook/incoming?zapikey=1001.ac2cb11074ede804c0e7bdcaf93442dc.9e3de0160abd3fc92b66e103017c3ba5&isdebug=false";
 
 export type ZohoSubmissionData = {
+  slNo: number;
   name: string;
   email: string;
   subject: string;
   message: string;
+  formattedDate: string;
+  status: string;
 };
 
 export async function submitToZoho(data: ZohoSubmissionData) {
@@ -20,12 +23,14 @@ export async function submitToZoho(data: ZohoSubmissionData) {
     // We send a flat JSON object including metadata to help Zoho Flow 
     // identify the source for its WhatsApp notification logic.
     const payload = {
-      name: data.name,
-      email: data.email,
-      subject: data.subject,
-      message: data.message,
-      source: "arkaadigital_web_v1",
-      submitted_at: new Date().toISOString()
+      "Sl no": data.slNo,
+      "Name": data.name,
+      "Email": data.email,
+      "Subject": data.subject,
+      "Message": data.message,
+      "Date & Time": data.formattedDate,
+      "Status": data.status,
+      "source": "arkaadigital_web_v1"
     };
 
     const response = await fetch(ZOHO_WEBHOOK_URL, {

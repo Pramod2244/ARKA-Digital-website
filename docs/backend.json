@@ -5,14 +5,17 @@
       "description": "Details from the contact form submission. Integrated with Zoho Flow for Zoho Sheets storage and WhatsApp owner notifications.",
       "type": "object",
       "properties": {
+        "slNo": { "type": "number", "description": "Sequential serial number" },
         "name": { "type": "string" },
         "email": { "type": "string", "format": "email" },
         "subject": { "type": "string" },
         "message": { "type": "string" },
+        "formattedDate": { "type": "string", "description": "Date formatted as dd MMM yyyy HH:mm" },
+        "status": { "type": "string", "enum": ["New", "In Progress", "Completed"], "default": "New" },
         "createdAt": { "type": "string", "format": "date-time" },
         "source": { "type": "string", "description": "Identification for external integrations like Zoho Flow" }
       },
-      "required": ["name", "email", "subject", "message", "createdAt"]
+      "required": ["slNo", "name", "email", "subject", "message", "formattedDate", "status", "createdAt"]
     }
   },
   "auth": {

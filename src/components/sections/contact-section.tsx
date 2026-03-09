@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -21,20 +20,21 @@ import { Mail, Phone, User, Tag, Send, Loader2, X } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import { Card } from "../ui/card";
 import { useFirestore } from "@/firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp, query, orderBy, limit, getDocs } from "firebase/firestore";
 import { errorEmitter } from "@/firebase/error-emitter";
 import { FirestorePermissionError, type SecurityRuleContext } from "@/firebase/errors";
 import { submitToZoho } from "@/app/actions/contact";
+import { format } from "date-fns";
 
 const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
+  name: z.string()
+    .min(2, { message: "Name must be at least 2 characters." })
+    .regex(/^[a-zA-Z\s]+$/, "Please enter a valid name (letters only)."),
   email: z.string().email({
     message: "Please enter a valid email address.",
   }),
   subject: z.string().min(2, {
-    message: "Subject must be at least 2 characters.",
+    message: "Subject cannot be empty.",
   }),
   message: z.string().min(10, {
     message: "Message must be at least 10 characters.",
@@ -64,35 +64,58 @@ export function ContactSection() {
         }
     }, [showSuccess]);
 
+    const toTitleCase = (str: string) => {
+        return str.trim().toLowerCase().split(/\s+/).map(word => 
+            word.charAt(0).toUpperCase() + word.slice(1)
+        ).join(' ');
+    };
+
     async function onSubmit(values: z.infer<typeof formSchema>) {
         if (isSubmitting) return;
         setIsSubmitting(true);
 
         try {
-            // 1. Send to Zoho Webhook via Server Action
-            const zohoResult = await submitToZoho({
-                name: values.name,
-                email: values.email,
-                subject: values.subject, 
-                message: values.message
-            });
+            // 1. Fetch Sequential Sl No from Firestore
+            let nextSlNo = 1;
+            if (firestore) {
+                const q = query(collection(firestore, 'contacts'), orderBy('slNo', 'desc'), limit(1));
+                const querySnapshot = await getDocs(q);
+                if (!querySnapshot.empty) {
+                    const lastDoc = querySnapshot.docs[0].data();
+                    nextSlNo = (lastDoc.slNo || 0) + 1;
+                }
+            }
+
+            // 2. Format Data
+            const formattedData = {
+                slNo: nextSlNo,
+                name: toTitleCase(values.name),
+                email: values.email.toLowerCase().trim(),
+                subject: values.subject.trim(),
+                message: values.message.trim(),
+                formattedDate: format(new Date(), 'dd MMM yyyy HH:mm'),
+                status: "New"
+            };
+
+            // 3. Send to Zoho Webhook via Server Action
+            const zohoResult = await submitToZoho(formattedData);
 
             if (!zohoResult.success) {
                 throw new Error(zohoResult.error);
             }
 
-            // 2. Backup to Firestore (Non-blocking)
+            // 4. Backup to Firestore (Non-blocking)
             if (firestore) {
                 const contactsCollection = collection(firestore, 'contacts');
                 addDoc(contactsCollection, {
-                    ...values,
+                    ...formattedData,
                     createdAt: serverTimestamp(),
                     source: 'web_form_arkaadigital'
                 }).catch(async (err) => {
                     const permissionError = new FirestorePermissionError({
                         path: 'contacts',
                         operation: 'create',
-                        requestResourceData: values,
+                        requestResourceData: formattedData,
                     } satisfies SecurityRuleContext);
                     errorEmitter.emit('permission-error', permissionError);
                 });
