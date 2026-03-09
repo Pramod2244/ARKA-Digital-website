@@ -6,7 +6,7 @@ import { Mail, MapPin, Phone } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const LogoMark = () => (
-  <svg viewBox="0 0 100 100" className="h-16 w-16 text-primary" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 100 100" className="h-14 w-14 text-primary shrink-0" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <circle cx="50" cy="50" r="18" />
     {Array.from({ length: 16 }).map((_, i) => {
       const angle = i * 22.5;
@@ -33,19 +33,19 @@ export function Footer() {
   }, []);
 
   return (
-    <footer className="bg-[#2F3E46] text-slate-300 py-24 px-4 overflow-hidden relative">
+    <footer className="bg-[#2F3E46] text-slate-300 py-24 px-4 overflow-hidden relative border-t border-white/5">
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 blur-[150px] -z-10 rounded-full" />
       
       <div className="container mx-auto max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20">
-          <div className="space-y-10">
-            <Link href="/" className="flex items-center gap-6 group">
+          <div className="space-y-8">
+            <Link href="/" className="flex items-center gap-4 group">
               <LogoMark />
               <div className="flex flex-col">
-                <span className="block font-headline text-4xl font-black tracking-[0.3em] text-white uppercase leading-none">
-                  Arkaa <span className="text-primary">Digital</span>
+                <span className="block font-headline text-3xl font-black tracking-tight text-white uppercase leading-none">
+                  Arkaa <span className="text-primary ml-1">Digital</span>
                 </span>
-                <span className="block text-[12px] uppercase tracking-[0.4em] text-primary font-black mt-3">Building what's next</span>
+                <span className="block text-[10px] uppercase tracking-[0.3em] text-primary font-black mt-2 opacity-90">Building what's next</span>
               </div>
             </Link>
             <p className="text-sm leading-relaxed max-w-xs font-medium text-slate-400">
@@ -56,18 +56,19 @@ export function Footer() {
           <div>
             <h4 className="font-headline text-white font-black uppercase tracking-[0.3em] text-[10px] mb-10">Solutions</h4>
             <nav className="flex flex-col space-y-5 text-xs font-bold uppercase tracking-widest">
-              <Link href="#" className="hover:text-primary transition-colors">Website Development</Link>
-              <Link href="#" className="hover:text-primary transition-colors">HIMS Systems</Link>
-              <Link href="#" className="hover:text-primary transition-colors">Cloud Architecture</Link>
+              <Link href="/web-dev-details" className="hover:text-primary transition-colors">Website Development</Link>
+              <Link href="/hims-details" className="hover:text-primary transition-colors">HIMS Systems</Link>
+              <Link href="/cloud-details" className="hover:text-primary transition-colors">Cloud Architecture</Link>
             </nav>
           </div>
 
           <div>
             <h4 className="font-headline text-white font-black uppercase tracking-[0.3em] text-[10px] mb-10">Company</h4>
             <nav className="flex flex-col space-y-5 text-xs font-bold uppercase tracking-widest">
-              <Link href="#home" className="hover:text-primary transition-colors">Home</Link>
-              <Link href="#services" className="hover:text-primary transition-colors">Our Services</Link>
-              <Link href="#contact" className="hover:text-primary transition-colors">Contact Us</Link>
+              <Link href="/#home" className="hover:text-primary transition-colors">Home</Link>
+              <Link href="/#services" className="hover:text-primary transition-colors">Our Services</Link>
+              <Link href="/#about" className="hover:text-primary transition-colors">About Us</Link>
+              <Link href="/#contact" className="hover:text-primary transition-colors">Contact Us</Link>
             </nav>
           </div>
 
