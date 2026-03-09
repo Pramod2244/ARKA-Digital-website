@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from "react";
@@ -99,6 +100,20 @@ const HIMSIcon = () => (
   </svg>
 );
 
+const MarketingIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-12 h-12" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="grad6" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#FF6A00" />
+        <stop offset="100%" stopColor="#FF8A30" />
+      </linearGradient>
+    </defs>
+    <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="url(#grad6)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M15.54 8.46C16.4774 9.39763 17.0039 10.6692 17.0039 11.995C17.0039 13.3208 16.4774 14.5924 15.54 15.53" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" className="drop-shadow-[0_0_5px_#3B82F6]" />
+    <path d="M19.07 4.93005C20.9447 6.80528 21.9979 9.3484 21.9979 12.0001C21.9979 14.6517 20.9447 17.1948 19.07 19.0701" stroke="#3B82F6" strokeWidth="1.5" strokeLinecap="round" className="opacity-40" />
+  </svg>
+);
+
 const services = [
   {
     title: "Hospital Management Systems",
@@ -128,11 +143,20 @@ const services = [
     cta: { label: "Learn More", href: "/ui-ux-details" }
   },
   {
+    title: "Digital Marketing",
+    description: "Data-driven marketing strategies to increase brand visibility, generate leads, and drive business growth.",
+    icon: MarketingIcon,
+    image: PlaceHolderImages.find(img => img.id === 'digital-marketing-v2'),
+    accent: "text-primary",
+    features: ["SEO Optimization", "Social Media Marketing", "PPC Advertising", "Content Marketing"],
+    cta: { label: "Learn More", href: "/digital-marketing-details" }
+  },
+  {
     title: "Cloud & Hosting Solutions",
     description: "Scalable cloud architecture and managed hosting services to ensure your data is secure and always accessible.",
     icon: CloudIcon,
     image: PlaceHolderImages.find(img => img.id === 'cloud-solutions-v2'),
-    accent: "text-primary",
+    accent: "text-[#3B82F6]",
     features: ["Cloud Deployment", "Server Management", "High Availability", "Performance Monitoring"],
     cta: { label: "Consult with Experts", href: "#contact" }
   }
@@ -210,7 +234,7 @@ export function ServicesSection() {
                           <div key={fIndex} className="flex items-center gap-3">
                             <div className={cn(
                               "w-5 h-5 rounded-full flex items-center justify-center",
-                              index === 0 ? "bg-[#3B82F6]/10 text-[#3B82F6]" : (index % 2 === 0 ? "bg-[#3B82F6]/10 text-[#3B82F6]" : "bg-primary/10 text-primary")
+                              index % 2 === 0 ? "bg-[#3B82F6]/10 text-[#3B82F6]" : "bg-primary/10 text-primary"
                             )}>
                               <CheckCircle2 className="h-3 w-3" />
                             </div>

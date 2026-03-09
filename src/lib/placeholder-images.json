@@ -43,6 +43,12 @@
       "imageHint": "cloud computing"
     },
     {
+      "id": "digital-marketing-v2",
+      "description": "Modern digital marketing dashboard showing social media growth, SEO metrics, and ad campaign performance",
+      "imageUrl": "https://picsum.photos/seed/arkaa-marketing-v2/1000/800",
+      "imageHint": "digital marketing"
+    },
+    {
       "id": "portfolio-hims-nexus",
       "description": "Healthcare software platform with medical charts and patient data visualization",
       "imageUrl": "https://picsum.photos/seed/arkaa-port-hims/1200/800",
