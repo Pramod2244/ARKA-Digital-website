@@ -2,7 +2,7 @@
 
 /**
  * @fileOverview Server Action for handling contact form submissions to Zoho Flow.
- * Ensures that data is mapped correctly to lowercase column names used in Zoho Sheets.
+ * Standardizes API field names and maps them to lowercase column names for Zoho Sheets.
  */
 
 const ZOHO_WEBHOOK_URL = "https://flow.zoho.in/60066961770/flow/webhook/incoming?zapikey=1001.ac2cb11074ede804c0e7bdcaf93442dc.9e3de0160abd3fc92b66e103017c3ba5&isdebug=false";
@@ -19,7 +19,16 @@ export type ZohoSubmissionData = {
 
 export async function submitToZoho(data: ZohoSubmissionData) {
   try {
-    // Mapping internal fields to Zoho Sheet lowercase column names
+    /**
+     * Mapping Internal Fields to Zoho Sheet lowercase column names:
+     * slNo -> sl no
+     * name -> name
+     * email -> email
+     * subject -> subject
+     * message -> message
+     * dateTime -> date & time
+     * status -> status
+     */
     const payload = {
       "sl no": data.slNo,
       "name": data.name,

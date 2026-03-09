@@ -20,7 +20,7 @@ import { Mail, Phone, User, Tag, Send, Loader2, X } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import { Card } from "../ui/card";
 import { useFirestore } from "@/firebase";
-import { collection, addDoc, serverTimestamp, getCountFromServer } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { errorEmitter } from "@/firebase/error-emitter";
 import { FirestorePermissionError, type SecurityRuleContext } from "@/firebase/errors";
 import { submitToZoho } from "@/app/actions/contact";
@@ -64,7 +64,7 @@ export function ContactSection() {
         }
     }, [showSuccess]);
 
-    // Formatting: krIshna → Krishna
+    // Formatting: krIshna → Krishna, joHN doe → John Doe
     const toTitleCase = (str: string) => {
         return str.trim().toLowerCase().split(/\s+/).map(word => 
             word.charAt(0).toUpperCase() + word.slice(1)
@@ -73,19 +73,11 @@ export function ContactSection() {
 
     /**
      * Handles the background processing of the form data.
-     * This function is NOT awaited by the UI thread to ensure near-instant feedback.
+     * Generates Sl No from localStorage and maps values.
      */
-    async function processBackgroundSubmission(values: z.infer<typeof formSchema>) {
+    async function processBackgroundSubmission(values: z.infer<typeof formSchema>, nextSlNo: number) {
         try {
-            // 1. Fetch Current Total Rows for Sl No (total_rows + 1)
-            let nextSlNo = 1;
-            if (firestore) {
-                const coll = collection(firestore, 'contacts');
-                const snapshot = await getCountFromServer(coll);
-                nextSlNo = snapshot.data().count + 1;
-            }
-
-            // 2. Format Data according to standard naming and Zoho requirements
+            // Format Data according to standard naming and Zoho requirements
             const formattedPayload = {
                 slNo: nextSlNo,
                 name: toTitleCase(values.name),
@@ -96,15 +88,14 @@ export function ContactSection() {
                 status: "New"
             };
 
-            // 3. Send to Zoho Flow with standard lowercase mapping
-            // We initiate the call but don't block the UI
+            // Send to Zoho Flow with standard lowercase mapping handled in the action
             submitToZoho(formattedPayload).then(result => {
                 if (!result.success) {
                     console.error("Background Zoho integration error:", result.error);
                 }
             });
 
-            // 4. Backup to Firestore
+            // Backup to Firestore
             if (firestore) {
                 const contactsCollection = collection(firestore, 'contacts');
                 addDoc(contactsCollection, {
@@ -129,18 +120,24 @@ export function ContactSection() {
         if (isSubmitting) return;
         setIsSubmitting(true);
 
-        // 1. Show success message immediately (Optimistic UI)
+        // 1. Generate Sl No from localStorage instantly
+        const COUNTER_KEY = 'form_submission_counter';
+        const currentCounter = parseInt(localStorage.getItem(COUNTER_KEY) || '0', 10);
+        const nextSlNo = currentCounter + 1;
+        localStorage.setItem(COUNTER_KEY, nextSlNo.toString());
+
+        // 2. Show success message immediately (Optimistic UI)
         setShowSuccess(true);
         
-        // 2. Capture the current form values for background processing
+        // 3. Capture current values
         const capturedValues = { ...values };
         
-        // 3. Reset the form immediately to clear the UI
+        // 4. Reset UI
         form.reset();
         setIsSubmitting(false);
 
-        // 4. Trigger background processing (No 'await' here)
-        processBackgroundSubmission(capturedValues);
+        // 5. Trigger background processing (Non-blocking)
+        processBackgroundSubmission(capturedValues, nextSlNo);
     }
 
     return (
