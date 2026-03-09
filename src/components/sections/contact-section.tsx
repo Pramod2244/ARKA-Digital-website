@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -15,7 +16,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, User, Tag, Send, Loader2 } from 'lucide-react';
+import { Mail, Phone, User, Tag, Send, Loader2, X } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import { Card } from "../ui/card";
 import { useFirestore } from "@/firebase";
@@ -43,6 +44,7 @@ export function ContactSection() {
     const { toast } = useToast();
     const { firestore } = useFirestore();
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [showSuccess, setShowSuccess] = useState(false);
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -53,6 +55,14 @@ export function ContactSection() {
             message: "",
         },
     });
+
+    // Auto-close success modal after 5 seconds
+    useEffect(() => {
+        if (showSuccess) {
+            const timer = setTimeout(() => setShowSuccess(false), 5000);
+            return () => clearTimeout(timer);
+        }
+    }, [showSuccess]);
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         if (isSubmitting) return;
@@ -88,12 +98,8 @@ export function ContactSection() {
                 });
             }
 
-            // 3. Success Feedback
-            toast({
-              title: "Success",
-              description: "Message sent successfully.",
-            });
-            
+            // 3. Trigger Success Modal & Reset
+            setShowSuccess(true);
             form.reset();
         } catch (error) {
             console.error("Submission error:", error);
@@ -152,7 +158,7 @@ export function ContactSection() {
                         </div>
                     </div>
 
-                    <Card className="lg:col-span-3 border border-white shadow-2xl p-8 md:p-12 rounded-[3rem] bg-white/80 backdrop-blur-md">
+                    <Card className="lg:col-span-3 border border-white shadow-2xl p-8 md:p-12 rounded-[3rem] bg-white/80 backdrop-blur-md relative">
                         <Form {...form}>
                             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                                 <div className="grid md:grid-cols-2 gap-8">
@@ -261,6 +267,50 @@ export function ContactSection() {
                     </Card>
                 </div>
             </div>
+
+            {/* Success Modal */}
+            <AnimatePresence>
+                {showSuccess && (
+                    <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                            className="bg-white rounded-[3rem] p-10 md:p-16 max-w-xl w-full shadow-[0_32px_64px_-12px_rgba(0,0,0,0.2)] text-center space-y-8 border border-white relative overflow-hidden"
+                        >
+                            {/* Decorative background glow */}
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-48 bg-primary/5 rounded-full blur-3xl -z-10" />
+                            
+                            <button 
+                                onClick={() => setShowSuccess(false)}
+                                className="absolute top-8 right-8 p-2 rounded-full hover:bg-slate-50 transition-colors text-slate-400"
+                            >
+                                <X className="h-5 w-5" />
+                            </button>
+
+                            <div className="text-7xl md:text-8xl animate-bounce">🤝</div>
+                            
+                            <div className="space-y-4">
+                                <h3 className="text-3xl md:text-4xl font-black text-slate-900 leading-tight">
+                                    Thank you for contacting us!
+                                </h3>
+                                <p className="text-lg text-slate-600 font-medium leading-relaxed">
+                                    We have received your message and our team will respond shortly.
+                                </p>
+                            </div>
+
+                            <div className="pt-4">
+                                <Button 
+                                    onClick={() => setShowSuccess(false)}
+                                    className="h-14 px-12 rounded-full bg-slate-900 text-white font-black uppercase tracking-[0.2em] text-[10px] hover:bg-slate-800 transition-all"
+                                >
+                                    Done
+                                </Button>
+                            </div>
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
         </section>
     );
 }
