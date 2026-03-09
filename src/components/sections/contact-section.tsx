@@ -144,7 +144,7 @@ export function ContactSection() {
                                     </div>
                                     <div>
                                         <p className="text-[10px] uppercase font-black text-slate-400 tracking-widest mb-1">Call Experts</p>
-                                        <p className="text-lg font-black text-slate-900">+91 7996935157</p>
+                                        <p className="text-lg font-black text-slate-900">+91 93805 08350</p>
                                     </div>
                                 </div>
                             </div>

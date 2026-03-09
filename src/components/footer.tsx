@@ -88,7 +88,7 @@ export function Footer() {
                 <div className="p-3 rounded-xl bg-[#3B82F6]/10 text-[#3B82F6] group-hover:bg-[#3B82F6] group-hover:text-white transition-all">
                   <Phone className="h-4 w-4" />
                 </div>
-                +91 7996935157
+                +91 93805 08350
               </div>
               <div className="flex items-start gap-5 hover:text-white transition-colors cursor-pointer group">
                 <div className="p-3 rounded-xl bg-white/5 text-white group-hover:bg-white/10 transition-all border border-white/5">
