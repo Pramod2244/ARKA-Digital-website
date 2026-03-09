@@ -3,124 +3,153 @@
 
 import { motion } from "framer-motion";
 import { 
-  Activity, 
-  ShieldCheck, 
-  Database, 
-  Zap, 
+  Users, 
+  Calendar, 
   HeartPulse, 
-  LineChart, 
-  Layers, 
-  Globe,
+  CreditCard, 
+  Pill, 
+  FlaskConical, 
+  Microscope, 
+  Bed, 
+  Stethoscope, 
+  Package, 
+  Briefcase, 
+  BarChart3,
+  CheckCircle2,
   ArrowLeft,
-  Settings,
-  ShieldAlert,
-  Users
+  ShieldCheck,
+  Cloud,
+  Zap,
+  Globe
 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 const modules = [
   {
-    title: "Patient Management",
-    desc: "Complete lifecycle management from registration to discharge, including comprehensive EMR integration.",
+    title: "Patient Registration & Management",
+    desc: "Quick registration, unique ID generation, digital profiles, and comprehensive medical history tracking.",
     icon: Users
   },
   {
+    title: "Appointment Scheduling",
+    desc: "Online booking, doctor availability management, automated reminders, and queue optimization.",
+    icon: Calendar
+  },
+  {
     title: "Electronic Medical Records (EMR)",
-    desc: "Digitized health history, prescriptions, and clinical notes available to authorized staff in real-time.",
+    desc: "Secure digital records, diagnosis tracking, treatment plans, and integrated prescription management.",
     icon: HeartPulse
   },
   {
-    title: "OPD & IPD Workflows",
-    desc: "Seamless handling of outpatient consultations and inpatient admissions with automated bed management.",
-    icon: Layers
+    title: "Billing & Insurance",
+    desc: "Automated billing, insurance claim processing, invoice generation, and real-time financial reporting.",
+    icon: CreditCard
   },
   {
-    title: "Financial Billing",
-    desc: "Integrated billing for all services, including automated insurance claim tracking and split-billing.",
-    icon: LineChart
+    title: "Pharmacy Management",
+    desc: "Inventory tracking, automated stock monitoring, expiry alerts, and supplier management.",
+    icon: Pill
   },
   {
-    title: "Laboratory & Radiology",
-    desc: "Full LIS and RIS integration with digital reporting, automated sample tracking, and image archiving.",
-    icon: Zap
+    title: "Laboratory Management",
+    desc: "Digital test requests, sample tracking, automated report generation, and patient record syncing.",
+    icon: FlaskConical
   },
   {
-    title: "Pharmacy & Inventory",
-    desc: "Real-time stock tracking across departments with expiration alerts and automated reordering.",
-    icon: Database
+    title: "Radiology Management",
+    desc: "Scheduling, imaging reports, PACS support, and seamless integration with patient medical records.",
+    icon: Microscope
+  },
+  {
+    title: "In-Patient (IPD) Management",
+    desc: "Bed allocation, ward management, nurse monitoring, treatment tracking, and discharge summaries.",
+    icon: Bed
+  },
+  {
+    title: "Out-Patient (OPD) Management",
+    desc: "OPD registration, consultation management, follow-up scheduling, and prescription tracking.",
+    icon: Stethoscope
+  },
+  {
+    title: "Inventory & Equipment",
+    desc: "Medical equipment tracking, purchase management, stock monitoring, and inventory alerts.",
+    icon: Package
+  },
+  {
+    title: "Staff & HR Management",
+    desc: "Staff profiles, attendance tracking, payroll integration, and department-wise management.",
+    icon: Briefcase
+  },
+  {
+    title: "Reports & Analytics",
+    desc: "Operational analytics, financial reports, patient statistics, and department performance tracking.",
+    icon: BarChart3
   }
 ];
 
 const benefits = [
-  {
-    title: "Operational Efficiency",
-    desc: "Automate repetitive administrative tasks, allowing your medical team to focus entirely on patient care.",
-    icon: Settings
-  },
-  {
-    title: "Data Security & Compliance",
-    desc: "Bank-grade encryption and granular access controls ensure full HIPAA and GDPR compliance.",
-    icon: ShieldCheck
-  },
-  {
-    title: "Digital Transformation",
-    desc: "Transition from paper-based chaos to a streamlined, data-driven digital ecosystem.",
-    icon: Globe
-  }
+  "Improved hospital efficiency",
+  "Reduced manual paperwork",
+  "Accurate patient data management",
+  "Faster hospital workflows",
+  "Better patient experience",
+  "Real-time reporting and insights",
+  "Secure centralized data storage"
+];
+
+const advantages = [
+  { icon: Cloud, title: "Cloud-Based", desc: "Reliable, high-availability infrastructure accessible from anywhere." },
+  { icon: ShieldCheck, title: "Secure Data", desc: "Enterprise-grade encryption for sensitive patient information." },
+  { icon: Zap, title: "Easy Integration", desc: "Seamlessly connects with your existing clinical systems." },
+  { icon: Globe, title: "Scalable", desc: "Engineered for small clinics up to multi-specialty hospitals." }
 ];
 
 export default function HimsDetailsPage() {
   return (
     <div className="bg-[#F8FAFC] min-h-screen pt-32 pb-24">
-      <div className="container mx-auto px-6 max-w-6xl">
-        {/* Navigation Breadcrumb */}
+      <div className="container mx-auto px-6 max-w-7xl">
+        {/* Breadcrumb Navigation */}
         <Link href="/" className="inline-flex items-center gap-2 text-slate-500 hover:text-primary font-black uppercase tracking-widest text-[10px] mb-12 transition-colors">
           <ArrowLeft className="h-4 w-4" />
           Back to Home
         </Link>
 
-        {/* Hero Section */}
-        <div className="space-y-8 mb-20 text-center lg:text-left">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-block px-4 py-2 rounded-full bg-blue-50 text-[#3B82F6] text-[10px] font-black uppercase tracking-[0.2em]"
-          >
-            Clinical Excellence Through Technology
-          </motion.div>
+        {/* Hero Introduction */}
+        <div className="max-w-4xl mb-24">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="font-headline text-5xl md:text-7xl font-black text-slate-900 leading-tight"
+            className="font-headline text-4xl md:text-6xl font-black text-slate-900 leading-tight mb-8"
           >
-            Modern Hospital <br />
-            <span className="text-[#3B82F6]">Management (HIMS)</span>
+            Hospital Management <br />
+            <span className="text-[#3B82F6]">Information System (HIMS)</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-xl text-slate-600 font-medium max-w-3xl leading-relaxed"
+            transition={{ delay: 0.1 }}
+            className="text-xl text-slate-600 font-medium leading-relaxed"
           >
-            HIMS is a robust, centralized Information System engineered to empower modern healthcare providers. 
-            By integrating every department into a single digital core, we eliminate manual errors and 
-            accelerate patient outcomes.
+            Our Hospital Management Information System (HIMS) is a comprehensive digital platform designed to automate and manage hospital operations efficiently. It connects multiple departments such as patient registration, appointments, billing, pharmacy, laboratory, radiology, and hospital administration into a single centralized system. HIMS improves operational efficiency, reduces paperwork, minimizes human errors, and enhances patient care through real-time data access and automation.
           </motion.p>
         </div>
 
-        {/* Modules Grid */}
+        {/* Key Modules Section */}
         <div className="mb-32">
-          <h2 className="font-headline text-2xl md:text-3xl font-black text-slate-900 mb-12 uppercase tracking-widest text-center lg:text-left">Core Modules</h2>
+          <div className="flex items-center gap-4 mb-16">
+            <h2 className="font-headline text-2xl md:text-3xl font-black text-slate-900 uppercase tracking-widest">Key Modules of HIMS</h2>
+            <div className="flex-1 h-[2px] bg-slate-100 rounded-full" />
+          </div>
+          
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {modules.map((module, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.1 }}
-                className="p-10 rounded-[3rem] bg-white border border-slate-100 shadow-xl shadow-slate-200/50 hover:-translate-y-2 transition-all duration-500 group"
+                transition={{ delay: i * 0.05 }}
+                className="p-10 rounded-[3rem] bg-white border border-slate-100 shadow-xl shadow-slate-200/40 hover:-translate-y-2 transition-all duration-500 group"
               >
                 <div className="w-16 h-16 rounded-[1.5rem] bg-blue-50 flex items-center justify-center text-[#3B82F6] group-hover:bg-[#3B82F6] group-hover:text-white transition-all duration-500 mb-8">
                   <module.icon className="h-8 w-8" />
@@ -132,72 +161,57 @@ export default function HimsDetailsPage() {
           </div>
         </div>
 
-        {/* Benefits & Automation Section */}
-        <div className="mb-32">
-          <div className="bg-white rounded-[4rem] p-12 md:p-20 border border-slate-100 shadow-2xl relative overflow-hidden">
-             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50 rounded-full blur-[120px] -z-10" />
-             <div className="grid lg:grid-cols-2 gap-16 items-center">
-                <div className="space-y-8">
-                  <h2 className="font-headline text-3xl md:text-5xl font-black text-slate-900 leading-tight">
-                    Driving Hospital <br />
-                    <span className="text-[#3B82F6]">Transformation</span>
-                  </h2>
-                  <p className="text-lg text-slate-600 font-medium leading-relaxed">
-                    Our HIMS goes beyond data entry; it implements intelligent workflow automation that 
-                    optimizes resource allocation, reduces patient wait times by up to 40%, and ensures 
-                    seamless digital communication across the entire clinical facility.
-                  </p>
-                  <ul className="space-y-4">
-                    {benefits.map((benefit, i) => (
-                      <li key={i} className="flex gap-4 items-start">
-                        <div className="p-2 rounded-lg bg-blue-50 text-[#3B82F6] mt-1">
-                          <benefit.icon className="h-5 w-5" />
-                        </div>
-                        <div>
-                          <p className="font-black text-slate-900 text-sm uppercase tracking-widest mb-1">{benefit.title}</p>
-                          <p className="text-slate-500 text-sm font-medium">{benefit.desc}</p>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
+        {/* Benefits & Advantages Grid */}
+        <div className="grid lg:grid-cols-2 gap-16 mb-32">
+          <div className="bg-white rounded-[4rem] p-12 md:p-16 border border-slate-100 shadow-2xl">
+            <h2 className="font-headline text-3xl font-black text-slate-900 mb-10">System Benefits</h2>
+            <ul className="space-y-6">
+              {benefits.map((benefit, i) => (
+                <li key={i} className="flex gap-4 items-center">
+                  <div className="p-1.5 rounded-full bg-blue-50 text-[#3B82F6]">
+                    <CheckCircle2 className="h-5 w-5" />
+                  </div>
+                  <span className="text-lg font-medium text-slate-600">{benefit}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="space-y-8 flex flex-col justify-center">
+            <h2 className="font-headline text-3xl font-black text-slate-900 leading-tight">Why Choose Our <br /><span className="text-[#3B82F6]">HIMS Solution?</span></h2>
+            <p className="text-lg text-slate-600 font-medium leading-relaxed">
+              Our HIMS solution is designed for hospitals, clinics, and healthcare institutions looking to digitally transform their operations. It offers a secure, scalable, and user-friendly platform that integrates all hospital departments into one powerful system.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-6 pt-4">
+              {advantages.map((adv, i) => (
+                <div key={i} className="space-y-3">
+                  <div className="w-12 h-12 rounded-2xl bg-white shadow-md flex items-center justify-center text-[#3B82F6] border border-slate-100">
+                    <adv.icon className="h-6 w-6" />
+                  </div>
+                  <h4 className="font-black text-slate-900 uppercase tracking-widest text-[10px]">{adv.title}</h4>
+                  <p className="text-xs text-slate-500 font-medium">{adv.desc}</p>
                 </div>
-                <div className="relative h-[400px] lg:h-[600px] w-full rounded-[3rem] overflow-hidden bg-slate-900 shadow-2xl">
-                   <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center text-white space-y-8">
-                      <div className="w-24 h-24 rounded-full bg-[#3B82F6] flex items-center justify-center animate-pulse">
-                        <Zap className="h-10 w-10 text-white" />
-                      </div>
-                      <h4 className="text-2xl font-black uppercase tracking-[0.2em]">Automated <br /> Workflow Core</h4>
-                      <p className="text-slate-400 font-medium">Predictive bed management and real-time inventory alerts powered by our HIMS engine.</p>
-                   </div>
-                </div>
-             </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* CTA Section */}
+        {/* Final CTA Section */}
         <div className="bg-slate-900 rounded-[4rem] p-12 md:p-20 relative overflow-hidden text-center text-white">
-          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[100px]" />
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#3B82F6]/10 rounded-full blur-[100px]" />
           <div className="relative z-10 space-y-12">
             <h2 className="font-headline text-3xl md:text-5xl font-black tracking-tight leading-tight">
-              Ready to Modernize Your <br /> Medical Facility?
+              Ready to Start Your <br /> Digital Transformation?
             </h2>
-            <div className="grid sm:grid-cols-3 gap-8">
-              <div className="space-y-3">
-                <div className="text-4xl font-black text-[#3B82F6]">99.9%</div>
-                <p className="text-[10px] uppercase font-bold tracking-widest text-slate-400">System Uptime</p>
-              </div>
-              <div className="space-y-3">
-                <div className="text-4xl font-black text-[#3B82F6]">Zero</div>
-                <p className="text-[10px] uppercase font-bold tracking-widest text-slate-400">Manual Errors</p>
-              </div>
-              <div className="space-y-3">
-                <div className="text-4xl font-black text-[#3B82F6]">ISO</div>
-                <p className="text-[10px] uppercase font-bold tracking-widest text-slate-400">Data Standards</p>
-              </div>
-            </div>
-            <div className="pt-8">
+            <p className="text-slate-400 text-lg max-w-2xl mx-auto font-medium">
+              Join leading medical institutions that have already scaled their efficiency and patient care with our HIMS platform.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8">
               <Button size="lg" className="h-16 px-14 text-xs font-black rounded-full bg-primary text-white hover:bg-primary/90 shadow-2xl transition-all uppercase tracking-[0.2em]" asChild>
-                <Link href="/#contact">Request a Live Demo</Link>
+                <Link href="/#contact">Request a Demo</Link>
+              </Button>
+              <Button size="lg" variant="outline" className="h-16 px-14 text-xs font-black rounded-full border-2 border-white/20 bg-transparent text-white hover:bg-white/10 transition-all uppercase tracking-[0.2em]" asChild>
+                <Link href="/#contact">Contact Our Experts</Link>
               </Button>
             </div>
           </div>
