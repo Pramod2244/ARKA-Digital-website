@@ -10,7 +10,6 @@ import {
   MousePointer2, 
   Smartphone, 
   Monitor, 
-  CheckCircle,
   CheckCircle2,
   ArrowLeft,
   Layers,
@@ -94,7 +93,7 @@ export default function UIUXDetailsPage() {
   return (
     <div className="bg-[#F8FAFC] min-h-screen pt-32 pb-24">
       <div className="container mx-auto px-6 max-w-7xl">
-        {/* Breadcrumb Navigation */}
+        {/* Breadcrumb Navigation - Mapped to #services section */}
         <Link href="/#services" className="inline-flex items-center gap-2 text-slate-500 hover:text-primary font-black uppercase tracking-widest text-[10px] mb-12 transition-colors">
           <ArrowLeft className="h-4 w-4" />
           Back to Services
@@ -103,17 +102,18 @@ export default function UIUXDetailsPage() {
         {/* Hero Introduction */}
         <div className="max-w-4xl mb-24">
           <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
             className="font-headline text-4xl md:text-6xl font-black text-slate-900 leading-tight mb-8"
           >
             UI/UX Design <br />
             <span className="text-[#3B82F6]">Services</span>
           </motion.h1>
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
             className="text-xl text-slate-600 font-medium leading-relaxed"
           >
             Our UI/UX Design services focus on creating intuitive, engaging, and visually appealing digital experiences. We design user interfaces that are easy to navigate and optimized for usability across websites, web applications, and mobile platforms. Our design approach combines creativity, usability research, and modern design principles to deliver seamless user experiences that improve engagement and customer satisfaction.
@@ -131,10 +131,10 @@ export default function UIUXDetailsPage() {
             {designServices.map((service, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.98 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.05 }}
-                className="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-xl shadow-slate-200/40 hover:-translate-y-2 transition-all duration-500 group"
+                transition={{ duration: 0.3 }}
+                className="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-xl shadow-slate-200/40 hover:-translate-y-1 transition-all duration-300 group"
               >
                 <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-[#3B82F6] group-hover:bg-[#3B82F6] group-hover:text-white transition-all duration-500 mb-6">
                   <service.icon className="h-7 w-7" />

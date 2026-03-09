@@ -109,7 +109,7 @@ export default function HimsDetailsPage() {
   return (
     <div className="bg-[#F8FAFC] min-h-screen pt-32 pb-24">
       <div className="container mx-auto px-6 max-w-7xl">
-        {/* Breadcrumb Navigation */}
+        {/* Breadcrumb Navigation - Mapped to #services section */}
         <Link href="/#services" className="inline-flex items-center gap-2 text-slate-500 hover:text-primary font-black uppercase tracking-widest text-[10px] mb-12 transition-colors">
           <ArrowLeft className="h-4 w-4" />
           Back to Services
@@ -118,17 +118,18 @@ export default function HimsDetailsPage() {
         {/* Hero Introduction */}
         <div className="max-w-4xl mb-24">
           <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
             className="font-headline text-4xl md:text-6xl font-black text-slate-900 leading-tight mb-8"
           >
             Hospital Management <br />
             <span className="text-[#3B82F6]">Information System (HIMS)</span>
           </motion.h1>
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
             className="text-xl text-slate-600 font-medium leading-relaxed"
           >
             Our Hospital Management Information System (HIMS) is a comprehensive digital platform designed to automate and manage hospital operations efficiently. It connects multiple departments such as patient registration, appointments, billing, pharmacy, laboratory, radiology, and hospital administration into a single centralized system. HIMS improves operational efficiency, reduces paperwork, minimizes human errors, and enhances patient care through real-time data access and automation.
@@ -146,10 +147,10 @@ export default function HimsDetailsPage() {
             {modules.map((module, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.98 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.05 }}
-                className="p-10 rounded-[3rem] bg-white border border-slate-100 shadow-xl shadow-slate-200/40 hover:-translate-y-2 transition-all duration-500 group"
+                transition={{ duration: 0.3 }}
+                className="p-10 rounded-[3rem] bg-white border border-slate-100 shadow-xl shadow-slate-200/40 hover:-translate-y-1 transition-all duration-300 group"
               >
                 <div className="w-16 h-16 rounded-[1.5rem] bg-blue-50 flex items-center justify-center text-[#3B82F6] group-hover:bg-[#3B82F6] group-hover:text-white transition-all duration-500 mb-8">
                   <module.icon className="h-8 w-8" />

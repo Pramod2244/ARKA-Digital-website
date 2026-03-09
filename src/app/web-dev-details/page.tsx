@@ -16,8 +16,7 @@ import {
   Layout,
   Cpu,
   Database,
-  Lock,
-  Workflow
+  Lock
 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -84,7 +83,7 @@ export default function WebDevDetailsPage() {
   return (
     <div className="bg-[#F8FAFC] min-h-screen pt-32 pb-24">
       <div className="container mx-auto px-6 max-w-7xl">
-        {/* Breadcrumb Navigation */}
+        {/* Breadcrumb Navigation - Mapped to #services section */}
         <Link href="/#services" className="inline-flex items-center gap-2 text-slate-500 hover:text-primary font-black uppercase tracking-widest text-[10px] mb-12 transition-colors">
           <ArrowLeft className="h-4 w-4" />
           Back to Services
@@ -93,17 +92,18 @@ export default function WebDevDetailsPage() {
         {/* Hero Introduction */}
         <div className="max-w-4xl mb-24">
           <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
             className="font-headline text-4xl md:text-6xl font-black text-slate-900 leading-tight mb-8"
           >
             Professional Website <br />
             <span className="text-primary">Development Services</span>
           </motion.h1>
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
             className="text-xl text-slate-600 font-medium leading-relaxed"
           >
             Our Website Development services help businesses build modern, responsive, and high-performing websites that strengthen their online presence. We design and develop websites that are visually appealing, user-friendly, and optimized for performance, security, and scalability. Whether you need a business website, e-commerce platform, or custom web application, our team delivers solutions tailored to your goals.
@@ -121,10 +121,10 @@ export default function WebDevDetailsPage() {
             {devModules.map((module, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.98 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.05 }}
-                className="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-xl shadow-slate-200/40 hover:-translate-y-2 transition-all duration-500 group"
+                transition={{ duration: 0.3 }}
+                className="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-xl shadow-slate-200/40 hover:-translate-y-1 transition-all duration-300 group"
               >
                 <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 mb-6">
                   <module.icon className="h-7 w-7" />
