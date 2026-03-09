@@ -20,13 +20,14 @@ import { Mail, Phone, User, Tag, Send, Loader2, X } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import { Card } from "../ui/card";
 import { useFirestore } from "@/firebase";
-import { collection, addDoc, serverTimestamp, query, orderBy, limit, getDocs, where } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { errorEmitter } from "@/firebase/error-emitter";
 import { FirestorePermissionError, type SecurityRuleContext } from "@/firebase/errors";
 import { submitToZoho } from "@/app/actions/contact";
 import { format } from "date-fns";
 
 const CURRENT_SOURCE = "arkaadigital_web_v2";
+const STORAGE_KEY = "form_lead_counter";
 
 const formSchema = z.object({
   name: z.string()
@@ -59,13 +60,6 @@ export function ContactSection() {
         },
     });
 
-    useEffect(() => {
-        if (showSuccess) {
-            const timer = setTimeout(() => setShowSuccess(false), 5000);
-            return () => clearTimeout(timer);
-        }
-    }, [showSuccess]);
-
     /**
      * Formatting: krIshna → Krishna, joHN doe → John Doe
      */
@@ -76,63 +70,61 @@ export function ContactSection() {
     };
 
     /**
-     * Handles the background processing of the form data including ID generation.
+     * Generates a Lead ID in the format LEAD-001
      */
-    async function processBackgroundSubmission(values: z.infer<typeof formSchema>) {
-        try {
-            // 1. Fetch next Lead ID (Source of Truth) in background
-            let nextLeadId = 1;
-            if (firestore) {
-                const contactsRef = collection(firestore, 'contacts');
-                const q = query(
-                    contactsRef, 
-                    where('source', '==', CURRENT_SOURCE),
-                    orderBy('leadId', 'desc'), 
-                    limit(1)
-                );
-                const querySnapshot = await getDocs(q);
-                
-                if (!querySnapshot.empty) {
-                    const lastDoc = querySnapshot.docs[0].data();
-                    nextLeadId = (lastDoc.leadId || 0) + 1;
-                }
+    const generateNextLeadId = () => {
+        if (typeof window === 'undefined') return "LEAD-001";
+        
+        const currentCount = localStorage.getItem(STORAGE_KEY);
+        let nextCount = 1;
+        
+        if (currentCount) {
+            nextCount = parseInt(currentCount, 10) + 1;
+        }
+        
+        localStorage.setItem(STORAGE_KEY, nextCount.toString());
+        
+        // Zero-padding to 3 digits (e.g., 001, 010, 100)
+        const paddedNum = nextCount.toString().padStart(3, '0');
+        return `LEAD-${paddedNum}`;
+    };
+
+    /**
+     * Handles background sync with Zoho and Firestore
+     */
+    async function processBackgroundSubmission(values: z.infer<typeof formSchema>, leadId: string) {
+        const formattedPayload = {
+            lead_id: leadId,
+            name: toTitleCase(values.name),
+            email: values.email.toLowerCase().trim(),
+            subject: values.subject.trim(),
+            message: values.message.trim(),
+            date_time: format(new Date(), 'dd MMM yyyy HH:mm'),
+            status: "New"
+        };
+
+        // 1. Send to Zoho Flow
+        submitToZoho(formattedPayload).then(result => {
+            if (!result.success) {
+                console.error("Zoho integration error:", result.error);
             }
+        });
 
-            const formattedPayload = {
-                leadId: nextLeadId,
-                name: toTitleCase(values.name),
-                email: values.email.toLowerCase().trim(),
-                subject: values.subject.trim(),
-                message: values.message.trim(),
-                dateTime: format(new Date(), 'dd MMM yyyy HH:mm'),
-                status: "New"
-            };
-
-            // 2. Send to Zoho Flow (Async)
-            submitToZoho(formattedPayload).then(result => {
-                if (!result.success) {
-                    console.error("Zoho integration error:", result.error);
-                }
+        // 2. Backup to Firestore
+        if (firestore) {
+            const contactsCollection = collection(firestore, 'contacts');
+            addDoc(contactsCollection, {
+                ...formattedPayload,
+                createdAt: serverTimestamp(),
+                source: CURRENT_SOURCE
+            }).catch(async () => {
+                const permissionError = new FirestorePermissionError({
+                    path: 'contacts',
+                    operation: 'create',
+                    requestResourceData: formattedPayload,
+                } satisfies SecurityRuleContext);
+                errorEmitter.emit('permission-error', permissionError);
             });
-
-            // 3. Backup to Firestore (Async)
-            if (firestore) {
-                const contactsCollection = collection(firestore, 'contacts');
-                addDoc(contactsCollection, {
-                    ...formattedPayload,
-                    createdAt: serverTimestamp(),
-                    source: CURRENT_SOURCE
-                }).catch(async (err) => {
-                    const permissionError = new FirestorePermissionError({
-                        path: 'contacts',
-                        operation: 'create',
-                        requestResourceData: formattedPayload,
-                    } satisfies SecurityRuleContext);
-                    errorEmitter.emit('permission-error', permissionError);
-                });
-            }
-        } catch (error) {
-            console.error("Background submission failed:", error);
         }
     }
 
@@ -141,14 +133,17 @@ export function ContactSection() {
         setIsSubmitting(true);
 
         try {
-            // INSTANT RESPONSE: Show success modal and reset form immediately
+            // 1. Generate ID instantly in frontend
+            const leadId = generateNextLeadId();
+            
+            // 2. INSTANT RESPONSE: Show success modal and reset form
             setShowSuccess(true);
             const capturedValues = { ...values };
             form.reset();
             setIsSubmitting(false);
 
-            // Shift all data processing and network calls to the background
-            processBackgroundSubmission(capturedValues);
+            // 3. Shift processing to background
+            processBackgroundSubmission(capturedValues, leadId);
         } catch (error) {
             console.error("Instant submission trigger error:", error);
             setIsSubmitting(false);

@@ -2,41 +2,41 @@
 
 /**
  * @fileOverview Server Action for handling contact form submissions to Zoho Flow.
- * Standardizes API field names and maps them to lowercase column names for Zoho Sheets.
+ * Standardizes API field names and maps them to Zoho Sheets column names.
  */
 
 const ZOHO_WEBHOOK_URL = "https://flow.zoho.in/60066961770/flow/webhook/incoming?zapikey=1001.ac2cb11074ede804c0e7bdcaf93442dc.9e3de0160abd3fc92b66e103017c3ba5&isdebug=false";
 
 export type ZohoSubmissionData = {
-  leadId: number;
+  lead_id: string;
   name: string;
   email: string;
   subject: string;
   message: string;
-  dateTime: string;
+  date_time: string;
   status: string;
 };
 
 export async function submitToZoho(data: ZohoSubmissionData) {
   try {
     /**
-     * Mapping Internal Fields to Zoho Sheet lowercase column names:
-     * leadId -> sl no (Sheet) & lead_id (API/Webhook)
+     * Mapping Internal Fields to Zoho Sheet lowercase/specific column names:
+     * lead_id -> Lead ID
      * name -> name
      * email -> email
      * subject -> subject
      * message -> message
-     * dateTime -> date & time
+     * date_time -> date & time
      * status -> status
      */
     const payload = {
-      "sl no": data.leadId,
-      "lead_id": data.leadId,
+      "Lead ID": data.lead_id,
+      "lead_id": data.lead_id,
       "name": data.name,
       "email": data.email,
       "subject": data.subject,
       "message": data.message,
-      "date & time": data.dateTime,
+      "date & time": data.date_time,
       "status": data.status,
       "source": "arkaadigital_web_v2"
     };
