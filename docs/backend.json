@@ -2,14 +2,15 @@
   "entities": {
     "ContactSubmission": {
       "title": "Contact Submission",
-      "description": "Details from the contact form submission",
+      "description": "Details from the contact form submission. Integrated with Zoho Flow for Zoho Sheets storage and WhatsApp owner notifications.",
       "type": "object",
       "properties": {
         "name": { "type": "string" },
         "email": { "type": "string", "format": "email" },
         "subject": { "type": "string" },
         "message": { "type": "string" },
-        "createdAt": { "type": "string", "format": "date-time" }
+        "createdAt": { "type": "string", "format": "date-time" },
+        "source": { "type": "string", "description": "Identification for external integrations like Zoho Flow" }
       },
       "required": ["name", "email", "subject", "message", "createdAt"]
     }
