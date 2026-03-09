@@ -2,8 +2,7 @@
 
 /**
  * @fileOverview Server Action for handling contact form submissions to Zoho Flow.
- * Ensures that data is sent in a structured JSON format for proper mapping in Zoho Flow,
- * Zoho Sheets, and downstream WhatsApp notifications.
+ * Ensures that data is mapped correctly to lowercase column names used in Zoho Sheets.
  */
 
 const ZOHO_WEBHOOK_URL = "https://flow.zoho.in/60066961770/flow/webhook/incoming?zapikey=1001.ac2cb11074ede804c0e7bdcaf93442dc.9e3de0160abd3fc92b66e103017c3ba5&isdebug=false";
@@ -14,22 +13,21 @@ export type ZohoSubmissionData = {
   email: string;
   subject: string;
   message: string;
-  formattedDate: string;
+  dateTime: string;
   status: string;
 };
 
 export async function submitToZoho(data: ZohoSubmissionData) {
   try {
-    // We send a flat JSON object including metadata to help Zoho Flow 
-    // identify the source for its WhatsApp notification logic.
+    // Mapping internal fields to Zoho Sheet lowercase column names
     const payload = {
-      "Sl no": data.slNo,
-      "Name": data.name,
-      "Email": data.email,
-      "Subject": data.subject,
-      "Message": data.message,
-      "Date & Time": data.formattedDate,
-      "Status": data.status,
+      "sl no": data.slNo,
+      "name": data.name,
+      "email": data.email,
+      "subject": data.subject,
+      "message": data.message,
+      "date & time": data.dateTime,
+      "status": data.status,
       "source": "arkaadigital_web_v1"
     };
 

@@ -64,6 +64,7 @@ export function ContactSection() {
         }
     }, [showSuccess]);
 
+    // Formatting: krIshna → Krishna
     const toTitleCase = (str: string) => {
         return str.trim().toLowerCase().split(/\s+/).map(word => 
             word.charAt(0).toUpperCase() + word.slice(1)
@@ -82,23 +83,23 @@ export function ContactSection() {
                 const querySnapshot = await getDocs(q);
                 if (!querySnapshot.empty) {
                     const lastDoc = querySnapshot.docs[0].data();
-                    nextSlNo = (lastDoc.slNo || 0) + 1;
+                    nextSlNo = (Number(lastDoc.slNo) || 0) + 1;
                 }
             }
 
-            // 2. Format Data
-            const formattedData = {
+            // 2. Format Data according to standardization rules
+            const formattedPayload = {
                 slNo: nextSlNo,
                 name: toTitleCase(values.name),
                 email: values.email.toLowerCase().trim(),
                 subject: values.subject.trim(),
                 message: values.message.trim(),
-                formattedDate: format(new Date(), 'dd MMM yyyy HH:mm'),
+                dateTime: format(new Date(), 'dd MMM yyyy HH:mm'),
                 status: "New"
             };
 
-            // 3. Send to Zoho Webhook via Server Action
-            const zohoResult = await submitToZoho(formattedData);
+            // 3. Send to Zoho Flow with lowercase mapping
+            const zohoResult = await submitToZoho(formattedPayload);
 
             if (!zohoResult.success) {
                 throw new Error(zohoResult.error);
@@ -108,14 +109,14 @@ export function ContactSection() {
             if (firestore) {
                 const contactsCollection = collection(firestore, 'contacts');
                 addDoc(contactsCollection, {
-                    ...formattedData,
+                    ...formattedPayload,
                     createdAt: serverTimestamp(),
                     source: 'web_form_arkaadigital'
                 }).catch(async (err) => {
                     const permissionError = new FirestorePermissionError({
                         path: 'contacts',
                         operation: 'create',
-                        requestResourceData: formattedData,
+                        requestResourceData: formattedPayload,
                     } satisfies SecurityRuleContext);
                     errorEmitter.emit('permission-error', permissionError);
                 });
