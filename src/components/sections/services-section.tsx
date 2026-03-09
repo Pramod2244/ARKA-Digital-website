@@ -5,7 +5,6 @@ import * as React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { 
   ArrowRight, 
   CheckCircle2
@@ -245,10 +244,10 @@ export function ServicesSection() {
 
                       <div className="pt-2">
                         <Button className="h-14 px-10 text-xs font-black rounded-full bg-slate-900 text-white hover:bg-slate-800 transition-all active:scale-95 uppercase tracking-[0.2em] group shadow-xl" asChild>
-                          <Link href={service.cta.href} className="flex items-center gap-4">
+                          <a href={service.cta.href} className="flex items-center gap-4">
                             {service.cta.label}
                             <ArrowRight className="h-4 w-4 group-hover:translate-x-1.5 transition-transform" />
-                          </Link>
+                          </a>
                         </Button>
                       </div>
                     </div>
