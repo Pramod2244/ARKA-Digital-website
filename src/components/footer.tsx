@@ -99,7 +99,7 @@ export function Footer() {
         </div>
 
         <div className="mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8 text-[9px] uppercase tracking-[0.4em] font-black">
-          <p>© {year || '...'} Arkaa Digital. All rights reserved.</p>
+          <p suppressHydrationWarning>© {year || '2025'} Arkaa Digital. All rights reserved.</p>
           <div className="flex gap-12">
             <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="#" className="hover:text-white transition-colors">Terms of Use</Link>

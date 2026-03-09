@@ -34,10 +34,14 @@ const navItems = [
 ];
 
 export function AppSidebar() {
-  const [activeSection, setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+    setActiveSection("home");
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
@@ -91,7 +95,7 @@ export function AppSidebar() {
         {/* Horizontal Navigation */}
         <nav className="hidden md:flex items-center gap-8">
           {navItems.map((item) => {
-            const isActive = activeSection === item.id;
+            const isActive = mounted && activeSection === item.id;
             return (
               <Link
                 key={item.id}
