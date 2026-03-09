@@ -1,4 +1,3 @@
-
 "use client";
 
 import * as React from "react";
@@ -126,7 +125,7 @@ const services = [
     image: PlaceHolderImages.find(img => img.id === 'ui-ux-design-v2'),
     accent: "text-[#3B82F6]",
     features: ["User-Centered Design", "Interactive Prototypes", "Clean Interface Layout", "Mobile Experience Optimization"],
-    cta: { label: "Consult with Experts", href: "#contact" }
+    cta: { label: "Learn More", href: "/ui-ux-details" }
   },
   {
     title: "Cloud & Hosting Solutions",
