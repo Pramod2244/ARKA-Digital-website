@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -31,8 +32,8 @@ const formSchema = z.object({
   email: z.string().email({
     message: "Please enter a valid email address.",
   }),
-  subject: z.string().min(5, {
-    message: "Subject must be at least 5 characters.",
+  subject: z.string().min(0, {
+    message: "Subject must contain characters.",
   }),
   message: z.string().min(10, {
     message: "Message must be at least 10 characters.",
@@ -60,10 +61,11 @@ export function ContactSection() {
 
         try {
             // 1. Send to Zoho via Server Action (Bypasses Client-side CORS)
+            // Mapping UI 'subject' field to 'project' as per Zoho requirement
             const zohoResult = await submitToZoho({
                 name: values.name,
                 email: values.email,
-                project: values.subject, // Mapping 'subject' field to 'project' as per requirement
+                project: values.subject, 
                 message: values.message
             });
 
