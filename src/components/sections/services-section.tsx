@@ -117,7 +117,7 @@ const services = [
     image: PlaceHolderImages.find(img => img.id === 'web-dev-v2'),
     accent: "text-primary",
     features: ["Responsive Design", "SEO Optimization", "Fast Performance", "Mobile Friendly"],
-    cta: { label: "Consult with Experts", href: "#contact" }
+    cta: { label: "Learn More", href: "/web-dev-details" }
   },
   {
     title: "UI / UX Design",
