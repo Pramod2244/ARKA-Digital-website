@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -5,7 +6,7 @@ import { Mail, MapPin, Phone } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const LogoMark = () => (
-  <svg viewBox="0 0 100 100" className="h-12 w-12 text-primary" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 100 100" className="h-16 w-16 text-primary" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <circle cx="50" cy="50" r="18" />
     {Array.from({ length: 16 }).map((_, i) => {
       const angle = i * 22.5;
@@ -38,13 +39,13 @@ export function Footer() {
       <div className="container mx-auto max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20">
           <div className="space-y-10">
-            <Link href="/" className="flex items-center gap-4 group">
+            <Link href="/" className="flex items-center gap-6 group">
               <LogoMark />
               <div className="flex flex-col">
-                <span className="block font-headline text-2xl font-black tracking-[0.3em] text-white uppercase leading-none">
+                <span className="block font-headline text-4xl font-black tracking-[0.3em] text-white uppercase leading-none">
                   Arkaa <span className="text-primary">Digital</span>
                 </span>
-                <span className="block text-[8px] uppercase tracking-[0.4em] text-primary font-black mt-2">Building what's next</span>
+                <span className="block text-[12px] uppercase tracking-[0.4em] text-primary font-black mt-3">Building what's next</span>
               </div>
             </Link>
             <p className="text-sm leading-relaxed max-w-xs font-medium text-slate-400">

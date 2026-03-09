@@ -14,7 +14,7 @@ const navItems = [
 ];
 
 const SidebarLogo = () => (
-  <svg viewBox="0 0 100 100" className="h-8 w-8 text-primary shrink-0" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 100 100" className="h-12 w-12 text-primary shrink-0" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <circle cx="50" cy="50" r="18" />
     {Array.from({ length: 16 }).map((_, i) => {
       const angle = i * 22.5;
@@ -65,14 +65,14 @@ export function AppSidebar() {
     <>
       {/* Fixed Top-Left Branding - Horizontal Lockup */}
       <div className="fixed top-10 left-10 z-[110] select-none pointer-events-auto">
-        <Link href="#home" className="flex items-center gap-4 group">
+        <Link href="#home" className="flex items-center gap-6 group">
           <SidebarLogo />
           <div className="flex flex-col leading-none">
-            <div className="flex items-center gap-2">
-              <span className="text-[12px] font-black uppercase tracking-[0.4em] text-slate-900 group-hover:text-primary transition-colors">Arkaa</span>
-              <span className="text-[12px] font-black uppercase tracking-[0.4em] text-primary">Digital</span>
+            <div className="flex items-center gap-3">
+              <span className="text-[18px] font-black uppercase tracking-[0.4em] text-slate-900 group-hover:text-primary transition-colors">Arkaa</span>
+              <span className="text-[18px] font-black uppercase tracking-[0.4em] text-primary">Digital</span>
             </div>
-            <span className="text-[7px] font-black uppercase tracking-[0.3em] text-slate-400 mt-1.5">Building what's next</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 mt-2.5">Building what's next</span>
           </div>
         </Link>
       </div>
