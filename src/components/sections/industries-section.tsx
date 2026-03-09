@@ -1,14 +1,12 @@
-
 "use client";
 
 import { motion } from "framer-motion";
-import { Hospital, Building2, Rocket, School, Stethoscope, Landmark } from "lucide-react";
+import { Hospital, Building2, Rocket, Stethoscope, Landmark } from "lucide-react";
 
 const industries = [
   { icon: Hospital, name: "Hospitals" },
   { icon: Building2, name: "Businesses" },
   { icon: Rocket, name: "Startups" },
-  { icon: School, name: "Schools" },
   { icon: Stethoscope, name: "Clinics" },
   { icon: Landmark, name: "Enterprises" },
 ];
@@ -22,7 +20,7 @@ export function IndustriesSection() {
           <p className="text-slate-600 max-w-xl mx-auto font-medium">Tailored digital systems for sector-specific challenges across various domains.</p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 max-w-6xl mx-auto">
           {industries.map((item, i) => (
             <motion.div
               key={item.name}
