@@ -11,28 +11,28 @@ const features = [
   {
     icon: Lightbulb,
     title: "Strategy & Innovation",
-    description: "Developing intelligent solutions that enhance productivity, improve user experiences, and unlock new growth opportunities.",
+    description: "Developing intelligent solutions that enhance productivity and unlock new growth opportunities.",
     color: "text-orange-500",
     bgColor: "bg-orange-50"
   },
   {
     icon: Code2,
     title: "Platform Development",
-    description: "Designing scalable digital platforms and specialized systems like HIMS that streamline complex business operations.",
+    description: "Designing scalable digital platforms and specialized systems like HIMS to streamline operations.",
     color: "text-blue-500",
     bgColor: "bg-blue-50"
   },
   {
     icon: Cloud,
     title: "Cloud Solutions",
-    description: "Building secure, high-performance cloud environments for reliable application deployment and data protection.",
+    description: "Building secure, high-performance cloud environments for reliable deployment and data protection.",
     color: "text-indigo-500",
     bgColor: "bg-indigo-50"
   },
   {
     icon: Target,
     title: "Digital Presence",
-    description: "Strengthening brand identity through modern web development, intuitive UI/UX, and data-driven marketing strategies.",
+    description: "Strengthening brand identity through modern web, UI/UX, and data-driven marketing strategies.",
     color: "text-emerald-500",
     bgColor: "bg-emerald-50"
   },
@@ -50,7 +50,7 @@ export function AboutSection() {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-12 space-y-4">
+          <div className="text-center mb-16 space-y-4">
             <motion.h2
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -63,7 +63,7 @@ export function AboutSection() {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="max-w-2xl mx-auto"
+              className="max-w-3xl mx-auto"
             >
               <p className="text-lg text-slate-600 font-medium leading-relaxed">
                 ARKAA DIGITAL is a technology-focused company dedicated to building smart digital solutions. We specialize in modern websites, HIMS, and scalable cloud platforms that help organizations thrive.
@@ -72,7 +72,7 @@ export function AboutSection() {
           </div>
 
           {/* Feature Grid - Compact 2x2 */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6 mb-16 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6 mb-12 max-w-5xl mx-auto">
             {features.map((item, i) => (
               <motion.div
                 key={item.title}
@@ -97,22 +97,23 @@ export function AboutSection() {
             ))}
           </div>
 
-          {/* Vision & Mission Row */}
-          <div className="grid md:grid-cols-2 gap-6 mb-16">
+          {/* Vision & Mission Row - Equal Height Design */}
+          <div className="grid md:grid-cols-2 gap-8 mb-16 max-w-5xl mx-auto">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
+              className="h-full"
             >
-              <Card className="p-10 rounded-[3rem] bg-[#0D1B2A] text-white h-full shadow-xl relative overflow-hidden border-none group">
-                <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full blur-2xl -z-0" />
+              <Card className="p-12 rounded-[3rem] bg-gradient-to-br from-[#0f172a] to-[#1e293b] text-white h-full shadow-2xl relative overflow-hidden border-none group">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -z-0" />
                 <div className="relative z-10 flex flex-col h-full">
-                  <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-primary mb-6">
-                    <Eye className="h-5 w-5" />
+                  <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center text-primary mb-8 shadow-inner">
+                    <Eye className="h-7 w-7" />
                   </div>
-                  <h3 className="text-lg font-black uppercase tracking-widest mb-4">Our Vision</h3>
-                  <p className="text-base text-slate-300 font-medium leading-relaxed">
-                    To be a trusted technology partner delivering innovative digital solutions that transform ideas into powerful, sustainable platforms.
+                  <h3 className="text-xl font-black uppercase tracking-widest mb-6">Our Vision</h3>
+                  <p className="text-lg text-slate-300 font-medium leading-relaxed">
+                    To become a trusted digital technology partner helping businesses transform ideas into powerful digital platforms that drive innovation, efficiency, and sustainable growth.
                   </p>
                 </div>
               </Card>
@@ -122,16 +123,17 @@ export function AboutSection() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
+              className="h-full"
             >
-              <Card className="p-10 rounded-[3rem] bg-white border border-slate-100 h-full shadow-xl relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-24 h-24 bg-blue-50/50 rounded-full blur-2xl -z-0" />
+              <Card className="p-12 rounded-[3rem] bg-[#f8fafc] border border-slate-100 h-full shadow-2xl relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-orange-50/50 rounded-full blur-3xl -z-0" />
                 <div className="relative z-10 flex flex-col h-full">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-500 mb-6">
-                    <Rocket className="h-5 w-5" />
+                  <div className="w-14 h-14 rounded-2xl bg-orange-50 flex items-center justify-center text-primary mb-8 shadow-sm">
+                    <Rocket className="h-7 w-7" />
                   </div>
-                  <h3 className="text-lg font-black uppercase tracking-widest text-[#0D1B2A] mb-4">Our Mission</h3>
-                  <p className="text-base text-slate-500 font-medium leading-relaxed">
-                    To empower organizations with reliable technology and intelligent systems that improve efficiency, accelerate growth, and create value.
+                  <h3 className="text-xl font-black uppercase tracking-widest text-[#0D1B2A] mb-6">Our Mission</h3>
+                  <p className="text-lg text-slate-600 font-medium leading-relaxed">
+                    To design and deliver intelligent digital solutions—including modern websites, hospital management systems, cloud infrastructure, and data-driven marketing—that empower organizations to grow and succeed in a digital-first world.
                   </p>
                 </div>
               </Card>
