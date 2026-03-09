@@ -71,10 +71,11 @@ export function ContactSection() {
         ).join(' ');
     };
 
-    async function onSubmit(values: z.infer<typeof formSchema>) {
-        if (isSubmitting) return;
-        setIsSubmitting(true);
-
+    /**
+     * Handles the background processing of the form data.
+     * This function is NOT awaited by the UI thread to ensure near-instant feedback.
+     */
+    async function processBackgroundSubmission(values: z.infer<typeof formSchema>) {
         try {
             // 1. Fetch Current Total Rows for Sl No (total_rows + 1)
             let nextSlNo = 1;
@@ -96,13 +97,14 @@ export function ContactSection() {
             };
 
             // 3. Send to Zoho Flow with standard lowercase mapping
-            const zohoResult = await submitToZoho(formattedPayload);
+            // We initiate the call but don't block the UI
+            submitToZoho(formattedPayload).then(result => {
+                if (!result.success) {
+                    console.error("Background Zoho integration error:", result.error);
+                }
+            });
 
-            if (!zohoResult.success) {
-                throw new Error(zohoResult.error);
-            }
-
-            // 4. Backup to Firestore (Non-blocking)
+            // 4. Backup to Firestore
             if (firestore) {
                 const contactsCollection = collection(firestore, 'contacts');
                 addDoc(contactsCollection, {
@@ -118,19 +120,27 @@ export function ContactSection() {
                     errorEmitter.emit('permission-error', permissionError);
                 });
             }
-
-            setShowSuccess(true);
-            form.reset();
         } catch (error) {
-            console.error("Submission error:", error);
-            toast({
-                variant: "destructive",
-                title: "Submission Error",
-                description: "There was a problem sending your message. Please try again.",
-            });
-        } finally {
-            setIsSubmitting(false);
+            console.error("Error in background submission processing:", error);
         }
+    }
+
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+        if (isSubmitting) return;
+        setIsSubmitting(true);
+
+        // 1. Show success message immediately (Optimistic UI)
+        setShowSuccess(true);
+        
+        // 2. Capture the current form values for background processing
+        const capturedValues = { ...values };
+        
+        // 3. Reset the form immediately to clear the UI
+        form.reset();
+        setIsSubmitting(false);
+
+        // 4. Trigger background processing (No 'await' here)
+        processBackgroundSubmission(capturedValues);
     }
 
     return (
