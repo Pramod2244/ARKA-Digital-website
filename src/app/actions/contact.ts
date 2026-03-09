@@ -8,7 +8,7 @@
 const ZOHO_WEBHOOK_URL = "https://flow.zoho.in/60066961770/flow/webhook/incoming?zapikey=1001.ac2cb11074ede804c0e7bdcaf93442dc.9e3de0160abd3fc92b66e103017c3ba5&isdebug=false";
 
 export type ZohoSubmissionData = {
-  slNo: number;
+  leadId: number;
   name: string;
   email: string;
   subject: string;
@@ -21,7 +21,7 @@ export async function submitToZoho(data: ZohoSubmissionData) {
   try {
     /**
      * Mapping Internal Fields to Zoho Sheet lowercase column names:
-     * slNo -> sl no (also sending sl__no as per user requirement)
+     * leadId -> sl no (Sheet) & lead_id (API/Webhook)
      * name -> name
      * email -> email
      * subject -> subject
@@ -30,8 +30,8 @@ export async function submitToZoho(data: ZohoSubmissionData) {
      * status -> status
      */
     const payload = {
-      "sl no": data.slNo,
-      "sl__no": data.slNo,
+      "sl no": data.leadId,
+      "lead_id": data.leadId,
       "name": data.name,
       "email": data.email,
       "subject": data.subject,

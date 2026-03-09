@@ -76,10 +76,10 @@ export function ContactSection() {
     /**
      * Handles the background processing of the form data.
      */
-    async function processBackgroundSubmission(values: z.infer<typeof formSchema>, nextSlNo: number) {
+    async function processBackgroundSubmission(values: z.infer<typeof formSchema>, nextLeadId: number) {
         try {
             const formattedPayload = {
-                slNo: nextSlNo,
+                leadId: nextLeadId,
                 name: toTitleCase(values.name),
                 email: values.email.toLowerCase().trim(),
                 subject: values.subject.trim(),
@@ -89,6 +89,7 @@ export function ContactSection() {
             };
 
             // Send to Zoho Flow with standard lowercase mapping handled in the action
+            // Maps leadId to 'sl no' and 'lead_id'
             submitToZoho(formattedPayload).then(result => {
                 if (!result.success) {
                     console.error("Background Zoho integration error:", result.error);
@@ -121,16 +122,16 @@ export function ContactSection() {
         setIsSubmitting(true);
 
         try {
-            // 1. Fetch next Sl No from Firestore (Source of Truth)
-            let nextSlNo = 1;
+            // 1. Fetch next Lead ID (Sl No) from Firestore (Source of Truth: Highest + 1)
+            let nextLeadId = 1;
             if (firestore) {
                 const contactsRef = collection(firestore, 'contacts');
-                const q = query(contactsRef, orderBy('slNo', 'desc'), limit(1));
+                const q = query(contactsRef, orderBy('leadId', 'desc'), limit(1));
                 const querySnapshot = await getDocs(q);
                 
                 if (!querySnapshot.empty) {
                     const lastDoc = querySnapshot.docs[0].data();
-                    nextSlNo = (lastDoc.slNo || 0) + 1;
+                    nextLeadId = (lastDoc.leadId || 0) + 1;
                 }
             }
 
@@ -145,7 +146,7 @@ export function ContactSection() {
             setIsSubmitting(false);
 
             // 5. Trigger background processing (Non-blocking)
-            processBackgroundSubmission(capturedValues, nextSlNo);
+            processBackgroundSubmission(capturedValues, nextLeadId);
         } catch (error) {
             console.error("Error generating serial number:", error);
             setIsSubmitting(false);
