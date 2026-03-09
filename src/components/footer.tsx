@@ -39,7 +39,7 @@ export function Footer() {
       <div className="container mx-auto max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20">
           <div className="space-y-8">
-            <Link href="/" className="flex items-center gap-3 group">
+            <Link href="/#home" className="flex items-center gap-3 group">
               <LogoMark />
               <div className="flex flex-col justify-center leading-none">
                 <div className="flex items-baseline gap-1.5">

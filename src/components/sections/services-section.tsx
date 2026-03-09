@@ -4,6 +4,7 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { 
   ArrowRight, 
@@ -172,11 +173,13 @@ const services = [
 ];
 
 export function ServicesSection() {
+  const [mounted, setMounted] = React.useState(false);
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
 
   React.useEffect(() => {
+    setMounted(true);
     if (!api) return;
 
     setCount(api.scrollSnapList().length);
@@ -260,10 +263,10 @@ export function ServicesSection() {
 
                       <div className="pt-4">
                         <Button className="h-16 px-12 text-xs font-black rounded-full bg-slate-900 text-white hover:bg-slate-800 transition-all active:scale-95 uppercase tracking-[0.2em] group shadow-xl" asChild>
-                          <a href={`${service.cta.href}#from-${service.id}`} className="flex items-center gap-4">
+                          <Link href={`${service.cta.href}#from-${service.id}`} className="flex items-center gap-4">
                             {service.cta.label}
                             <ArrowRight className="h-4 w-4 group-hover:translate-x-1.5 transition-transform" />
-                          </a>
+                          </Link>
                         </Button>
                       </div>
                     </div>
@@ -278,21 +281,23 @@ export function ServicesSection() {
             </div>
           </Carousel>
 
-          <div className="flex justify-center gap-3 mt-12">
-            {Array.from({ length: count }).map((_, i) => (
-              <button
-                key={i}
-                onClick={() => api?.scrollTo(i)}
-                className={cn(
-                  "h-2.5 transition-all duration-500 rounded-full",
-                  current === i 
-                    ? "w-12 bg-primary shadow-[0_0_15px_rgba(255,106,0,0.3)]" 
-                    : "w-2.5 bg-slate-300 hover:bg-slate-400"
-                )}
-                aria-label={`Go to slide ${i + 1}`}
-              />
-            ))}
-          </div>
+          {mounted && (
+            <div className="flex justify-center gap-3 mt-12">
+              {Array.from({ length: count }).map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => api?.scrollTo(i)}
+                  className={cn(
+                    "h-2.5 transition-all duration-500 rounded-full",
+                    current === i 
+                      ? "w-12 bg-primary shadow-[0_0_15px_rgba(255,106,0,0.3)]" 
+                      : "w-2.5 bg-slate-300 hover:bg-slate-400"
+                  )}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>
