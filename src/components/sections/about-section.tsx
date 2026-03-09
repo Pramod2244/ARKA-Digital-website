@@ -97,23 +97,27 @@ export function AboutSection() {
             ))}
           </div>
 
-          {/* Vision & Mission Row - Equal Height Design */}
+          {/* Vision & Mission Row - Equal Height Redesign */}
           <div className="grid md:grid-cols-2 gap-8 mb-16 max-w-5xl mx-auto">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="h-full"
+              className="h-full flex"
             >
-              <Card className="p-12 rounded-[3rem] bg-gradient-to-br from-[#0f172a] to-[#1e293b] text-white h-full shadow-2xl relative overflow-hidden border-none group">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -z-0" />
-                <div className="relative z-10 flex flex-col h-full">
-                  <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center text-primary mb-8 shadow-inner">
-                    <Eye className="h-7 w-7" />
+              <Card className="p-12 rounded-[3rem] bg-gradient-to-br from-[#0f172a] to-[#1e293b] text-white flex-1 shadow-2xl relative overflow-hidden border-none group flex flex-col pt-16">
+                {/* Top Orange Accent */}
+                <div className="absolute top-0 left-0 w-full h-1.5 bg-primary" />
+                
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -z-0" />
+                
+                <div className="relative z-10 flex flex-col flex-1">
+                  <div className="w-16 h-16 rounded-3xl bg-primary/10 flex items-center justify-center text-primary mb-10 shadow-inner">
+                    <Eye className="h-8 w-8" />
                   </div>
-                  <h3 className="text-xl font-black uppercase tracking-widest mb-6">Our Vision</h3>
+                  <h3 className="text-2xl font-black uppercase tracking-widest mb-6">Our Vision</h3>
                   <p className="text-lg text-slate-300 font-medium leading-relaxed">
-                    To become a trusted digital technology partner helping businesses transform ideas into powerful digital platforms that drive innovation, efficiency, and sustainable growth.
+                    To become a trusted technology partner that empowers businesses with innovative digital platforms designed for long-term growth.
                   </p>
                 </div>
               </Card>
@@ -123,17 +127,21 @@ export function AboutSection() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="h-full"
+              className="h-full flex"
             >
-              <Card className="p-12 rounded-[3rem] bg-[#f8fafc] border border-slate-100 h-full shadow-2xl relative overflow-hidden group">
+              <Card className="p-12 rounded-[3rem] bg-white border border-slate-200 flex-1 shadow-2xl relative overflow-hidden group flex flex-col pt-16">
+                {/* Top Orange Accent */}
+                <div className="absolute top-0 left-0 w-full h-1.5 bg-primary" />
+                
                 <div className="absolute top-0 right-0 w-32 h-32 bg-orange-50/50 rounded-full blur-3xl -z-0" />
-                <div className="relative z-10 flex flex-col h-full">
-                  <div className="w-14 h-14 rounded-2xl bg-orange-50 flex items-center justify-center text-primary mb-8 shadow-sm">
-                    <Rocket className="h-7 w-7" />
+                
+                <div className="relative z-10 flex flex-col flex-1">
+                  <div className="w-16 h-16 rounded-3xl bg-orange-50 flex items-center justify-center text-primary mb-10 shadow-sm">
+                    <Rocket className="h-8 w-8" />
                   </div>
-                  <h3 className="text-xl font-black uppercase tracking-widest text-[#0D1B2A] mb-6">Our Mission</h3>
+                  <h3 className="text-2xl font-black uppercase tracking-widest text-[#0D1B2A] mb-6">Our Mission</h3>
                   <p className="text-lg text-slate-600 font-medium leading-relaxed">
-                    To design and deliver intelligent digital solutions—including modern websites, hospital management systems, cloud infrastructure, and data-driven marketing—that empower organizations to grow and succeed in a digital-first world.
+                    To create intelligent digital solutions—including modern websites, hospital systems, cloud infrastructure, and data-driven marketing—that help organizations operate smarter and grow faster.
                   </p>
                 </div>
               </Card>
