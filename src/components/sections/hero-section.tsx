@@ -13,7 +13,7 @@ export function HeroSection() {
   const dashboardImg = PlaceHolderImages.find(img => img.id === 'hero-software-platform');
 
   return (
-    <section id="home" className="relative w-full pt-48 pb-32 overflow-hidden bg-[#FFF1E6] pl-[70px]">
+    <section id="home" className="relative w-full pt-48 pb-32 overflow-hidden bg-[#FFF1E6]">
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <MotionDiv

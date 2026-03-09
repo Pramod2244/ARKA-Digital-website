@@ -15,7 +15,7 @@ const industries = [
 
 export function IndustriesSection() {
   return (
-    <section id="industries" className="py-24 bg-[#EDF5F1] relative overflow-hidden pl-[70px]">
+    <section id="industries" className="py-24 bg-[#EDF5F1] relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-20 space-y-4">
           <h2 className="font-headline text-4xl md:text-5xl font-black text-slate-900 tracking-tight">Industries We <span className="text-primary">Serve</span></h2>

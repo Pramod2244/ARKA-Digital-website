@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useRef, useEffect } from "react";
@@ -32,8 +33,7 @@ function Counter({ value, suffix }: { value: number, suffix: string }) {
 
 export function StatsSection() {
   return (
-    <section className="py-32 bg-[#EFF6FF] relative overflow-hidden pl-[70px]">
-      {/* Subtle Background Elements */}
+    <section className="py-32 bg-[#EFF6FF] relative overflow-hidden">
       <div className="absolute inset-0 bg-secondary/5 opacity-5 pointer-events-none" />
       
       <div className="container mx-auto px-4 relative z-10">

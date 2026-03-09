@@ -15,7 +15,7 @@ const techs = [
 
 export function TechnologiesSection() {
   return (
-    <section id="technologies" className="py-24 bg-[#F2EDF8] relative overflow-hidden pl-[70px]">
+    <section id="technologies" className="py-24 bg-[#F2EDF8] relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-20 space-y-4">
           <h2 className="font-headline text-4xl md:text-5xl font-black text-slate-900 tracking-tight">Modern <span className="text-primary">Technologies</span></h2>

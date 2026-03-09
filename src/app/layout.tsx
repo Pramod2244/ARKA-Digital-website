@@ -1,3 +1,4 @@
+
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
@@ -34,11 +35,11 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased bg-[#F7F8FA] selection:bg-primary selection:text-primary-foreground overflow-x-hidden">
         <FirebaseClientProvider>
-          <div className="flex min-h-screen relative">
-            {/* Minimal Fixed Left Sidebar (Transparent) */}
+          <div className="flex flex-col min-h-screen relative">
+            {/* Horizontal Header Nav */}
             <AppSidebar />
             
-            {/* Main Content Area - Sections will handle their own internal 70px padding */}
+            {/* Main Content Area */}
             <main className="flex-1 relative min-w-0">
               <MotionProvider>
                 <ScrollProgress />

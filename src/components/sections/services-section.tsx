@@ -152,7 +152,7 @@ export function ServicesSection() {
   }, [api]);
 
   return (
-    <section id="services" className="bg-[#E9F1FB] overflow-hidden pl-[70px] relative">
+    <section id="services" className="bg-[#E9F1FB] overflow-hidden relative">
       <div className="container mx-auto max-w-7xl px-6 py-16 md:py-20">
         <div className="text-center mb-10 space-y-4">
           <motion.h2

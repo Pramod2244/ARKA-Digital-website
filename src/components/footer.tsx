@@ -33,7 +33,7 @@ export function Footer() {
   }, []);
 
   return (
-    <footer className="bg-[#2F3E46] text-slate-300 py-24 px-4 overflow-hidden relative pl-[70px]">
+    <footer className="bg-[#2F3E46] text-slate-300 py-24 px-4 overflow-hidden relative">
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 blur-[150px] -z-10 rounded-full" />
       
       <div className="container mx-auto max-w-7xl">

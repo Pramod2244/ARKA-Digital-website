@@ -35,8 +35,13 @@ const SidebarLogo = () => (
 
 export function AppSidebar() {
   const [activeSection, setActiveSection] = useState("home");
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
     const observerOptions = {
       root: null,
       rootMargin: "-40% 0px -40% 0px",
@@ -58,59 +63,53 @@ export function AppSidebar() {
       if (element) observer.observe(element);
     });
 
-    return () => observer.disconnect();
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
-    <>
-      {/* Fixed Top-Left Branding - Horizontal Lockup */}
-      <div className="fixed top-10 left-10 z-[110] select-none pointer-events-auto">
-        <Link href="#home" className="flex items-center gap-6 group">
+    <header className={cn(
+      "fixed top-0 left-0 right-0 z-[110] transition-all duration-500 py-4 px-6 md:px-12",
+      isScrolled ? "bg-white/80 backdrop-blur-xl shadow-lg border-b border-slate-100 py-3" : "bg-transparent"
+    )}>
+      <div className="container mx-auto flex items-center justify-between">
+        {/* Branding */}
+        <Link href="#home" className="flex items-center gap-4 group">
           <SidebarLogo />
           <div className="flex flex-col leading-none">
-            <div className="flex items-center gap-3">
-              <span className="text-[18px] font-black uppercase tracking-[0.4em] text-slate-900 group-hover:text-primary transition-colors">Arkaa</span>
-              <span className="text-[18px] font-black uppercase tracking-[0.4em] text-primary">Digital</span>
+            <div className="flex items-center gap-2">
+              <span className="text-[18px] font-black uppercase tracking-[0.3em] text-slate-900 group-hover:text-primary transition-colors">Arkaa</span>
+              <span className="text-[18px] font-black uppercase tracking-[0.3em] text-primary">Digital</span>
             </div>
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 mt-2.5">Building what's next</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mt-1">Building what's next</span>
           </div>
         </Link>
-      </div>
 
-      {/* Fixed Vertical Navigation Dots */}
-      <nav className="fixed inset-y-0 left-0 w-[70px] bg-transparent z-[100] flex flex-col items-center justify-center py-10 select-none pointer-events-none">
-        <div className="flex flex-col gap-10 pointer-events-auto">
+        {/* Horizontal Navigation */}
+        <nav className="hidden md:flex items-center gap-8">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
             return (
               <Link
                 key={item.id}
                 href={item.href}
-                className="relative flex flex-col items-center group py-2"
+                className={cn(
+                  "relative text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300",
+                  isActive ? "text-primary" : "text-slate-500 hover:text-slate-900"
+                )}
               >
-                {/* Circular Indicator */}
-                <div
-                  className={cn(
-                    "w-2.5 h-2.5 rounded-full border-2 transition-all duration-500 ease-in-out",
-                    isActive 
-                      ? "bg-primary border-primary shadow-[0_0_15px_rgba(255,106,0,0.5)] scale-125" 
-                      : "bg-transparent border-slate-300 group-hover:border-slate-500 group-hover:scale-110"
-                  )}
-                />
-                
-                {/* Label Reveal Below the Circle */}
-                <span className={cn(
-                  "absolute top-full left-1/2 -translate-x-1/2 mt-4 text-[8px] font-black uppercase tracking-[0.2em] transition-all duration-500 whitespace-nowrap pointer-events-none",
-                  "opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 text-slate-400",
-                  isActive && "opacity-100 translate-y-0 text-primary"
-                )}>
-                  {item.label}
-                </span>
+                {item.label}
+                {isActive && (
+                  <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-primary rounded-full shadow-[0_0_8px_rgba(255,106,0,0.5)]" />
+                )}
               </Link>
             );
           })}
-        </div>
-      </nav>
-    </>
+        </nav>
+      </div>
+    </header>
   );
 }

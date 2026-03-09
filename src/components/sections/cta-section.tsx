@@ -8,7 +8,7 @@ import { ArrowRight } from "lucide-react";
 
 export function CTASection() {
   return (
-    <section className="py-24 px-4 bg-[#FFF1F1] overflow-hidden pl-[70px]">
+    <section className="py-24 px-4 bg-[#FFF1F1] overflow-hidden">
       <div className="container mx-auto max-w-6xl rounded-[4.5rem] relative overflow-hidden shadow-2xl bg-white border border-slate-100">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] -z-10" />
         

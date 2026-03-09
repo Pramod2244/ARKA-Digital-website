@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -56,7 +57,6 @@ export function ContactSection() {
         },
     });
 
-    // Auto-close success modal after 5 seconds
     useEffect(() => {
         if (showSuccess) {
             const timer = setTimeout(() => setShowSuccess(false), 5000);
@@ -69,7 +69,6 @@ export function ContactSection() {
         setIsSubmitting(true);
 
         try {
-            // 1. Send to Zoho via Server Action
             const zohoResult = await submitToZoho({
                 name: values.name,
                 email: values.email,
@@ -81,7 +80,6 @@ export function ContactSection() {
                 throw new Error(zohoResult.error);
             }
 
-            // 2. Save to Firestore as backup
             if (firestore) {
                 const contactsCollection = collection(firestore, 'contacts');
                 addDoc(contactsCollection, {
@@ -98,7 +96,6 @@ export function ContactSection() {
                 });
             }
 
-            // 3. Trigger Success Modal & Reset
             setShowSuccess(true);
             form.reset();
         } catch (error) {
@@ -114,7 +111,7 @@ export function ContactSection() {
     }
 
     return (
-        <section id="contact" className="py-24 bg-[#EAF2F6] relative overflow-hidden pl-[70px]">
+        <section id="contact" className="py-24 bg-[#EAF2F6] relative overflow-hidden">
             <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center space-y-4 mb-20">
                     <h2 className="font-headline text-4xl md:text-5xl font-black text-slate-900 tracking-tight">Connect with <span className="text-primary">Arkaa</span></h2>
@@ -134,7 +131,7 @@ export function ContactSection() {
                                     </div>
                                     <div>
                                         <p className="text-[10px] uppercase font-black text-slate-400 tracking-widest mb-1">Email Support</p>
-                                        <p className="text-lg font-black text-slate-900">hey@arkaadigital.com</p>
+                                        <p className="text-lg font-black text-slate-900 lowercase">hey@arkaadigital.com</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-6 items-center">
@@ -268,7 +265,6 @@ export function ContactSection() {
                 </div>
             </div>
 
-            {/* Success Modal */}
             <AnimatePresence>
                 {showSuccess && (
                     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md">
@@ -278,7 +274,6 @@ export function ContactSection() {
                             exit={{ opacity: 0, scale: 0.9, y: 20 }}
                             className="bg-white rounded-[3rem] p-10 md:p-16 max-w-xl w-full shadow-[0_32px_64px_-12px_rgba(0,0,0,0.2)] text-center space-y-8 border border-white relative overflow-hidden"
                         >
-                            {/* Decorative background glow */}
                             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-48 bg-primary/5 rounded-full blur-3xl -z-10" />
                             
                             <button 
