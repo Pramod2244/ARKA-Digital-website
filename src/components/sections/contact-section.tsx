@@ -58,20 +58,13 @@ export function ContactSection() {
         if (isSubmitting) return;
         setIsSubmitting(true);
 
-        const submissionTime = new Date().toLocaleString('en-IN', { 
-            timeZone: 'Asia/Kolkata',
-            dateStyle: 'medium',
-            timeStyle: 'short'
-        });
-
         try {
             // 1. Send to Zoho via Server Action (Bypasses Client-side CORS)
             const zohoResult = await submitToZoho({
                 name: values.name,
                 email: values.email,
-                subject: values.subject,
-                message: values.message,
-                submissionTime: submissionTime
+                project: values.subject, // Mapping 'subject' field to 'project' as per requirement
+                message: values.message
             });
 
             if (!zohoResult.success) {
@@ -97,8 +90,8 @@ export function ContactSection() {
 
             // 3. Success Feedback
             toast({
-              title: "Thank you!",
-              description: "Your message has been received. We will respond shortly.",
+              title: "Success",
+              description: "Message sent successfully.",
             });
             
             form.reset();

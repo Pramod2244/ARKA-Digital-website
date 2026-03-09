@@ -10,9 +10,8 @@ const ZOHO_WEBHOOK_URL = "https://flow.zoho.in/60066892414/flow/webhook/incoming
 export type ZohoSubmissionData = {
   name: string;
   email: string;
-  subject: string;
+  project: string;
   message: string;
-  submissionTime: string;
 };
 
 export async function submitToZoho(data: ZohoSubmissionData) {
@@ -23,11 +22,10 @@ export async function submitToZoho(data: ZohoSubmissionData) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        "Name": data.name,
-        "Email": data.email,
-        "Project Type": data.subject,
-        "Message": data.message,
-        "Date/Time": data.submissionTime
+        "name": data.name,
+        "email": data.email,
+        "project": data.project,
+        "message": data.message
       }),
     });
 
