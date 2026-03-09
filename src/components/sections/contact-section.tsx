@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -69,6 +68,7 @@ export function ContactSection() {
         setIsSubmitting(true);
 
         try {
+            // 1. Send to Zoho Webhook via Server Action
             const zohoResult = await submitToZoho({
                 name: values.name,
                 email: values.email,
@@ -80,13 +80,14 @@ export function ContactSection() {
                 throw new Error(zohoResult.error);
             }
 
+            // 2. Backup to Firestore (Non-blocking)
             if (firestore) {
                 const contactsCollection = collection(firestore, 'contacts');
                 addDoc(contactsCollection, {
                     ...values,
                     createdAt: serverTimestamp(),
-                    source: 'web_form_zoho'
-                }).catch(async () => {
+                    source: 'web_form_arkaadigital'
+                }).catch(async (err) => {
                     const permissionError = new FirestorePermissionError({
                         path: 'contacts',
                         operation: 'create',
@@ -115,7 +116,7 @@ export function ContactSection() {
             <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center space-y-4 mb-20">
                     <h2 className="font-headline text-4xl md:text-5xl font-black text-slate-900 tracking-tight">Connect with <span className="text-primary">Arkaa</span></h2>
-                    <p className="text-lg text-slate-600 max-w-xl mx-auto font-medium">Ready to start your next project? Fill out the form below and let's engineering your digital future.</p>
+                    <p className="text-lg text-slate-600 max-w-xl mx-auto font-medium">Ready to start your next project? Fill out the form below and let's engineer your digital future.</p>
                 </div>
 
                 <div className="grid lg:grid-cols-5 gap-16 max-w-6xl mx-auto items-start">
