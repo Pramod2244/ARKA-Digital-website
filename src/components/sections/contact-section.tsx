@@ -20,7 +20,7 @@ import { Mail, Phone, User, Tag, Send, Loader2, X } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import { Card } from "../ui/card";
 import { useFirestore } from "@/firebase";
-import { collection, addDoc, serverTimestamp, query, orderBy, limit, getDocs } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp, getCountFromServer } from "firebase/firestore";
 import { errorEmitter } from "@/firebase/error-emitter";
 import { FirestorePermissionError, type SecurityRuleContext } from "@/firebase/errors";
 import { submitToZoho } from "@/app/actions/contact";
@@ -33,7 +33,7 @@ const formSchema = z.object({
   email: z.string().email({
     message: "Please enter a valid email address.",
   }),
-  subject: z.string().min(2, {
+  subject: z.string().min(1, {
     message: "Subject cannot be empty.",
   }),
   message: z.string().min(10, {
@@ -76,18 +76,15 @@ export function ContactSection() {
         setIsSubmitting(true);
 
         try {
-            // 1. Fetch Sequential Sl No from Firestore
+            // 1. Fetch Current Total Rows for Sl No (total_rows + 1)
             let nextSlNo = 1;
             if (firestore) {
-                const q = query(collection(firestore, 'contacts'), orderBy('slNo', 'desc'), limit(1));
-                const querySnapshot = await getDocs(q);
-                if (!querySnapshot.empty) {
-                    const lastDoc = querySnapshot.docs[0].data();
-                    nextSlNo = (Number(lastDoc.slNo) || 0) + 1;
-                }
+                const coll = collection(firestore, 'contacts');
+                const snapshot = await getCountFromServer(coll);
+                nextSlNo = snapshot.data().count + 1;
             }
 
-            // 2. Format Data according to standardization rules
+            // 2. Format Data according to standard naming and Zoho requirements
             const formattedPayload = {
                 slNo: nextSlNo,
                 name: toTitleCase(values.name),
@@ -98,7 +95,7 @@ export function ContactSection() {
                 status: "New"
             };
 
-            // 3. Send to Zoho Flow with lowercase mapping
+            // 3. Send to Zoho Flow with standard lowercase mapping
             const zohoResult = await submitToZoho(formattedPayload);
 
             if (!zohoResult.success) {
@@ -111,7 +108,7 @@ export function ContactSection() {
                 addDoc(contactsCollection, {
                     ...formattedPayload,
                     createdAt: serverTimestamp(),
-                    source: 'web_form_arkaadigital'
+                    source: 'arkaadigital_web_v1'
                 }).catch(async (err) => {
                     const permissionError = new FirestorePermissionError({
                         path: 'contacts',
