@@ -9,6 +9,10 @@ export const FirebaseClientProvider: React.FC<{
 }> = ({ children }) => {
   const { firebaseApp, firestore, auth } = useMemo(() => initializeFirebase(), []);
 
+  if (!firebaseApp || !firestore || !auth) {
+    return <>{children}</>;
+  }
+
   return (
     <FirebaseProvider firebaseApp={firebaseApp} firestore={firestore} auth={auth}>
       {children}
