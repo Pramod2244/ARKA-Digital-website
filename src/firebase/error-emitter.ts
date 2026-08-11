@@ -19,7 +19,7 @@ class ErrorEmitter {
   }
 
   emit<K extends keyof ErrorEvents>(event: K, ...args: Parameters<ErrorEvents[K]>) {
-    this.listeners[event]?.forEach((listener) => listener(...args));
+    this.listeners[event]?.forEach((listener) => (listener as Function)(...args));
   }
 }
 

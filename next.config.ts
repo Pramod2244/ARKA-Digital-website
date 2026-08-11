@@ -1,19 +1,11 @@
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
   typescript: {
     ignoreBuildErrors: true,
   },
   eslint: {
     ignoreDuringBuilds: true,
-  },
-  experimental: {
-    // Adding allowed origins to resolve cross-origin warnings in the development environment
-    allowedDevOrigins: [
-      '9000-firebase-studio-1761324470818.cluster-52r6vzs3ujeoctkkxpjif3x34a.cloudworkstations.dev',
-      '*.cloudworkstations.dev'
-    ],
   },
   images: {
     remotePatterns: [

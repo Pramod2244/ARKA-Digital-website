@@ -1,113 +1,94 @@
+'use client';
 
-"use client";
+import React from 'react';
+import { ArrowUp, Mail, Phone, MapPin } from 'lucide-react';
+import { cinematicAudio } from '@/lib/cinematic-audio';
+import { ArkaaLogo } from './arkaa-logo';
 
-import Link from 'next/link';
-import { Mail, MapPin, Phone } from 'lucide-react';
-import { useEffect, useState } from 'react';
-
-const LogoMark = () => (
-  <svg viewBox="0 0 100 100" className="h-10 w-10 text-primary shrink-0" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="50" cy="50" r="18" />
-    {Array.from({ length: 16 }).map((_, i) => {
-      const angle = i * 22.5;
-      const isLong = i % 2 === 0;
-      const d = isLong 
-        ? "M 50 2 Q 53 15 50 28 Q 47 15 50 2 Z" 
-        : "M 50 12 Q 52 20 50 28 Q 48 20 50 12 Z"; 
-      return (
-        <path
-          key={i}
-          d={d}
-          transform={`rotate(${angle} 50 50)`}
-        />
-      );
-    })}
-  </svg>
-);
-
-export function Footer() {
-  const [year, setYear] = useState<number | null>(null);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setYear(new Date().getFullYear());
-    setMounted(true);
-  }, []);
+export const Footer: React.FC = () => {
+  const scrollToTop = () => {
+    cinematicAudio.playHover();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
-    <footer className="bg-[#2F3E46] text-slate-300 py-24 px-4 overflow-hidden relative border-t border-white/5">
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 blur-[150px] -z-10 rounded-full" />
-      
-      <div className="container mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20">
-          <div className="space-y-8">
-            <Link href="/#home" className="flex items-center gap-3 group">
-              <LogoMark />
-              <div className="flex flex-col justify-center leading-none">
-                <div className="flex items-baseline gap-1.5">
-                  <span className="text-[22px] font-black uppercase tracking-tight text-white">Arkaa</span>
-                  <span className="text-[22px] font-black uppercase tracking-tight text-primary">Digital</span>
-                </div>
-                <span className="text-[10px] font-black uppercase tracking-[0.15em] text-primary mt-1">Building what's next</span>
-              </div>
-            </Link>
-            <p className="text-sm leading-relaxed max-w-xs font-medium text-slate-400">
-              We develop world-class digital systems, hospital management software, and high-performance websites for global innovators.
+    <footer className="relative bg-white text-slate-600 text-xs border-t border-orange-100 overflow-hidden pt-16 pb-12 z-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+
+          {/* Col 1: Brand Logo Image 2 */}
+          <div className="lg:col-span-2 space-y-4">
+            <ArkaaLogo size="lg" />
+            <p className="text-slate-500 text-xs leading-relaxed max-w-sm">
+              Architecting mission-critical Enterprise Software, Autonomous AI Systems, Hospital Management (HIMS), College ERP, and Cloud Infrastructure for global industry leaders.
             </p>
+            <div className="flex items-center gap-2 text-emerald-600 font-mono text-[11px] font-bold">
+              <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span>ARKAA DIGITAL LLP CORE ONLINE - v4.0 PRODUCTION READY</span>
+            </div>
           </div>
 
+          {/* Col 2: Core Pillars */}
           <div>
-            <h4 className="font-headline text-white font-black uppercase tracking-[0.3em] text-[10px] mb-10">Solutions</h4>
-            <nav className="flex flex-col space-y-5 text-xs font-bold uppercase tracking-widest">
-              <Link href="/web-dev-details" className="hover:text-primary transition-colors">Website Development</Link>
-              <Link href="/hims-details" className="hover:text-primary transition-colors">HIMS Systems</Link>
-              <Link href="/cloud-details" className="hover:text-primary transition-colors">Cloud Architecture</Link>
-            </nav>
+            <h4 className="text-slate-900 font-extrabold text-xs uppercase tracking-wider mb-4 font-mono">13 Core Pillars</h4>
+            <ul className="space-y-2 text-slate-600 font-medium">
+              <li><a href="#chapter-5" className="hover:text-orange-600 transition-colors">Enterprise Software</a></li>
+              <li><a href="#chapter-5" className="hover:text-orange-600 transition-colors">AI Applications</a></li>
+              <li><a href="#chapter-5" className="hover:text-orange-600 transition-colors">Hospital Management (HIMS)</a></li>
+              <li><a href="#chapter-5" className="hover:text-orange-600 transition-colors">College & Campus ERP</a></li>
+              <li><a href="#chapter-5" className="hover:text-orange-600 transition-colors">CRM & Sales Pipelines</a></li>
+              <li><a href="#chapter-5" className="hover:text-orange-600 transition-colors">Native & Web Apps</a></li>
+            </ul>
           </div>
 
+          {/* Col 3: Navigation */}
           <div>
-            <h4 className="font-headline text-white font-black uppercase tracking-[0.3em] text-[10px] mb-10">Company</h4>
-            <nav className="flex flex-col space-y-5 text-xs font-bold uppercase tracking-widest">
-              <Link href="/#home" className="hover:text-primary transition-colors">Home</Link>
-              <Link href="/#services" className="hover:text-primary transition-colors">Our Services</Link>
-              <Link href="/#about" className="hover:text-primary transition-colors">About Us</Link>
-              <Link href="/#contact" className="hover:text-primary transition-colors">Contact Us</Link>
-            </nav>
+            <h4 className="text-slate-900 font-extrabold text-xs uppercase tracking-wider mb-4 font-mono">Chapters</h4>
+            <ul className="space-y-2 text-slate-600 font-medium">
+              <li><a href="#chapter-1" className="hover:text-orange-600 transition-colors">01 / The Problem</a></li>
+              <li><a href="#chapter-3" className="hover:text-orange-600 transition-colors">03 / The Discovery</a></li>
+              <li><a href="#chapter-4" className="hover:text-orange-600 transition-colors">04 / The Transformation</a></li>
+              <li><a href="#chapter-5" className="hover:text-orange-600 transition-colors">05 / Products in Action</a></li>
+              <li><a href="#chapter-6" className="hover:text-orange-600 transition-colors">06 / The Result</a></li>
+              <li><a href="#chapter-8" className="hover:text-orange-600 transition-colors">08 / Digital City Future</a></li>
+            </ul>
           </div>
 
+          {/* Col 4: Global HQ */}
           <div>
-            <h4 className="font-headline text-white font-black uppercase tracking-[0.3em] text-[10px] mb-10">Get In Touch</h4>
-            <div className="space-y-8 text-xs font-bold tracking-widest">
-              <div className="flex items-center gap-5 hover:text-white transition-colors cursor-pointer group lowercase">
-                <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all">
-                  <Mail className="h-4 w-4" />
-                </div>
-                hey@arkaadigital.com
+            <h4 className="text-slate-900 font-extrabold text-xs uppercase tracking-wider mb-4 font-mono">Global Headquarters</h4>
+            <div className="space-y-3 text-slate-600 text-xs font-medium">
+              <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-orange-500 shrink-0" />
+                <span>Chikkaballapura, Karnataka - 562101</span>
               </div>
-              <div className="flex items-center gap-5 hover:text-white transition-colors cursor-pointer group">
-                <div className="p-3 rounded-xl bg-[#3B82F6]/10 text-[#3B82F6] group-hover:bg-[#3B82F6] group-hover:text-white transition-all">
-                  <Phone className="h-4 w-4" />
-                </div>
-                +91 93805 08350
+              <div className="flex items-center gap-2">
+                <Mail className="w-4 h-4 text-orange-500 shrink-0" />
+                <span>hey@arkaadigital.com</span>
               </div>
-              <div className="flex items-start gap-5 hover:text-white transition-colors cursor-pointer group">
-                <div className="p-3 rounded-xl bg-white/5 text-white group-hover:bg-white/10 transition-all border border-white/5">
-                  <MapPin className="h-4 w-4" />
-                </div>
-                <span className="uppercase">Chikkaballapura, Karnataka - 562101</span>
+              <div className="flex items-center gap-2">
+                <Phone className="w-4 h-4 text-orange-500 shrink-0" />
+                <span>+91 93805 08350</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8 text-[9px] uppercase tracking-[0.4em] font-black">
-          <p suppressHydrationWarning>© {mounted ? (year || '2025') : '2025'} Arkaa Digital. All rights reserved.</p>
-          <div className="flex gap-12">
-            <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-white transition-colors">Terms of Use</Link>
-          </div>
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-orange-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-slate-500 text-[11px] font-medium">
+            © {new Date().getFullYear()} ARKAA DIGITAL LLP. All Rights Reserved. Engineered with Next.js, Three.js & Tailwind.
+          </p>
+
+          <button
+            onClick={scrollToTop}
+            className="px-4 py-2 rounded-full bg-orange-50 border border-orange-200 text-xs text-orange-700 font-bold hover:bg-orange-500 hover:text-white flex items-center gap-2 transition-all shadow-sm"
+          >
+            <span>Return to Top</span>
+            <ArrowUp className="w-3.5 h-3.5" />
+          </button>
         </div>
       </div>
     </footer>
   );
-}
+};
