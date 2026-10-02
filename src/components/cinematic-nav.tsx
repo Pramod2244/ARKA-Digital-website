@@ -66,13 +66,13 @@ export const CinematicNav: React.FC<CinematicNavProps> = ({ currentChapter, onOp
         </a>
 
         {/* Center Live Chapter Indicator */}
-        <div className="hidden md:flex items-center gap-2 bg-orange-50/90 px-4 py-1.5 rounded-full border border-orange-200 text-xs font-mono shadow-sm">
+        {/* <div className="hidden md:flex items-center gap-2 bg-orange-50/90 px-4 py-1.5 rounded-full border border-orange-200 text-xs font-mono shadow-sm">
           <span className="h-2.5 w-2.5 rounded-full bg-orange-500 animate-ping" />
           <span className="text-slate-500 font-medium">ACTIVE CHAPTER:</span>
           <span className="text-orange-600 font-extrabold tracking-wider">
             {CHAPTER_NAMES[Math.min(currentChapter - 1, CHAPTER_NAMES.length - 1)] || '01 / THE PROBLEM'}
           </span>
-        </div>
+        </div> */}
 
         {/* Right Actions */}
         <div className="flex items-center gap-3">

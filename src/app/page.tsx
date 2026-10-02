@@ -54,7 +54,7 @@ export default function Home() {
       <main className="relative z-10">
         <Chapter1Problem />
         <Chapter2Pain />
-        <Chapter3Discovery />
+        {/* <Chapter3Discovery /> */}
         <Chapter4Transformation />
         <Chapter5Products />
         <Chapter6Result />

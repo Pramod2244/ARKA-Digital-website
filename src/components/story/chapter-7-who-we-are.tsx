@@ -32,7 +32,7 @@ export const Chapter7WhoWeAre: React.FC = () => {
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 border border-orange-200 text-xs font-mono text-orange-600 font-bold mb-8 shadow-sm"
         >
           <Sparkles className="w-3.5 h-3.5 text-orange-500 animate-spin" />
-          <span>CHAPTER 07 // WHO WE ARE</span>
+          <span>CHAPTER 06 // WHO WE ARE</span>
         </motion.div>
 
         {/* Large Typography Statement */}

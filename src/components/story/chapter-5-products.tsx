@@ -40,7 +40,7 @@ export const Chapter5Products: React.FC = () => {
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 border border-orange-200 text-xs font-mono text-orange-600 font-bold mb-8 shadow-sm"
         >
           <Sparkles className="w-3.5 h-3.5 text-orange-500 animate-spin" />
-          <span>CHAPTER 05 // PRODUCTS IN ACTION</span>
+          <span>CHAPTER 04 // PRODUCTS IN ACTION</span>
         </motion.div>
 
         {/* Headline */}

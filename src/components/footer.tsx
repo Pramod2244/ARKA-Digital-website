@@ -24,7 +24,7 @@ export const Footer: React.FC = () => {
             </p>
             <div className="flex items-center gap-2 text-emerald-600 font-mono text-[11px] font-bold">
               <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span>ARKAA DIGITAL LLP CORE ONLINE - v4.0 PRODUCTION READY</span>
+              <span>ARKAA DIGITAL LLP</span>
             </div>
           </div>
 
@@ -60,7 +60,7 @@ export const Footer: React.FC = () => {
             <div className="space-y-3 text-slate-600 text-xs font-medium">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-orange-500 shrink-0" />
-                <span>Chikkaballapura, Karnataka - 562101</span>
+                <span>10th Main, 491, 8th Cross Rd, Hal, HAL 3rd Stage, Jeevan Bima Nagar, Bengaluru, Karnataka 560075</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-orange-500 shrink-0" />
@@ -77,7 +77,7 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-orange-100 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-[11px] font-medium">
-            © {new Date().getFullYear()} ARKAA DIGITAL LLP. All Rights Reserved. Engineered with Next.js, Three.js & Tailwind.
+            © {new Date().getFullYear()} ARKAA DIGITAL LLP. All Rights Reserved.
           </p>
 
           <button
