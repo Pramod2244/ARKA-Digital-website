@@ -22,7 +22,7 @@ export const Chapter2Pain: React.FC = () => {
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 border border-red-200 text-xs font-mono text-red-600 font-bold mb-8 shadow-sm"
         >
           <AlertCircle className="w-3.5 h-3.5 text-red-500 animate-ping" />
-          <span>CHAPTER 02 // THE PAIN</span>
+          <span>CHAPTER 02 // THE COMPANY</span>
         </motion.div>
 
         {/* Cinematic Headline */}
@@ -33,10 +33,10 @@ export const Chapter2Pain: React.FC = () => {
           transition={{ duration: 1 }}
           className="text-4xl sm:text-7xl font-black text-slate-900 tracking-tight leading-tight mb-8"
         >
-          Growth Created <br />
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-600 via-orange-500 to-amber-500">
+          Who We Are <br />
+          {/* <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-600 via-orange-500 to-amber-500">
             Complexity & Chaos.
-          </span>
+          </span> */}
         </motion.h2>
 
         <motion.p
@@ -46,25 +46,25 @@ export const Chapter2Pain: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-slate-600 text-lg sm:text-2xl font-normal max-w-2xl mx-auto leading-relaxed mb-16"
         >
-          Invoices explode. Customer complaints accumulate. Critical data gets lost in spreadsheets. Revenue stalls while headcount skyrockets.
+         Arkaa Digital LLP is a technology solutions and digital transformation partner helping organizations simplify operations, improve customer and employee experiences, and grow with confidence.
         </motion.p>
 
         {/* Exploding Chaos Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto text-left">
           {[
             {
-              title: 'Exploding Excel Sheets',
-              desc: 'V1_final_final.xlsx is corrupted. Nobody knows which customer lead is real.',
+              title: 'Design and Develop',
+              desc: 'We design and develop practical digital solutions across custom software development, ERP and CRM platforms, healthcare and education systems, document management, web and mobile applications, workflow automation, cloud services, data analytics, and digital marketing.',
               icon: FileSpreadsheet,
             },
             {
-              title: 'Missed SLA Deadlines',
-              desc: 'Approval requests sit in email inboxes for 4 days. Competitors win clients.',
+              title: 'Approach',
+              desc: 'Our approach starts with understanding the way your organization works. We work with clients to understand their goals, processes, challenges, and technology needs, then shape scalable solutions around those requirements.',
               icon: Clock,
             },
             {
-              title: 'Human Data Corruption',
-              desc: 'Manual data entry errors result in $40,000 lost in billing discrepancies.',
+              title: 'Planning',
+              desc: 'From planning and design to development, integration, deployment, and ongoing support, we focus on reliable delivery, clear communication, and responsible handling of client data.',
               icon: ZapOff,
             },
           ].map((item, idx) => {
@@ -88,10 +88,10 @@ export const Chapter2Pain: React.FC = () => {
         </div>
 
         {/* Warning Indicator Ticker */}
-        <div className="mt-16 inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-white border border-red-200 text-red-600 font-mono text-xs font-bold shadow-sm">
+        {/* <div className="mt-16 inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-white border border-red-200 text-red-600 font-mono text-xs font-bold shadow-sm">
           <TrendingDown className="w-4 h-4 text-red-500 animate-bounce" />
           <span>WARNING: UNCONNECTED SYSTEMS REDUCE OPERATIONAL EFFICIENCY BY 65%</span>
-        </div>
+        </div> */}
       </div>
     </section>
   );

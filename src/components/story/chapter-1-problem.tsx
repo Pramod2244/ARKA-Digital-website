@@ -22,7 +22,7 @@ export const Chapter1Problem: React.FC = () => {
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 border border-orange-200 text-xs font-mono text-orange-600 font-bold mb-8 shadow-sm"
         >
           <Flame className="w-3.5 h-3.5 text-orange-500 animate-pulse" />
-          <span>CHAPTER 01 // THE PROBLEM</span>
+          <span>CHAPTER 01 // THE SOLUTION</span>
         </motion.div>
 
         {/* Cinematic Headline */}
@@ -33,9 +33,9 @@ export const Chapter1Problem: React.FC = () => {
           transition={{ duration: 1 }}
           className="text-4xl sm:text-7xl font-black text-slate-900 tracking-tight leading-tight mb-8"
         >
-          Every Business <br />
+          Building Digital Solutions for <br />
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-amber-500 to-orange-400">
-            Starts Here.
+            Real Business Challenges
           </span>
         </motion.h1>
 
@@ -47,11 +47,11 @@ export const Chapter1Problem: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-slate-600 text-lg sm:text-2xl font-normal max-w-2xl mx-auto leading-relaxed mb-16"
         >
-          Phones ringing 24/7. Stacked paper files. Scattered sticky notes. Unconnected spreadsheets. Delayed projects. Confused teams.
+          Arkaa Digital LLP is a technology solutions and digital transformation company delivering custom software, enterprise platforms, healthcare and education systems, automation, cloud solutions, data analytics, and digital experiences.
         </motion.p>
 
         {/* Chaos Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
+        {/* <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
           {[
             { icon: FileText, text: 'Paper Files Stacked', sub: 'Manual Processing' },
             { icon: PhoneCall, text: 'Phones Ringing 24/7', sub: 'Missed Inquiries' },
@@ -75,7 +75,7 @@ export const Chapter1Problem: React.FC = () => {
               </motion.div>
             );
           })}
-        </div>
+        </div> */}
 
         {/* Scroll Indicator Prompt */}
         <motion.div

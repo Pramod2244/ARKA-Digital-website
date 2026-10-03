@@ -22,7 +22,7 @@ export const Chapter6Result: React.FC = () => {
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-100 border border-orange-200 text-xs font-mono text-orange-700 font-bold mb-8 shadow-sm"
         >
           <Sparkles className="w-3.5 h-3.5 text-orange-600 animate-spin" />
-          <span>CHAPTER 06 // THE RESULT</span>
+          <span>CHAPTER 05 // THE RESULT</span>
         </motion.div>
 
         {/* Headline */}
